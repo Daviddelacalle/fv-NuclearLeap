@@ -26,6 +26,7 @@ public:
     int getPuntuacion();
     sf::Sprite getSprite();
     void setPosition(int, int);
+    
 };
 
 

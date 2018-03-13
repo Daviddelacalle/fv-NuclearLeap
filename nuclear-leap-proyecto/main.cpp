@@ -8,12 +8,12 @@
 
 #define kVel 5
 
+using namespace std;
+
 sf::Text crearPuntuacion();
 void actualizarPuntuacion(int,sf::Text &_puntRads);
-void recogerRads(Rads _rads[], sf::RectangleShape _sprite , int &_nrads);
+void recogerRads(vector<Rads*> &_rads, sf::RectangleShape _sprite , int &_nrads);
 
-
-using namespace std;
 
 int main()
 {
@@ -52,8 +52,19 @@ int main()
     // Lo dispongo en el centro de la pantalla
     sprite.setPosition(320, 240);
     
-    Rads rads[4] {{200,324,1},{200,348,1},{200,300,1},{100,200,5}};
-
+    //Rads rads[4] {{200,324,1},{200,348,1},{200,300,1},{100,200,5}};
+    
+    vector<Rads*> mivector(4);
+    
+    Rads *rad1 = new Rads(200,324,1);
+    mivector[1]=rad1;
+    Rads *rad2 = new Rads(200,348,1);
+    mivector[2]=rad2;
+    Rads *rad3 = new Rads(200,300,1);
+    mivector[3]=rad3;
+    Rads *rad0 = new Rads(100,200,5);
+    mivector[0]=rad0;
+    
     //Bucle del juego
     while (window.isOpen())
     {
@@ -110,16 +121,20 @@ int main()
         }
         
         
-        recogerRads(rads,sprite,nrads);
+        recogerRads(mivector,sprite,nrads);
         actualizarPuntuacion(nrads,puntRads);
 
         window.clear();
+        
+        auto it = mivector.begin();
+    
+        for(it = mivector.begin(); it != mivector.end(); it++){
+            Rads *tmp = *it;
+            window.draw(tmp->getSprite());
+        }
+        
         window.draw(sprite);
         window.draw(puntRads);
-        window.draw(rads[0].getSprite());
-        window.draw(rads[1].getSprite());
-        window.draw(rads[2].getSprite());
-        window.draw(rads[3].getSprite());
         window.display();
     }
 
@@ -184,14 +199,37 @@ void actualizarPuntuacion(int _nrads, sf::Text &_puntRads){
     _puntRads.setString(ss.str());
 }
 
-void recogerRads(Rads _rads[], sf::RectangleShape _sprite, int &_nrads){
+void recogerRads(vector<Rads*> &_rads, sf::RectangleShape _sprite, int &_nrads){
     
+    
+    auto it = _rads.begin();
+    
+    
+    for(it; it != _rads.end(); it++){
+        
+        Rads *tmp = *it;
+         
+        
+        if(_sprite.getGlobalBounds().intersects(tmp->getSprite().getGlobalBounds())){    
+            _nrads = _nrads + tmp->getPuntuacion();           
+            _rads.erase(it);       
+            delete tmp; 
+            break;
+        }
+        
+    }
+    
+    
+    /*
     for(int i = 0; i < 4; i++){
-       if(_sprite.getGlobalBounds().intersects(_rads[i].getSprite().getGlobalBounds())){
-           _nrads = _nrads + _rads[i].getPuntuacion();
-           _rads[i].setPosition(1000,1000);
+        auto it= _rads.begin() + i;
+        Rads *tmp=*it;
+       if(true){
+           _nrads = _nrads + *it;
+           _rads.erase(it);
+           delete tmp;
            
        }
     }
-    
+    */
 }

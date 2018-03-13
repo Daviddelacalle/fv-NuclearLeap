@@ -41,6 +41,7 @@
           <incDir>
             <pElem>/usr/include/SFML</pElem>
           </incDir>
+          <commandLine>-std=c++11</commandLine>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
