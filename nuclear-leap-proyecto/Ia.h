@@ -16,13 +16,15 @@
 
 class Ia{
 protected:
-    int posx;
-    int posy;
+    float posx;
+    float posy;
+    int dirx;
+    int diry;
     sf::Texture tex;
     sf::Sprite sprite;
 public:
     sf::Sprite getSprite();
-    Ia(int,int);
+    Ia(float,float);
 };
 
 class Npc1: public Ia{
@@ -31,19 +33,24 @@ class Npc1: public Ia{
         sf::RectangleShape box_left;
         sf::RectangleShape box_right;
     public: 
-        Npc1(int,int);
-        void movimiento();
+        Npc1(float,float);
+        void movimiento(sf::RectangleShape &_bloque);
+        void actualizarBox();
+        void actualizarSprite(int);
+        sf::RectangleShape getBox_up();
+        sf::RectangleShape getBox_right();
+        sf::RectangleShape getBox_left();
 };
 
 class Npc3: public Ia{
     public: 
-        Npc3(int,int);
+        Npc3(float,float);
         void movimiento();
 };
 
 class Npc5: public Ia{
     public: 
-        Npc5(int,int);
+        Npc5(float,float);
         void movimiento();
 };
 #endif /* IA_H */
