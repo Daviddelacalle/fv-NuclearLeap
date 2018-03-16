@@ -8,11 +8,12 @@
 #include "Ia.h"
 
 #define kVel 0.02
-
+#define tMax 300
 using namespace std;
 
 int main()
 {
+    sf::Clock clock;
     //Creamos una ventana 
     sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA");
     
@@ -38,12 +39,22 @@ int main()
             }
         }
         
+        
+        sf::Time tiempo_max = sf::milliseconds(tMax);
+        
+        if(clock.getElapsedTime() > tiempo_max){
+            npc1.actualizarSprite();
+            clock.restart();
+        }
+        
         npc1.movimiento(pos);
+        
         
         //Bucle de obtención de eventos
         window.clear();
         window.draw(pos);
         window.draw(npc1.getSprite());
+        
         window.draw(npc1.getBox_up());
         window.draw(npc1.getBox_right());
         window.draw(npc1.getBox_left());
@@ -67,7 +78,9 @@ sf::Sprite Ia::getSprite(){
 
 Npc1::Npc1(float _posx,float _posy):Ia(_posx,_posy){
     
-     if (!tex.loadFromFile("sprites/npc1/npc1-0.png")){
+    nsprite = 0;
+    
+     if (!tex.loadFromFile("sprites/npc1/npc1.png")){
         std::cerr << "Error cargando la imagen sprites.png";
         exit(0);
     }
@@ -77,7 +90,7 @@ Npc1::Npc1(float _posx,float _posy):Ia(_posx,_posy){
     //Le pongo el centroide donde corresponde
     sprite.setOrigin(48/2,48/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite.setTextureRect(sf::IntRect(0*48, 0*48, 48, 48));
+    sprite.setTextureRect(sf::IntRect(nsprite*48, 0*48, 48, 48));
     // Lo dispongo en el centro de la pantalla
     sprite.setPosition(posx, posy);
     
@@ -122,6 +135,14 @@ void Npc1::actualizarBox(){
     box_up.setPosition(posx,posy-8);
     box_left.setPosition(posx-24,posy+18);
     box_right.setPosition(posx+24,posy+18);
+}
+
+void Npc1::actualizarSprite(){
+    if(nsprite == 4){
+        nsprite = 0;
+    }
+    sprite.setTextureRect(sf::IntRect(nsprite*48, 0*48, 48, 48));
+    nsprite++;
 }
 
 sf::RectangleShape Npc1::getBox_up(){

@@ -29,6 +29,7 @@ public:
 
 class Npc1: public Ia{
     private:
+        int nsprite;
         sf::RectangleShape box_up;
         sf::RectangleShape box_left;
         sf::RectangleShape box_right;
@@ -36,7 +37,7 @@ class Npc1: public Ia{
         Npc1(float,float);
         void movimiento(sf::RectangleShape &_bloque);
         void actualizarBox();
-        void actualizarSprite(int);
+        void actualizarSprite();
         sf::RectangleShape getBox_up();
         sf::RectangleShape getBox_right();
         sf::RectangleShape getBox_left();
