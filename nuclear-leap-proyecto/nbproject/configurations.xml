@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Bloque.h</itemPath>
+      <itemPath>Ia.h</itemPath>
       <itemPath>Rads.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -15,6 +16,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.cpp</itemPath>
+      <itemPath>recogida.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -56,9 +58,13 @@
       </compileType>
       <item path="Bloque.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Ia.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Rads.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="recogida.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -83,9 +89,13 @@
       </compileType>
       <item path="Bloque.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Ia.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Rads.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="recogida.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
