@@ -28,8 +28,10 @@ public:
 };
 
 class Npc1: public Ia{
-    private:
+    protected:
+        int tam;
         int nsprite;
+        int max_sprites;
         sf::RectangleShape box_up;
         sf::RectangleShape box_left;
         sf::RectangleShape box_right;
@@ -43,10 +45,9 @@ class Npc1: public Ia{
         sf::RectangleShape getBox_left();
 };
 
-class Npc3: public Ia{
+class Npc3: public Npc1{
     public: 
         Npc3(float,float);
-        void movimiento();
 };
 
 class Npc5: public Ia{
