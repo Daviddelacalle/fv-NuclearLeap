@@ -7,7 +7,7 @@
 #include "Bloque.h"
 #include "Ia.h"
 
-#define kVel 0.02
+#define kVel 0.004
 #define tMax 300
 using namespace std;
 
@@ -19,7 +19,7 @@ int main()
     
     sf::RectangleShape pos(sf::Vector2f(250,12));
     pos.setOrigin(100,6);
-    pos.setPosition(200,217);
+    pos.setPosition(200,213);
     pos.setFillColor(sf::Color::Blue);
     
     Npc1 npc1(200,200);
@@ -80,7 +80,7 @@ Npc1::Npc1(float _posx,float _posy):Ia(_posx,_posy){
     
     nsprite = 0;
     
-     if (!tex.loadFromFile("sprites/npc1/npc1.png")){
+     if (!tex.loadFromFile("sprites/npc1.png")){
         std::cerr << "Error cargando la imagen sprites.png";
         exit(0);
     }
@@ -88,25 +88,25 @@ Npc1::Npc1(float _posx,float _posy):Ia(_posx,_posy){
     
     sprite =sf::Sprite(tex);
     //Le pongo el centroide donde corresponde
-    sprite.setOrigin(48/2,48/2);
+    sprite.setOrigin(32/2,32/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite.setTextureRect(sf::IntRect(nsprite*48, 0*48, 48, 48));
+    sprite.setTextureRect(sf::IntRect(nsprite*32, 0*32, 32, 32));
     // Lo dispongo en el centro de la pantalla
     sprite.setPosition(posx, posy);
     
-    box_up = sf::RectangleShape(sf::Vector2f(44,1));
-    box_up.setOrigin(22,0);
-    box_up.setPosition(posx,posy-8);
+    box_up = sf::RectangleShape(sf::Vector2f(28,1));
+    box_up.setOrigin(14,0);
+    box_up.setPosition(posx,posy-10);
     box_up.setFillColor(sf::Color::Red);
     
-    box_left = sf::RectangleShape(sf::Vector2f(1,32));
+    box_left = sf::RectangleShape(sf::Vector2f(1,16));
     box_left.setOrigin(0,24);
-    box_left.setPosition(posx-24,posy+18);
+    box_left.setPosition(posx-16,posy+18);
     box_left.setFillColor(sf::Color::Red);
     
-    box_right = sf::RectangleShape(sf::Vector2f(1,32));
+    box_right = sf::RectangleShape(sf::Vector2f(1,16));
     box_right.setOrigin(0,24);
-    box_right.setPosition(posx+24,posy+18);
+    box_right.setPosition(posx+16,posy+18);
     box_right.setFillColor(sf::Color::Red);
 }
 
@@ -132,16 +132,16 @@ void Npc1::movimiento(sf::RectangleShape &_bloque){
 }
 
 void Npc1::actualizarBox(){
-    box_up.setPosition(posx,posy-8);
-    box_left.setPosition(posx-24,posy+18);
-    box_right.setPosition(posx+24,posy+18);
+    box_up.setPosition(posx,posy-10);
+    box_left.setPosition(posx-16,posy+18);
+    box_right.setPosition(posx+16,posy+18);
 }
 
 void Npc1::actualizarSprite(){
     if(nsprite == 4){
         nsprite = 0;
     }
-    sprite.setTextureRect(sf::IntRect(nsprite*48, 0*48, 48, 48));
+    sprite.setTextureRect(sf::IntRect(nsprite*32, 0*32, 32, 32));
     nsprite++;
 }
 
