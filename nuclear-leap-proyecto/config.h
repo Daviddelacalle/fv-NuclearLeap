@@ -19,7 +19,7 @@
 #include <string>
 #include <sstream> 
 
-#define kVel 0.009
+#define kVel 0.002
 #define mVel 5
 #define tMax 200
 

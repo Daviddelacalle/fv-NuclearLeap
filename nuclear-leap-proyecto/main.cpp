@@ -17,15 +17,21 @@ int main()
     // Lo dispongo en el centro de la pantalla
     pj.setPosition(320, 240);
     
-    sf::RectangleShape plat1(sf::Vector2f(250,12));
-    plat1.setOrigin(100,6);
-    plat1.setPosition(400,362);
-    plat1.setFillColor(sf::Color::Blue);
+    //sf::RectangleShape plataformas[2];
     
-    sf::RectangleShape plat3(sf::Vector2f(250,12));
-    plat3.setOrigin(100,6);
-    plat3.setPosition(200,186);
-    plat3.setFillColor(sf::Color::Blue);
+    vector<sf::RectangleShape*> plataformas(2);
+    
+    sf::RectangleShape *plat1 = new sf::RectangleShape(sf::Vector2f(250,12));
+    plat1->setOrigin(100,6);
+    plat1->setPosition(400,362);
+    plat1->setFillColor(sf::Color::Blue);
+    plataformas[0] = plat1;
+    
+    sf::RectangleShape *plat3 = new sf::RectangleShape(sf::Vector2f(250,12));
+    plat3->setOrigin(100,6);
+    plat3->setPosition(200,186);
+    plat3->setFillColor(sf::Color::Blue);
+    plataformas[1] = plat3;
     
     sf::RectangleShape pared1(sf::Vector2f(8,480));
     pared1.setOrigin(4,240);
@@ -49,6 +55,7 @@ int main()
     
     Npc3 npc3(200,150);
     Npc1 npc1(300,350);
+    Npc5 npc5(200,400);
     
     //Bucle del juego
     while (window.isOpen())
@@ -107,25 +114,36 @@ int main()
         sf::Time tiempo_max = sf::milliseconds(tMax);
         
         if(clock.getElapsedTime() > tiempo_max){
+            npc5.actualizarSprite();
             npc3.actualizarSprite();
             npc1.actualizarSprite();
             clock.restart();
         }
         //FIN 
+        npc3.movimiento(*plataformas[1]);
+        npc1.movimiento(*plataformas[0]);
         
-        npc3.movimiento(plat3);
-        npc1.movimiento(plat1);
+        npc5.movimiento(pj,plataformas);
         
         //Bucle de obtención de eventos
         window.clear();
-        window.draw(plat1);
-        window.draw(plat3);
+        
+        auto it = plataformas.begin();
+        
+        for(it = plataformas.begin(); it != plataformas.end(); it++){
+            sf::RectangleShape *tmp = *it;
+            window.draw(*tmp);
+        }
+        
         window.draw(npc3.getSprite());
         window.draw(npc1.getSprite());
+        window.draw(npc5.getSprite());
+        
         window.draw(pared1);
         window.draw(pared2);
         window.draw(suelo);
         window.draw(techo);
+        
         window.draw(pj);
         
         //DIBUJAR COLISIONADORES

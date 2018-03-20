@@ -19,20 +19,21 @@ class Ia{
 protected:
     float posx;
     float posy;
+    int nsprite;
+    int max_sprites;
+    int tam;
     int dirx;
     int diry;
     sf::Texture tex;
     sf::Sprite sprite;
 public:
-    sf::Sprite getSprite();
     Ia(float,float);
+    sf::Sprite getSprite();
+    void actualizarSprite();
 };
 
 class Npc1: public Ia{
     protected:
-        int tam;
-        int nsprite;
-        int max_sprites;
         sf::RectangleShape box_up;
         sf::RectangleShape box_left;
         sf::RectangleShape box_right;
@@ -40,7 +41,6 @@ class Npc1: public Ia{
         Npc1(float,float);
         void movimiento(sf::RectangleShape &_bloque);
         void actualizarBox();
-        void actualizarSprite();
         sf::RectangleShape getBox_up();
         sf::RectangleShape getBox_right();
         sf::RectangleShape getBox_left();
@@ -54,7 +54,7 @@ class Npc3: public Npc1{
 class Npc5: public Ia{
     public: 
         Npc5(float,float);
-        void movimiento();
+        void movimiento(sf::RectangleShape &_pj,vector<sf::RectangleShape*> &_plataformas);
 };
 #endif /* IA_H */
 

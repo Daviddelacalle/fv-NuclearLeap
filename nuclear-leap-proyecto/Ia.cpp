@@ -82,7 +82,7 @@ void Npc1::actualizarBox(){
     box_right.setPosition(posx+(tam/2),posy+2);
 }
 
-void Npc1::actualizarSprite(){
+void Ia::actualizarSprite(){
     if(nsprite == max_sprites){
         nsprite = 0;
     }
@@ -133,16 +133,75 @@ Npc3::Npc3(float _posx,float _posy):Npc1(_posx,_posy){
 }
 
 Npc5::Npc5(float _posx,float _posy):Ia(_posx,_posy){
-    
-     if (!tex.loadFromFile("sprites/npc5/npc5-0.png")){
+    tam = 64;
+    max_sprites = 6;
+     if (!tex.loadFromFile("sprites/npc5.png")){
         std::cout << "Error cargando la imagen sprites.png";
         exit(0);
     }
     sprite =sf::Sprite(tex);
     //Le pongo el centroide donde corresponde
-    sprite.setOrigin(140/2,140/2);
+    sprite.setOrigin(64/2,64/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite.setTextureRect(sf::IntRect(0*140, 0*140, 140, 140));
+    sprite.setTextureRect(sf::IntRect(nsprite*64, 0*64, 64, 64));
     // Lo dispongo en el centro de la pantalla
     sprite.setPosition(posx, posy);
+
+
+}
+
+void Npc5::movimiento(sf::RectangleShape &_pj,vector<sf::RectangleShape*> &_plataformas){
+     
+    if(_pj.getPosition().x < posx){
+    //El pj esta a la izquierda
+        dirx = -1;
+
+    }
+    else if(_pj.getPosition().x > posx){
+    //El pj esta a la derecha
+        dirx = +1;
+
+    }
+    
+    else if(_pj.getPosition().x == posx){
+    //El pj esta a la misma altura x
+        dirx = 0;
+
+    }
+    
+    if(_pj.getPosition().y < posy){
+    //El pj esta encima
+        diry = -1;
+
+    }
+    else if(_pj.getPosition().y > posy){
+    //El pj esta debajo
+        diry = +1;
+
+    }
+    
+    else if(_pj.getPosition().y == posy){
+    //El pj esta a la misma altura y
+        diry = 0;
+
+    }
+    
+    
+    auto it = _plataformas.begin();
+        
+        for(it = _plataformas.begin(); it != _plataformas.end(); it++){
+            sf::RectangleShape *tmp = *it;
+            
+            if(tmp->getGlobalBounds().intersects(sprite.getGlobalBounds())){
+                dirx=-dirx;
+                diry=-diry;
+            }
+            
+        }
+    
+    
+    posx = posx + dirx*kVel;
+    posy = posy + diry*kVel;
+    
+    sprite.setPosition(posx,posy);
 }
