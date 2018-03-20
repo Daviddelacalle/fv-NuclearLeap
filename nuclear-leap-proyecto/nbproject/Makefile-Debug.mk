@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Ia.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/recogida.o
 
@@ -68,6 +69,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/nuclear-leap-proyecto: /usr/lib/x86_6
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/nuclear-leap-proyecto: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/nuclear-leap-proyecto ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Ia.o: Ia.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ia.o Ia.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

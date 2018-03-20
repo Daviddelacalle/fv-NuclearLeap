@@ -10,6 +10,7 @@
  *
  * Created on 16 de marzo de 2018, 18:32
  */
+#include "config.h"
 
 #ifndef IA_H
 #define IA_H
