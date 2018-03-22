@@ -148,13 +148,18 @@ int main()
         
         //DIBUJAR COLISIONADORES
        
+        /*
+        window.draw(npc5.getBox_up());
+        window.draw(npc5.getBox_right());
+        window.draw(npc5.getBox_left());
+        window.draw(npc5.getBox_down());
         window.draw(npc3.getBox_up());
         window.draw(npc3.getBox_right());
         window.draw(npc3.getBox_left());
         window.draw(npc1.getBox_up());
         window.draw(npc1.getBox_right());
         window.draw(npc1.getBox_left());
-       
+       */
         
         window.display();
     }

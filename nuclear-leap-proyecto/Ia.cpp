@@ -11,6 +11,7 @@ Ia::Ia(float _posx, float _posy){
     posy = _posy;
     dirx = 1;
     diry = 0;
+    nsprite = 0;
 }
 
 sf::Sprite Ia::getSprite(){
@@ -20,7 +21,6 @@ sf::Sprite Ia::getSprite(){
 Npc1::Npc1(float _posx,float _posy):Ia(_posx,_posy){
     
     tam = 32;
-    nsprite = 0;
     max_sprites = 4;
     
      if (!tex.loadFromFile("sprites/npc1.png")){
@@ -90,13 +90,13 @@ void Ia::actualizarSprite(){
     nsprite++;
 }
 
-sf::RectangleShape Npc1::getBox_up(){
+sf::RectangleShape Ia::getBox_up(){
     return box_up;
 }
-sf::RectangleShape Npc1::getBox_right(){
+sf::RectangleShape Ia::getBox_right(){
     return box_right;
 }
-sf::RectangleShape Npc1::getBox_left(){
+sf::RectangleShape Ia::getBox_left(){
     return box_left;
 }
 
@@ -121,12 +121,12 @@ Npc3::Npc3(float _posx,float _posy):Npc1(_posx,_posy){
     box_up.setPosition(posx,posy-32);
     box_up.setFillColor(sf::Color::Red);
     
-    box_left = sf::RectangleShape(sf::Vector2f(1,60));
+    box_left = sf::RectangleShape(sf::Vector2f(1,46));
     box_left.setOrigin(0,16);
     box_left.setPosition(posx-32,posy+2);
     box_left.setFillColor(sf::Color::Red);
     
-    box_right = sf::RectangleShape(sf::Vector2f(1,60));
+    box_right = sf::RectangleShape(sf::Vector2f(1,46));
     box_right.setOrigin(0,16);
     box_right.setPosition(posx+32,posy+2);
     box_right.setFillColor(sf::Color::Red);
@@ -147,6 +147,27 @@ Npc5::Npc5(float _posx,float _posy):Ia(_posx,_posy){
     // Lo dispongo en el centro de la pantalla
     sprite.setPosition(posx, posy);
 
+    //COLISIONADORES
+    box_up = sf::RectangleShape(sf::Vector2f(60,1));
+    box_up.setOrigin(30,0);
+    box_up.setPosition(posx,posy-32);
+    box_up.setFillColor(sf::Color::Red);
+    
+    box_down = sf::RectangleShape(sf::Vector2f(60,1));
+    box_down.setOrigin(30,0);
+    box_down.setPosition(posx,posy+36);
+    box_down.setFillColor(sf::Color::Red);
+    
+    box_left = sf::RectangleShape(sf::Vector2f(1,40));
+    box_left.setOrigin(0,16);
+    box_left.setPosition(posx-32,posy);
+    box_left.setFillColor(sf::Color::Red);
+    
+    box_right = sf::RectangleShape(sf::Vector2f(1,40));
+    box_right.setOrigin(0,16);
+    box_right.setPosition(posx+32,posy);
+    box_right.setFillColor(sf::Color::Red);
+    
 
 }
 
@@ -187,15 +208,17 @@ void Npc5::movimiento(sf::RectangleShape &_pj,vector<sf::RectangleShape*> &_plat
     }
     
     
+    
+    
     auto it = _plataformas.begin();
         
         for(it = _plataformas.begin(); it != _plataformas.end(); it++){
             sf::RectangleShape *tmp = *it;
             
-            if(tmp->getGlobalBounds().intersects(sprite.getGlobalBounds())){
-                dirx=-dirx;
-                diry=-diry;
-            }
+            if(tmp->getGlobalBounds().intersects(box_up.getGlobalBounds())){ diry=+1; }
+            if(tmp->getGlobalBounds().intersects(box_down.getGlobalBounds())){ diry=-1; }
+            if(tmp->getGlobalBounds().intersects(box_right.getGlobalBounds())){ dirx=-1; }
+            if(tmp->getGlobalBounds().intersects(box_left.getGlobalBounds())){ dirx=+1; }
             
         }
     
@@ -204,4 +227,17 @@ void Npc5::movimiento(sf::RectangleShape &_pj,vector<sf::RectangleShape*> &_plat
     posy = posy + diry*kVel;
     
     sprite.setPosition(posx,posy);
+    actualizarBox();
+    
+}
+
+sf::RectangleShape Npc5::getBox_down(){
+    return box_down;
+}
+
+void Npc5::actualizarBox(){
+    box_up.setPosition(posx,posy-(tam/2-6));
+    box_left.setPosition(posx-(tam/2),posy);
+    box_right.setPosition(posx+(tam/2),posy);
+    box_down.setPosition(posx,posy+(tam/2 - 2));
 }
