@@ -10,7 +10,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA");
     
     sf::RectangleShape pj = sf::RectangleShape(sf::Vector2f(32,32));
-    pj.setFillColor(sf::Color::Red);
+    pj.setFillColor(sf::Color::Green);
     //Le pongo el centroide donde corresponde
     pj.setOrigin(32/2,32/2);
     //Cojo el sprite que me interesa por defecto del sheet
@@ -54,7 +54,7 @@ int main()
     techo.setFillColor(sf::Color::Blue);
     
     Npc3 npc3(200,150);
-    Npc1 npc1(300,350);
+    Npc1 *npc1 = new Npc1(300,350);
     Npc5 npc5(200,400);
     
     //Bucle del juego
@@ -106,7 +106,7 @@ int main()
                               
                     }
             }
-            
+             
         }
         
         //CONTROL DE CAMBIO ANIMACION 
@@ -116,12 +116,26 @@ int main()
         if(clock.getElapsedTime() > tiempo_max){
             npc5.actualizarSprite();
             npc3.actualizarSprite();
-            npc1.actualizarSprite();
+            if(npc1!=NULL){
+                npc1->actualizarSprite();
+            }
             clock.restart();
         }
+        
         //FIN 
+        
+        if(npc1!=NULL){
+            if(pj.getGlobalBounds().intersects(npc1->getBox_up().getGlobalBounds())){
+                cout << "HOLAA \n";
+                delete npc1;
+                npc1 = NULL;
+            }
+        }
+        
         npc3.movimiento(*plataformas[1]);
-        npc1.movimiento(*plataformas[0]);
+        if(npc1!=NULL){
+            npc1->movimiento(*plataformas[0]);
+        }
         
         npc5.movimiento(pj,plataformas);
         
@@ -136,8 +150,10 @@ int main()
         }
         
         window.draw(npc3.getSprite());
-        window.draw(npc1.getSprite());
-        window.draw(npc5.getSprite());
+        if(npc1!=NULL){
+            window.draw(npc1->getSprite());
+        }
+        //window.draw(npc5.getSprite());
         
         window.draw(pared1);
         window.draw(pared2);
@@ -156,10 +172,14 @@ int main()
         window.draw(npc3.getBox_up());
         window.draw(npc3.getBox_right());
         window.draw(npc3.getBox_left());
-        window.draw(npc1.getBox_up());
-        window.draw(npc1.getBox_right());
-        window.draw(npc1.getBox_left());
-       */
+        */
+        if(npc1 != NULL){
+            window.draw(npc1->getBox_up());
+            window.draw(npc1->getBox_right());
+            window.draw(npc1->getBox_left());
+        }
+        
+       
         
         window.display();
     }
