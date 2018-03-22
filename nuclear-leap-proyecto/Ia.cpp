@@ -18,16 +18,23 @@ sf::Sprite Ia::getSprite(){
     return sprite;
 }
 
+void Ia::setPosition(int _x, int _y){
+    posx = _x;
+    posy = _y;
+}
+
 Npc1::Npc1(float _posx,float _posy):Ia(_posx,_posy){
     
     tam = 32;
     max_sprites = 4;
     
+    
      if (!tex.loadFromFile("sprites/npc1.png")){
         std::cout << "Error cargando la imagen sprites.png";
         exit(0);
     }
-     
+    
+    tex.loadFromFile("sprites/npc0.png");
     
     sprite =sf::Sprite(tex);
     //Le pongo el centroide donde corresponde
@@ -41,7 +48,7 @@ Npc1::Npc1(float _posx,float _posy):Ia(_posx,_posy){
     
     box_up = sf::RectangleShape(sf::Vector2f(28,1));
     box_up.setOrigin(14,0);
-    box_up.setPosition(posx,posy-10);
+    box_up.setPosition(posx,posy-16);
     box_up.setFillColor(sf::Color::Red);
     
     box_left = sf::RectangleShape(sf::Vector2f(1,16));
@@ -77,7 +84,7 @@ void Npc1::movimiento(sf::RectangleShape &_bloque){
 }
 
 void Npc1::actualizarBox(){
-    box_up.setPosition(posx,posy-(tam/2-6));
+    box_up.setPosition(posx,posy-(tam/2));
     box_left.setPosition(posx-(tam/2),posy+2);
     box_right.setPosition(posx+(tam/2),posy+2);
 }

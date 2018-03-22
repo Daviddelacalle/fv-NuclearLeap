@@ -36,6 +36,7 @@ public:
     sf::RectangleShape getBox_up();
     sf::RectangleShape getBox_right();
     sf::RectangleShape getBox_left();
+    void setPosition(int,int);
 };
 
 class Npc1: public Ia{

@@ -5,6 +5,27 @@
 
 int main()
 {
+    sf::Font font;
+    font.loadFromFile("arial.ttf");
+    sf::Text puntVidas("0",font);
+    puntVidas.setCharacterSize(18);
+    puntVidas.setStyle(sf::Text::Bold);
+    puntVidas.setColor(sf::Color::Green);
+    puntVidas.setPosition(75,13);
+
+    sf::Text puntVidastx("Vidas: ",font);
+    puntVidastx.setCharacterSize(20);
+    puntVidastx.setStyle(sf::Text::Bold);
+    puntVidastx.setColor(sf::Color::Green);
+    puntVidastx.setPosition(10,10);
+
+    
+    std::stringstream ss;
+    int vidas = 3;
+    ss<<vidas;
+    puntVidas.setString(ss.str());
+    
+    
     sf::Clock clock;
     //Creamos una ventana 
     sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA");
@@ -123,7 +144,7 @@ int main()
         }
         
         //FIN 
-        
+         
         if(npc1!=NULL){
             if(pj.getGlobalBounds().intersects(npc1->getBox_up().getGlobalBounds())){
                 cout << "HOLAA \n";
@@ -131,6 +152,46 @@ int main()
                 npc1 = NULL;
             }
         }
+        
+         if(npc1 != NULL){
+            if(npc1->getSprite().getGlobalBounds().intersects(pj.getGlobalBounds())){
+                if(vidas == 1){
+                    cout << "HAS PERDIDO \n";
+                    window.close();
+                }
+                else{
+                    vidas = vidas-1;
+                    std::stringstream ss;
+                    ss<<vidas;
+                    puntVidas.setString(ss.str());
+                    pj.setPosition(320,240);
+                    npc1 = new Npc1(300,350);
+                    npc3.setPosition(200,150);
+                    npc5.setPosition(200,400);
+                }
+                
+            }
+        }
+        
+        if(npc3.getSprite().getGlobalBounds().intersects(pj.getGlobalBounds()) || npc5.getSprite().getGlobalBounds().intersects(pj.getGlobalBounds())){
+                if(vidas == 1){
+                    cout << "HAS PERDIDO \n";
+                    window.close();
+                }
+                else{
+                    vidas = vidas-1;
+                    std::stringstream ss;
+                    ss<<vidas;
+                    puntVidas.setString(ss.str());
+                    pj.setPosition(320,240);
+                    npc1 = new Npc1(300,350);
+                    npc3.setPosition(200,150);
+                    npc5.setPosition(200,400);
+                }
+                
+            }
+        
+        
         
         npc3.movimiento(*plataformas[1]);
         if(npc1!=NULL){
@@ -153,7 +214,7 @@ int main()
         if(npc1!=NULL){
             window.draw(npc1->getSprite());
         }
-        //window.draw(npc5.getSprite());
+        window.draw(npc5.getSprite());
         
         window.draw(pared1);
         window.draw(pared2);
@@ -164,7 +225,7 @@ int main()
         
         //DIBUJAR COLISIONADORES
        
-        /*
+        
         window.draw(npc5.getBox_up());
         window.draw(npc5.getBox_right());
         window.draw(npc5.getBox_left());
@@ -172,14 +233,15 @@ int main()
         window.draw(npc3.getBox_up());
         window.draw(npc3.getBox_right());
         window.draw(npc3.getBox_left());
-        */
+        
         if(npc1 != NULL){
             window.draw(npc1->getBox_up());
             window.draw(npc1->getBox_right());
             window.draw(npc1->getBox_left());
         }
         
-       
+        window.draw(puntVidas);
+        window.draw(puntVidastx);
         
         window.display();
     }
