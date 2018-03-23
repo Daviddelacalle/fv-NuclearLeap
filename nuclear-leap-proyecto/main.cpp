@@ -10,14 +10,9 @@ int main()
     sf::Text puntVidas("0",font);
     puntVidas.setCharacterSize(18);
     puntVidas.setStyle(sf::Text::Bold);
-    puntVidas.setColor(sf::Color::Green);
-    puntVidas.setPosition(75,13);
+    puntVidas.setColor(sf::Color::White);
+    puntVidas.setPosition(35,27);
 
-    sf::Text puntVidastx("Vidas: ",font);
-    puntVidastx.setCharacterSize(20);
-    puntVidastx.setStyle(sf::Text::Bold);
-    puntVidastx.setColor(sf::Color::Green);
-    puntVidastx.setPosition(10,10);
 
     
     std::stringstream ss;
@@ -25,6 +20,16 @@ int main()
     ss<<vidas;
     puntVidas.setString(ss.str());
     
+    //sprite de vidas
+    sf::Texture tex;
+    sf::Sprite sprite;
+    tex.loadFromFile("sprites/vida.png");
+    
+    sprite =sf::Sprite(tex);
+    //Le pongo el centroide donde corresponde
+    sprite.setOrigin(85,75);
+    sprite.setPosition(40,40);
+    sprite.setScale(sf::Vector2f(0.3f, 0.3f));
     
     sf::Clock clock;
     //Creamos una ventana 
@@ -144,7 +149,7 @@ int main()
         }
         
         //FIN 
-         
+       
         if(npc1!=NULL){
             if(pj.getGlobalBounds().intersects(npc1->getBox_up().getGlobalBounds())){
                 cout << "HOLAA \n";
@@ -240,9 +245,9 @@ int main()
             window.draw(npc1->getBox_left());
         }
         
-        window.draw(puntVidas);
-        window.draw(puntVidastx);
         
+        window.draw(sprite);
+        window.draw(puntVidas);
         window.display();
     }
 
