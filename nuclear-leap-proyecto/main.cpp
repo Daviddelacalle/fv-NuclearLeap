@@ -152,7 +152,6 @@ int main()
        
         if(npc1!=NULL){
             if(pj.getGlobalBounds().intersects(npc1->getBox_up().getGlobalBounds())){
-                cout << "HOLAA \n";
                 delete npc1;
                 npc1 = NULL;
             }

@@ -34,8 +34,6 @@ Npc1::Npc1(float _posx,float _posy):Ia(_posx,_posy){
         exit(0);
     }
     
-    tex.loadFromFile("sprites/npc0.png");
-    
     sprite =sf::Sprite(tex);
     //Le pongo el centroide donde corresponde
     sprite.setOrigin(32/2,32/2);
