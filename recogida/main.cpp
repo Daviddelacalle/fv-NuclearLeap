@@ -15,7 +15,7 @@ void actualizarPuntuacion(int,sf::Text &_puntRads);
 void recogerRads(vector<Rads*> &_rads, sf::RectangleShape _sprite , int &_nrads);
 
 
-int recogida()
+int main()
 {
     // Creamos el texto que muestra la puntuacion
     sf::Font font;
