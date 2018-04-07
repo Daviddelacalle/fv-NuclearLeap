@@ -3,30 +3,33 @@
 
 #include "State.h"
 
-#define kVel 5
+#define kVel 10
 #define UPDATE_TICK_TIME 1000/15
 
 using namespace std;
-State updateGameStateTICK(State _lastState);
+void updateGameStateTICK(State &_lastState, State &_newState,float timeElapsed);
 
-State updateGameStateTICK(State _lastState){
+void updateGameStateTICK(State &_lastState, State &_newState,float timeElapsed){
     
     int posx;
     int posy;
     
-    posx = _lastState.getPosx() + kVel;
-    posy = _lastState.getPosy() + kVel;
-    
-    State newState = State(posx,posy);
-    return newState;
+    posx = _lastState.getPosx() + (kVel);
+    posy = _lastState.getPosy() + (kVel);
+    /*
+    posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
+    posy = _lastState.getPosy() + (kVel*timeElapsed + 0.5f);
+    */
+    _newState.setPosx(posx);
+    _newState.setPosy(posy);
 }
 void renderWithInterpolation(sf::RenderWindow &_window, State _lastState, State _newState, float _percentTick, sf::RectangleShape &_pj);
 
 void renderWithInterpolation(sf::RenderWindow &_window, State _lastState, State _newState, float _percentTick, sf::RectangleShape &_pj){
     _window.clear();
-    
-    float posx = _lastState.getPosx()*(1-_percentTick) + _newState.getPosx() * _percentTick;
-    float posy = _lastState.getPosy()*(1-_percentTick) + _newState.getPosy() * _percentTick;
+   
+    int posx = _lastState.getPosx()*(1-_percentTick) + _newState.getPosx() * _percentTick;
+    int posy = _lastState.getPosy()*(1-_percentTick) + _newState.getPosy() * _percentTick;
     
     _pj.setPosition(posx,posy);
     
@@ -71,7 +74,7 @@ int main()
     
     bool firsTime = true;
     int input;
-    
+    sf::Time timeElapsed = sf::seconds(0);
     State newState =  State(posx,posy);
     State lastState =  State(posx,posy);
     //Bucle del juego
@@ -81,14 +84,16 @@ int main()
         //Bucle de obtención de eventos
 
         if(updateClock.getElapsedTime().asMilliseconds() > UPDATE_TICK_TIME){
-            lastState = newState;
-            sf::Time timeElapsed = updateClock.restart();
+            lastState.setPosx(newState.getPosx());
+            lastState.setPosy(newState.getPosy());
+            timeElapsed = updateClock.restart();
             
-            newState = updateGameStateTICK(lastState);
+            updateGameStateTICK(lastState,newState,timeElapsed.asSeconds());
             //firsTime = false;
         }
         
-        float percentTick = minimo(1.f, updateClock.getElapsedTime().asMilliseconds()/UPDATE_TICK_TIME);
+        float division = (float)updateClock.getElapsedTime().asMilliseconds()/UPDATE_TICK_TIME;
+        float percentTick = minimo(1.f, division);
         
         renderWithInterpolation(window,lastState,newState,percentTick,pj);
         
