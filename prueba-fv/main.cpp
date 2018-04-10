@@ -11,15 +11,9 @@ void updateGameStateTICK(State &_lastState, State &_newState,float timeElapsed);
 
 void updateGameStateTICK(State &_lastState, State &_newState,float timeElapsed){
     
-    int posx;
-    int posy;
+    int posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
+    int posy = _lastState.getPosy() + (kVel*timeElapsed + 0.5f);
     
-    posx = _lastState.getPosx() + (kVel);
-    posy = _lastState.getPosy() + (kVel);
-    /*
-    posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
-    posy = _lastState.getPosy() + (kVel*timeElapsed + 0.5f);
-    */
     _newState.setPosx(posx);
     _newState.setPosy(posy);
 }
@@ -27,7 +21,6 @@ void renderWithInterpolation(sf::RenderWindow &_window, State _lastState, State 
 
 void renderWithInterpolation(sf::RenderWindow &_window, State _lastState, State _newState, float _percentTick, sf::RectangleShape &_pj){
     _window.clear();
-   
     int posx = _lastState.getPosx()*(1-_percentTick) + _newState.getPosx() * _percentTick;
     int posy = _lastState.getPosy()*(1-_percentTick) + _newState.getPosy() * _percentTick;
     
@@ -55,13 +48,14 @@ int main()
     
     window.setFramerateLimit(60);
     
-    sf::Clock clock;
     sf::Clock updateClock;
     
     //INICIALIZAR
 
     int posx = 20;
     int posy = 20;
+    float division;
+    float percentTick;
     sf::RectangleShape pj = sf::RectangleShape(sf::Vector2f(32,32));
     pj.setFillColor(sf::Color::Green);
     //Le pongo el centroide donde corresponde
@@ -92,10 +86,11 @@ int main()
             //firsTime = false;
         }
         
-        float division = (float)updateClock.getElapsedTime().asMilliseconds()/UPDATE_TICK_TIME;
-        float percentTick = minimo(1.f, division);
+        division = (float)updateClock.getElapsedTime().asMilliseconds()/UPDATE_TICK_TIME;
+        percentTick = minimo(1.f, division);
         
         renderWithInterpolation(window,lastState,newState,percentTick,pj);
+        
         
     }
 
