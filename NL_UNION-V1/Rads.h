@@ -8,27 +8,21 @@
  * File:   Rads.h
  * Author: pato-lt
  *
- * Created on 9 de marzo de 2018, 17:24
+ * Created on 11 de abril de 2018, 18:01
  */
+#include "config.h"
 
 #ifndef RADS_H
 #define RADS_H
 
-class Rads{
-private:
-    int puntuacion;
-    int posx;
-    int posy;
-    sf::Texture tex;
-    sf::Sprite sprite;
+class Rads {
 public:
-    Rads(int,int,int);
-    int getPuntuacion();
-    sf::Sprite getSprite();
-    void setPosition(int, int);
-    
-};
+    Rads();
+    Rads(const Rads& orig);
+    virtual ~Rads();
+private:
 
+};
 
 #endif /* RADS_H */
 

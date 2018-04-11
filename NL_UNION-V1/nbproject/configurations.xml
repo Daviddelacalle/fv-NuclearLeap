@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>Escena.h</itemPath>
+      <itemPath>FabricaNiveles.h</itemPath>
+      <itemPath>Jugador.h</itemPath>
+      <itemPath>Mapa.h</itemPath>
+      <itemPath>Menu.h</itemPath>
+      <itemPath>Mundo.h</itemPath>
+      <itemPath>Npc.h</itemPath>
+      <itemPath>Npc1.h</itemPath>
+      <itemPath>Npc2.h</itemPath>
+      <itemPath>Npc3.h</itemPath>
+      <itemPath>Partida.h</itemPath>
+      <itemPath>Rads.h</itemPath>
+      <itemPath>config.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Escena.cpp</itemPath>
+      <itemPath>FabricaNiveles.cpp</itemPath>
+      <itemPath>Jugador.cpp</itemPath>
+      <itemPath>Mapa.cpp</itemPath>
+      <itemPath>Menu.cpp</itemPath>
+      <itemPath>Mundo.cpp</itemPath>
+      <itemPath>Npc.cpp</itemPath>
+      <itemPath>Npc1.cpp</itemPath>
+      <itemPath>Npc2.cpp</itemPath>
+      <itemPath>Npc3.cpp</itemPath>
+      <itemPath>Partida.cpp</itemPath>
+      <itemPath>Rads.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+      </compileType>
+      <item path="Escena.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Escena.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FabricaNiveles.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FabricaNiveles.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Menu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Menu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mundo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mundo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Partida.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Partida.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Rads.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Rads.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="Escena.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Escena.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FabricaNiveles.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FabricaNiveles.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Menu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Menu.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mundo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mundo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc2.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc3.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Partida.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Partida.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Rads.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Rads.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
