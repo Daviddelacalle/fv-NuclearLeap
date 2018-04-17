@@ -34,7 +34,7 @@ Npc1::Npc1(float _posx,float _posy):Ia(_posx,_posy){
         exit(0);
     }
     
-    sprite =sf::Sprite(tex);
+    sprite = sf::Sprite(tex);
     //Le pongo el centroide donde corresponde
     sprite.setOrigin(32/2,32/2);
     //Cojo el sprite que me interesa por defecto del sheet
