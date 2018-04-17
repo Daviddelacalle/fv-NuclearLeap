@@ -4,7 +4,7 @@
 #include "State.h"
 
 #define kVel 10
-#define UPDATE_TICK_TIME 1000/15
+#define UPDATE_TICK_TIME 1000/1
 
 using namespace std;
 void updateGameStateTICK(State &_lastState, State &_newState,float timeElapsed);
@@ -46,9 +46,10 @@ int main()
     //Creamos una ventana 
     sf::RenderWindow window(sf::VideoMode(640, 480), "P0. Fundamentos de los Videojuegos. DCCIA");
     
-    window.setFramerateLimit(60);
+    //window.setFramerateLimit(60);
     
     sf::Clock updateClock;
+    sf::Clock globalClock;
     
     //INICIALIZAR
 
@@ -74,25 +75,59 @@ int main()
     //Bucle del juego
     while (window.isOpen())
     {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            
+            switch(event.type){
+                
+                //Si se recibe el evento de cerrar la ventana la cierro
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                    
+                //Se pulsó una tecla, imprimo su codigo
+                case sf::Event::KeyPressed:
+                    
+                    //Verifico si se pulsa alguna tecla de movimiento
+                    switch(event.key.code) {
+                          
+                        //Tecla ESC para salir
+                        case sf::Keyboard::Q:
+                            window.close();
+                        break;
+                              
+                    }
+
+            }
+            
+        }
         //input = getInput(window);
         //Bucle de obtención de eventos
 
         if(updateClock.getElapsedTime().asMilliseconds() > UPDATE_TICK_TIME){
             lastState.setPosx(newState.getPosx());
             lastState.setPosy(newState.getPosy());
+            cout << "ENTRA UPDATE: " << globalClock.getElapsedTime().asMilliseconds() << " ms \n";
             timeElapsed = updateClock.restart();
-            
             updateGameStateTICK(lastState,newState,timeElapsed.asSeconds());
+            cout << "TimeElapsed:" << timeElapsed.asSeconds() << "\n";
             //firsTime = false;
         }
+        float tiempo_transcurrido = (float)updateClock.getElapsedTime().asMilliseconds();
+        float utt = UPDATE_TICK_TIME;
         
-        division = (float)updateClock.getElapsedTime().asMilliseconds()/UPDATE_TICK_TIME;
+        
+        cout << "Var: " << tiempo_transcurrido << "\n";
+        division = tiempo_transcurrido/utt;
+        cout << "Division Var = " << tiempo_transcurrido << " / " << "UP-T = " << utt << " = " << division << "\n";
         percentTick = minimo(1.f, division);
-        
+        cout << "ENTRA RENDER: " << globalClock.getElapsedTime().asMilliseconds() << " ms \n";
         renderWithInterpolation(window,lastState,newState,percentTick,pj);
+        cout << "PercentTick: " << percentTick << "\n"; 
         
         
     }
-
+    
     return 0;
 }
