@@ -4,6 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Mapa.h</itemPath>
+      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.h</itemPath>
       <itemPath>State.h</itemPath>
       <itemPath>config.h</itemPath>
     </logicalFolder>
@@ -14,6 +16,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Mapa.cpp</itemPath>
+      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.cpp</itemPath>
       <itemPath>State.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -54,6 +58,20 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="State.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="State.h" ex="false" tool="3" flavor2="0">
@@ -83,6 +101,20 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="State.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="State.h" ex="false" tool="3" flavor2="0">

@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/55a6bf73/Personaje.o \
+	${OBJECTDIR}/Mapa.o \
 	${OBJECTDIR}/State.o \
 	${OBJECTDIR}/main.o
 
@@ -68,6 +70,16 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: /usr/lib/x86_64-linux
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/55a6bf73/Personaje.o: /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/55a6bf73
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/55a6bf73/Personaje.o /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.cpp
+
+${OBJECTDIR}/Mapa.o: Mapa.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mapa.o Mapa.cpp
 
 ${OBJECTDIR}/State.o: State.cpp 
 	${MKDIR} -p ${OBJECTDIR}
