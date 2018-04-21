@@ -13,6 +13,7 @@
 #include "config.h"
 #include "State.h"
 #include "Personaje.h"
+#include "mapa.h"
 
 /*
  * 
@@ -28,11 +29,8 @@ void update(State &_pj_lastState, State &_pj_newState ,float timeElapsed, Person
     */
     
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
-    cout<< "antes pj posx: " << _pj.getSprite().getPosition().x << "\n";
     _pj.gravity();
     _pj.mover();
-    cout<< "despues pj posx: " << _pj.getSprite().getPosition().x << "\n";
-    cout<< "--------------------------------------- \n";
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
     _newState.setPosx(posx);
@@ -43,7 +41,6 @@ void update(State &_pj_lastState, State &_pj_newState ,float timeElapsed, Person
     
 }
 void render_interpolation(sf::RenderWindow &_window, State _lastState, State _newState, float _percentTick, Personaje &_pj){
-    _window.clear();
     
     //CALCULAMOS LA POSICION INTERPOLADA PARA CUANDO NO SE EJECUTA EL UDPATE
     
@@ -64,7 +61,7 @@ void render_interpolation(sf::RenderWindow &_window, State _lastState, State _ne
     
     //DIBUJAMOS
     _window.draw(_pj.getSprite());
-    _window.display();
+    
    
     
 }
@@ -80,7 +77,16 @@ float minimo(float a, float b){
 }
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(480,640),"PersonajeBueno");
+    sf::RenderWindow window(sf::VideoMode(448,700),"PersonajeBueno");
+    
+    //MAPA Y CAMARA
+    Mapa map;
+ 
+    int tiles =map.getAltura() * 32;
+    
+    sf::View view(sf::FloatRect(0, tiles, 448, 700));
+    
+    
     
     //Relojes de control de tiempo entre cada update y el tiempo global
     sf::Clock updateClock;
@@ -142,7 +148,10 @@ int main() {
 
             }
             
+            
         }
+        //AJUSTAR VISTA A LA POSICION DEL PERSONAJE
+        view.setCenter(224,pj.getSprite().getPosition().y-64);
         
         //INTERPOLACION
         
@@ -153,6 +162,7 @@ int main() {
             
             timeElapsed = updateClock.restart();
             update(pj_lastState,pj_newState,timeElapsed.asSeconds(),pj);
+            
         }
         
         tiempo_update = (float)updateClock.getElapsedTime().asMilliseconds();
@@ -161,9 +171,19 @@ int main() {
         percentTick = minimo(1.f,division);
         
         //RENDERIZAMOS TODO
+        window.clear();
         
-        render_interpolation(window,pj_lastState,pj_newState,percentTick,pj); // y pj
         
+        window.setView(view);
+               
+        sf::Sprite mapa = map.getFondo();
+        mapa.setPosition(0,view.getCenter().y-400);
+        //window.draw(mapa);
+        
+        map.activarCapa(3);
+        window.draw(map);
+        render_interpolation(window,pj_lastState,pj_newState,percentTick,pj);
+        window.display();
     }   
     return 0;
 }

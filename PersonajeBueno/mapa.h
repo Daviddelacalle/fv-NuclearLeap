@@ -20,6 +20,7 @@ public:
     void draw(sf::RenderTarget&, sf::RenderStates) const;
     void activarCapa(int);
     int getTile(float, float);
+    int getAltura();
     sf::Sprite getFondo();
 private:
     int capa, _height, _width;
@@ -30,3 +31,4 @@ private:
 };
 
 #endif /* MAPA_H */
+

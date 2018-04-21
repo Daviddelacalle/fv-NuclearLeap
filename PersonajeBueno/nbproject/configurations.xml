@@ -4,10 +4,11 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Mapa.h</itemPath>
       <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.h</itemPath>
       <itemPath>State.h</itemPath>
       <itemPath>config.h</itemPath>
+      <itemPath>mapa.h</itemPath>
+      <itemPath>tinyxml2.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -16,10 +17,59 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Mapa.cpp</itemPath>
       <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.cpp</itemPath>
       <itemPath>State.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
+      <itemPath>mapa.cpp</itemPath>
+      <itemPath>tinyxml2.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="tiled" displayName="tiled" projectFiles="true">
+      <logicalFolder name="fondos" displayName="fondos" projectFiles="true">
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Clockwork.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Forest.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Magma.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Space.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Spooky.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Waterfall.png</itemPath>
+      </logicalFolder>
+      <logicalFolder name="plataformas" displayName="plataformas" projectFiles="true">
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_bouncy_block.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_bouncy_block_tall.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_buzzsaw.gif</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_conveyor_belt.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_crack_block.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_fire_block.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_fire_block_ignited.gif</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_fire_block_ready.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_hovering_platform.gif</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_jump_bubble.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_moving_block.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_moving_block_tall.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_moving_platform.gif</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Castle_1.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Castle_2.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Clockwork_1.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Clockwork_2.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Forest_1.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Forest_2.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Magma_1.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Magma_2.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Space_1.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Space_2.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Spooky_1.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Spooky_2.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Waterfall_1.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Waterfall_2.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_spring.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_spring_double.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_switch_blocks.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_switch_blocks_off.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_teleporters.png</itemPath>
+        <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/plataformas.psd</itemPath>
+      </logicalFolder>
+      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/mapa.tmx</itemPath>
+      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas.png</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -33,6 +83,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -68,9 +121,215 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Clockwork.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Forest.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Magma.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Space.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Spooky.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Waterfall.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/mapa.tmx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_bouncy_block.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_bouncy_block_tall.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_buzzsaw.gif"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_conveyor_belt.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_crack_block.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_fire_block.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_fire_block_ignited.gif"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_fire_block_ready.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_hovering_platform.gif"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_jump_bubble.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_moving_block.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_moving_block_tall.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_moving_platform.gif"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Castle_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Castle_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Clockwork_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Clockwork_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Forest_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Forest_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Magma_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Magma_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Space_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Space_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Spooky_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Spooky_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Waterfall_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Waterfall_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_spring.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_spring_double.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_switch_blocks.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_switch_blocks_off.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_teleporters.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/plataformas.psd"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="State.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -79,6 +338,14 @@
       <item path="config.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml2.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -111,9 +378,215 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="Mapa.cpp" ex="false" tool="1" flavor2="0">
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="Mapa.h" ex="false" tool="3" flavor2="0">
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Clockwork.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Forest.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Magma.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Space.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Spooky.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Waterfall.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/mapa.tmx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_bouncy_block.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_bouncy_block_tall.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_buzzsaw.gif"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_conveyor_belt.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_crack_block.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_fire_block.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_fire_block_ignited.gif"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_fire_block_ready.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_hovering_platform.gif"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_jump_bubble.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_moving_block.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_moving_block_tall.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_moving_platform.gif"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Castle_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Castle_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Clockwork_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Clockwork_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Forest_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Forest_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Magma_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Magma_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Space_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Space_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Spooky_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Spooky_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Waterfall_1.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_platform_Waterfall_2.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_spring.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_spring_double.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_switch_blocks.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_switch_blocks_off.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/LeapDay_teleporters.png"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/plataformas/plataformas.psd"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="State.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -122,6 +595,14 @@
       <item path="config.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mapa.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mapa.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml2.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml2.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

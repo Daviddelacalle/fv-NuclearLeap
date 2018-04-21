@@ -11,11 +11,10 @@ int main()
     sf::RectangleShape sprite = sf::RectangleShape(sf::Vector2f(32,32));
     sprite.setFillColor(sf::Color::Red);
     sprite.setOrigin(32/2,32);
-    int tiles =map.getAltura();
-    tiles *= 32;
-    std::cout << tiles << std::endl;
-    sprite.setPosition(224, tiles-32*9);
     
+    int tiles =map.getAltura() * 32;
+    
+    sprite.setPosition(224, tiles-32*9);
     
     sf::View view(sf::FloatRect(0, tiles, 448, 700));
     

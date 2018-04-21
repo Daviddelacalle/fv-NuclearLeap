@@ -38,14 +38,14 @@ Personaje::Personaje(){
     sprite.setTextureRect(sf::IntRect(1, 1, 18, 17));   
     sprite.setScale(2.0f,2.0f);
     
-    sprite.setPosition(320, 600);
+    sprite.setPosition(224, 10900);
     
     posx = sprite.getPosition().x;
     posy = sprite.getPosition().y;
     
     direccion = 1;    
     gravedad = 2.5;
-    alturasuelo = 600;
+    alturasuelo = 10900;
     espacio = 0;
     velocidadsalto = 25.19f;
     nsprite = 0;
@@ -62,14 +62,16 @@ sf::Sprite Personaje::getSprite(){
 
 void Personaje::gravity(){
      if(sprite.getPosition().y + sprite.getScale().y < alturasuelo || velocidad.y < 0) {
-       velocidad.y += gravedad;
-       gravedad = gravedad + 0.1;
+        velocidad.y += gravedad;
+        gravedad = gravedad + 0.1;
       }
       else {
-      sprite.setPosition(sprite.getPosition().x, alturasuelo - sprite.getScale().y);
-      velocidad.y = 0;
-      espacio=0;
-      gravedad = 2.5;
+        sprite.setPosition(sprite.getPosition().x, alturasuelo - sprite.getScale().y);
+        posx = sprite.getPosition().x;
+        posy = sprite.getPosition().y;
+        velocidad.y = 0;
+        espacio=0;
+        gravedad = 2.5;
       }
 }
 
@@ -92,7 +94,7 @@ void Personaje::mover(){
                  sprite.setScale(-2.0f,2.0f);
             
         }
-        else if (sprite.getPosition().x < 30 ){//dcha
+        else if (sprite.getPosition().x < 60 ){//dcha
             direccion = 1;
             espacio=0;
             sprite.setScale(2.0f,2.0f);

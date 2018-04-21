@@ -10,7 +10,7 @@
  * 
  * Created on 17 de abril de 2018, 11:20
  */
-/*
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "tinyxml2.h"
@@ -174,7 +174,6 @@ Mapa::Mapa() {
     }
     delete[] _tilemapSprite;
  */
-/*
 }
 void Mapa::draw(sf::RenderTarget& target, sf::RenderStates states) const{
     
@@ -193,8 +192,11 @@ int Mapa::getTile(float x, float y){
     return tile;
 }
 
+int Mapa::getAltura(){
+    int res = _height;
+    return res;
+}
+
 sf::Sprite Mapa::getFondo(){
     return fondo;
 }
-
-*/
