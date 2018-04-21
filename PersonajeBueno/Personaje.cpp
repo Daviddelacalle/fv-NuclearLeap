@@ -38,17 +38,19 @@ Personaje::Personaje(){
     sprite.setTextureRect(sf::IntRect(1, 1, 18, 17));   
     sprite.setScale(2.0f,2.0f);
     
-    sprite.setPosition(320, 630);     
+    sprite.setPosition(320, 600);
     
-    sf::Vector2f velocidad(sf::Vector2f(0,0));
+    posx = sprite.getPosition().x;
+    posy = sprite.getPosition().y;
+    
     direccion = 1;    
-    gravedad = 0.00016;
+    gravedad = 2;
     alturasuelo = 630;
     espacio = 0;
-    velocidadsalto = 0.19f;
+    velocidadsalto = 17.19f;
     nsprite = 0;
     max_sprites = 6;
-    velocidad.x = 0.03;
+    velocidad.x = 10;
     
 }
 
@@ -94,12 +96,13 @@ void Personaje::mover(){
             sprite.setScale(2.0f,2.0f);
         
         }
-    std::cout<<"bajo"<<velocidad.x<<"\n"; 
-    velocidad.x=velocidad.x*direccion;
-    sprite.move(velocidad.x,velocidad.y);
-    std::cout<<"arriba"<<velocidad.x<<"\n";      
+    //std::cout<<"bajo"<<velocidad.x<<"\n"; 
+
+    sprite.move(velocidad.x*direccion,velocidad.y);
+    //std::cout<<"arriba"<<velocidad.x<<"\n";      
     colision.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
-       
+    posx = sprite.getPosition().x;
+    posy = sprite.getPosition().y;
     
 }
 

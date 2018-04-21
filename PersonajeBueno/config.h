@@ -18,7 +18,7 @@
 #include <SFML/Graphics.hpp>
 
 #define kVel 10
-#define UPDATE_TICK_TIME 1000/1
+#define UPDATE_TICK_TIME 1000/15
 
 using namespace std;
 

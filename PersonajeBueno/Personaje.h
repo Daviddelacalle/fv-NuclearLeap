@@ -39,7 +39,8 @@ public:
     
     
 private:
-  
+    int posx;
+    int posy;
     int direccion;   
     int alturasuelo;
     sf::Vector2f velocidad;

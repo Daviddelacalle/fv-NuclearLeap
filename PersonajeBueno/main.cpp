@@ -17,20 +17,22 @@
 /*
  * 
  */
-void update(State &_lastState, State &_newState ,float timeElapsed, Personaje pj);
+void update(State &_lastState, State &_newState ,float timeElapsed, Personaje &_pj);
 void render_interpolation(sf::RenderWindow &_window, State _lastState, State _newState, float _percentTick, Personaje &_pj);
 float minimo(float,float);
 
-void update(State &_pj_lastState, State &_pj_newState ,float timeElapsed, Personaje _pj){
+void update(State &_pj_lastState, State &_pj_newState ,float timeElapsed, Personaje &_pj){
     /*
     int posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
     int posy = _lastState.getPosy() + (kVel*timeElapsed + 0.5f);
     */
     
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
-    
+    cout<< "antes pj posx: " << _pj.getSprite().getPosition().x << "\n";
+    _pj.gravity();
     _pj.mover();
-    
+    cout<< "despues pj posx: " << _pj.getSprite().getPosition().x << "\n";
+    cout<< "--------------------------------------- \n";
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
     _newState.setPosx(posx);
@@ -57,7 +59,7 @@ void render_interpolation(sf::RenderWindow &_window, State _lastState, State _ne
     
     _pj.setPosition(posx,posy);
     
-    cout << "pj posx: " << _pj.getSprite().getPosition().x << " posy: " << _pj.getSprite().getPosition().y << "\n";
+    //cout << "pj posx: " << _pj.getSprite().getPosition().x << " posy: " << _pj.getSprite().getPosition().y << "\n";
     
     
     //DIBUJAMOS
@@ -127,7 +129,10 @@ int main() {
                     
                     //Verifico si se pulsa alguna tecla de movimiento
                     switch(event.key.code) {
-                          
+                        case sf::Keyboard::Space:
+                           //if(p.getEspacios() <2){
+                           pj.moverSalto(); 
+                        break;
                         //Tecla ESC para salir
                         case sf::Keyboard::Q:
                             window.close();
@@ -144,7 +149,7 @@ int main() {
         //El update es una funcion que se ejecuta solo 15veces por segundo
         if(updateClock.getElapsedTime().asMilliseconds() > UPDATE_TICK_TIME){
             pj_lastState.setPosx(pj_newState.getPosx());
-            pj_lastState.setPosx(pj_newState.getPosy());
+            pj_lastState.setPosy(pj_newState.getPosy());
             
             timeElapsed = updateClock.restart();
             update(pj_lastState,pj_newState,timeElapsed.asSeconds(),pj);
