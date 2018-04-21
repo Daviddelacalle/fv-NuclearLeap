@@ -44,10 +44,10 @@ Personaje::Personaje(){
     posy = sprite.getPosition().y;
     
     direccion = 1;    
-    gravedad = 2;
-    alturasuelo = 630;
+    gravedad = 2.5;
+    alturasuelo = 600;
     espacio = 0;
-    velocidadsalto = 17.19f;
+    velocidadsalto = 25.19f;
     nsprite = 0;
     max_sprites = 6;
     velocidad.x = 10;
@@ -63,11 +63,13 @@ sf::Sprite Personaje::getSprite(){
 void Personaje::gravity(){
      if(sprite.getPosition().y + sprite.getScale().y < alturasuelo || velocidad.y < 0) {
        velocidad.y += gravedad;
+       gravedad = gravedad + 0.1;
       }
       else {
       sprite.setPosition(sprite.getPosition().x, alturasuelo - sprite.getScale().y);
       velocidad.y = 0;
       espacio=0;
+      gravedad = 2.5;
       }
 }
 
