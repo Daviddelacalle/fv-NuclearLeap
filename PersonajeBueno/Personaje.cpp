@@ -51,6 +51,8 @@ Personaje::Personaje(){
     nsprite = 0;
     max_sprites = 6;
     velocidad.x = 10;
+    contEspacios=0;
+    var1 = 0;
     
 }
 
@@ -81,27 +83,57 @@ void Personaje::moverSalto(){
        
       espacio++;
     }
-     
+    
+     int var1 = contEspacios;
 }
 
-void Personaje::mover(){
+void Personaje::mover(){      
     
     
-    if(sprite.getPosition().x > 390){ //izq
-            
-                 direccion = -1;
-                 espacio=0;
-                 sprite.setScale(-2.0f,2.0f);
-            
+    if(sprite.getPosition().x > 390){ //izq 
+        
+        if(espacio!=0){
+                direccion = 0; //no se mueve
+                gravedad = 0.4;                  
+                velocidadsalto = 13.19f;                 
+                if(velocidad.y<0){
+                    velocidad.y*=-1;
+                }
+                 
+                
+            }else{//esto es cuando va por el suelo
+                     direccion = -1;                     
+                     sprite.setScale(-2.0f,2.0f);
+                     velocidadsalto = 25.19f;
+                     gravedad= 2.5;
+                     
+                 
+            }
+             
+
         }
         else if (sprite.getPosition().x < 60 ){//dcha
-            direccion = 1;
-            espacio=0;
-            sprite.setScale(2.0f,2.0f);
+             if(espacio!=0){
+                direccion = 0; //no se mueve
+                gravedad = 0.4;
+                velocidadsalto = 13.19f;               
+                if(velocidad.y<0){
+                    velocidad.y*=-1;
+                }
+            
+                
+            }else{
+                     direccion = 1;                     
+                     sprite.setScale(2.0f,2.0f);
+                     velocidadsalto = 25.19f;
+                     gravedad= 2.5;
+                     
+                 
+            }
         
         }
     //std::cout<<"bajo"<<velocidad.x<<"\n"; 
-
+    pared = false;
     sprite.move(velocidad.x*direccion,velocidad.y);
     //std::cout<<"arriba"<<velocidad.x<<"\n";      
     colision.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);

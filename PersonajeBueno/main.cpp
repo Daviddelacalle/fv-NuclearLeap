@@ -138,6 +138,8 @@ int main() {
                         case sf::Keyboard::Space:
                            //if(p.getEspacios() <2){
                            pj.moverSalto(); 
+                           
+                          
                         break;
                         //Tecla ESC para salir
                         case sf::Keyboard::Q:
