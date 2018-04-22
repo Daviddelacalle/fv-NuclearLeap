@@ -29,7 +29,6 @@ void update(State &_pj_lastState, State &_pj_newState ,float timeElapsed, Person
     */
     
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
-    _pj.gravity();
     _pj.mover();
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
@@ -138,6 +137,8 @@ int main() {
                         case sf::Keyboard::Space:
                            //if(p.getEspacios() <2){
                            pj.moverSalto(); 
+                           
+                          
                         break;
                         //Tecla ESC para salir
                         case sf::Keyboard::Q:

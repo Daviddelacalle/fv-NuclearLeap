@@ -43,14 +43,19 @@ Personaje::Personaje(){
     posx = sprite.getPosition().x;
     posy = sprite.getPosition().y;
     
-    direccion = 1;    
+    direccion = 1;  
+    dir_aux = direccion;
+    check_pared = false;
     gravedad = 2.5;
+    aumento_g = 0.1;
     alturasuelo = 10900;
     espacio = 0;
     velocidadsalto = 25.19f;
     nsprite = 0;
     max_sprites = 6;
     velocidad.x = 10;
+    contEspacios=0;
+    var1 = 0;
     
 }
 
@@ -63,7 +68,7 @@ sf::Sprite Personaje::getSprite(){
 void Personaje::gravity(){
      if(sprite.getPosition().y + sprite.getScale().y < alturasuelo || velocidad.y < 0) {
         velocidad.y += gravedad;
-        gravedad = gravedad + 0.1;
+        gravedad = gravedad + aumento_g;
       }
       else {
         sprite.setPosition(sprite.getPosition().x, alturasuelo - sprite.getScale().y);
@@ -73,35 +78,55 @@ void Personaje::gravity(){
         espacio=0;
         gravedad = 2.5;
       }
+     
 }
 
 void Personaje::moverSalto(){    
     if(espacio <2){
-      velocidad.y = -velocidadsalto;     
-       
+      velocidad.y = -velocidadsalto;         
       espacio++;
     }
-     
+    
+     int var1 = contEspacios;
 }
 
 void Personaje::mover(){
+    gravity();
     
-    
-    if(sprite.getPosition().x > 390){ //izq
-            
-                 direccion = -1;
-                 espacio=0;
-                 sprite.setScale(-2.0f,2.0f);
-            
-        }
-        else if (sprite.getPosition().x < 60 ){//dcha
-            direccion = 1;
-            espacio=0;
-            sprite.setScale(2.0f,2.0f);
+    if(sprite.getPosition().x > 390 && check_pared == false ){ //izq
+        check_pared = true;
+        gravedad = 1;
+        aumento_g = 0.005;
+        dir_aux = -1;
+        direccion = 0;
+        espacio = 0;
+        //direccion = -1;
         
-        }
+        sprite.setScale(-2.0f,2.0f);       
+    }
+    else if (sprite.getPosition().x < 50 && check_pared == false ){//dcha
+        check_pared = true;
+        gravedad = 1;
+        aumento_g = 0.005;
+        dir_aux = 1;
+        direccion = 0;
+        espacio = 0;
+        //direccion = 1;
+        sprite.setScale(2.0f,2.0f);
+        
+    }
+    
+    if(sprite.getPosition().y + sprite.getScale().y >= alturasuelo || espacio > 0 && check_pared == true){
+            gravedad = 2.5;
+            aumento_g = 0.1;
+            direccion = dir_aux;
+            check_pared = false;
+    }
+    
+    
+    
     //std::cout<<"bajo"<<velocidad.x<<"\n"; 
-
+    pared = false;
     sprite.move(velocidad.x*direccion,velocidad.y);
     //std::cout<<"arriba"<<velocidad.x<<"\n";      
     colision.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);

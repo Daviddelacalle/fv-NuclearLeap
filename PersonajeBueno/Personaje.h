@@ -26,7 +26,6 @@ public:
     int getEspacios();
     void actualizarSprite();    
     void cambiarPosicion(int num, int num2);    
-    float gravedad;
     void estoyRoja(float);
     void estoyAzul(float);
     void estoyPortalIda(float, float);
@@ -35,13 +34,19 @@ public:
     void estoyNormal();
     void setPosition(int, int);
     sf::RectangleShape colisionador();
+    int contEspacios;
+    int var1;
     
     
     
 private:
+    float gravedad;
+    float aumento_g; // variable  que hace que la gravedad tenga aceleraccion
     int posx;
     int posy;
     int direccion;   
+    int dir_aux; //variable para guardar la direccion para cuando salga de la pared
+    bool check_pared; // para saber si he tocado la pared
     int alturasuelo;
     sf::Vector2f velocidad;
     float velocidadsalto;
@@ -51,6 +56,7 @@ private:
     int nsprite;
     int max_sprites;
     sf::RectangleShape colision;
+    bool pared;
     
    
     
