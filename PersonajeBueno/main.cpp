@@ -43,8 +43,8 @@ void render_interpolation(sf::RenderWindow &_window, State _lastState, State _ne
     
     //CALCULAMOS LA POSICION INTERPOLADA PARA CUANDO NO SE EJECUTA EL UDPATE
     
-    int posx = _lastState.getPosx()*(1-_percentTick) + _newState.getPosx() * _percentTick;
-    int posy = _lastState.getPosy()*(1-_percentTick) + _newState.getPosy() * _percentTick;
+    float posxf = _lastState.getPosx()*(1-_percentTick) + _newState.getPosx() * _percentTick;
+    float posyf = _lastState.getPosy()*(1-_percentTick) + _newState.getPosy() * _percentTick;
     
     /*
     int posx = _lastState.getPosx()*(1-_percentTick) + _newState.getPosx() * _percentTick;
@@ -53,7 +53,8 @@ void render_interpolation(sf::RenderWindow &_window, State _lastState, State _ne
     _pj.setPosition(posx,posy);
      */
     
-    _pj.setPosition(posx,posy);
+    _pj.setPosition(int(posxf + 0.5),int(posyf + 0.5));
+    
     
     //cout << "pj posx: " << _pj.getSprite().getPosition().x << " posy: " << _pj.getSprite().getPosition().y << "\n";
     
@@ -184,6 +185,7 @@ int main() {
         map.activarCapa(3);
         window.draw(map);
         render_interpolation(window,pj_lastState,pj_newState,percentTick,pj);
+        
         window.display();
     }   
     return 0;
