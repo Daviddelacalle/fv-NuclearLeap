@@ -1,6 +1,4 @@
 #include "config.h"
-#include "Rads.h"
-#include "Bloque.h"
 #include "Ia.h"
 
 int main()

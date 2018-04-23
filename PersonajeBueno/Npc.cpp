@@ -199,7 +199,6 @@ void Npc5::movimiento(Personaje &_pj){
     else if(_pj.getSprite().getPosition().x > posx){
     //El pj esta a la derecha
         dirx = 1;
-        cout << "esta a la derecha el personaje \n";
     }
     
     else if(_pj.getSprite().getPosition().x == posx){
@@ -242,18 +241,13 @@ void Npc5::movimiento(Personaje &_pj){
      */
     
     /**/
-    if(dirx == -1){
-        cout << "esta a la izquierda el personaje \n";
-    }
-    if(dirx == 1){
-        cout << "esta a la derecha el personaje \n";
-    }
     
     posx = posx + dirx*npcVel;
     posy = posy + diry*npcVel;
     
     sprite.setPosition(posx,posy);
     actualizarBox();
+    actualizarSprite();
 }
 
 void Npc5::actualizarBox(){
