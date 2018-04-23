@@ -33,7 +33,7 @@ public:
     void estoySaltador();
     void estoyNormal();
     void setPosition(int, int);
-    sf::RectangleShape colisionador();
+    sf::RectangleShape getBoxAbajo();
     int contEspacios;
     int var1;
     
@@ -55,8 +55,8 @@ private:
     int espacio;
     int nsprite;
     int max_sprites;
-    sf::RectangleShape colision;
-    bool pared;
+    sf::RectangleShape boxAbajo;
+    sf::RectangleShape boxArriba;
     
    
     
