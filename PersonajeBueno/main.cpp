@@ -14,15 +14,16 @@
 #include "State.h"
 #include "Personaje.h"
 #include "mapa.h"
+#include "Npc.h"
 
 /*
  * 
  */
-void update(State &_lastState, State &_newState ,float timeElapsed, Personaje &_pj);
-void render_interpolation(sf::RenderWindow &_window, State _lastState, State _newState, float _percentTick, Personaje &_pj);
+void update( State &_newState ,float timeElapsed, Personaje &_pj, State &_npc_newState, Npc5 &npc5);
+void render_interpolation(sf::RenderWindow &_window, State _lastState, State _newState, float _percentTick, Personaje &_pj, State _lastStatenpc, State _newStatenpc, Npc5 &npc5);
 float minimo(float,float);
 
-void update(State &_pj_lastState, State &_pj_newState ,float timeElapsed, Personaje &_pj){
+void update(State &_pj_newState ,float timeElapsed, Personaje &_pj, State &_npc_newState, Npc5 &_npc5){
     /*
     int posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
     int posy = _lastState.getPosy() + (kVel*timeElapsed + 0.5f);
@@ -30,6 +31,7 @@ void update(State &_pj_lastState, State &_pj_newState ,float timeElapsed, Person
     
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
     _pj.mover();
+    _npc5.movimiento(_pj);
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
     _newState.setPosx(posx);
@@ -38,14 +40,19 @@ void update(State &_pj_lastState, State &_pj_newState ,float timeElapsed, Person
     _pj_newState.setPosx(_pj.getSprite().getPosition().x);
     _pj_newState.setPosy(_pj.getSprite().getPosition().y);
     
+    _npc_newState.setPosx(_npc5.getSprite().getPosition().x);
+    _npc_newState.setPosy(_npc5.getSprite().getPosition().y);
 }
-void render_interpolation(sf::RenderWindow &_window, State _lastState, State _newState, float _percentTick, Personaje &_pj){
+
+void render_interpolation(sf::RenderWindow &_window, State _lastStatepj, State _newStatepj, float _percentTick, Personaje &_pj, State _lastStatenpc, State _newStatenpc, Npc5 &_npc5){
     
     //CALCULAMOS LA POSICION INTERPOLADA PARA CUANDO NO SE EJECUTA EL UDPATE
     
-    float posxf = _lastState.getPosx()*(1-_percentTick) + _newState.getPosx() * _percentTick;
-    float posyf = _lastState.getPosy()*(1-_percentTick) + _newState.getPosy() * _percentTick;
+    float posxf = _lastStatepj.getPosx()*(1-_percentTick) + _newStatepj.getPosx() * _percentTick;
+    float posyf = _lastStatepj.getPosy()*(1-_percentTick) + _newStatepj.getPosy() * _percentTick;
     
+    float posxnpc =_lastStatenpc.getPosx()*(1-_percentTick) + _newStatenpc.getPosx() * _percentTick;
+    float posynpc =_lastStatenpc.getPosy()*(1-_percentTick) + _newStatenpc.getPosy() * _percentTick;
     /*
     int posx = _lastState.getPosx()*(1-_percentTick) + _newState.getPosx() * _percentTick;
     int posy = _lastState.getPosy()*(1-_percentTick) + _newState.getPosy() * _percentTick;
@@ -54,14 +61,14 @@ void render_interpolation(sf::RenderWindow &_window, State _lastState, State _ne
      */
     
     _pj.setPosition(int(posxf + 0.5),int(posyf + 0.5));
-    
+    _npc5.setPosition(int(posxnpc +0.5), int(posynpc + 0.5));
     
     //cout << "pj posx: " << _pj.getSprite().getPosition().x << " posy: " << _pj.getSprite().getPosition().y << "\n";
     
     
     //DIBUJAMOS
     _window.draw(_pj.getSprite());
-    
+    _window.draw(_npc5.getSprite());
    
     
 }
@@ -95,7 +102,7 @@ int main() {
     //INICIALIZAR OBJETOS
     
     Personaje pj;
-    
+    Npc5 npc5(200,10800);
     //INICIALIZAR VARIABLES
     
     float tiempo_update;
@@ -112,6 +119,9 @@ int main() {
     State pj_newState(pj.getSprite().getPosition().x,pj.getSprite().getPosition().y);
     State pj_lastState(pj.getSprite().getPosition().x,pj.getSprite().getPosition().y); 
     
+    State npc_newState(npc5.getSprite().getPosition().x,npc5.getSprite().getPosition().y);
+    State npc_lastState(npc5.getSprite().getPosition().x,npc5.getSprite().getPosition().y);
+
     /*
      
     Personaje pj_ls();
@@ -162,8 +172,11 @@ int main() {
             pj_lastState.setPosx(pj_newState.getPosx());
             pj_lastState.setPosy(pj_newState.getPosy());
             
+            npc_lastState.setPosx(npc_newState.getPosx());
+            npc_lastState.setPosy(npc_newState.getPosy());
+            
             timeElapsed = updateClock.restart();
-            update(pj_lastState,pj_newState,timeElapsed.asSeconds(),pj);
+            update(pj_newState,timeElapsed.asSeconds(),pj,npc_newState,npc5);
             
         }
         
@@ -184,7 +197,7 @@ int main() {
         
         map->activarCapa(3);
         window.draw(*map);
-        render_interpolation(window,pj_lastState,pj_newState,percentTick,pj);
+        render_interpolation(window,pj_lastState,pj_newState,percentTick,pj,npc_lastState,npc_newState,npc5);
         
         window.display();
     }   
