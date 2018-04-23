@@ -17,6 +17,14 @@
 #include "mapa.h"
 using namespace tinyxml2;
 
+Mapa* Mapa::pinstance = 0;// Inicializar el puntero
+Mapa* Mapa::Instance(){
+    if(pinstance == 0) //¿Es la primera llamada?
+    {
+        pinstance = new Mapa;
+    }
+    return pinstance;
+}
 Mapa::Mapa() {
     //DEFINIMOS VARIABLES TAMAÑO
     int _tileWidth, _tileHeight, _numLayers=0, _tsw, _tsh,_numTiles,_numColTiles;

@@ -80,9 +80,9 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(448,700),"PersonajeBueno");
     
     //MAPA Y CAMARA
-    Mapa map;
+    Mapa* map = Mapa::Instance();
  
-    int tiles =map.getAltura() * 32;
+    int tiles =map->getAltura() * 32;
     
     sf::View view(sf::FloatRect(0, tiles, 448, 700));
     
@@ -178,12 +178,12 @@ int main() {
         
         window.setView(view);
                
-        sf::Sprite mapa = map.getFondo();
-        mapa.setPosition(0,view.getCenter().y-400);
-        //window.draw(mapa);
+        sf::Sprite img_fondo = map->getFondo();
+        img_fondo.setPosition(0,view.getCenter().y-400);
+        window.draw(img_fondo);
         
-        map.activarCapa(3);
-        window.draw(map);
+        map->activarCapa(3);
+        window.draw(*map);
         render_interpolation(window,pj_lastState,pj_newState,percentTick,pj);
         
         window.display();

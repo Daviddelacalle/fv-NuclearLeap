@@ -6,13 +6,13 @@ int main()
 {
     //Creamos una ventana 
     sf::RenderWindow window(sf::VideoMode(448, 700), "P0. Fundamentos de los Videojuegos. DCCIA");
-    Mapa map;
+    Mapa* map = Mapa::Instance();
     
     sf::RectangleShape sprite = sf::RectangleShape(sf::Vector2f(32,32));
     sprite.setFillColor(sf::Color::Red);
     sprite.setOrigin(32/2,32);
     
-    int tiles =map.getAltura() * 32;
+    int tiles =map->getAltura() * 32;
     
     sprite.setPosition(224, tiles-32*9);
     
@@ -65,12 +65,12 @@ int main()
         window.setView(view);
         window.clear();      
         
-        sf::Sprite mapa = map.getFondo();
-        mapa.setPosition(0,view.getCenter().y-400);
-        window.draw(mapa);
+        sf::Sprite img_fondo = map->getFondo();
+        img_fondo.setPosition(0,view.getCenter().y-400);
+        window.draw(img_fondo);
         
-        map.activarCapa(3);
-        window.draw(map);
+        map->activarCapa(3);
+        window.draw(*map);
         window.draw(sprite);
         
         window.display();

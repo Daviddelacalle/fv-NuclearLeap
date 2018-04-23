@@ -16,13 +16,19 @@
 
 class Mapa: public sf::Drawable {
 public:
-    Mapa();
+    static Mapa* Instance();
     void draw(sf::RenderTarget&, sf::RenderStates) const;
     void activarCapa(int);
     int getTile(float, float);
     int getAltura();
     sf::Sprite getFondo();
+    
+protected:
+    Mapa();
+    Mapa(const Mapa & );
+    Mapa &operator= (const Mapa & );
 private:
+    static Mapa* pinstance;
     int capa, _height, _width;
     int ***_tilemap;
     sf::Sprite ****_tilemapSprite;
