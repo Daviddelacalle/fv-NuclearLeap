@@ -22,11 +22,16 @@ Personaje::Personaje(){
         exit(0);
     }
     
-    sf::RectangleShape colisionador(sf::Vector2f(30,5));
-    colisionador.setOrigin(15,2.5);
-    colisionador.setPosition(320, 630);
-    colisionador.setFillColor(sf::Color::Blue);
-    colision = colisionador;
+    boxAbajo = sf::RectangleShape(sf::Vector2f(30,5));
+    boxAbajo.setOrigin(15,2.5);
+    boxAbajo.setPosition(320, 630);
+    boxAbajo.setFillColor(sf::Color::Red);
+    
+    
+    boxArriba = sf::RectangleShape(sf::Vector2f(30,5));
+    boxArriba.setOrigin(15,2.5);
+    boxArriba.setPosition(320, 630);
+    boxArriba.setFillColor(sf::Color::Blue);
     
     //Y creo el spritesheet a partir de la imagen anterior
     sprite.setTexture(tex);
@@ -95,7 +100,7 @@ void Personaje::mover(){
     
     if(sprite.getPosition().x > 390 && check_pared == false ){ //izq
         check_pared = true;
-        gravedad = 1;
+        gravedad = 1.5;
         aumento_g = 0.005;
         dir_aux = -1;
         direccion = 0;
@@ -106,7 +111,7 @@ void Personaje::mover(){
     }
     else if (sprite.getPosition().x < 50 && check_pared == false ){//dcha
         check_pared = true;
-        gravedad = 1;
+        gravedad = 1.5;
         aumento_g = 0.005;
         dir_aux = 1;
         direccion = 0;
@@ -126,12 +131,23 @@ void Personaje::mover(){
     
     
     //std::cout<<"bajo"<<velocidad.x<<"\n"; 
-    pared = false;
+    
     sprite.move(velocidad.x*direccion,velocidad.y);
+    if(sprite.getPosition().y > alturasuelo){
+        sprite.setPosition(sprite.getPosition().x, alturasuelo);
+    }
+    
     //std::cout<<"arriba"<<velocidad.x<<"\n";      
-    colision.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
+    boxAbajo.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
+    boxArriba.setPosition(sprite.getPosition().x, sprite.getPosition().y-20);
+    int posxs = boxAbajo.getPosition().x;
+    int posys = boxAbajo.getPosition().y;
     posx = sprite.getPosition().x;
     posy = sprite.getPosition().y;
+    
+    if(check_pared == false){
+        actualizarSprite();
+    }
     
 }
 
@@ -178,8 +194,8 @@ void Personaje::estoyRoja(float y){
         velocidad.x = 0.03;
     }
     
-    sf::RectangleShape Personaje::colisionador(){
-        return colision;
+    sf::RectangleShape Personaje::getBoxAbajo(){
+        return boxArriba;
         
     }
 
