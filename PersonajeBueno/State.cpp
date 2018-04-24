@@ -14,20 +14,33 @@
 
 #include "State.h"
 
-State::State(int _posx, int _posy){
+State::State(float _posx, float _posy){
     posx = _posx;
+    posy = _posy;
+    lastx=_posx;
+    lasty=_posy;
+}
+
+void State::setPosx(float _posx){
+    lastx = posx;
+    posx = _posx;
+}
+void State::setPosy(float _posy){
+    lasty = posy;
     posy = _posy;
 }
 
-void State::setPosx(int _posx){
-    posx = _posx;
-}
-void State::setPosy(int _posy){
-    posy = _posy;
-}
-int State::getPosx(){
+float State::getPosx(){
     return posx;
 }
-int State::getPosy(){
+float State::getPosy(){
     return posy;
+}
+
+float State::getLastx(){
+    return lastx;
+}
+
+float State::getLasty(){
+    return lasty;
 }

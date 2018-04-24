@@ -18,14 +18,19 @@
 class State{
     
 private:
-    int posx;
-    int posy;
+    float posx;
+    float posy;
+    float lastx;
+    float lasty;
 public:
-    State(int, int);
-    void setPosx(int);
-    void setPosy(int);
-    int getPosx();
-    int getPosy();
+    State(float, float);
+    void setPosx(float);
+    void setPosy(float);
+    float getPosx();
+    float getPosy();
+    float getLastx();
+    float getLasty();
+
 };
 
 #endif /* STATE_H */

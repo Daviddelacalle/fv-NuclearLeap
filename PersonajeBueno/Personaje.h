@@ -21,8 +21,8 @@ public:
     Personaje();
     sf::Sprite getSprite();   
     void moverSalto();
-    void mover();
-    void gravity();
+    void mover(float);
+    void gravity(float);
     int getEspacios();
     void actualizarSprite();    
     void cambiarPosicion(int num, int num2);    
@@ -32,7 +32,7 @@ public:
     void estoyPortalVuelta(float, float);
     void estoySaltador();
     void estoyNormal();
-    void setPosition(int, int);
+    void setPosition(float, float);
     sf::RectangleShape getBoxAbajo();
     int contEspacios;
     int var1;
@@ -41,7 +41,6 @@ public:
     
 private:
     float gravedad;
-    float aumento_g; // variable  que hace que la gravedad tenga aceleraccion
     int posx;
     int posy;
     int direccion;   

@@ -51,14 +51,13 @@ Personaje::Personaje(){
     direccion = 1;  
     dir_aux = direccion;
     check_pared = false;
-    gravedad = 2.5;
-    aumento_g = 0.1;
+    gravedad = kGrav;
     alturasuelo = 10900;
     espacio = 0;
-    velocidadsalto = 25.19f;
+    velocidadsalto = 0.8f;
     nsprite = 0;
     max_sprites = 6;
-    velocidad.x = 10;
+    velocidad.x = kVel;
     contEspacios=0;
     var1 = 0;
     
@@ -70,10 +69,9 @@ sf::Sprite Personaje::getSprite(){
     return sprite;   
 }
 
-void Personaje::gravity(){
+void Personaje::gravity(float timeElapsed){
      if(sprite.getPosition().y + sprite.getScale().y < alturasuelo || velocidad.y < 0) {
-        velocidad.y += gravedad;
-        gravedad = gravedad + aumento_g;
+        velocidad.y += gravedad*timeElapsed;
       }
       else {
         sprite.setPosition(sprite.getPosition().x, alturasuelo - sprite.getScale().y);
@@ -81,7 +79,8 @@ void Personaje::gravity(){
         posy = sprite.getPosition().y;
         velocidad.y = 0;
         espacio=0;
-        gravedad = 2.5;
+        gravedad = kGrav;
+        
       }
      
 }
@@ -90,18 +89,18 @@ void Personaje::moverSalto(){
     if(espacio <2){
       velocidad.y = -velocidadsalto;         
       espacio++;
+      gravedad= kGrav;
+
     }
     
      int var1 = contEspacios;
 }
 
-void Personaje::mover(){
-    gravity();
+void Personaje::mover(float timeElapsed){
+    cout << "timeelapsed: " << timeElapsed << "\n";
     
     if(sprite.getPosition().x > 390 && check_pared == false ){ //izq
         check_pared = true;
-        gravedad = 1.5;
-        aumento_g = 0.005;
         dir_aux = -1;
         direccion = 0;
         espacio = 0;
@@ -111,8 +110,6 @@ void Personaje::mover(){
     }
     else if (sprite.getPosition().x < 50 && check_pared == false ){//dcha
         check_pared = true;
-        gravedad = 1.5;
-        aumento_g = 0.005;
         dir_aux = 1;
         direccion = 0;
         espacio = 0;
@@ -121,18 +118,29 @@ void Personaje::mover(){
         
     }
     
+    if(check_pared == true){
+        if(velocidad.y < 0){
+            gravedad = kGrav*1.5;
+        }
+        if(velocidad.y >= 0 ){
+            gravedad = kGravP;
+        }
+    }
+    
+    cout << "Gravedad: " << gravedad << "\n";
+    
+    
     if(sprite.getPosition().y + sprite.getScale().y >= alturasuelo || espacio > 0 && check_pared == true){
-            gravedad = 2.5;
-            aumento_g = 0.1;
+            gravedad = kGrav;
             direccion = dir_aux;
             check_pared = false;
     }
     
-    
+    gravity(timeElapsed);
     
     //std::cout<<"bajo"<<velocidad.x<<"\n"; 
     
-    sprite.move(velocidad.x*direccion,velocidad.y);
+    sprite.move(velocidad.x*direccion*timeElapsed,velocidad.y*timeElapsed);
     if(sprite.getPosition().y > alturasuelo){
         sprite.setPosition(sprite.getPosition().x, alturasuelo);
     }
@@ -199,6 +207,6 @@ void Personaje::estoyRoja(float y){
         
     }
 
-    void Personaje::setPosition(int _x, int _y){
+    void Personaje::setPosition(float _x, float _y){
         sprite.setPosition(_x,_y);
     }

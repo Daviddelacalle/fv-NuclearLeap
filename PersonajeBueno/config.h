@@ -17,9 +17,11 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-#define kVel 10
+#define kVel 0.150
 #define npcVel 2
-#define UPDATE_TICK_TIME 1000/15
+#define kGrav 0.002
+#define kGravP 0.0002
+#define UPDATE_TICK_TIME 1000/60
 
 using namespace std;
 
