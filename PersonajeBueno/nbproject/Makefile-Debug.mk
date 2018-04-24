@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/ac568468/Npc.o \
+	${OBJECTDIR}/_ext/4929ffcf/Npc.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/State.o \
 	${OBJECTDIR}/main.o \
@@ -73,10 +73,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/ac568468/Npc.o: /home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/ac568468
+${OBJECTDIR}/_ext/4929ffcf/Npc.o: /home/natalia/NetBeansProjects/PersonajeBueno/Npc.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/4929ffcf
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/ac568468/Npc.o /home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/4929ffcf/Npc.o /home/natalia/NetBeansProjects/PersonajeBueno/Npc.cpp
 
 ${OBJECTDIR}/Personaje.o: Personaje.cpp 
 	${MKDIR} -p ${OBJECTDIR}

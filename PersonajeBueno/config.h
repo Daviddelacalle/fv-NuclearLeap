@@ -21,7 +21,7 @@
 #define npcVel 2
 #define kGrav 0.002
 #define kGravP 0.0002
-#define UPDATE_TICK_TIME 1000/60
+#define UPDATE_TICK_TIME 1000/25
 
 using namespace std;
 

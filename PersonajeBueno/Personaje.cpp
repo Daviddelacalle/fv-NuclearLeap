@@ -12,6 +12,7 @@
  */
 
 #include "Personaje.h"
+#include "mapa.h"
 
 
 Personaje::Personaje(){
@@ -22,16 +23,28 @@ Personaje::Personaje(){
         exit(0);
     }
     
-    boxAbajo = sf::RectangleShape(sf::Vector2f(30,5));
-    boxAbajo.setOrigin(15,2.5);
+    boxAbajo = sf::RectangleShape(sf::Vector2f(30,2));
+    boxAbajo.setOrigin(15,1);
     boxAbajo.setPosition(320, 630);
     boxAbajo.setFillColor(sf::Color::Red);
     
     
-    boxArriba = sf::RectangleShape(sf::Vector2f(30,5));
-    boxArriba.setOrigin(15,2.5);
+    boxArriba = sf::RectangleShape(sf::Vector2f(30,2));
+    boxArriba.setOrigin(15,1);
     boxArriba.setPosition(320, 630);
     boxArriba.setFillColor(sf::Color::Blue);
+    
+    boxDerecha = sf::RectangleShape(sf::Vector2f(20,2));
+    boxDerecha.setOrigin(10,1);
+    boxDerecha.rotate(90);
+    boxDerecha.setPosition(320, 630);
+    boxDerecha.setFillColor(sf::Color::Green);
+    
+    boxIzquierda = sf::RectangleShape(sf::Vector2f(20,2));
+    boxIzquierda.setOrigin(10,1);
+    boxIzquierda.rotate(90);
+    boxIzquierda.setPosition(320, 630);
+    boxIzquierda.setFillColor(sf::Color::Yellow);
     
     //Y creo el spritesheet a partir de la imagen anterior
     sprite.setTexture(tex);
@@ -48,11 +61,13 @@ Personaje::Personaje(){
     posx = sprite.getPosition().x;
     posy = sprite.getPosition().y;
     
+    
     direccion = 1;  
     dir_aux = direccion;
     check_pared = false;
     gravedad = kGrav;
-    alturasuelo = 10900;
+    alturasuelo = Mapa::Instance()->getAltura()*32 - 32*9.5;//APAÑO FEO (ARREGLAR)
+    alturasuelo_nueva = Mapa::Instance()->getAltura()*32 - 32*9.5;//APAÑO FEO (ARREGLAR);
     espacio = 0;
     velocidadsalto = 0.8f;
     nsprite = 0;
@@ -61,6 +76,7 @@ Personaje::Personaje(){
     contEspacios=0;
     var1 = 0;
     
+   // sprite.setPosition(224, alturasuelo);
 }
 
 
@@ -97,26 +113,132 @@ void Personaje::moverSalto(){
 }
 
 void Personaje::mover(float timeElapsed){
-    cout << "timeelapsed: " << timeElapsed << "\n";
     
-    if(sprite.getPosition().x > 390 && check_pared == false ){ //izq
-        check_pared = true;
-        dir_aux = -1;
-        direccion = 0;
-        espacio = 0;
-        //direccion = -1;
+    int rx = boxDerecha.getPosition().x / 32;
+    int ry = boxDerecha.getPosition().y / 32;
+    int lx = boxIzquierda.getPosition().x / 32;
+    int ly = boxIzquierda.getPosition().y / 32;
+    int dx = boxAbajo.getPosition().x /32;
+    int dy = boxAbajo.getPosition().y /32;
+    int ux = boxArriba.getPosition().x /32;
+    int uy = boxArriba.getPosition().y /32;
+    Mapa::Instance()->activarCapa(0);
+    int valorderecha = Mapa::Instance()->getTile(rx,ry);;
+    int valorabajo = Mapa::Instance()->getTile(dx,dy);;
+    int valorizquierda = Mapa::Instance()->getTile(lx,ly);;
+    int valorarriba = Mapa::Instance()->getTile(ux,uy);;
+    //cout << "(x,y) = " << rx << " , " << ry <<  " : "<< valorderecha << endl;
+    //cout << "(x,y) = " << lx << " , " << ly <<  " : "<< valorizquierda << endl;
+    cout << "(x,y) = " << dx << " , " << dy <<  " : "<< valorabajo << endl;
+    
+    
+    
+    switch(valorarriba){
+        case 0: break;
         
-        sprite.setScale(-2.0f,2.0f);       
+        case 7: 
+            velocidad.y += 0.3;
+            break;
     }
-    else if (sprite.getPosition().x < 50 && check_pared == false ){//dcha
-        check_pared = true;
-        dir_aux = 1;
-        direccion = 0;
-        espacio = 0;
-        //direccion = 1;
-        sprite.setScale(2.0f,2.0f);
+    
+    switch(valorabajo){
+        case 0: 
+            estoyNormal();
+            break;
+        case 7: 
+            cout << dy;
+            estoyAzul(dy * 32);
+            break;
+            
+        case 3:              
+            alturasuelo_nueva=dy*32-15;
+            alturasuelo = alturasuelo_nueva;            
+            break;
+            
+        case 4:
+            alturasuelo_nueva=dy*32-15;
+            alturasuelo = alturasuelo_nueva;            
+            break;
+            
+        case 8:
+            estoyRoja(dy*32);
+            break;
+            
+    }
+    
+    
+    
+    
+    switch(valorderecha){
+        case 0: 
+             
+            break;
         
+        case 2: 
+            if(check_pared == false){
+                check_pared = true;
+                dir_aux = -1;
+                direccion = 0;
+                espacio = 0;
+                //direccion = -1;
+
+                sprite.setScale(-2.0f,2.0f);
+            }
+            break;
+            
+        case 7:
+            if(check_pared == false){
+               check_pared = true;
+               dir_aux = -1;
+               direccion = 0;
+               espacio = 0;
+               //direccion = -1;
+
+               sprite.setScale(-2.0f,2.0f);
+            }
+            
+            break;
+            
+        case 57:
+            //sprite.setPosition();
+            break;
+        case 58:
+            cout<<sprite.getPosition().x<<"y"<<sprite.getPosition().y;
+            break;
     }
+    
+    
+    
+    switch(valorizquierda){
+        case 0:
+             
+             break;
+        case 1:
+            if(check_pared == false){
+                check_pared = true;
+                dir_aux = 1;
+                direccion = 0;
+                espacio = 0;
+                //direccion = 1;
+                sprite.setScale(2.0f,2.0f);
+            }
+            break;
+            
+            case 7:
+            if(check_pared == false){
+                check_pared = true;
+                dir_aux = 1;
+                direccion = 0;
+                espacio = 0;
+                //direccion = 1;
+                sprite.setScale(2.0f,2.0f);
+            }
+            
+            break;
+    }
+    
+           
+    
     
     if(check_pared == true){
         if(velocidad.y < 0){
@@ -146,12 +268,17 @@ void Personaje::mover(float timeElapsed){
     }
     
     //std::cout<<"arriba"<<velocidad.x<<"\n";      
-    boxAbajo.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
+   /* boxAbajo.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
     boxArriba.setPosition(sprite.getPosition().x, sprite.getPosition().y-20);
     int posxs = boxAbajo.getPosition().x;
     int posys = boxAbajo.getPosition().y;
     posx = sprite.getPosition().x;
-    posy = sprite.getPosition().y;
+    posy = sprite.getPosition().y;*/
+    
+   /* int posxs = boxAbajo.getPosition().x;
+    int posys = boxAbajo.getPosition().y;
+    posx = sprite.getPosition().x;
+    posy = sprite.getPosition().y;*/
     
     if(check_pared == false){
         actualizarSprite();
@@ -178,13 +305,13 @@ void Personaje::cambiarPosicion(int num, int num2){
     sprite.setPosition(num, num2);
 }
 
-void Personaje::estoyRoja(float y){
-        alturasuelo =y-24;
-        velocidad.x = 0.06;
+void Personaje::estoyRoja(int y){
+        alturasuelo =y-15;
+        velocidad.x = kVel*2;
 }
-    void Personaje::estoyAzul(float y){
-        alturasuelo =y-24;
-        velocidad.x = 0.03;
+    void Personaje::estoyAzul(int y){
+       alturasuelo = y-15;
+         velocidad.x = kVel;
     }
     void Personaje::estoyPortalIda(float x, float y){
         sprite.setPosition(x,y);
@@ -198,8 +325,8 @@ void Personaje::estoyRoja(float y){
     }
     
     void Personaje::estoyNormal(){
-        alturasuelo =630;
-        velocidad.x = 0.03;
+       alturasuelo = alturasuelo_nueva;
+        velocidad.x = kVel;
     }
     
     sf::RectangleShape Personaje::getBoxAbajo(){
@@ -209,4 +336,25 @@ void Personaje::estoyRoja(float y){
 
     void Personaje::setPosition(float _x, float _y){
         sprite.setPosition(_x,_y);
+    }
+    
+     void Personaje::actualizarBoxes(){
+        boxAbajo.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
+        boxArriba.setPosition(sprite.getPosition().x, sprite.getPosition().y-15);
+        boxDerecha.setPosition(sprite.getPosition().x+15, sprite.getPosition().y);
+        boxIzquierda.setPosition(sprite.getPosition().x-15, sprite.getPosition().y);
+    }
+     
+   
+    
+    sf::RectangleShape Personaje::getBoxArriba(){
+        return boxArriba;  
+    }
+    
+    sf::RectangleShape Personaje::getBoxDerecha(){
+        return boxDerecha;  
+    }
+    
+    sf::RectangleShape Personaje::getBoxIzquierda(){
+        return boxIzquierda;  
     }

@@ -88,6 +88,7 @@
   <sourceRootList>
     <Elem>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno</Elem>
     <Elem>/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno</Elem>
+    <Elem>/home/natalia/NetBeansProjects/PersonajeBueno</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -114,12 +115,12 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp"
+      <item path="/home/natalia/NetBeansProjects/PersonajeBueno/Npc.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.h"
+      <item path="/home/natalia/NetBeansProjects/PersonajeBueno/Npc.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -375,12 +376,12 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp"
+      <item path="/home/natalia/NetBeansProjects/PersonajeBueno/Npc.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.h"
+      <item path="/home/natalia/NetBeansProjects/PersonajeBueno/Npc.h"
             ex="false"
             tool="3"
             flavor2="0">

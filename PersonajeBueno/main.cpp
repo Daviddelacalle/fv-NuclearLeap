@@ -66,6 +66,7 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
      */
     _pj.setPosition(posxf,posyf);
     _npc5.setPosition(posxnpc , posynpc );
+    _pj.actualizarBoxes();
     
     //cout << "pj posx: " << _pj.getSprite().getPosition().x << " posy: " << _pj.getSprite().getPosition().y << "\n";
     
@@ -73,6 +74,10 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     //DIBUJAMOS
     _window.draw(_pj.getSprite());
     _window.draw(_npc5.getSprite());
+    _window.draw(_pj.getBoxAbajo());
+    _window.draw(_pj.getBoxArriba());
+    _window.draw(_pj.getBoxDerecha());
+    _window.draw(_pj.getBoxIzquierda());
    
     
 }
@@ -180,7 +185,9 @@ int main() {
             
             timeElapsed = updateClock.restart();
 
-           update(pj_S,timeElapsed.asMilliseconds(),pj,npc_S,npc5);
+            update(pj_S,timeElapsed.asMilliseconds(),pj,npc_S,npc5);
+
+           // update(pj_S,timeElapsed.asSeconds(),pj,npc_S,npc5);
 
             
         }

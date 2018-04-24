@@ -26,20 +26,25 @@ public:
     int getEspacios();
     void actualizarSprite();    
     void cambiarPosicion(int num, int num2);    
-    void estoyRoja(float);
-    void estoyAzul(float);
+    void estoyRoja(int);
+    void estoyAzul(int);
     void estoyPortalIda(float, float);
     void estoyPortalVuelta(float, float);
     void estoySaltador();
     void estoyNormal();
     void setPosition(float, float);
     sf::RectangleShape getBoxAbajo();
+    sf::RectangleShape getBoxArriba();
+    sf::RectangleShape getBoxDerecha();
+    sf::RectangleShape getBoxIzquierda();
+    void actualizarBoxes();
     int contEspacios;
     int var1;
     
     
     
 private:
+    int alturasuelo_nueva;
     float gravedad;
     int posx;
     int posy;
@@ -56,6 +61,8 @@ private:
     int max_sprites;
     sf::RectangleShape boxAbajo;
     sf::RectangleShape boxArriba;
+    sf::RectangleShape boxDerecha;
+    sf::RectangleShape boxIzquierda;
     
    
     
