@@ -20,12 +20,16 @@ class State{
 private:
     int posx;
     int posy;
+    int lastx;
+    int lasty;
 public:
     State(int, int);
     void setPosx(int);
     void setPosy(int);
     int getPosx();
     int getPosy();
+    int getLastx();
+    int getLasty();
 };
 
 #endif /* STATE_H */

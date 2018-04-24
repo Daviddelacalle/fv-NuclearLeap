@@ -90,6 +90,7 @@ void Personaje::moverSalto(){
     if(espacio <2){
       velocidad.y = -velocidadsalto;         
       espacio++;
+      gravedad=2.5;
     }
     
      int var1 = contEspacios;
