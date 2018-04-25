@@ -191,34 +191,34 @@ Npc5::Npc5(int _posx, int _posy):Npc(_posx, _posy){
 }
 
 void Npc5::movimiento(Personaje &_pj){
-    if(_pj.getSprite().getPosition().x < posx){
+    if(_pj.getSprite().getPosx() < posx){
     //El pj esta a la izquierda
         dirx = -1;
         
     }
-    else if(_pj.getSprite().getPosition().x > posx){
+    else if(_pj.getSprite().getPosx() > posx){
     //El pj esta a la derecha
         dirx = 1;
     }
     
-    else if(_pj.getSprite().getPosition().x == posx){
+    else if(_pj.getSprite().getPosx() == posx){
     //El pj esta a la misma altura x
         dirx = 0;
 
     }
     
-    if(_pj.getSprite().getPosition().y < posy){
+    if(_pj.getSprite().getPosy() < posy){
     //El pj esta encima
         diry = -1;
 
     }
-    else if(_pj.getSprite().getPosition().y > posy){
+    else if(_pj.getSprite().getPosy() > posy){
     //El pj esta debajo
         diry = 1;
 
     }
     
-    else if(_pj.getSprite().getPosition().y == posy){
+    else if(_pj.getSprite().getPosy() == posy){
     //El pj esta a la misma altura y
         diry = 0;
 

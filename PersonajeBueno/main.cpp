@@ -15,7 +15,8 @@
 #include "Personaje.h"
 #include "mapa.h"
 #include "Npc.h"
-
+#include "Mi_Sprite.h"
+#include "Motor_2D.h"
 /*
  * 
  */
@@ -38,8 +39,8 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc5
     _newState.setPosy(posy);
     */
     
-    _pj_S.setPosx(_pj.getSprite().getPosition().x);
-    _pj_S.setPosy(_pj.getSprite().getPosition().y);
+    _pj_S.setPosx(_pj.getSprite().getPosx());
+    _pj_S.setPosy(_pj.getSprite().getPosy());
     
     _npc_S.setPosx(_npc5.getSprite().getPosition().x);
     _npc_S.setPosy(_npc5.getSprite().getPosition().y);
@@ -125,7 +126,7 @@ int main() {
     
     //ESTADOS
     
-    State pj_S(pj.getSprite().getPosition().x,pj.getSprite().getPosition().y);
+    State pj_S(pj.getSprite().getPosx(),pj.getSprite().getPosy());
     
     State npc_S(npc5.getSprite().getPosition().x,npc5.getSprite().getPosition().y);
 
@@ -170,7 +171,7 @@ int main() {
             
         }
         //AJUSTAR VISTA A LA POSICION DEL PERSONAJE
-        view.setCenter(224,pj.getSprite().getPosition().y-64);
+        view.setCenter(224,pj.getSprite().getPosy()-64);
         
         //INTERPOLACION
         

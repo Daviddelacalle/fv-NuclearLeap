@@ -115,16 +115,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/natalia/NetBeansProjects/PersonajeBueno/Npc.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/NetBeansProjects/PersonajeBueno/Npc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -334,6 +324,18 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="Mi_Sprite.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mi_Sprite.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Motor_2D.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Motor_2D.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Personaje.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -376,16 +378,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="/home/natalia/NetBeansProjects/PersonajeBueno/Npc.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/NetBeansProjects/PersonajeBueno/Npc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -595,6 +587,18 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="Mi_Sprite.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mi_Sprite.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Motor_2D.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Motor_2D.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Personaje.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -17,11 +17,7 @@
 
 Personaje::Personaje(){
    
-    if (!tex.loadFromFile("resources/Sprite.png"))
-    {
-        std::cerr << "Error cargando la imagen sprites.png";
-        exit(0);
-    }
+    Mi_Sprite sprite(1,1,18,17,200,10780);
     
     boxAbajo = sf::RectangleShape(sf::Vector2f(30,2));
     boxAbajo.setOrigin(15,1);
@@ -47,19 +43,9 @@ Personaje::Personaje(){
     boxIzquierda.setFillColor(sf::Color::Yellow);
     
     //Y creo el spritesheet a partir de la imagen anterior
-    sprite.setTexture(tex);
     
-    //Le pongo el centroide donde corresponde
-    sprite.setOrigin(18/2,21/2);
-    //Cojo el sprite que me interesa por defecto del sheet
-   // sprite.setTextureRect(sf::IntRect(23, 448, 23, 24));
-    sprite.setTextureRect(sf::IntRect(1, 1, 18, 17));   
-    sprite.setScale(2.0f,2.0f);
-    
-    sprite.setPosition(224, 10900);
-    
-    posx = sprite.getPosition().x;
-    posy = sprite.getPosition().y;
+    posx = sprite.getPosx();
+    posy = sprite.getPosy();
     
     
     direccion = 1;  
@@ -81,18 +67,18 @@ Personaje::Personaje(){
 
 
 
-sf::Sprite Personaje::getSprite(){
+Mi_Sprite Personaje::getSprite(){
     return sprite;   
 }
 
 void Personaje::gravity(float timeElapsed){
-     if(sprite.getPosition().y + sprite.getScale().y < alturasuelo || velocidad.y < 0) {
+     if(sprite.getPosy() + sprite.getScaley() < alturasuelo || velocidad.y < 0) {
         velocidad.y += gravedad*timeElapsed;
       }
       else {
-        sprite.setPosition(sprite.getPosition().x, alturasuelo - sprite.getScale().y);
-        posx = sprite.getPosition().x;
-        posy = sprite.getPosition().y;
+        sprite.setPosition(sprite.getPosx(), alturasuelo - sprite.getScaley());
+        posx = sprite.getPosx();
+        posy = sprite.getPosy();
         velocidad.y = 0;
         espacio=0;
         gravedad = kGrav;
@@ -203,7 +189,7 @@ void Personaje::mover(float timeElapsed){
             //sprite.setPosition();
             break;
         case 58:
-            cout<<sprite.getPosition().x<<"y"<<sprite.getPosition().y;
+            cout<<sprite.getPosx()<<"y"<<sprite.getPosy();
             break;
     }
     
@@ -252,7 +238,7 @@ void Personaje::mover(float timeElapsed){
     cout << "Gravedad: " << gravedad << "\n";
     
     
-    if(sprite.getPosition().y + sprite.getScale().y >= alturasuelo || espacio > 0 && check_pared == true){
+    if(sprite.getPosy() + sprite.getScaley() >= alturasuelo || espacio > 0 && check_pared == true){
             gravedad = kGrav;
             direccion = dir_aux;
             check_pared = false;
@@ -263,8 +249,8 @@ void Personaje::mover(float timeElapsed){
     //std::cout<<"bajo"<<velocidad.x<<"\n"; 
     
     sprite.move(velocidad.x*direccion*timeElapsed,velocidad.y*timeElapsed);
-    if(sprite.getPosition().y > alturasuelo){
-        sprite.setPosition(sprite.getPosition().x, alturasuelo);
+    if(sprite.getPosy() > alturasuelo){
+        sprite.setPosition(sprite.getPosx(), alturasuelo);
     }
     
     //std::cout<<"arriba"<<velocidad.x<<"\n";      
@@ -295,7 +281,7 @@ void Personaje::actualizarSprite(){
     if(nsprite == max_sprites){
         nsprite = 0;
     }
-    sprite.setTextureRect(sf::IntRect(nsprite*18, 0*18, 18, 21));
+    sprite.setFrame(nsprite,0);
     nsprite++;
 }
 
@@ -339,10 +325,10 @@ void Personaje::estoyRoja(int y){
     }
     
      void Personaje::actualizarBoxes(){
-        boxAbajo.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
-        boxArriba.setPosition(sprite.getPosition().x, sprite.getPosition().y-15);
-        boxDerecha.setPosition(sprite.getPosition().x+15, sprite.getPosition().y);
-        boxIzquierda.setPosition(sprite.getPosition().x-15, sprite.getPosition().y);
+        boxAbajo.setPosition(sprite.getPosx(), sprite.getPosy()+20);
+        boxArriba.setPosition(sprite.getPosx(),sprite.getPosy()-15);
+        boxDerecha.setPosition(sprite.getPosx()+15, sprite.getPosy());
+        boxIzquierda.setPosition(sprite.getPosx()-15, sprite.getPosy());
     }
      
    

@@ -14,12 +14,14 @@
 #ifndef PERSONAJE_H
 #define PERSONAJE_H
 
+
 #include "config.h"
+#include "Mi_Sprite.h"
 
 class Personaje {
 public:
     Personaje();
-    sf::Sprite getSprite();   
+    Mi_Sprite getSprite();   
     void moverSalto();
     void mover(float);
     void gravity(float);
@@ -54,8 +56,7 @@ private:
     int alturasuelo;
     sf::Vector2f velocidad;
     float velocidadsalto;
-    sf::Sprite sprite;
-    sf::Texture tex;
+    Mi_Sprite sprite;
     int espacio;
     int nsprite;
     int max_sprites;
