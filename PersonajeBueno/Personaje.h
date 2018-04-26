@@ -51,6 +51,7 @@ private:
     float gravedad;
     int posx;
     int posy;
+    int checkpoint;
     int direccion;   
     int dir_aux; //variable para guardar la direccion para cuando salga de la pared
     bool check_pared; // para saber si he tocado la pared

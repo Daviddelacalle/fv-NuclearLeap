@@ -35,9 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/a08718a8/Mi_Sprite.o \
-	${OBJECTDIR}/_ext/a08718a8/Motor_2D.o \
-	${OBJECTDIR}/_ext/a08718a8/Npc.o \
+	${OBJECTDIR}/_ext/55a6bf73/Mi_Sprite.o \
+	${OBJECTDIR}/_ext/55a6bf73/Motor_2D.o \
+	${OBJECTDIR}/_ext/55a6bf73/Npc.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/State.o \
 	${OBJECTDIR}/main.o \
@@ -75,20 +75,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/a08718a8/Mi_Sprite.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+${OBJECTDIR}/_ext/55a6bf73/Mi_Sprite.o: /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/55a6bf73
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Mi_Sprite.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/55a6bf73/Mi_Sprite.o /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp
 
-${OBJECTDIR}/_ext/a08718a8/Motor_2D.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+${OBJECTDIR}/_ext/55a6bf73/Motor_2D.o: /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/55a6bf73
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Motor_2D.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/55a6bf73/Motor_2D.o /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp
 
-${OBJECTDIR}/_ext/a08718a8/Npc.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+${OBJECTDIR}/_ext/55a6bf73/Npc.o: /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/55a6bf73
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Npc.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.cpp
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/55a6bf73/Npc.o /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp
 
 ${OBJECTDIR}/Personaje.o: Personaje.cpp 
 	${MKDIR} -p ${OBJECTDIR}
