@@ -18,17 +18,18 @@
 
 class Mi_Sprite {
 public:
-    Mi_Sprite(int,int,int,int,int,int);
+    Mi_Sprite();
     float getPosx();
     float getPosy();
     float getScaley();
     float getScalex();
     
-    
+    sf::Sprite getSprite();
     void setPosition(float, float);
     void setFrame(int,int);
     void move(float,float);
     void setScale(float,float);
+    void setParams(int, int , int, int ,int, int);
 private:
     sf::Sprite sprite;
     sf::Texture tex;

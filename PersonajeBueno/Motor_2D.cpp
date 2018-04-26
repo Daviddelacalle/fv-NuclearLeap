@@ -19,9 +19,16 @@ Motor_2D* Motor_2D::Instance() {
     if (pinstance == 0) { 
         pinstance = new Motor_2D;
     } 
+    
     return pinstance;
 }
 
 Motor_2D::Motor_2D() { 
-    //
+    sf::RenderWindow window(sf::VideoMode(448,700),"PersonajeBueno");
 }
+
+sf::RenderWindow* Motor_2D::getWindow(){
+    return window;
+}
+
+

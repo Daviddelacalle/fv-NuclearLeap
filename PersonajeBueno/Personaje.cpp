@@ -16,8 +16,9 @@
 
 
 Personaje::Personaje(){
-   
-    Mi_Sprite sprite(1,1,18,17,200,10780);
+
+    sprite.setParams(1,1,18,21,200,10780);
+    
     
     boxAbajo = sf::RectangleShape(sf::Vector2f(30,2));
     boxAbajo.setOrigin(15,1);
@@ -68,7 +69,7 @@ Personaje::Personaje(){
 
 
 Mi_Sprite Personaje::getSprite(){
-    return sprite;   
+   return sprite;   
 }
 
 void Personaje::gravity(float timeElapsed){

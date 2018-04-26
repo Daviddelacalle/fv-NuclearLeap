@@ -13,24 +13,29 @@
 
 #include "Mi_Sprite.h"
 
-Mi_Sprite::Mi_Sprite(int _x , int _y , int _w ,int _h, int _posx , int _posy){
-    
+Mi_Sprite::Mi_Sprite(){
     if (!tex.loadFromFile("resources/Sprite.png"))
     {
         std::cerr << "Error cargando la imagen sprites.png";
         exit(0);
     }
+    //Le pongo el centroide donde corresponde
+   
+    
+}
+
+void Mi_Sprite::setParams(int _x, int _y, int _w, int _h, int _posx, int _posy){
     
     
     sprite.setTexture(tex);
     
-    //Le pongo el centroide donde corresponde
-    sprite.setOrigin(_w/2,_h/2);
+     sprite.setOrigin(_w/2,_h/2);
     //Cojo el sprite que me interesa por defecto del sheet
    // sprite.setTextureRect(sf::IntRect(23, 448, 23, 24));
     sprite.setTextureRect(sf::IntRect(_x*_w, _y*_h, _w, _h));   
     
     sprite.setPosition(_posx, _posy);
+    
 }
 
 float Mi_Sprite::getPosx(){
@@ -47,6 +52,10 @@ float Mi_Sprite::getScalex(){
 
 float Mi_Sprite::getScaley(){
     return sprite.getScale().y;
+}
+
+sf::Sprite Mi_Sprite::getSprite(){
+    return sprite;
 }
 
 void Mi_Sprite::setFrame(int _x, int _y){

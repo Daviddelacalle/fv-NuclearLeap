@@ -73,7 +73,7 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     
     
     //DIBUJAMOS
-    _window.draw(_pj.getSprite());
+    _window.draw(_pj.getSprite().getSprite());
     _window.draw(_npc5.getSprite());
     _window.draw(_pj.getBoxAbajo());
     _window.draw(_pj.getBoxArriba());
@@ -93,9 +93,8 @@ float minimo(float a, float b){
     return res;
 }
 
-int main() {
-    sf::RenderWindow window(sf::VideoMode(448,700),"PersonajeBueno");
-    
+int main() {   
+    Motor_2D* motor = Motor_2D::Instance();
     //MAPA Y CAMARA
     Mapa* map = Mapa::Instance();
  
@@ -124,8 +123,7 @@ int main() {
     bool firstTime = true;
     
     
-    //ESTADOS
-    
+    //ESTADOS    
     State pj_S(pj.getSprite().getPosx(),pj.getSprite().getPosy());
     
     State npc_S(npc5.getSprite().getPosition().x,npc5.getSprite().getPosition().y);
@@ -136,16 +134,16 @@ int main() {
     Personaje pj_ls();
     */
     
-    while(window.isOpen()){
+    while(motor->getWindow()->isOpen()){
         sf::Event event;
-        while (window.pollEvent(event))
+        while (motor->getWindow()->pollEvent(event))
         {
             
             switch(event.type){
                 
                 //Si se recibe el evento de cerrar la ventana la cierro
                 case sf::Event::Closed:
-                    window.close();
+                    motor->getWindow()->close();
                     break;
                     
                 //Se pulsó una tecla, imprimo su codigo
@@ -161,7 +159,7 @@ int main() {
                         break;
                         //Tecla ESC para salir
                         case sf::Keyboard::Q:
-                            window.close();
+                            motor->getWindow()->close();
                         break;
                               
                     }
@@ -199,20 +197,20 @@ int main() {
         percentTick = minimo(1.f,division);
         
         //RENDERIZAMOS TODO
-        window.clear();
+        motor->getWindow()->clear();
         
         
-        window.setView(view);
+        motor->getWindow()->setView(view);
                
         sf::Sprite img_fondo = map->getFondo();
         img_fondo.setPosition(0,view.getCenter().y-400);
-        window.draw(img_fondo);
+        motor->getWindow()->draw(img_fondo);
         
         map->activarCapa(3);
-        window.draw(*map);
-        render_interpolation(window,pj_S,percentTick,pj,npc_S,npc5);
+        motor->getWindow()->draw(*map);
+        render_interpolation(motor->getWindow(),pj_S,percentTick,pj,npc_S,npc5);
         
-        window.display();
+        motor->getWindow()->display();
     }   
     return 0;
 }
