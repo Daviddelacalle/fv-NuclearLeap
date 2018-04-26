@@ -31,4 +31,8 @@ sf::RenderWindow* Motor_2D::getWindow(){
     return window;
 }
 
+void Motor_2D::draw(sf::Sprite& _sprite){
+    window->draw(_sprite);
+}
+
 

@@ -16,6 +16,7 @@
 
 #include "config.h"
 #include "Personaje.h"
+#include "Mi_Sprite.h"
 
 class Npc {
 public:

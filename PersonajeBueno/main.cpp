@@ -73,7 +73,7 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     
     
     //DIBUJAMOS
-    _window.draw(_pj.getSprite().getSprite());
+    _pj.draw();
     _window.draw(_npc5.getSprite());
     _window.draw(_pj.getBoxAbajo());
     _window.draw(_pj.getBoxArriba());

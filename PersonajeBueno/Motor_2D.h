@@ -20,6 +20,7 @@ class Motor_2D {
 public:
     static Motor_2D* Instance();
     sf::RenderWindow* getWindow();
+    void draw(sf::Sprite &_sprite);
 protected:
     Motor_2D();
     Motor_2D(const Motor_2D & );

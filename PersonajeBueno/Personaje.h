@@ -35,6 +35,7 @@ public:
     void estoySaltador();
     void estoyNormal();
     void setPosition(float, float);
+    void draw();
     sf::RectangleShape getBoxAbajo();
     sf::RectangleShape getBoxArriba();
     sf::RectangleShape getBoxDerecha();

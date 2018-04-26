@@ -345,3 +345,9 @@ void Personaje::estoyRoja(int y){
     sf::RectangleShape Personaje::getBoxIzquierda(){
         return boxIzquierda;  
     }
+    
+    void Personaje::draw(){
+        sprite.draw();
+    }
+    
+    

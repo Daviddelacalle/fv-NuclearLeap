@@ -12,8 +12,10 @@
  */
 
 #include "Mi_Sprite.h"
+#include "Motor_2D.h"
 
 Mi_Sprite::Mi_Sprite(){
+    
     if (!tex.loadFromFile("resources/Sprite.png"))
     {
         std::cerr << "Error cargando la imagen sprites.png";
@@ -72,4 +74,9 @@ void Mi_Sprite::move(float _x, float _y){
 
 void Mi_Sprite::setScale(float _x, float _y){
     sprite.setScale(_x,_y);
+}
+
+void Mi_Sprite::draw(){
+    Motor_2D *mi_motor = Motor_2D::Instance();
+    mi_motor->draw(sprite);
 }

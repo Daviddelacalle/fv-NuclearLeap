@@ -30,6 +30,7 @@ public:
     void move(float,float);
     void setScale(float,float);
     void setParams(int, int , int, int ,int, int);
+    void draw();
 private:
     sf::Sprite sprite;
     sf::Texture tex;
