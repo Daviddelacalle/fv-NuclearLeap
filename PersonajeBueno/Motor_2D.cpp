@@ -24,7 +24,7 @@ Motor_2D* Motor_2D::Instance() {
 }
 
 Motor_2D::Motor_2D() { 
-    sf::RenderWindow window(sf::VideoMode(448,700),"PersonajeBueno");
+    window = new sf::RenderWindow(sf::VideoMode(448,700),"PersonajeBueno");
 }
 
 sf::RenderWindow* Motor_2D::getWindow(){

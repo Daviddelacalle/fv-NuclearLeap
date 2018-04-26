@@ -208,7 +208,7 @@ int main() {
         
         map->activarCapa(3);
         motor->getWindow()->draw(*map);
-        render_interpolation(motor->getWindow(),pj_S,percentTick,pj,npc_S,npc5);
+        render_interpolation(*motor->getWindow(),pj_S,percentTick,pj,npc_S,npc5);
         
         motor->getWindow()->display();
     }   
