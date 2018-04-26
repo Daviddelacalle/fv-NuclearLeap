@@ -21,7 +21,7 @@ Npc::Npc(int _posx, int _posy) {
     nsprite = 0;
 }
 
-sf::Sprite Npc::getSprite(){
+Mi_Sprite Npc::getSprite(){
     return sprite;
 }
 
@@ -34,10 +34,13 @@ void Npc::actualizarSprite(){
     if(nsprite == max_sprites){
         nsprite = 0;
     }
-    sprite.setTextureRect(sf::IntRect(nsprite*tam, 0*tam, tam, tam));
+    sprite.setFrame(nsprite , line_sprite);
     nsprite++;
 }
 
+void Npc::draw(){
+    sprite.draw();
+}
 sf::RectangleShape Npc::getBox_up(){
     return box_up;
 }
@@ -54,19 +57,15 @@ sf::RectangleShape Npc::getBox_left(){
 Npc1::Npc1(int _posx, int _posy):Npc(_posx,_posy){
     tam = 32;
     max_sprites = 4;
+    line_sprite = 0;
     
      if (!tex.loadFromFile("sprites/npc1.png")){
         std::cout << "Error cargando la imagen sprites.png";
         exit(0);
     }
     
-    sprite = sf::Sprite(tex);
-    //Le pongo el centroide donde corresponde
-    sprite.setOrigin(32/2,32/2);
-    //Cojo el sprite que me interesa por defecto del sheet
-    sprite.setTextureRect(sf::IntRect(nsprite*32, 0*32, 32, 32));
-    // Lo dispongo en el centro de la pantalla
-    sprite.setPosition(posx, posy);
+    sprite.setParams(0,0,32,32,200,10700);
+    
     
     //COLISIONADORES
     
@@ -124,17 +123,13 @@ void Npc1::actualizarBox(){
 Npc3::Npc3(int _posx, int _posy):Npc1(_posx,_posy){
     tam = 64;
     max_sprites = 8;
+    line_sprite = 1;
      if (!tex.loadFromFile("sprites/npc3.png")){
         std::cout << "Error cargando la imagen sprites.png";
         exit(0);
     }
-    sprite =sf::Sprite(tex);
-    //Le pongo el centroide donde corresponde
-    sprite.setOrigin(64/2,64/2);
-    //Cojo el sprite que me interesa por defecto del sheet
-    sprite.setTextureRect(sf::IntRect(nsprite*64, 0*64, 64, 64));
-    // Lo dispongo en el centro de la pantalla
-    sprite.setPosition(posx, posy);
+    
+    sprite.setParams(0,1,32,32,200,10700);
     
     //COLISIONADORES
     box_up = sf::RectangleShape(sf::Vector2f(60,1));
@@ -156,18 +151,13 @@ Npc3::Npc3(int _posx, int _posy):Npc1(_posx,_posy){
 Npc5::Npc5(int _posx, int _posy):Npc(_posx, _posy){
     tam = 64;
     max_sprites = 6;
+    line_sprite = 3;
      if (!tex.loadFromFile("sprites/npc5.png")){
         std::cout << "Error cargando la imagen sprites.png";
         exit(0);
     }
-    sprite =sf::Sprite(tex);
-    //Le pongo el centroide donde corresponde
-    sprite.setOrigin(64/2,64/2);
-    //Cojo el sprite que me interesa por defecto del sheet
-    sprite.setTextureRect(sf::IntRect(nsprite*64, 0*64, 64, 64));
-    // Lo dispongo en el centro de la pantalla
-    sprite.setPosition(posx, posy);
 
+    sprite.setParams(8,0,32,32,200,10700);
     //COLISIONADORES
     box_up = sf::RectangleShape(sf::Vector2f(60,1));
     box_up.setOrigin(30,0);
@@ -256,3 +246,4 @@ void Npc5::actualizarBox(){
     box_right.setPosition(posx+(tam/2),posy);
     box_down.setPosition(posx,posy+(tam/2 - 2));
 }
+

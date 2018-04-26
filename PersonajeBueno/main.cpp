@@ -42,8 +42,8 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc5
     _pj_S.setPosx(_pj.getSprite().getPosx());
     _pj_S.setPosy(_pj.getSprite().getPosy());
     
-    _npc_S.setPosx(_npc5.getSprite().getPosition().x);
-    _npc_S.setPosy(_npc5.getSprite().getPosition().y);
+    _npc_S.setPosx(_npc5.getSprite().getPosx());
+    _npc_S.setPosy(_npc5.getSprite().getPosy());
 }
 
 void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc5 &_npc5){
@@ -74,7 +74,8 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     
     //DIBUJAMOS
     _pj.draw();
-    _window.draw(_npc5.getSprite());
+    _npc5.draw();
+    
     _window.draw(_pj.getBoxAbajo());
     _window.draw(_pj.getBoxArriba());
     _window.draw(_pj.getBoxDerecha());
@@ -126,7 +127,7 @@ int main() {
     //ESTADOS    
     State pj_S(pj.getSprite().getPosx(),pj.getSprite().getPosy());
     
-    State npc_S(npc5.getSprite().getPosition().x,npc5.getSprite().getPosition().y);
+    State npc_S(npc5.getSprite().getPosx(),npc5.getSprite().getPosy());
 
     /*
      

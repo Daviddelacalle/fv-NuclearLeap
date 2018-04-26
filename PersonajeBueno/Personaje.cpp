@@ -17,7 +17,7 @@
 
 Personaje::Personaje(){
 
-    sprite.setParams(1,1,18,21,200,10780);
+    sprite.setParams(0,2,32,32,200,10780);
     
     
     boxAbajo = sf::RectangleShape(sf::Vector2f(30,2));
@@ -169,7 +169,7 @@ void Personaje::mover(float timeElapsed){
                 espacio = 0;
                 //direccion = -1;
 
-                sprite.setScale(-2.0f,2.0f);
+                sprite.setScale(-1.0f,1.0f);
             }
             break;
             
@@ -181,7 +181,7 @@ void Personaje::mover(float timeElapsed){
                espacio = 0;
                //direccion = -1;
 
-               sprite.setScale(-2.0f,2.0f);
+               sprite.setScale(-1.0f,1.0f);
             }
             
             break;
@@ -207,7 +207,7 @@ void Personaje::mover(float timeElapsed){
                 direccion = 0;
                 espacio = 0;
                 //direccion = 1;
-                sprite.setScale(2.0f,2.0f);
+                sprite.setScale(1.0f,1.0f);
             }
             break;
             
@@ -218,7 +218,7 @@ void Personaje::mover(float timeElapsed){
                 direccion = 0;
                 espacio = 0;
                 //direccion = 1;
-                sprite.setScale(2.0f,2.0f);
+                sprite.setScale(1.0f,1.0f);
             }
             
             break;
@@ -282,7 +282,7 @@ void Personaje::actualizarSprite(){
     if(nsprite == max_sprites){
         nsprite = 0;
     }
-    sprite.setFrame(nsprite,0);
+    sprite.setFrame(nsprite,2); // dos porke es la fila 2
     nsprite++;
 }
 

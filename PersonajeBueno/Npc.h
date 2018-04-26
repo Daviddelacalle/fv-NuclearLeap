@@ -21,8 +21,9 @@
 class Npc {
 public:
     Npc(int,int);
-    sf::Sprite getSprite();
+    Mi_Sprite getSprite();
     void actualizarSprite();
+    void draw();
     sf::RectangleShape getBox_up();
     sf::RectangleShape getBox_left();
     sf::RectangleShape getBox_right();
@@ -34,12 +35,12 @@ protected:
     int dirx;
     int diry;
     int nsprite;
-    
+    int line_sprite;
     int max_sprites;
     int tam;
     
     sf::Texture tex;
-    sf::Sprite sprite;
+    Mi_Sprite sprite;
     sf::RectangleShape box_up;
     sf::RectangleShape box_left;
     sf::RectangleShape box_right;

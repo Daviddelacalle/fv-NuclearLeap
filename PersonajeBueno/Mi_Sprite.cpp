@@ -16,7 +16,7 @@
 
 Mi_Sprite::Mi_Sprite(){
     
-    if (!tex.loadFromFile("resources/Sprite.png"))
+    if (!tex.loadFromFile("sprites.png"))
     {
         std::cerr << "Error cargando la imagen sprites.png";
         exit(0);
