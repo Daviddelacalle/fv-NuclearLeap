@@ -22,6 +22,7 @@ public:
     int getTile(float, float);
     int getAltura();
     sf::Sprite getFondo();
+     sf::Vector2f getCoordenadas(int); 
     
 protected:
     Mapa();

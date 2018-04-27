@@ -199,7 +199,20 @@ int Mapa::getTile(float x, float y){
     int tile = _tilemap[capa][(int)y][(int)x];
     return tile;
 }
-
+ sf::Vector2f Mapa::getCoordenadas(int tile){
+    sf::Vector2f vec;
+    vec.x =0; vec.y=0;
+    for(int l=0; l<_height; l++){
+        for(int y=0; y<_width; y++){
+           if(_tilemap[capa][l][y] == tile){
+               vec.x=y;
+               vec.y=l;
+           }           
+        }
+    }
+    return vec;
+}
+ 
 int Mapa::getAltura(){
     int res = _height;
     return res;

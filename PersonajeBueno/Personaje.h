@@ -55,6 +55,7 @@ private:
     int dir_aux; //variable para guardar la direccion para cuando salga de la pared
     bool check_pared; // para saber si he tocado la pared
     int alturasuelo;
+     int checkpoint; 
     sf::Vector2f velocidad;
     float velocidadsalto;
     Mi_Sprite sprite;
