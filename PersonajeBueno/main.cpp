@@ -17,6 +17,7 @@
 #include "Npc.h"
 #include "Mi_Sprite.h"
 #include "Motor_2D.h"
+#include <SFML/Audio.hpp>
 /*
  * 
  */
@@ -103,6 +104,14 @@ int main() {
     
     sf::View view(sf::FloatRect(0, tiles, 448, 700));
     
+     sf::Music sonido;
+    if(!sonido.openFromFile("resources/conga.ogg")){
+        std::cerr << "Error cargando el audio";
+        exit(0);
+    }
+     
+      sonido.play();
+    sonido.setLoop(true);
     
     
     //Relojes de control de tiempo entre cada update y el tiempo global

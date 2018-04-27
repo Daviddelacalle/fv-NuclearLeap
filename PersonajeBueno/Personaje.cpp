@@ -62,6 +62,7 @@ Personaje::Personaje(){
     velocidad.x = kVel;
     contEspacios=0;
     var1 = 0;
+    checkpoint== Mapa::Instance()->getAltura()*32 - 32*9.5;
     
    // sprite.setPosition(224, alturasuelo);
 }
@@ -145,9 +146,7 @@ void Personaje::mover(float timeElapsed){
     switch(valorabajo){
         case 0: 
             estoyNormal();
-            break;
-            
-       
+            break;  
         
         case 7: 
            // cout << dy;
@@ -156,7 +155,8 @@ void Personaje::mover(float timeElapsed){
             
         case 3:              
             
-            alturasuelo = dy*32-15;            
+            alturasuelo = dy*32-15;
+            
             break;
             
         case 4:            
@@ -252,6 +252,7 @@ void Personaje::mover(float timeElapsed){
     switch(valorpersonaje){
         case 5:
             alturasuelo=checkpoint;
+            alturasuelo_nueva = checkpoint;
             sprite.setPosition(200, alturasuelo);
             break;
     }
