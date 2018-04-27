@@ -32,7 +32,7 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc5
     */
     
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
-    _pj.mover(timeElapsed);
+    _pj.update(timeElapsed);
     _npc5.movimiento(_pj);
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
@@ -110,8 +110,15 @@ int main() {
         exit(0);
     }
      
+       sf::Music sonidoSalto;
+    if(!sonidoSalto.openFromFile("resources/salto.ogg")){
+        std::cerr << "Error cargando el audio";
+        exit(0);
+    }
+     sonido.setVolume(30.0);
       sonido.play();
     sonido.setLoop(true);
+    
     
     
     //Relojes de control de tiempo entre cada update y el tiempo global
@@ -164,6 +171,7 @@ int main() {
                         case sf::Keyboard::Space:
                            //if(p.getEspacios() <2){
                            pj.moverSalto(); 
+                           sonidoSalto.play();
                            
                           
                         break;

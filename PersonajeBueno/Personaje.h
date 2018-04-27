@@ -17,11 +17,12 @@
 
 #include "config.h"
 #include "Mi_Sprite.h"
+#include "Mi_Texto.h"
 
 class Personaje {
 public:
     Personaje();
-    Mi_Sprite getSprite();   
+    Mi_Sprite getSprite();     
     void moverSalto();
     void mover(float);
     void gravity(float);
@@ -43,10 +44,15 @@ public:
     void actualizarBoxes();
     int contEspacios;
     int var1;
+    void update(float);
+    void actualizarVidas();
     
     
     
 private:
+    int posy_vida;
+    int posx_vida;
+    bool pierdo;
     int alturasuelo_nueva;
     float gravedad;
     int posx;
@@ -59,6 +65,9 @@ private:
     sf::Vector2f velocidad;
     float velocidadsalto;
     Mi_Sprite sprite;
+    Mi_Sprite sprite_vidas;
+    Mi_Texto text_vidas;
+    Mi_Texto text_perder;
     int espacio;
     int nsprite;
     int max_sprites;
@@ -66,6 +75,7 @@ private:
     sf::RectangleShape boxArriba;
     sf::RectangleShape boxDerecha;
     sf::RectangleShape boxIzquierda;
+    int vidas;
     
    
     

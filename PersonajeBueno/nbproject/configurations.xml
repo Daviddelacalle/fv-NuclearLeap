@@ -131,6 +131,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp"
             ex="false"
             tool="1"
@@ -408,6 +418,16 @@
             flavor2="0">
       </item>
       <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.h"
             ex="false"
             tool="3"
             flavor2="0">

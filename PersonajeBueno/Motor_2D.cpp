@@ -35,4 +35,8 @@ void Motor_2D::draw(sf::Sprite& _sprite){
     window->draw(_sprite);
 }
 
+void Motor_2D::draw(sf::Text& _text){
+    window->draw(_text);
+}
+
 

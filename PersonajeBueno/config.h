@@ -16,6 +16,8 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <sstream>
+#include <string>
 
 #define kVel 0.150
 #define npcVel 2

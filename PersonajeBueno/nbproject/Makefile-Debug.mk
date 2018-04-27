@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/a08718a8/Mi_Sprite.o \
+	${OBJECTDIR}/_ext/a08718a8/Mi_Texto.o \
 	${OBJECTDIR}/_ext/a08718a8/Motor_2D.o \
 	${OBJECTDIR}/_ext/a08718a8/Npc.o \
 	${OBJECTDIR}/Personaje.o \
@@ -81,6 +82,11 @@ ${OBJECTDIR}/_ext/a08718a8/Mi_Sprite.o: /home/natalia/Documentos/FV-Nuclear/fv-N
 	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Mi_Sprite.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp
+
+${OBJECTDIR}/_ext/a08718a8/Mi_Texto.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Mi_Texto.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp
 
 ${OBJECTDIR}/_ext/a08718a8/Motor_2D.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8

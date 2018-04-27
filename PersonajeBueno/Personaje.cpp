@@ -13,18 +13,22 @@
 
 #include "Personaje.h"
 #include "mapa.h"
+#include "Mi_Texto.h"
 
 
 Personaje::Personaje(){
 
-     sprite.setParams(0,2,32,32,200,10780);
-    
+        
+   
+            
+   sprite.setParams(0,2,32,32,200,10780);
+  
     
     boxAbajo = sf::RectangleShape(sf::Vector2f(30,2));
     boxAbajo.setOrigin(15,1);
     boxAbajo.setPosition(320, 630);
     boxAbajo.setFillColor(sf::Color::Red);
-    
+        
     
     boxArriba = sf::RectangleShape(sf::Vector2f(30,2));
     boxArriba.setOrigin(15,1);
@@ -63,6 +67,21 @@ Personaje::Personaje(){
     contEspacios=0;
     var1 = 0;
     checkpoint== Mapa::Instance()->getAltura()*32 - 32*9.5;
+    pierdo = false;
+    
+    std::stringstream ss;
+    vidas = 5;
+    ss<<vidas;
+    posx_vida = 15;
+    posy_vida= posy +200;
+    
+    text_vidas.setParams(ss.str(), 13, posx_vida,posy_vida);
+    sprite_vidas.setParams(4,0,32,32, posx_vida+15,posy_vida+3);
+    sprite_vidas.setScale(1.5,1.5);
+    
+     
+    text_perder.setParams("HAS PERDIDO", 30, 0, 0);
+    
     
    // sprite.setPosition(224, alturasuelo);
 }
@@ -101,6 +120,9 @@ void Personaje::moverSalto(){
 }
 
 void Personaje::mover(float timeElapsed){
+    
+    
+   
     
     int rx = boxDerecha.getPosition().x / 32;
     int ry = boxDerecha.getPosition().y / 32;
@@ -254,11 +276,15 @@ void Personaje::mover(float timeElapsed){
             alturasuelo=checkpoint;
             alturasuelo_nueva = checkpoint;
             sprite.setPosition(200, alturasuelo);
+            vidas--;
+            actualizarVidas();
+            if(vidas==0){       
+             pierdo = true;
+             text_perder.setPosition(30, sprite.getPosy()-30);
+    }
             break;
     }
-    
-           
-    
+
     
     if(check_pared == true){
         
@@ -282,7 +308,9 @@ void Personaje::mover(float timeElapsed){
     if (valorderecha == 0 && valorizquierda == 0 && direccion==0){
         velocidad.y=0.6;
     }
+    
     gravity(timeElapsed);
+    
     
     //std::cout<<"bajo"<<velocidad.x<<"\n"; 
     
@@ -290,6 +318,11 @@ void Personaje::mover(float timeElapsed){
     if(sprite.getSprite().getPosition().y > alturasuelo){
         sprite.setPosition(sprite.getSprite().getPosition().x, alturasuelo);
     }
+    
+    
+    
+     text_vidas.setPosition(posx_vida+15, sprite.getPosy()-376);  
+     sprite_vidas.setPosition(posx_vida+22,sprite.getPosy()-373);
     
     //std::cout<<"arriba"<<velocidad.x<<"\n";      
    /* boxAbajo.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
@@ -304,9 +337,7 @@ void Personaje::mover(float timeElapsed){
     posx = sprite.getPosition().x;
     posy = sprite.getPosition().y;*/
     
-    if(check_pared == false){
-        actualizarSprite();
-    }
+    
     
 }
 
@@ -316,11 +347,16 @@ int Personaje::getEspacios(){
 
 
 void Personaje::actualizarSprite(){
+   if(check_pared == false){
     if(nsprite == max_sprites){
         nsprite = 0;
     }
      sprite.setFrame(nsprite,2); // dos porque es la fila 2
     nsprite++;
+    
+    //actualizo la pos de las vidas   
+   
+   }
 }
 
 
@@ -385,4 +421,22 @@ void Personaje::estoyRoja(int y){
     
     void Personaje::draw(){
         sprite.draw();
+        sprite_vidas.draw();
+        text_vidas.draw();
+        if(pierdo ==true){
+            text_perder.draw();
+        }
     }
+    
+     void Personaje::update(float timeElapsed){
+         mover(timeElapsed);         
+         actualizarSprite();
+        
+     }
+     
+     void Personaje::actualizarVidas(){
+         std::stringstream ss;
+         ss<<vidas;
+         text_vidas.setText(ss.str());
+         
+     }
