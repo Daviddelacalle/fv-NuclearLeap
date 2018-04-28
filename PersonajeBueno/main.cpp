@@ -96,13 +96,12 @@ float minimo(float a, float b){
 }
 
 int main() {   
-    Motor_2D* motor = Motor_2D::Instance();
+    
     //MAPA Y CAMARA
     Mapa* map = Mapa::Instance();
- 
-    int tiles =map->getAltura() * 32;
     
-    sf::View view(sf::FloatRect(0, tiles, 448, 700));
+    Motor_2D* motor = Motor_2D::Instance();
+
     
      sf::Music sonido;
     if(!sonido.openFromFile("resources/conga.ogg")){
@@ -187,8 +186,9 @@ int main() {
             
         }
         //AJUSTAR VISTA A LA POSICION DEL PERSONAJE
-        view.setCenter(224,pj.getSprite().getPosy()-64);
         
+        //view.setCenter(224,pj.getSprite().getPosy()-64);
+        motor->getVistaPrincipal()->setCenter(224,pj.getSprite().getPosy()-64);
         //INTERPOLACION
         
         //El update es una funcion que se ejecuta solo 15veces por segundo
@@ -218,10 +218,14 @@ int main() {
         motor->getWindow()->clear();
         
         
-        motor->getWindow()->setView(view);
-               
+        //motor->getWindow()->setView(view);
+        
+        motor->setVistaPrincipal();
+        
         sf::Sprite img_fondo = map->getFondo();
-        img_fondo.setPosition(0,view.getCenter().y-400);
+        //img_fondo.setPosition(0,view.getCenter().y-400);
+        img_fondo.setPosition(0,motor->getVistaPrincipal()->getCenter().y-400);
+        pj.setPosVidas();
         motor->getWindow()->draw(img_fondo);
         
         map->activarCapa(3);

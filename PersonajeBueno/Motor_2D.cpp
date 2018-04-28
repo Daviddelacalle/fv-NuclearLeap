@@ -25,10 +25,17 @@ Motor_2D* Motor_2D::Instance() {
 
 Motor_2D::Motor_2D() { 
     window = new sf::RenderWindow(sf::VideoMode(448,700),"PersonajeBueno");
+    Mapa* map = Mapa::Instance();
+    vista_principal = new sf::View(sf::FloatRect(0, map->getAltura()*32 , 448, 700));
 }
 
 sf::RenderWindow* Motor_2D::getWindow(){
     return window;
+}
+
+
+sf::View* Motor_2D::getVistaPrincipal(){
+    return vista_principal;
 }
 
 void Motor_2D::draw(sf::Sprite& _sprite){
@@ -39,4 +46,7 @@ void Motor_2D::draw(sf::Text& _text){
     window->draw(_text);
 }
 
+void Motor_2D::setVistaPrincipal(){
+    window->setView(*vista_principal);
+}
 

@@ -14,6 +14,7 @@
 #include "Personaje.h"
 #include "mapa.h"
 #include "Mi_Texto.h"
+#include "Motor_2D.h"
 
 
 Personaje::Personaje(){
@@ -72,7 +73,7 @@ Personaje::Personaje(){
     std::stringstream ss;
     vidas = 5;
     ss<<vidas;
-    posx_vida = 15;
+    posx_vida = 60;
     posy_vida= posy +200;
     
     text_vidas.setParams(ss.str(), 13, posx_vida,posy_vida);
@@ -318,11 +319,7 @@ void Personaje::mover(float timeElapsed){
     if(sprite.getSprite().getPosition().y > alturasuelo){
         sprite.setPosition(sprite.getSprite().getPosition().x, alturasuelo);
     }
-    
-    
-    
-     text_vidas.setPosition(posx_vida+15, sprite.getPosy()-376);  
-     sprite_vidas.setPosition(posx_vida+22,sprite.getPosy()-373);
+
     
     //std::cout<<"arriba"<<velocidad.x<<"\n";      
    /* boxAbajo.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
@@ -428,10 +425,15 @@ void Personaje::estoyRoja(int y){
         }
     }
     
-     void Personaje::update(float timeElapsed){
-         mover(timeElapsed);         
-         actualizarSprite();
+     void Personaje::update(float timeElapsed){        
+        mover(timeElapsed);      
+        actualizarSprite();
         
+     }
+     void Personaje::setPosVidas(){
+        Motor_2D* motor = Motor_2D::Instance();
+        text_vidas.setPosition(posx_vida -7 ,motor->getVistaPrincipal()->getCenter().y -330);  
+        sprite_vidas.setPosition(posx_vida,motor->getVistaPrincipal()->getCenter().y-327); 
      }
      
      void Personaje::actualizarVidas(){

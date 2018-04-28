@@ -15,13 +15,16 @@
 #define MOTOR_2D_H
 
 #include "config.h"
+#include "mapa.h"
 
 class Motor_2D {
 public:
     static Motor_2D* Instance();
     sf::RenderWindow* getWindow();
+    sf::View* getVistaPrincipal();
     void draw(sf::Sprite &_sprite);
     void draw(sf::Text &_text);
+    void setVistaPrincipal();
     
 protected:
     Motor_2D();
@@ -31,6 +34,7 @@ protected:
 private: 
     static Motor_2D* pinstance;
     sf::RenderWindow* window;
+    sf::View* vista_principal;
 
 };
 

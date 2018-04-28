@@ -46,7 +46,7 @@ public:
     int var1;
     void update(float);
     void actualizarVidas();
-    
+    void setPosVidas();
     
     
 private:
