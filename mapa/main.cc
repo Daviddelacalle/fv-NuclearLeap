@@ -61,6 +61,10 @@ int main()
                 sprite.move(+10,0);
             }
             view.setCenter(224,sprite.getPosition().y-64);
+            
+            if(sprite.getPosition().y < map->getAltZonas(1))
+                map->setFondo(1);
+            
         }
         window.setView(view);
         window.clear();      
