@@ -169,9 +169,9 @@ void Npc1::movimiento(){
 }
 
 void Npc1::actualizarBox(){
-    box_up.setPosition(posx,posy-(tam/2));
-    box_left.setPosition(posx-(tam/div_box),posy+2);
-    box_right.setPosition(posx+(tam/div_box),posy+2);
+    box_up.setPosition(posx,posy-(tam/6));
+    box_left.setPosition(posx-(tam/div_box),posy+10);
+    box_right.setPosition(posx+(tam/div_box),posy+10);
     box_down.setPosition(posx+20*dirx,posy+20);
 }
 

@@ -132,7 +132,7 @@ int main() {
     //INICIALIZAR OBJETOS
     
     Personaje pj;
-    Npc3 npc5(200,10650);
+    Npc3 npc5(200,10642);
     //INICIALIZAR VARIABLES
     
     float tiempo_update;
