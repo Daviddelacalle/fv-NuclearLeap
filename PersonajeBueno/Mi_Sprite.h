@@ -23,8 +23,8 @@ public:
     float getPosy();
     float getScaley();
     float getScalex();
-    
     sf::Sprite getSprite();
+    
     void setPosition(float, float);
     void setFrame(int,int);
     void move(float,float);

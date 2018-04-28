@@ -15,8 +15,10 @@
 #include "mapa.h"
 
 Npc::Npc(float _posx, float _posy) {
-    posx = (float)_posx;
-    posy = (float)_posy;
+    posx = _posx;
+    posy = _posy;
+    posix = _posx;
+    posiy = _posy;
     dirx = 1;
     diry = 0;
     nsprite = 0;
@@ -27,8 +29,9 @@ Mi_Sprite Npc::getSprite(){
 }
 
 void Npc::setPosition(float _x, float _y){
-    posx = (float)_x;
-    posy = (float)_y;
+    posx = _x;
+    posy = _y;
+    sprite.setPosition(_x,_y);
 }
 
 void Npc::actualizarSprite(){
@@ -54,7 +57,6 @@ sf::RectangleShape Npc::getBox_left(){
 sf::RectangleShape Npc::getBox_down(){
     return box_down;
 }
-
 
 //NPC1
 
@@ -164,8 +166,15 @@ void Npc1::movimiento(){
     posx = posx + dirx*npcVel;
     
     sprite.setPosition(posx,posy);
+    
+}
+
+void Npc1::update(Personaje& _pj){
+    
+    movimiento();
     actualizarBox();
     actualizarSprite();
+    matarPj(_pj);
 }
 
 void Npc1::actualizarBox(){
@@ -175,9 +184,20 @@ void Npc1::actualizarBox(){
     box_down.setPosition(posx+20*dirx,posy+20);
 }
 
+void Npc1::matarPj(Personaje& _pj){
+    if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_up.getGlobalBounds())){
+        setPosition(5000,5000);
+    }
+    else if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_left.getGlobalBounds()) || _pj.getSprite().getSprite().getGlobalBounds().intersects(box_right.getGlobalBounds()) ){
+        setPosition(posix,posiy);
+        _pj.morir();
+    }
+}
+
+
 //NPC3
 
-Npc3::Npc3(float _posx, float _posy):Npc1(_posx,_posy){
+Npc3::Npc3(float _posx, float _posy):Npc(_posx,_posy){
     tam = 64;
     max_sprites = 8;
     line_sprite = 1;
@@ -205,6 +225,100 @@ Npc3::Npc3(float _posx, float _posy):Npc1(_posx,_posy){
     box_right.setPosition(posx+32,posy+2);
     box_right.setFillColor(sf::Color::Red);
 }
+void Npc3::movimiento(){
+    
+    int rx = box_right.getPosition().x / 32;
+    int ry = box_right.getPosition().y / 32;
+    int lx = box_left.getPosition().x / 32;
+    int ly = box_left.getPosition().y / 32;
+    int ux = box_up.getPosition().x / 32;
+    int uy = box_up.getPosition().y / 32;
+    int dx = box_down.getPosition().x / 32;
+    int dy = box_down.getPosition().y / 32;
+    
+    Mapa::Instance()->activarCapa(0);
+    
+    int vr = Mapa::Instance()->getTile(rx,ry);
+    int vl = Mapa::Instance()->getTile(lx,ly);
+    int vu = Mapa::Instance()->getTile(ux,uy);
+    int vd = Mapa::Instance()->getTile(dx,dy);
+    
+    cout << "vd: " << vd << "\n";
+    
+    if(dirx == 1){
+        if(vd != 7 && vd != 3 && vd != 4){
+            dirx = -1;
+            sprite.setScale(-1,1);
+        }
+    }
+    
+    else if(dirx == -1){
+        if(vd != 7 && vd != 3 && vd != 4){
+            dirx = +1;
+            sprite.setScale(1,1);
+        }
+    }
+    
+    if(dirx == 1){
+        if(vr != 0){
+            dirx = -1;
+            sprite.setScale(-1,1);
+        }
+    }
+    
+    if(dirx == -1){
+        if(vl != 0){
+            dirx = +1;
+            sprite.setScale(1,1);
+        }
+    }
+    
+    /*
+    if(dirx == 1){
+        if(!box_right.getGlobalBounds().intersects(EL BLOQUE DEL MAPA)){
+            dirx = -1;
+            sprite.scale(-1,1);
+            //el box de la derecha detecta que salga de la plataforma
+        }
+    }
+    
+    if(dirx == -1){
+        if(!box_right.getGlobalBounds().intersects(EL BLOQUE DEL MAPA)){
+            dirx = 1;
+            sprite.scale(-1,1);
+        }
+    }
+    */
+    
+    
+    posx = posx + dirx*npcVel;
+    
+    sprite.setPosition(posx,posy);
+    
+}
+
+void Npc3::update(Personaje& _pj){
+    
+    movimiento();
+    actualizarBox();
+    actualizarSprite();
+    matarPj(_pj);
+}
+
+void Npc3::actualizarBox(){
+    box_up.setPosition(posx,posy-(tam/6));
+    box_left.setPosition(posx-(tam/div_box),posy+10);
+    box_right.setPosition(posx+(tam/div_box),posy+10);
+    box_down.setPosition(posx+20*dirx,posy+20);
+}
+
+void Npc3::matarPj(Personaje& _pj){
+    if(_pj.getSprite().getSprite().getGlobalBounds().intersects(sprite.getSprite().getGlobalBounds())){
+        setPosition(posix,posiy);
+        _pj.morir();
+        
+    }
+}
 
 Npc5::Npc5(float _posx, float _posy):Npc(_posx, _posy){
     tam = 64;
@@ -215,7 +329,7 @@ Npc5::Npc5(float _posx, float _posy):Npc(_posx, _posy){
         exit(0);
     }
 
-    sprite.setParams(8,0,32,32,200,10700);
+    sprite.setParams(8,0,32,32,_posx,_posy);
     //COLISIONADORES
     box_up = sf::RectangleShape(sf::Vector2f(60,1));
     box_up.setOrigin(30,0);
@@ -325,9 +439,7 @@ void Npc5::movimiento(Personaje &_pj){
     posx = posx + dirx*npcVel;
     posy = posy + diry*npcVel;
     
-    sprite.setPosition(posx,posy);
-    actualizarBox();
-    actualizarSprite();
+    setPosition(posx,posy);
 }
 
 void Npc5::actualizarBox(){
@@ -337,5 +449,19 @@ void Npc5::actualizarBox(){
     box_down.setPosition(posx,posy+(tam/2 - 2));
 }
 
+void Npc5::update(Personaje &_pj){
+    movimiento(_pj);
+    actualizarBox();
+    actualizarSprite();
+    matarPj(_pj);
+}
 
+
+void Npc5::matarPj(Personaje& _pj){
+    if(_pj.getSprite().getSprite().getGlobalBounds().intersects(sprite.getSprite().getGlobalBounds())){
+        setPosition(posix,posiy);
+        _pj.morir();
+        
+    }
+}
 

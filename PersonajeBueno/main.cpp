@@ -21,11 +21,11 @@
 /*
  * 
  */
-void update( State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &npc5);
-void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5);
+void update( State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc1 &npc5);
+void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc1 &_npc5);
 float minimo(float,float);
 
-void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &_npc5){
+void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc1 &_npc5){
     /*
     int posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
     int posy = _lastState.getPosy() + (kVel*timeElapsed + 0.5f);
@@ -33,7 +33,7 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3
     
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
     _pj.update(timeElapsed);
-    _npc5.movimiento();
+    _npc5.update(_pj);
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
     _newState.setPosx(posx);
@@ -47,7 +47,7 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3
     _npc_S.setPosy(_npc5.getSprite().getPosy());
 }
 
-void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5){
+void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc1 &_npc5){
     
     //CALCULAMOS LA POSICION INTERPOLADA PARA CUANDO NO SE EJECUTA EL UDPATE
   
@@ -132,7 +132,7 @@ int main() {
     //INICIALIZAR OBJETOS
     
     Personaje pj;
-    Npc3 npc5(200,10642);
+    Npc1 npc5(200,10350);
     //INICIALIZAR VARIABLES
     
     float tiempo_update;

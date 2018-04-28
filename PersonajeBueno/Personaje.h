@@ -47,6 +47,7 @@ public:
     void update(float);
     void actualizarVidas();
     void setPosVidas();
+    void morir();
     
     
     

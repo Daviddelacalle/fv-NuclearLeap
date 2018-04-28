@@ -272,19 +272,12 @@ void Personaje::mover(float timeElapsed){
             break;
     }
     
-    /*switch(valorpersonaje){
+    switch(valorpersonaje){
         case 5:
-            alturasuelo=checkpoint;
-            alturasuelo_nueva = checkpoint;
-            sprite.setPosition(200, alturasuelo);
-            vidas--;
-            actualizarVidas();
-            if(vidas==0){       
-             pierdo = true;
-             text_perder.setPosition(30, sprite.getPosy()-30);
-    }
+            morir();
             break;
-    }*/
+    }
+    
 
     
     if(check_pared == true){
@@ -441,4 +434,16 @@ void Personaje::estoyRoja(int y){
          ss<<vidas;
          text_vidas.setText(ss.str());
          
+     }
+
+     void Personaje::morir(){
+        alturasuelo=checkpoint;
+        alturasuelo_nueva = checkpoint;
+        sprite.setPosition(200, alturasuelo);
+        vidas--;
+        actualizarVidas();
+        if(vidas==0){       
+            pierdo = true;
+            text_perder.setPosition(30, sprite.getPosy()-30);
+        }
      }
