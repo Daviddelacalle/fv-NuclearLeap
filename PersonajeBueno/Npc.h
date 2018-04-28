@@ -20,14 +20,15 @@
 
 class Npc {
 public:
-    Npc(int,int);
+    Npc(float,float);
     Mi_Sprite getSprite();
     void actualizarSprite();
     void draw();
     sf::RectangleShape getBox_up();
     sf::RectangleShape getBox_left();
     sf::RectangleShape getBox_right();
-    void setPosition(int,int);
+    void setPosition(float,float);
+    sf::RectangleShape getBox_down();
     
 protected:
     float posx;
@@ -44,33 +45,34 @@ protected:
     sf::RectangleShape box_up;
     sf::RectangleShape box_left;
     sf::RectangleShape box_right;
-    
+    sf::RectangleShape box_down;
+
 };
 
 class Npc1: public Npc{
     private:
-    void check_morir();
+        
     
     protected:
-        
+        float div_box;
     public: 
+        void check_morir();
         void actualizarBox();
-        Npc1(int,int);
+        Npc1(float,float);
         void movimiento();
 };
 
 class Npc3: public Npc1{
     public: 
-        Npc3(int,int);
+        Npc3(float,float);
 };
 
 class Npc5: public Npc{
     private:
         sf::RectangleShape box_down;
     public: 
-        Npc5(int,int);
+        Npc5(float,float);
         void movimiento(Personaje &_pj);
-        sf::RectangleShape getBox_down();
         void actualizarBox();
 };
 

@@ -146,7 +146,7 @@ void Personaje::mover(float timeElapsed){
     //cout << "(x,y) = " << rx << " , " << ry <<  " : "<< valorderecha << endl;
     //cout << "(x,y) = " << lx << " , " << ly <<  " : "<< valorizquierda << endl;
     //cout << "(x,y) = " << dx << " , " << dy <<  " : "<< valorabajo << endl;
-    cout << "(x,y) = " << ux << " , " << uy <<  " : "<< valorarriba << endl;
+    //cout << "(x,y) = " << ux << " , " << uy <<  " : "<< valorarriba << endl;
     
     
     switch(valorarriba){
@@ -156,7 +156,7 @@ void Personaje::mover(float timeElapsed){
         
         case 7: 
             velocidad.y =0.1;
-            cout<<"HOLA \n";
+            //cout<<"HOLA \n";
             break;
             
         case 8:
@@ -234,7 +234,7 @@ void Personaje::mover(float timeElapsed){
         case 57:
             
             sf::Vector2f vector = Mapa::Instance()->getCoordenadas(58);
-            cout<<vector.x<<"y"<<vector.y;
+            //<<vector.x<<"y"<<vector.y;
             sprite.getSprite().setPosition(vector);
             break;
         
@@ -272,7 +272,7 @@ void Personaje::mover(float timeElapsed){
             break;
     }
     
-    switch(valorpersonaje){
+    /*switch(valorpersonaje){
         case 5:
             alturasuelo=checkpoint;
             alturasuelo_nueva = checkpoint;
@@ -284,7 +284,7 @@ void Personaje::mover(float timeElapsed){
              text_perder.setPosition(30, sprite.getPosy()-30);
     }
             break;
-    }
+    }*/
 
     
     if(check_pared == true){
@@ -298,7 +298,7 @@ void Personaje::mover(float timeElapsed){
         }
     }
     
-    cout << "Checkpoint: " << checkpoint << "\n";
+    //cout << "Checkpoint: " << checkpoint << "\n";
     
     
     if(sprite.getSprite().getPosition().y + sprite.getSprite().getScale().y >= alturasuelo  || espacio > 0 && check_pared == true){

@@ -21,11 +21,11 @@
 /*
  * 
  */
-void update( State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc5 &npc5);
-void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc5 &_npc5);
+void update( State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &npc5);
+void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5);
 float minimo(float,float);
 
-void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc5 &_npc5){
+void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &_npc5){
     /*
     int posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
     int posy = _lastState.getPosy() + (kVel*timeElapsed + 0.5f);
@@ -33,7 +33,7 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc5
     
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
     _pj.update(timeElapsed);
-    _npc5.movimiento(_pj);
+    _npc5.movimiento();
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
     _newState.setPosx(posx);
@@ -47,7 +47,7 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc5
     _npc_S.setPosy(_npc5.getSprite().getPosy());
 }
 
-void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc5 &_npc5){
+void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5){
     
     //CALCULAMOS LA POSICION INTERPOLADA PARA CUANDO NO SE EJECUTA EL UDPATE
   
@@ -77,11 +77,16 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     _pj.draw();
     _npc5.draw();
     
+    _window.draw(_npc5.getBox_down());
+    _window.draw(_npc5.getBox_right());
+    _window.draw(_npc5.getBox_left());
+    _window.draw(_npc5.getBox_up());
+    /*
     _window.draw(_pj.getBoxAbajo());
     _window.draw(_pj.getBoxArriba());
     _window.draw(_pj.getBoxDerecha());
     _window.draw(_pj.getBoxIzquierda());
-   
+    */
     
 }
 float minimo(float a, float b){
@@ -127,7 +132,7 @@ int main() {
     //INICIALIZAR OBJETOS
     
     Personaje pj;
-    Npc5 npc5(200,10800);
+    Npc3 npc5(200,10650);
     //INICIALIZAR VARIABLES
     
     float tiempo_update;

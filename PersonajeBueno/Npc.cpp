@@ -12,8 +12,9 @@
  */
 
 #include "Npc.h"
+#include "mapa.h"
 
-Npc::Npc(int _posx, int _posy) {
+Npc::Npc(float _posx, float _posy) {
     posx = (float)_posx;
     posy = (float)_posy;
     dirx = 1;
@@ -25,7 +26,7 @@ Mi_Sprite Npc::getSprite(){
     return sprite;
 }
 
-void Npc::setPosition(int _x, int _y){
+void Npc::setPosition(float _x, float _y){
     posx = (float)_x;
     posy = (float)_y;
 }
@@ -50,21 +51,25 @@ sf::RectangleShape Npc::getBox_right(){
 sf::RectangleShape Npc::getBox_left(){
     return box_left;
 }
+sf::RectangleShape Npc::getBox_down(){
+    return box_down;
+}
 
 
 //NPC1
 
-Npc1::Npc1(int _posx, int _posy):Npc(_posx,_posy){
+Npc1::Npc1(float _posx, float _posy):Npc(_posx,_posy){
     tam = 32;
     max_sprites = 4;
     line_sprite = 0;
+    div_box = 2;
     
      if (!tex.loadFromFile("sprites/npc1.png")){
         std::cout << "Error cargando la imagen sprites.png";
         exit(0);
     }
     
-    sprite.setParams(0,0,32,32,200,10700);
+    sprite.setParams(0,0,32,32,_posx,_posy);
     
     
     //COLISIONADORES
@@ -84,9 +89,60 @@ Npc1::Npc1(int _posx, int _posy):Npc(_posx,_posy){
     box_right.setPosition(posx+16,posy+2);
     box_right.setFillColor(sf::Color::Red);
     
+    box_down = sf::RectangleShape(sf::Vector2f(1,4));
+    box_down.setOrigin(0,8);
+    box_down.setPosition(posx+16*dirx,posy+2);
+    box_down.setFillColor(sf::Color::Red);
 }
 
 void Npc1::movimiento(){
+    
+    int rx = box_right.getPosition().x / 32;
+    int ry = box_right.getPosition().y / 32;
+    int lx = box_left.getPosition().x / 32;
+    int ly = box_left.getPosition().y / 32;
+    int ux = box_up.getPosition().x / 32;
+    int uy = box_up.getPosition().y / 32;
+    int dx = box_down.getPosition().x / 32;
+    int dy = box_down.getPosition().y / 32;
+    
+    Mapa::Instance()->activarCapa(0);
+    
+    int vr = Mapa::Instance()->getTile(rx,ry);
+    int vl = Mapa::Instance()->getTile(lx,ly);
+    int vu = Mapa::Instance()->getTile(ux,uy);
+    int vd = Mapa::Instance()->getTile(dx,dy);
+    
+    cout << "vd: " << vd << "\n";
+    
+    if(dirx == 1){
+        if(vd != 7 && vd != 3 && vd != 4){
+            dirx = -1;
+            sprite.setScale(-1,1);
+        }
+    }
+    
+    else if(dirx == -1){
+        if(vd != 7 && vd != 3 && vd != 4){
+            dirx = +1;
+            sprite.setScale(1,1);
+        }
+    }
+    
+    if(dirx == 1){
+        if(vr != 0){
+            dirx = -1;
+            sprite.setScale(-1,1);
+        }
+    }
+    
+    if(dirx == -1){
+        if(vl != 0){
+            dirx = +1;
+            sprite.setScale(1,1);
+        }
+    }
+    
     /*
     if(dirx == 1){
         if(!box_right.getGlobalBounds().intersects(EL BLOQUE DEL MAPA)){
@@ -104,8 +160,8 @@ void Npc1::movimiento(){
     }
     */
     
+    
     posx = posx + dirx*npcVel;
-    posy = posy + dirx*npcVel;
     
     sprite.setPosition(posx,posy);
     actualizarBox();
@@ -114,22 +170,24 @@ void Npc1::movimiento(){
 
 void Npc1::actualizarBox(){
     box_up.setPosition(posx,posy-(tam/2));
-    box_left.setPosition(posx-(tam/2),posy+2);
-    box_right.setPosition(posx+(tam/2),posy+2);
+    box_left.setPosition(posx-(tam/div_box),posy+2);
+    box_right.setPosition(posx+(tam/div_box),posy+2);
+    box_down.setPosition(posx+20*dirx,posy+20);
 }
 
 //NPC3
 
-Npc3::Npc3(int _posx, int _posy):Npc1(_posx,_posy){
+Npc3::Npc3(float _posx, float _posy):Npc1(_posx,_posy){
     tam = 64;
     max_sprites = 8;
     line_sprite = 1;
+    div_box = 3;
      if (!tex.loadFromFile("sprites/npc3.png")){
         std::cout << "Error cargando la imagen sprites.png";
         exit(0);
     }
     
-    sprite.setParams(0,1,32,32,200,10700);
+    sprite.setParams(0,1,32,32,_posx,_posy);
     
     //COLISIONADORES
     box_up = sf::RectangleShape(sf::Vector2f(60,1));
@@ -148,7 +206,7 @@ Npc3::Npc3(int _posx, int _posy):Npc1(_posx,_posy){
     box_right.setFillColor(sf::Color::Red);
 }
 
-Npc5::Npc5(int _posx, int _posy):Npc(_posx, _posy){
+Npc5::Npc5(float _posx, float _posy):Npc(_posx, _posy){
     tam = 64;
     max_sprites = 6;
     line_sprite = 3;
@@ -214,6 +272,38 @@ void Npc5::movimiento(Personaje &_pj){
 
     }
     
+    int rx = box_right.getPosition().x / 32;
+    int ry = box_right.getPosition().y / 32;
+    int lx = box_left.getPosition().x / 32;
+    int ly = box_left.getPosition().y / 32;
+    int ux = box_up.getPosition().x / 32;
+    int uy = box_up.getPosition().y / 32;
+    int dx = box_down.getPosition().x / 32;
+    int dy = box_down.getPosition().y / 32;
+    
+    Mapa::Instance()->activarCapa(0);
+    
+    int vr = Mapa::Instance()->getTile(rx,ry);
+    int vl = Mapa::Instance()->getTile(lx,ly);
+    int vu = Mapa::Instance()->getTile(ux,uy);
+    int vd = Mapa::Instance()->getTile(dx,dy);
+    
+    if(vr != 0){
+        //dirx = -1;
+        setPosition(posx - npcVel, posy);
+    }
+    if(vl != 0){
+        //dirx = 1;
+        setPosition(posx + npcVel, posy);
+    }
+    if(vu !=0){
+        //diry = +1;
+        setPosition(posx, posy + npcVel);
+    }
+    if(vd != 0){
+        //diry = -1;
+        setPosition(posx, posy - npcVel);
+    }
     /*Llamar a la funcion de javi que me dice el numero del tiled
      
      if(box_up.getPosition == plataforma){
@@ -246,4 +336,6 @@ void Npc5::actualizarBox(){
     box_right.setPosition(posx+(tam/2),posy);
     box_down.setPosition(posx,posy+(tam/2 - 2));
 }
+
+
 

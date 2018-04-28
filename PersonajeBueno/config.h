@@ -20,7 +20,7 @@
 #include <string>
 
 #define kVel 0.150
-#define npcVel 2
+#define npcVel 0.5
 #define kGrav 0.002
 #define kGravP 0.0002
 #define UPDATE_TICK_TIME 1000/60 

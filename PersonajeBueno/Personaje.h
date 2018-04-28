@@ -49,6 +49,7 @@ public:
     void setPosVidas();
     
     
+    
 private:
     int posy_vida;
     int posx_vida;
