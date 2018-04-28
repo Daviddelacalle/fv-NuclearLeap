@@ -38,6 +38,10 @@ sf::View* Motor_2D::getVistaPrincipal(){
     return vista_principal;
 }
 
+float Motor_2D::get_clockElapsedTime(){
+    return clock.getElapsedTime().asMilliseconds();
+}
+
 void Motor_2D::draw(sf::Sprite& _sprite){
     window->draw(_sprite);
 }
@@ -50,3 +54,6 @@ void Motor_2D::setVistaPrincipal(){
     window->setView(*vista_principal);
 }
 
+void Motor_2D::restartClock(){
+    clock.restart();
+}

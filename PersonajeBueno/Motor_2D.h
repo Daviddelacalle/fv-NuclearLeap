@@ -22,9 +22,13 @@ public:
     static Motor_2D* Instance();
     sf::RenderWindow* getWindow();
     sf::View* getVistaPrincipal();
+    float get_clockElapsedTime();
+    
     void draw(sf::Sprite &_sprite);
     void draw(sf::Text &_text);
     void setVistaPrincipal();
+    void restartClock();
+    
     
 protected:
     Motor_2D();
@@ -35,6 +39,7 @@ private:
     static Motor_2D* pinstance;
     sf::RenderWindow* window;
     sf::View* vista_principal;
+    sf::Clock clock;
 
 };
 

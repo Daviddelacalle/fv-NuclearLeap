@@ -56,6 +56,10 @@ float Mi_Sprite::getScaley(){
     return sprite.getScale().y;
 }
 
+float Mi_Sprite::get_clockElapsedTime(){
+    return clock.getElapsedTime().asMilliseconds();
+}
+
 sf::Sprite Mi_Sprite::getSprite(){
     return sprite;
 }
@@ -79,4 +83,8 @@ void Mi_Sprite::setScale(float _x, float _y){
 void Mi_Sprite::draw(){
     Motor_2D *mi_motor = Motor_2D::Instance();
     mi_motor->draw(sprite);
+}
+
+void Mi_Sprite::restartClock(){
+    clock.restart();
 }

@@ -42,6 +42,7 @@ protected:
     int line_sprite;
     int max_sprites;
     int tam;
+    int vel_actualizar;
     
     sf::Texture tex;
     Mi_Sprite sprite;

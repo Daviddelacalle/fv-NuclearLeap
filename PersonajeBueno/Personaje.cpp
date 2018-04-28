@@ -337,15 +337,18 @@ int Personaje::getEspacios(){
 
 
 void Personaje::actualizarSprite(){
-   if(check_pared == false){
-    if(nsprite == max_sprites){
-        nsprite = 0;
-    }
-     sprite.setFrame(nsprite,2); // dos porque es la fila 2
-    nsprite++;
     
-    //actualizo la pos de las vidas   
    
+    if(sprite.get_clockElapsedTime() > 50){
+        if(check_pared == false){
+            if(nsprite == max_sprites){
+                nsprite = 0;
+            }
+            sprite.setFrame(nsprite,2); // dos porque es la fila 2
+            nsprite++;    
+        sprite.restartClock();
+    }
+    //actualizo la pos de las vidas   
    }
 }
 

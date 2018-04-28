@@ -24,6 +24,7 @@ public:
     float getScaley();
     float getScalex();
     sf::Sprite getSprite();
+    float get_clockElapsedTime();
     
     void setPosition(float, float);
     void setFrame(int,int);
@@ -31,9 +32,12 @@ public:
     void setScale(float,float);
     void setParams(int, int , int, int ,int, int);
     void draw();
+    void restartClock();
+    
 private:
     sf::Sprite sprite;
     sf::Texture tex;
+    sf::Clock clock;
 };
 
 #endif /* MI_SPRITE_H */

@@ -13,6 +13,7 @@
 
 #include "Npc.h"
 #include "mapa.h"
+#include "Motor_2D.h"
 
 Npc::Npc(float _posx, float _posy) {
     posx = _posx;
@@ -35,11 +36,14 @@ void Npc::setPosition(float _x, float _y){
 }
 
 void Npc::actualizarSprite(){
-    if(nsprite == max_sprites){
-        nsprite = 0;
+    if(sprite.get_clockElapsedTime() > vel_actualizar){
+        if(nsprite == max_sprites){
+            nsprite = 0;
+        }
+        sprite.setFrame(nsprite , line_sprite);
+        nsprite++;     
+        sprite.restartClock();
     }
-    sprite.setFrame(nsprite , line_sprite);
-    nsprite++;
 }
 
 void Npc::draw(){
@@ -65,6 +69,7 @@ Npc1::Npc1(float _posx, float _posy):Npc(_posx,_posy){
     max_sprites = 4;
     line_sprite = 0;
     div_box = 2;
+    vel_actualizar = 200;
     
      if (!tex.loadFromFile("sprites/npc1.png")){
         std::cout << "Error cargando la imagen sprites.png";
@@ -202,6 +207,7 @@ Npc3::Npc3(float _posx, float _posy):Npc(_posx,_posy){
     max_sprites = 8;
     line_sprite = 1;
     div_box = 3;
+    vel_actualizar = 100;
      if (!tex.loadFromFile("sprites/npc3.png")){
         std::cout << "Error cargando la imagen sprites.png";
         exit(0);
@@ -324,6 +330,7 @@ Npc5::Npc5(float _posx, float _posy):Npc(_posx, _posy){
     tam = 64;
     max_sprites = 6;
     line_sprite = 3;
+    vel_actualizar = 80;
      if (!tex.loadFromFile("sprites/npc5.png")){
         std::cout << "Error cargando la imagen sprites.png";
         exit(0);
