@@ -324,18 +324,23 @@ int Mapa::getTile(float x, float y){
     int tile = _tilemap[capa][(int)y][(int)x];
     return tile;
 }
- sf::Vector2f Mapa::getCoordenadas(int tile){
-    sf::Vector2f vec;
-    vec.x =0; vec.y=0;
-    for(int l=0; l<_height; l++){
-        for(int y=0; y<_width; y++){
-           if(_tilemap[capa][l][y] == tile){
-               vec.x=y;
-               vec.y=l;
+ std::vector<std::vector<int>> Mapa::getCoordenadas(int tile){
+    std::vector<std::vector<int>> coordenadas;
+    int cont=0;
+    
+    for(int y=0; y<_height; y++){
+        for(int x=0; x<_width; x++){
+           if(_tilemap[capa][y][x] == tile){
+               cont++;
+               coordenadas.resize(cont);
+               std::vector<int> temp(2);
+               temp.push_back(x);
+               temp.push_back(y);
+               coordenadas.push_back(temp);
            }           
         }
     }
-    return vec;
+    return coordenadas;
 }
  
 int Mapa::getAltura(){

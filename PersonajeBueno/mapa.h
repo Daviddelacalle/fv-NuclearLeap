@@ -22,7 +22,7 @@ public:
     int getTile(float, float);
     int getAltura();
     sf::Sprite getFondo();
-    sf::Vector2f getCoordenadas(int);
+    std::vector<std::vector<int>> getCoordenadas(int);
     void setFondo(int);
     int getAltZonas(int);
     int bloqRandom(std::vector<int>);

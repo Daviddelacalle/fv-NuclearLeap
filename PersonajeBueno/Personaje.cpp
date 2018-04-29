@@ -232,10 +232,16 @@ void Personaje::mover(float timeElapsed){
             break;
             
         case 57:
+            /*
+            std::vector<std::vector<int>> coordenadas = Mapa::Instance()->getCoordenadas(58);
+            for(int i=0; i<coordenadas.size(); i++){
+                std::vector<int> pos_tile = coordenadas[i];
+                int x  = pos_tile[0];
+                int y  = pos_tile[1];
+                sprite.getSprite().setPosition(x,y);
+            }
+            */
             
-            sf::Vector2f vector = Mapa::Instance()->getCoordenadas(58);
-            //<<vector.x<<"y"<<vector.y;
-            sprite.getSprite().setPosition(vector);
             break;
         
     }
