@@ -16,6 +16,7 @@
 #include "tinyxml2.h"
 #include "mapa.h"
 #include "Rads.h"
+#include "Personaje.h"
 using namespace tinyxml2;
 
 Mapa* Mapa::pinstance = 0;// Inicializar el puntero
@@ -328,7 +329,9 @@ void Mapa::draw(sf::RenderTarget& target, sf::RenderStates states) const{
                 target.draw(*(_tilemapSprite[capa][y][x]),states);
         }
     }
-      auto it = mivector.begin();       
+    
+      auto it = mivector.begin();    
+      
         for(it = mivector.begin(); it != mivector.end(); it++){           
             Rads *tmp = *it; 
             tmp->draw();            
@@ -396,7 +399,21 @@ vector<Rads*> Mapa::getRads(){
     return mivector;
 }
 
-void Mapa::eliminarRad(int n){
+void Mapa::recogerRads(Mi_Sprite &_pj){
     
+
+    auto it = mivector.begin();
+    
+    for(it; it != mivector.end(); it++){
+        
+        Rads *tmp = *it;
+         
+        if(_pj.getSprite().getGlobalBounds().intersects(tmp->getSprite().getSprite().getGlobalBounds())){          
+            mivector.erase(it);       
+            delete tmp; 
+            break;
+        }
+        
+    }
 }
 

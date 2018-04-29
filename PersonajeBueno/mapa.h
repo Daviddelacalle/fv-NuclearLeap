@@ -31,7 +31,7 @@ public:
     int getAltZonas(int);
     int bloqRandom(std::vector<int>);
     vector<Rads*> getRads();
-    void eliminarRad(int n);
+    void recogerRads(Mi_Sprite &_pj);
     
 protected:
     Mapa();

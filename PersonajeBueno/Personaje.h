@@ -38,7 +38,6 @@ public:
     void estoyNormal();
     void setPosition(float, float);
     void draw();
-    void recogerRads(vector<Rads*> &_rads, sf::RectangleShape _sprite , int &_nrads); 
 
     sf::RectangleShape getBoxAbajo();
     sf::RectangleShape getBoxArriba();
