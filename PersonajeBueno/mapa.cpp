@@ -31,9 +31,7 @@ Mapa::Mapa() {
     //DEFINIMOS VARIABLES TAMAÑO
     int _tileWidth, _tileHeight, _numLayers=0, _tsw, _tsh,_numTiles,_numColTiles, temp, altFinal;
     int num_bloques = zonas * sec_zona * bloq_seccion; 
-    mivector.resize(num_bloques*6);
-    
-    int cont =0;
+
     //MAPA
     XMLDocument doc;
     doc.LoadFile("tiled/0.tmx");
@@ -214,11 +212,24 @@ Mapa::Mapa() {
                     data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]);
                    
                 if(l==2 && _tilemap[l][y][x]==1){
-                    cout<<"holaaaaaaaaaaaaa";
                     Rads *rad1 = new Rads(x*32,y*32,1); 
-                    mivector[cont]=rad1; 
-                    cont++;
+                    v_rads.push_back(rad1);
                 }
+                    
+                //NPC    
+                if(l==1 && _tilemap[l][y][x]==1){
+                    Npc1 *npc1 = new Npc1(x*32,y*32 +20); 
+                    v_npc1.push_back(npc1);
+                }
+                if(l==1 && _tilemap[l][y][x]==2){
+                    Npc3 *npc3 = new Npc3(x*32,y*32 +20); 
+                    v_npc3.push_back(npc3);
+                }
+                if(l==1 && _tilemap[l][y][x]==3){
+                    Npc5 *npc5 = new Npc5(x*32,y*32 +20); 
+                    v_npc5.push_back(npc5);
+                }
+                    
                     //Avanzo al siguiente tag
                     data[l] = data[l]->NextSiblingElement("tile");
                 }
@@ -330,12 +341,13 @@ void Mapa::draw(sf::RenderTarget& target, sf::RenderStates states) const{
         }
     }
     
-      auto it = mivector.begin();    
-      
-        for(it = mivector.begin(); it != mivector.end(); it++){           
-            Rads *tmp = *it; 
-            tmp->draw();            
-        } 
+    auto it = v_rads.begin();    
+    for(it = v_rads.begin(); it != v_rads.end(); it++){           
+        Rads *tmp = *it; 
+        tmp->draw();            
+    } 
+    
+    
 }
 void Mapa::activarCapa(int num_capa){
     capa = num_capa;
@@ -344,6 +356,20 @@ int Mapa::getTile(float x, float y){
     int tile = _tilemap[capa][(int)y][(int)x];
     return tile;
 }
+
+vector<Npc1*> Mapa::getvNpc1(){
+    return v_npc1;
+}
+
+vector<Npc3*> Mapa::getvNpc3(){
+    return v_npc3;
+}
+
+vector<Npc5*> Mapa::getvNpc5(){
+    return v_npc5;
+}
+
+
  int Mapa::getCoordenadas(int tile, int xy){
      int res;
     
@@ -395,21 +421,17 @@ int Mapa::bloqRandom(std::vector<int> v){
     return random;
 }
 
-vector<Rads*> Mapa::getRads(){
-    return mivector;
-}
-
 void Mapa::recogerRads(Mi_Sprite &_pj, int &_puntuacion){
     
 
-    auto it = mivector.begin();
+    auto it = v_rads.begin();
     
-    for(it; it != mivector.end(); it++){
+    for(it; it != v_rads.end(); it++){
         
         Rads *tmp = *it;
          
         if(_pj.getSprite().getGlobalBounds().intersects(tmp->getSprite().getSprite().getGlobalBounds())){          
-            mivector.erase(it);      
+            v_rads.erase(it);      
             _puntuacion++;
             delete tmp; 
             break;

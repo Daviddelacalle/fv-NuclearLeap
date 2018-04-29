@@ -35,6 +35,7 @@ void actualizarPuntuacion(int _nrads, sf::Text &_puntRads){
  
 
 void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &_npc5){
+    Mapa* map = Mapa::Instance();
     /*
     int posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
     int posy = _lastState.getPosy() + (kVel*timeElapsed + 0.5f);
@@ -42,7 +43,23 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3
     
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
     _pj.update(timeElapsed);
-    _npc5.update(_pj);
+
+    
+    for(int it = 0; it < map->getvNpc1().size() ; it++){
+        Npc1 *tmp = map->getvNpc1()[it];
+        tmp->update(_pj);
+    }
+    
+    for(int it = 0; it < map->getvNpc3().size() ; it++){
+        Npc3 *tmp = map->getvNpc3()[it];
+        tmp->update(_pj);
+    }
+    
+    for(int it = 0; it < map->getvNpc5().size() ; it++){
+        Npc5 *tmp = map->getvNpc5()[it];
+        tmp->update(_pj);
+    }
+    
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
     _newState.setPosx(posx);
@@ -57,7 +74,7 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3
 }
 
 void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5){ 
-   
+    Mapa* map = Mapa::Instance();
     //CALCULAMOS LA POSICION INTERPOLADA PARA CUANDO NO SE EJECUTA EL UDPATE
   
     float posxf = _pj_S.getLastx()*(1.f-_percentTick) + _pj_S.getPosx() * _percentTick;
@@ -84,12 +101,21 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     
     //DIBUJAMOS
     _pj.draw();
-    _npc5.draw();
     
-    _window.draw(_npc5.getBox_down());
-    _window.draw(_npc5.getBox_right());
-    _window.draw(_npc5.getBox_left());
-    _window.draw(_npc5.getBox_up());
+    for(int it = 0; it < map->getvNpc1().size() ; it++){
+        Npc1 *tmp = map->getvNpc1()[it];
+        tmp->draw();
+    }
+    
+    for(int it = 0; it < map->getvNpc3().size() ; it++){
+        Npc3 *tmp = map->getvNpc3()[it];
+        tmp->draw();
+    }
+    
+    for(int it = 0; it < map->getvNpc5().size() ; it++){
+        Npc5 *tmp = map->getvNpc5()[it];
+        tmp->draw();
+    }
     /*
     _window.draw(_pj.getBoxAbajo());
     _window.draw(_pj.getBoxArriba());

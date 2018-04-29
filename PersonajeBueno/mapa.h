@@ -15,8 +15,8 @@
 #define MAPA_H
 #include "config.h"
 #include "Rads.h"
-#include <string>
-#include <sstream> 
+#include "Npc.h"
+
 
 class Mapa: public sf::Drawable {
 public:
@@ -31,16 +31,20 @@ public:
     int getAltZonas(int);
     int bloqRandom(std::vector<int>);
     
-    
-    vector<Rads*> getRads();
     void recogerRads(Mi_Sprite &_pj, int &_puntuacion);
+    vector<Npc1*> getvNpc1();
+    vector<Npc3*> getvNpc3();
+    vector<Npc5*> getvNpc5();
     
 protected:
     Mapa();
     Mapa(const Mapa & );
     Mapa &operator= (const Mapa & );
 private:
-    vector<Rads*> mivector;
+    vector<Rads*> v_rads;
+    vector<Npc1*> v_npc1;
+    vector<Npc3*> v_npc3;
+    vector<Npc5*> v_npc5;
     
     static Mapa* pinstance;
     int capa, _height, _width;

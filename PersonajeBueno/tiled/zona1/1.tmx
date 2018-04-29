@@ -94,7 +94,7 @@
    </animation>
   </tile>
  </tileset>
- <layer name="Colision" width="14" height="18">
+ <layer name="Colision" width="14" height="18" visible="0">
   <data>
    <tile gid="1"/>
    <tile gid="0"/>
@@ -445,7 +445,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="1"/>
+   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -529,7 +529,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="1"/>
+   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -606,7 +606,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Rads" width="14" height="18">
+ <layer name="Rads" width="14" height="18" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1118,7 +1118,7 @@
    <tile gid="165"/>
   </data>
  </layer>
- <layer name="Tele" width="14" height="18">
+ <layer name="Tele" width="14" height="18" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
