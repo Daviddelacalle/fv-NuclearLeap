@@ -4,10 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.h</itemPath>
-      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Texto.h</itemPath>
-      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.h</itemPath>
-      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.h</itemPath>
+      <itemPath>Mi_Sprite.h</itemPath>
+      <itemPath>Mi_Texto.h</itemPath>
+      <itemPath>Motor_2D.h</itemPath>
+      <itemPath>Npc.h</itemPath>
       <itemPath>Personaje.h</itemPath>
       <itemPath>State.h</itemPath>
       <itemPath>config.h</itemPath>
@@ -21,10 +21,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp</itemPath>
-      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp</itemPath>
-      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp</itemPath>
-      <itemPath>/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp</itemPath>
+      <itemPath>Mi_Sprite.cpp</itemPath>
+      <itemPath>Mi_Texto.cpp</itemPath>
+      <itemPath>Motor_2D.cpp</itemPath>
+      <itemPath>Npc.cpp</itemPath>
       <itemPath>Personaje.cpp</itemPath>
       <itemPath>State.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -96,6 +96,7 @@
     <Elem>/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno</Elem>
     <Elem>/home/natalia/NetBeansProjects/PersonajeBueno</Elem>
     <Elem>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno</Elem>
+    <Elem>/home/javirich/Escritorio/fv-NuclearLeap/PersonajeBueno</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -110,6 +111,7 @@
           <incDir>
             <pElem>/usr/include/SFML</pElem>
           </incDir>
+          <commandLine>-std=c++11</commandLine>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
@@ -123,46 +125,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Texto.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -372,6 +334,22 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="Mi_Sprite.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mi_Sprite.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mi_Texto.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mi_Texto.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Motor_2D.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Motor_2D.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Personaje.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -414,46 +392,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Texto.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -663,6 +601,22 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="Mi_Sprite.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mi_Sprite.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mi_Texto.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mi_Texto.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Motor_2D.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Motor_2D.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Npc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Npc.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Personaje.cpp" ex="false" tool="1" flavor2="0">
       </item>

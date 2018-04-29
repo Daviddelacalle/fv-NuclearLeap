@@ -35,10 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/55a6bf73/Mi_Sprite.o \
-	${OBJECTDIR}/_ext/55a6bf73/Mi_Texto.o \
-	${OBJECTDIR}/_ext/55a6bf73/Motor_2D.o \
-	${OBJECTDIR}/_ext/55a6bf73/Npc.o \
+	${OBJECTDIR}/Mi_Sprite.o \
+	${OBJECTDIR}/Mi_Texto.o \
+	${OBJECTDIR}/Motor_2D.o \
+	${OBJECTDIR}/Npc.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/State.o \
 	${OBJECTDIR}/main.o \
@@ -70,25 +70,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/55a6bf73/Mi_Sprite.o: /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/55a6bf73
+${OBJECTDIR}/Mi_Sprite.o: Mi_Sprite.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/55a6bf73/Mi_Sprite.o /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mi_Sprite.o Mi_Sprite.cpp
 
-${OBJECTDIR}/_ext/55a6bf73/Mi_Texto.o: /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/55a6bf73
+${OBJECTDIR}/Mi_Texto.o: Mi_Texto.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/55a6bf73/Mi_Texto.o /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mi_Texto.o Mi_Texto.cpp
 
-${OBJECTDIR}/_ext/55a6bf73/Motor_2D.o: /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/55a6bf73
+${OBJECTDIR}/Motor_2D.o: Motor_2D.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/55a6bf73/Motor_2D.o /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Motor_2D.o Motor_2D.cpp
 
-${OBJECTDIR}/_ext/55a6bf73/Npc.o: /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/55a6bf73
+${OBJECTDIR}/Npc.o: Npc.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/55a6bf73/Npc.o /home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Npc.o Npc.cpp
 
 ${OBJECTDIR}/Personaje.o: Personaje.cpp 
 	${MKDIR} -p ${OBJECTDIR}

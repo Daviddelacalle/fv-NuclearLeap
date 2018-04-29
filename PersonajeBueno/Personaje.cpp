@@ -425,6 +425,10 @@ void Personaje::estoyRoja(int y){
         mover(timeElapsed);      
         actualizarSprite();
         
+        Mapa* map = Mapa::Instance();
+        if(posy < map->getAltZonas(1))
+                map->setFondo(1);
+        
      }
      void Personaje::setPosVidas(){
         Motor_2D* motor = Motor_2D::Instance();

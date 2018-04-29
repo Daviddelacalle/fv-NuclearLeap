@@ -22,7 +22,10 @@ public:
     int getTile(float, float);
     int getAltura();
     sf::Sprite getFondo();
-     sf::Vector2f getCoordenadas(int); 
+    sf::Vector2f getCoordenadas(int);
+    void setFondo(int);
+    int getAltZonas(int);
+    int bloqRandom(std::vector<int>);
     
 protected:
     Mapa();
@@ -35,6 +38,10 @@ private:
     sf::Sprite ****_tilemapSprite;
     sf::Sprite fondo;
     sf::Texture tex_fondo, tex_plat ;
+    const static int zonas=2 , sec_zona=2,  bloq_seccion=3;
+    int alturas[zonas * sec_zona * bloq_seccion * 2];
+    int alturasZonas[zonas];
+    std::string fondos[zonas];
 };
 
 #endif /* MAPA_H */
