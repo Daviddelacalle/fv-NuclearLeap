@@ -121,10 +121,6 @@ void Personaje::moverSalto(){
 }
 
 void Personaje::mover(float timeElapsed){
-    
-    
-   
-    
     int rx = boxDerecha.getPosition().x / 32;
     int ry = boxDerecha.getPosition().y / 32;
     int lx = boxIzquierda.getPosition().x / 32;
@@ -460,3 +456,36 @@ void Personaje::estoyRoja(int y){
             text_perder.setPosition(30, sprite.getPosy()-30);
         }
      }
+     
+ void Personaje::recogerRads(vector<Rads*> &_rads, sf::RectangleShape _sprite, int &_nrads){ 
+    int rx = boxDerecha.getPosition().x / 32;
+    int ry = boxDerecha.getPosition().y / 32;
+    int lx = boxIzquierda.getPosition().x / 32;
+    int ly = boxIzquierda.getPosition().y / 32;
+    int dx = boxAbajo.getPosition().x /32;
+    int dy = boxAbajo.getPosition().y /32;
+    int ux = boxArriba.getPosition().x /32;
+    int uy = boxArriba.getPosition().y /32;
+    int px = sprite.getSprite().getPosition().x / 32;
+    int py = sprite.getSprite().getPosition().y / 32;
+    Mapa::Instance()->activarCapa(2);
+    int valorderecha = Mapa::Instance()->getTile(rx,ry);
+    int valorabajo = Mapa::Instance()->getTile(dx,dy);
+    int valorizquierda = Mapa::Instance()->getTile(lx,ly);
+    int valorarriba = Mapa::Instance()->getTile(ux,uy);
+     
+    auto it = _rads.begin(); 
+    for(it; it != _rads.end(); it++){ 
+         
+        Rads *tmp = *it; 
+                   
+        if(valorderecha==1 || valorabajo==1 || valorizquierda==1 || valorarriba==1){  
+            
+            _nrads = _nrads + tmp->getPuntuacion();            
+            _rads.erase(it);        
+            delete tmp;  
+            break; 
+        } 
+         
+    } 
+} 

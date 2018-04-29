@@ -120,7 +120,7 @@ void Npc1::movimiento(){
     int vu = Mapa::Instance()->getTile(ux,uy);
     int vd = Mapa::Instance()->getTile(dx,dy);
     
-    cout << "vd: " << vd << "\n";
+   // cout << "vd: " << vd << "\n";
     
     if(dirx == 1){
         if(vd != 7 && vd != 3 && vd != 4){

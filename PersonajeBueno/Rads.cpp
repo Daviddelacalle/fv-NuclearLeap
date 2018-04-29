@@ -11,6 +11,8 @@
 using namespace std;
 
 Rads::Rads(int _x, int _y , int _puntuacion){
+    cout<<"posx "<<_x<<"\n";
+    cout<<"posy"<<_y;
     posx = _x;
     posy = _y;
     
@@ -35,6 +37,8 @@ Rads::Rads(int _x, int _y , int _puntuacion){
          sprite.setParams(6,0,32,32,posx,posy);
   
     }
+    
+    sprite.setOrigin(0,0);
     
      //Y creo el spritesheet a partir de la imagen anterior
     

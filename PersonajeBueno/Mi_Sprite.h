@@ -33,6 +33,7 @@ public:
     void setParams(int, int , int, int ,int, int);
     void draw();
     void restartClock();
+    void setOrigin(int, int);
     
 private:
     sf::Sprite sprite;

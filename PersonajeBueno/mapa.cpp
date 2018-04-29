@@ -15,6 +15,7 @@
 #include <iostream>
 #include "tinyxml2.h"
 #include "mapa.h"
+#include "Rads.h"
 using namespace tinyxml2;
 
 Mapa* Mapa::pinstance = 0;// Inicializar el puntero
@@ -28,7 +29,10 @@ Mapa* Mapa::Instance(){
 Mapa::Mapa() {
     //DEFINIMOS VARIABLES TAMAÑO
     int _tileWidth, _tileHeight, _numLayers=0, _tsw, _tsh,_numTiles,_numColTiles, temp, altFinal;
-    int num_bloques = zonas * sec_zona * bloq_seccion;
+    int num_bloques = zonas * sec_zona * bloq_seccion; 
+    mivector.resize(num_bloques*6);
+    
+    int cont =0;
     //MAPA
     XMLDocument doc;
     doc.LoadFile("tiled/0.tmx");
@@ -181,6 +185,7 @@ Mapa::Mapa() {
         for(int y=0; y < altFinal; y++){
             for(int x=0; x<_width; x++){
                 data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]);
+                
                 //Avanzo al siguiente tag
                 data[l] = data[l]->NextSiblingElement("tile");
             }
@@ -206,6 +211,13 @@ Mapa::Mapa() {
             for(int y=temp; y< (temp+alturas[i]); y++){
                 for(int x=0; x<_width; x++){
                     data[l]->QueryIntAttribute("gid", &_tilemap[l][y][x]);
+                   
+                if(l==2 && _tilemap[l][y][x]==1){
+                    cout<<"holaaaaaaaaaaaaa";
+                    Rads *rad1 = new Rads(x*32,y*32,1); 
+                    mivector[cont]=rad1; 
+                    cont++;
+                }
                     //Avanzo al siguiente tag
                     data[l] = data[l]->NextSiblingElement("tile");
                 }
@@ -316,6 +328,11 @@ void Mapa::draw(sf::RenderTarget& target, sf::RenderStates states) const{
                 target.draw(*(_tilemapSprite[capa][y][x]),states);
         }
     }
+      auto it = mivector.begin();       
+        for(it = mivector.begin(); it != mivector.end(); it++){           
+            Rads *tmp = *it; 
+            tmp->draw();            
+        } 
 }
 void Mapa::activarCapa(int num_capa){
     capa = num_capa;
@@ -377,3 +394,12 @@ int Mapa::bloqRandom(std::vector<int> v){
   
     return random;
 }
+
+vector<Rads*> Mapa::getRads(){
+    return mivector;
+}
+
+void Mapa::eliminarRad(int n){
+    
+}
+

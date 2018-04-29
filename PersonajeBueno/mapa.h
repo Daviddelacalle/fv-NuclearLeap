@@ -13,6 +13,10 @@
 
 #ifndef MAPA_H
 #define MAPA_H
+#include "config.h"
+#include "Rads.h"
+#include <string>
+#include <sstream> 
 
 class Mapa: public sf::Drawable {
 public:
@@ -26,12 +30,15 @@ public:
     void setFondo(int);
     int getAltZonas(int);
     int bloqRandom(std::vector<int>);
+    vector<Rads*> getRads();
+    void eliminarRad(int n);
     
 protected:
     Mapa();
     Mapa(const Mapa & );
     Mapa &operator= (const Mapa & );
 private:
+    vector<Rads*> mivector;
     static Mapa* pinstance;
     int capa, _height, _width;
     int ***_tilemap;

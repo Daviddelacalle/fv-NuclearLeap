@@ -18,6 +18,7 @@
 #include "config.h"
 #include "Mi_Sprite.h"
 #include "Mi_Texto.h"
+#include "Rads.h"
 
 class Personaje {
 public:
@@ -37,6 +38,8 @@ public:
     void estoyNormal();
     void setPosition(float, float);
     void draw();
+    void recogerRads(vector<Rads*> &_rads, sf::RectangleShape _sprite , int &_nrads); 
+
     sf::RectangleShape getBoxAbajo();
     sf::RectangleShape getBoxArriba();
     sf::RectangleShape getBoxDerecha();
