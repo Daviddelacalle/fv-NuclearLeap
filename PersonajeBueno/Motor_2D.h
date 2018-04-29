@@ -25,7 +25,7 @@ public:
     float get_clockElapsedTime();
     
     void draw(sf::Sprite &_sprite);
-    void draw(sf::Text &_text);
+    void draw(sf::Text &_text);    
     void setVistaPrincipal();
     void restartClock();
     

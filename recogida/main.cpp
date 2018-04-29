@@ -150,31 +150,36 @@ Rads::Rads(int _x, int _y , int _puntuacion){
     
     puntuacion = _puntuacion;
     
-    if(_puntuacion == 1){
-        if (!tex.loadFromFile("sprites/Rad.png"))
+     if (!tex.loadFromFile("sprites/sprites.png"))
         {
             std::cerr << "Error cargando la imagen sprites.png";
             exit(0);
         }
+    
+    sprite =sf::Sprite(tex);
+    
+    if(_puntuacion == 1){
+       
         tam = 24;
+       sprite.setTextureRect(sf::IntRect(5*32, 0*32, 32, 32));
+       
+        
     }
     
     if(_puntuacion == 5){
-        if (!tex.loadFromFile("sprites/Rad2.png"))
-        {
-            std::cerr << "Error cargando la imagen sprites.png";
-            exit(0);
-        }
-        
+              
         tam = 36;
+       
+        sprite.setTextureRect(sf::IntRect(6*32, 0*32, 32, 32));
+  
     }
     
      //Y creo el spritesheet a partir de la imagen anterior
-    sprite =sf::Sprite(tex);
+    
     //Le pongo el centroide donde corresponde
     sprite.setOrigin(tam/2,tam/2);
     //Cojo el sprite que me interesa por defecto del sheet
-    sprite.setTextureRect(sf::IntRect(0*tam, 0*tam, tam, tam));
+    
     // Lo dispongo en el centro de la pantalla
     sprite.setPosition(posx, posy);
 

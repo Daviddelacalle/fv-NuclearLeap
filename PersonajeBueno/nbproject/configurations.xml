@@ -4,11 +4,20 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+<<<<<<< Updated upstream
       <itemPath>Mi_Sprite.h</itemPath>
       <itemPath>Mi_Texto.h</itemPath>
       <itemPath>Motor_2D.h</itemPath>
       <itemPath>Npc.h</itemPath>
+=======
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenu.h</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.h</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.h</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.h</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.h</itemPath>
+>>>>>>> Stashed changes
       <itemPath>Personaje.h</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.h</itemPath>
       <itemPath>State.h</itemPath>
       <itemPath>config.h</itemPath>
       <itemPath>mapa.h</itemPath>
@@ -21,11 +30,20 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+<<<<<<< Updated upstream
       <itemPath>Mi_Sprite.cpp</itemPath>
       <itemPath>Mi_Texto.cpp</itemPath>
       <itemPath>Motor_2D.cpp</itemPath>
       <itemPath>Npc.cpp</itemPath>
+=======
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenu.cpp</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.cpp</itemPath>
+>>>>>>> Stashed changes
       <itemPath>Personaje.cpp</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.cpp</itemPath>
       <itemPath>State.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>mapa.cpp</itemPath>
@@ -125,6 +143,69 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+<<<<<<< Updated upstream
+=======
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenu.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenu.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+>>>>>>> Stashed changes
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -392,6 +473,69 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+<<<<<<< Updated upstream
+=======
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenu.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenu.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+>>>>>>> Stashed changes
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"

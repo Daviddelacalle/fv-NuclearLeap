@@ -50,6 +50,7 @@ void Motor_2D::draw(sf::Text& _text){
     window->draw(_text);
 }
 
+
 void Motor_2D::setVistaPrincipal(){
     window->setView(*vista_principal);
 }

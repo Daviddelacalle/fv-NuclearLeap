@@ -35,10 +35,19 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+<<<<<<< Updated upstream
 	${OBJECTDIR}/Mi_Sprite.o \
 	${OBJECTDIR}/Mi_Texto.o \
 	${OBJECTDIR}/Motor_2D.o \
 	${OBJECTDIR}/Npc.o \
+=======
+	${OBJECTDIR}/_ext/a08718a8/MainMenu.o \
+	${OBJECTDIR}/_ext/a08718a8/Mi_Sprite.o \
+	${OBJECTDIR}/_ext/a08718a8/Mi_Texto.o \
+	${OBJECTDIR}/_ext/a08718a8/Motor_2D.o \
+	${OBJECTDIR}/_ext/a08718a8/Npc.o \
+	${OBJECTDIR}/_ext/a08718a8/Rads.o \
+>>>>>>> Stashed changes
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/State.o \
 	${OBJECTDIR}/main.o \
@@ -70,6 +79,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+<<<<<<< Updated upstream
 ${OBJECTDIR}/Mi_Sprite.o: Mi_Sprite.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -89,6 +99,37 @@ ${OBJECTDIR}/Npc.o: Npc.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Npc.o Npc.cpp
+=======
+${OBJECTDIR}/_ext/a08718a8/MainMenu.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenu.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/MainMenu.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenu.cpp
+
+${OBJECTDIR}/_ext/a08718a8/Mi_Sprite.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Mi_Sprite.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Sprite.cpp
+
+${OBJECTDIR}/_ext/a08718a8/Mi_Texto.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Mi_Texto.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp
+
+${OBJECTDIR}/_ext/a08718a8/Motor_2D.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Motor_2D.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp
+
+${OBJECTDIR}/_ext/a08718a8/Npc.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Npc.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Npc.cpp
+
+${OBJECTDIR}/_ext/a08718a8/Rads.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Rads.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.cpp
+>>>>>>> Stashed changes
 
 ${OBJECTDIR}/Personaje.o: Personaje.cpp 
 	${MKDIR} -p ${OBJECTDIR}

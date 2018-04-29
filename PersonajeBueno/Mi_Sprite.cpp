@@ -88,3 +88,7 @@ void Mi_Sprite::draw(){
 void Mi_Sprite::restartClock(){
     clock.restart();
 }
+
+void Mi_Sprite::setTexture(sf::Texture tex){
+    sprite.setTexture(tex);
+}
