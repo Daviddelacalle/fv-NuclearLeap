@@ -341,23 +341,20 @@ int Mapa::getTile(float x, float y){
     int tile = _tilemap[capa][(int)y][(int)x];
     return tile;
 }
- std::vector<std::vector<int>> Mapa::getCoordenadas(int tile){
-    std::vector<std::vector<int>> coordenadas;
-    int cont=0;
+ int Mapa::getCoordenadas(int tile, int xy){
+     int res;
     
     for(int y=0; y<_height; y++){
         for(int x=0; x<_width; x++){
            if(_tilemap[capa][y][x] == tile){
-               cont++;
-               coordenadas.resize(cont);
-               std::vector<int> temp(2);
-               temp.push_back(x);
-               temp.push_back(y);
-               coordenadas.push_back(temp);
+               if(xy==0)
+                   res=x;
+               if(xy==1)
+                   res=y;
            }           
         }
     }
-    return coordenadas;
+    return res;
 }
  
 int Mapa::getAltura(){

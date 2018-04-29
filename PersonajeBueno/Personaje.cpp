@@ -226,20 +226,7 @@ void Personaje::mover(float timeElapsed){
             }
             
             break;
-            
-        case 57:
-            /*
-            std::vector<std::vector<int>> coordenadas = Mapa::Instance()->getCoordenadas(58);
-            for(int i=0; i<coordenadas.size(); i++){
-                std::vector<int> pos_tile = coordenadas[i];
-                int x  = pos_tile[0];
-                int y  = pos_tile[1];
-                sprite.getSprite().setPosition(x,y);
-            }
-            */
-            
-            break;
-        
+               
     }
     
     
@@ -261,7 +248,7 @@ void Personaje::mover(float timeElapsed){
             }
             break;
             
-            case 7:
+        case 7:
             if(check_pared == false){
                 check_pared = true;
                 dir_aux = 1;
@@ -272,6 +259,26 @@ void Personaje::mover(float timeElapsed){
             }
             
             break;
+            
+    }
+    
+    if(valorizquierda > 50){
+       
+        Mapa::Instance()->activarCapa(4);
+        int x = Mapa::Instance()->getCoordenadas(valorizquierda,0);
+        int y = Mapa::Instance()->getCoordenadas(valorizquierda,1);
+        sprite.setPosition(x*32,y*32);
+        Mapa::Instance()->activarCapa(0);
+           
+    }
+    if(valorderecha > 50){
+        
+        Mapa::Instance()->activarCapa(4);
+        int x = Mapa::Instance()->getCoordenadas(valorderecha,0);
+        int y = Mapa::Instance()->getCoordenadas(valorderecha,1);
+        sprite.setPosition(x*32,y*32);
+        Mapa::Instance()->activarCapa(0);
+          
     }
     
     switch(valorpersonaje){

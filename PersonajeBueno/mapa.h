@@ -26,7 +26,7 @@ public:
     int getTile(float, float);
     int getAltura();
     sf::Sprite getFondo();
-    std::vector<std::vector<int>> getCoordenadas(int);
+    int getCoordenadas(int,int);
     void setFondo(int);
     int getAltZonas(int);
     int bloqRandom(std::vector<int>);
