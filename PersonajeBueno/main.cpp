@@ -17,14 +17,42 @@
 #include "Npc.h"
 #include "Mi_Sprite.h"
 #include "Motor_2D.h"
+#include "Rads.h" 
 #include <SFML/Audio.hpp>
 /*
  * 
  */
+void actualizarPuntuacion(int,sf::Text &_puntRads); 
+void recogerRads(vector<Rads*> &_rads, sf::RectangleShape _sprite , int &_nrads); 
 void update( State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &npc5);
-void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5);
+void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5, vector<Rads*> _mivector); 
 float minimo(float,float);
 
+void actualizarPuntuacion(int _nrads, sf::Text &_puntRads){ 
+    std::stringstream ss; 
+    ss<<_nrads; 
+    _puntRads.setString(ss.str()); 
+} 
+ 
+void recogerRads(vector<Rads*> &_rads, sf::RectangleShape _sprite, int &_nrads){ 
+     
+     
+    auto it = _rads.begin();     
+     
+    for(it; it != _rads.end(); it++){ 
+         
+        Rads *tmp = *it; 
+          
+         
+       /* if(_sprite.getGlobalBounds().intersects(tmp->getSprite().getGlobalBounds())){     
+            _nrads = _nrads + tmp->getPuntuacion();            
+            _rads.erase(it);        
+            delete tmp;  
+            break; 
+        }*/ 
+         
+    } 
+} 
 void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &_npc5){
     /*
     int posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
@@ -47,8 +75,8 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3
     _npc_S.setPosy(_npc5.getSprite().getPosy());
 }
 
-void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5){
-    
+void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5, vector<Rads*> _mivector){ 
+   
     //CALCULAMOS LA POSICION INTERPOLADA PARA CUANDO NO SE EJECUTA EL UDPATE
   
     float posxf = _pj_S.getLastx()*(1.f-_percentTick) + _pj_S.getPosx() * _percentTick;
@@ -72,7 +100,11 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     
     //cout << "pj posx: " << _pj.getSprite().getPosition().x << " posy: " << _pj.getSprite().getPosition().y << "\n";
     
-    
+      auto it = _mivector.begin();       
+        for(it = _mivector.begin(); it != _mivector.end(); it++){ 
+            Rads *tmp = *it; 
+            tmp->draw();            
+        } 
     //DIBUJAMOS
     _pj.draw();
     _npc5.draw();
@@ -123,7 +155,18 @@ int main() {
       sonido.play();
     sonido.setLoop(true);
     
-    
+     sf::Font font; 
+    font.loadFromFile("arial.ttf"); 
+    sf::Text puntRads("Rads: ",font); 
+    puntRads.setCharacterSize(40); 
+    puntRads.setStyle(sf::Text::Bold); 
+    puntRads.setColor(sf::Color::Green); 
+    puntRads.setPosition(5,10); 
+     
+     std::stringstream ss; 
+    int nrads = 0; 
+    ss<<nrads; 
+    puntRads.setString(ss.str()); 
     
     //Relojes de control de tiempo entre cada update y el tiempo global
     sf::Clock updateClock;
@@ -134,6 +177,19 @@ int main() {
     Personaje pj;
     Npc3 npc5(200,10350);
     //INICIALIZAR VARIABLES
+     sf::RectangleShape sprite = sf::RectangleShape(sf::Vector2f(32,32)); 
+     
+     
+    vector<Rads*> mivector(4); 
+     
+    Rads *rad1 = new Rads(180,10790,1); 
+    mivector[1]=rad1; 
+    Rads *rad2 = new Rads(205,10790,1); 
+    mivector[2]=rad2; 
+    Rads *rad3 = new Rads(240,10790,1); 
+    mivector[3]=rad3; 
+    Rads *rad0 = new Rads(265,10790,5); 
+    mivector[0]=rad0; 
     
     float tiempo_update;
     float update_tick_time = UPDATE_TICK_TIME;
@@ -208,6 +264,8 @@ int main() {
             timeElapsed = updateClock.restart();
 
             update(pj_S,timeElapsed.asMilliseconds(),pj,npc_S,npc5);
+             recogerRads(mivector,sprite,nrads); 
+            actualizarPuntuacion(nrads,puntRads); 
 
            // update(pj_S,timeElapsed.asSeconds(),pj,npc_S,npc5);
 
@@ -235,8 +293,7 @@ int main() {
         
         map->activarCapa(3);
         motor->getWindow()->draw(*map);
-        render_interpolation(*motor->getWindow(),pj_S,percentTick,pj,npc_S,npc5);
-        
+        render_interpolation(*motor->getWindow(),pj_S,percentTick,pj,npc_S,npc5, mivector); 
         motor->getWindow()->display();
     }   
     return 0;

@@ -125,6 +125,16 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -392,6 +402,16 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Rads.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
