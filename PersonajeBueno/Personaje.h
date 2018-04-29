@@ -50,7 +50,7 @@ public:
     void actualizarVidas();
     void setPosVidas();
     void morir();
-    
+    void actualizarPuntuacion();
     
     
 private:
@@ -71,6 +71,7 @@ private:
     Mi_Sprite sprite;
     Mi_Sprite sprite_vidas;
     Mi_Texto text_vidas;
+    Mi_Texto text_puntuacion;
     Mi_Texto text_perder;
     int espacio;
     int nsprite;
@@ -80,7 +81,7 @@ private:
     sf::RectangleShape boxDerecha;
     sf::RectangleShape boxIzquierda;
     int vidas;
-    
+    int puntuacion;
    
     
   

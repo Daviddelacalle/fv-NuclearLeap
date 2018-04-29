@@ -30,8 +30,10 @@ public:
     void setFondo(int);
     int getAltZonas(int);
     int bloqRandom(std::vector<int>);
+    
+    
     vector<Rads*> getRads();
-    void recogerRads(Mi_Sprite &_pj);
+    void recogerRads(Mi_Sprite &_pj, int &_puntuacion);
     
 protected:
     Mapa();
@@ -39,6 +41,7 @@ protected:
     Mapa &operator= (const Mapa & );
 private:
     vector<Rads*> mivector;
+    
     static Mapa* pinstance;
     int capa, _height, _width;
     int ***_tilemap;

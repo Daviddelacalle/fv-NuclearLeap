@@ -69,6 +69,7 @@ Personaje::Personaje(){
     var1 = 0;
     checkpoint== Mapa::Instance()->getAltura()*32 - 32*9.5;
     pierdo = false;
+    puntuacion = 0;
     
     std::stringstream ss;
     vidas = 5;
@@ -77,6 +78,7 @@ Personaje::Personaje(){
     posy_vida= posy +200;
     
     text_vidas.setParams(ss.str(), 13, posx_vida,posy_vida);
+    text_puntuacion.setParams('0',13, posx_vida +40, posy_vida);
     sprite_vidas.setParams(4,0,32,32, posx_vida+15,posy_vida+3);
     sprite_vidas.setScale(1.5,1.5);
     
@@ -425,33 +427,42 @@ void Personaje::estoyRoja(int y){
         sprite.draw();
         sprite_vidas.draw();
         text_vidas.draw();
+        text_puntuacion.draw();
         if(pierdo ==true){
             text_perder.draw();
         }
+        
     }
     
-     void Personaje::update(float timeElapsed){        
+     void Personaje::update(float timeElapsed){    
+        Mapa* map = Mapa::Instance(); 
         mover(timeElapsed);      
         actualizarSprite();
-        Mapa* map = Mapa::Instance();
-  
+        map->recogerRads(sprite,puntuacion);
+        actualizarPuntuacion();
         if(posy < map->getAltZonas(1))
-                map->setFondo(1);
-        
-        map->recogerRads(sprite);
+            map->setFondo(1);
         
      }
+     
      void Personaje::setPosVidas(){
         Motor_2D* motor = Motor_2D::Instance();
         text_vidas.setPosition(posx_vida -7 ,motor->getVistaPrincipal()->getCenter().y -330);  
         sprite_vidas.setPosition(posx_vida,motor->getVistaPrincipal()->getCenter().y-327); 
-     }
+        text_puntuacion.setPosition(posx_vida - 50, motor->getVistaPrincipal()->getCenter().y -330);
+     }  
      
      void Personaje::actualizarVidas(){
          std::stringstream ss;
          ss<<vidas;
          text_vidas.setText(ss.str());
          
+     }
+     
+     void Personaje::actualizarPuntuacion(){
+         std::stringstream ss;
+         ss<<puntuacion;
+         text_puntuacion.setText(ss.str());
      }
 
      void Personaje::morir(){

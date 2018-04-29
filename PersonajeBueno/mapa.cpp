@@ -399,7 +399,7 @@ vector<Rads*> Mapa::getRads(){
     return mivector;
 }
 
-void Mapa::recogerRads(Mi_Sprite &_pj){
+void Mapa::recogerRads(Mi_Sprite &_pj, int &_puntuacion){
     
 
     auto it = mivector.begin();
@@ -409,7 +409,8 @@ void Mapa::recogerRads(Mi_Sprite &_pj){
         Rads *tmp = *it;
          
         if(_pj.getSprite().getGlobalBounds().intersects(tmp->getSprite().getSprite().getGlobalBounds())){          
-            mivector.erase(it);       
+            mivector.erase(it);      
+            _puntuacion++;
             delete tmp; 
             break;
         }
