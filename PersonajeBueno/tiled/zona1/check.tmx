@@ -166,6 +166,24 @@
    <tile gid="165"/>
   </data>
  </layer>
+ <layer name="Capa de patrones 5" width="14" height="1">
+  <data>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+  </data>
+ </layer>
  <imagelayer name="Fondo" visible="0" locked="1">
   <image source="LeapDay_theme_Space.png" width="448" height="815"/>
  </imagelayer>
