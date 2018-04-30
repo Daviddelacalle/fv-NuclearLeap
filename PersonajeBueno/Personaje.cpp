@@ -10,7 +10,7 @@
  * 
  * Created on 19 de abril de 2018, 13:54
  */
-
+#include "SFML/Audio.hpp"
 #include "Personaje.h"
 #include "mapa.h"
 #include "Mi_Texto.h"
@@ -318,8 +318,10 @@ void Personaje::mover(float timeElapsed){
     
     
     //std::cout<<"bajo"<<velocidad.x<<"\n"; 
+    if(pierdo == false){
+        sprite.move(velocidad.x*direccion*timeElapsed,velocidad.y*timeElapsed);
+    }
     
-    sprite.move(velocidad.x*direccion*timeElapsed,velocidad.y*timeElapsed);
     if(sprite.getSprite().getPosition().y > alturasuelo){
         sprite.setPosition(sprite.getSprite().getPosition().x, alturasuelo);
     }
@@ -350,7 +352,8 @@ int Personaje::getEspacios(){
 void Personaje::actualizarSprite(){
     
    
-    if(sprite.get_clockElapsedTime() > 50){
+    if(pierdo == false){
+        if(sprite.get_clockElapsedTime() > 50){
         if(check_pared == false){
             if(nsprite == max_sprites){
                 nsprite = 0;
@@ -361,6 +364,7 @@ void Personaje::actualizarSprite(){
     }
     //actualizo la pos de las vidas   
    }
+    }
 }
 
 
@@ -463,6 +467,7 @@ void Personaje::estoyRoja(int y){
          std::stringstream ss;
          ss<<puntuacion;
          text_puntuacion.setText(ss.str());
+         
      }
 
      void Personaje::morir(){

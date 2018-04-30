@@ -44,7 +44,7 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
     _pj.update(timeElapsed);
 
-    
+    /*
     for(int it = 0; it < map->getvNpc1().size() ; it++){
         Npc1 *tmp = map->getvNpc1()[it];
         tmp->update(_pj);
@@ -59,7 +59,7 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3
         Npc5 *tmp = map->getvNpc5()[it];
         tmp->update(_pj);
     }
-    
+    */
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
     _newState.setPosx(posx);
@@ -101,7 +101,7 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     
     //DIBUJAMOS
     _pj.draw();
-    
+    /*
     for(int it = 0; it < map->getvNpc1().size() ; it++){
         Npc1 *tmp = map->getvNpc1()[it];
         tmp->draw();
@@ -115,7 +115,7 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
         tmp->draw();
-    }
+    }*/
     /*
     _window.draw(_pj.getBoxAbajo());
     _window.draw(_pj.getBoxArriba());
@@ -154,6 +154,8 @@ int main() {
         std::cerr << "Error cargando el audio";
         exit(0);
     }
+       
+      
      sonido.setVolume(30.0);
       sonido.play();
     sonido.setLoop(true);

@@ -12,6 +12,7 @@
  */
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include "tinyxml2.h"
 #include "mapa.h"
@@ -31,7 +32,9 @@ Mapa::Mapa() {
     //DEFINIMOS VARIABLES TAMAÑO
     int _tileWidth, _tileHeight, _numLayers=0, _tsw, _tsh,_numTiles,_numColTiles, temp, altFinal;
     int num_bloques = zonas * sec_zona * bloq_seccion; 
-
+    
+    
+    
     //MAPA
     XMLDocument doc;
     doc.LoadFile("tiled/0.tmx");
@@ -422,20 +425,21 @@ int Mapa::bloqRandom(std::vector<int> v){
 }
 
 void Mapa::recogerRads(Mi_Sprite &_pj, int &_puntuacion){
-    
-
+       
     auto it = v_rads.begin();
     
     for(it; it != v_rads.end(); it++){
         
         Rads *tmp = *it;
          
-        if(_pj.getSprite().getGlobalBounds().intersects(tmp->getSprite().getSprite().getGlobalBounds())){          
-            v_rads.erase(it);      
+        if(_pj.getSprite().getGlobalBounds().intersects(tmp->getSprite().getSprite().getGlobalBounds())){  
+            
+            v_rads.erase(it);
             _puntuacion++;
             delete tmp; 
             break;
         }
+        
         
     }
 }
