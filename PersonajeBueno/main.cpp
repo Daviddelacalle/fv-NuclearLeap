@@ -23,8 +23,8 @@
  * 
  */
 void actualizarPuntuacion(int,sf::Text &_puntRads); 
-void update( State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &npc5);
-void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5); 
+void update( State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S);
+void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S); 
 float minimo(float,float);
 
 void actualizarPuntuacion(int _nrads, sf::Text &_puntRads){ 
@@ -34,7 +34,7 @@ void actualizarPuntuacion(int _nrads, sf::Text &_puntRads){
 } 
  
 
-void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &_npc5){
+void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S){
     Mapa* map = Mapa::Instance();
     /*
     int posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
@@ -52,12 +52,18 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3
     
     for(int it = 0; it < map->getvNpc3().size() ; it++){
         Npc3 *tmp = map->getvNpc3()[it];
-        tmp->update(_pj);
+        if(tmp->getSprite().getPosy() > _pj.getSprite().getSprite().getPosition().y - 710 && tmp->getSprite().getPosy() < _pj.getSprite().getSprite().getPosition().y + 710){
+            tmp->update(_pj);
+        }
+        
     }
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        tmp->update(_pj);
+        if(tmp->getSprite().getPosy() > _pj.getSprite().getSprite().getPosition().y - 710 && tmp->getSprite().getPosy() < _pj.getSprite().getSprite().getPosition().y + 710){
+            tmp->update(_pj);
+        }
+        
     }
     
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
@@ -69,11 +75,17 @@ void update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3
     _pj_S.setPosx(_pj.getSprite().getPosx());
     _pj_S.setPosy(_pj.getSprite().getPosy());
     
-    _npc_S.setPosx(_npc5.getSprite().getPosx());
-    _npc_S.setPosy(_npc5.getSprite().getPosy());
+    
+    
+    for(int it = 0; it < map->getvNpc1().size() ; it++){
+        Npc1 *tmp = map->getvNpc1()[it];
+        tmp->setPosxState(tmp->getSprite().getPosx());
+        tmp->setPosyState(tmp->getSprite().getPosy());
+    }
+    
 }
 
-void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5){ 
+void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S){ 
     Mapa* map = Mapa::Instance();
     //CALCULAMOS LA POSICION INTERPOLADA PARA CUANDO NO SE EJECUTA EL UDPATE
   
@@ -83,6 +95,15 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
 
     //float posxf = _pj_S.getLastx()*(1-_percentTick) + _pj_S.getPosx() * _percentTick;
     //float posyf = _pj_S.getLasty()*(1-_percentTick) + _pj_S.getPosy() * _percentTick;
+    for(int it = 0; it < map->getvNpc1().size() ; it++){
+        Npc1 *tmp = map->getvNpc1()[it];
+        
+        float posxnpc = tmp->getState().getLastx()*(1-_percentTick) + tmp->getState().getPosx() * _percentTick;
+        float posynpc = tmp->getState().getLasty()*(1-_percentTick) + tmp->getState().getPosy() * _percentTick;
+        
+        tmp->setPosition(posxnpc,posynpc);
+    }
+    
     
     float posxnpc =_npc_S.getLastx()*(1-_percentTick) + _npc_S.getPosx() * _percentTick;
     float posynpc =_npc_S.getLasty()*(1-_percentTick) + _npc_S.getPosy() * _percentTick;
@@ -93,7 +114,6 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     _pj.setPosition(posx,posy);
      */
     _pj.setPosition(posxf,posyf);
-    _npc5.setPosition(posxnpc , posynpc );
     _pj.actualizarBoxes();
     
     //cout << "pj posx: " << _pj.getSprite().getPosition().x << " posy: " << _pj.getSprite().getPosition().y << "\n";
@@ -102,20 +122,29 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
     //DIBUJAMOS
     _pj.draw();
     
+    
     for(int it = 0; it < map->getvNpc1().size() ; it++){
         Npc1 *tmp = map->getvNpc1()[it];
         tmp->draw();
+
     }
     
     for(int it = 0; it < map->getvNpc3().size() ; it++){
         Npc3 *tmp = map->getvNpc3()[it];
-        tmp->draw();
+        if(tmp->getSprite().getPosy() > _pj.getSprite().getSprite().getPosition().y - 710 && tmp->getSprite().getPosy() < _pj.getSprite().getSprite().getPosition().y + 710){
+            tmp->draw();
+        }
+        
     }
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        tmp->draw();
+        if(tmp->getSprite().getPosy() > _pj.getSprite().getSprite().getPosition().y - 710 && tmp->getSprite().getPosy() < _pj.getSprite().getSprite().getPosition().y + 710){
+            tmp->draw();
+        }
+        
     }
+    
     /*
     _window.draw(_pj.getBoxAbajo());
     _window.draw(_pj.getBoxArriba());
@@ -178,7 +207,6 @@ int main() {
     //INICIALIZAR OBJETOS
     
     Personaje pj;
-    Npc3 npc5(200,10350);
     //INICIALIZAR VARIABLES
      sf::RectangleShape sprite = sf::RectangleShape(sf::Vector2f(32,32)); 
      
@@ -194,9 +222,10 @@ int main() {
     
     
     //ESTADOS    
-    State pj_S(pj.getSprite().getPosx(),pj.getSprite().getPosy());
-    
-    State npc_S(npc5.getSprite().getPosx(),npc5.getSprite().getPosy());
+    State pj_S;
+    pj_S.setParams(pj.getSprite().getPosx(),pj.getSprite().getPosy());
+    State npc_S;
+    npc_S.setParams(0,0);
 
     /*
      
@@ -251,12 +280,18 @@ int main() {
             pj_S.setPosx(pj_S.getPosx());
             pj_S.setPosy(pj_S.getPosy());
             
+            for(int it = 0; it < map->getvNpc1().size() ; it++){
+                Npc1 *tmp = map->getvNpc1()[it];
+                tmp->setPosxState(tmp->getState().getPosx());
+                tmp->setPosyState(tmp->getState().getPosy());
+            }
+            
             npc_S.setPosx(npc_S.getPosx());
             npc_S.setPosy(npc_S.getPosy());
             
             timeElapsed = updateClock.restart();
 
-            update(pj_S,timeElapsed.asMilliseconds(),pj,npc_S,npc5);            
+            update(pj_S,timeElapsed.asMilliseconds(),pj,npc_S);            
            // pj.recogerRads(sprite,nrads); 
             actualizarPuntuacion(nrads,puntRads); 
 
@@ -286,8 +321,10 @@ int main() {
         
         map->activarCapa(3);
         motor->getWindow()->draw(*map);
-        render_interpolation(*motor->getWindow(),pj_S,percentTick,pj,npc_S,npc5); 
+        render_interpolation(*motor->getWindow(),pj_S,percentTick,pj,npc_S); 
         motor->getWindow()->display();
+        
+        
     }   
     return 0;
 }

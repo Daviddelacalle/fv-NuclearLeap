@@ -23,7 +23,8 @@ private:
     float lastx;
     float lasty;
 public:
-    State(float, float);
+    State();
+    void setParams(float,float);
     void setPosx(float);
     void setPosy(float);
     float getPosx();

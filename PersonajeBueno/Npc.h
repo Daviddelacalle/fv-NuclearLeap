@@ -17,19 +17,26 @@
 #include "config.h"
 #include "Personaje.h"
 #include "Mi_Sprite.h"
+#include "State.h"
 
 class Npc {
 public:
     Npc(float,float);
     void setPosition(float,float);
-    Mi_Sprite getSprite();
     void actualizarSprite();
     void draw();
-
+    
+    Mi_Sprite getSprite();
+    State getState();
+    void setPosxState(float);
+    void setPosyState(float);
+    
     sf::RectangleShape getBox_up();
     sf::RectangleShape getBox_left();
     sf::RectangleShape getBox_right();
     sf::RectangleShape getBox_down();
+    
+    State mi_estado;
     
 protected:
     float posx;

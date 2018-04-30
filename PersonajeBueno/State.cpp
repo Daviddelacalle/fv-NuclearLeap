@@ -14,11 +14,16 @@
 
 #include "State.h"
 
-State::State(float _posx, float _posy){
+State::State(){
+
+    
+}
+
+void State::setParams(float _posx, float _posy){
     posx = _posx;
     posy = _posy;
     lastx=_posx;
-    lasty=_posy;
+    lasty=_posy;  
 }
 
 void State::setPosx(float _posx){

@@ -23,10 +23,24 @@ Npc::Npc(float _posx, float _posy) {
     dirx = 1;
     diry = 0;
     nsprite = 0;
+    
+    mi_estado.setParams(_posx,_posy);
 }
 
 Mi_Sprite Npc::getSprite(){
     return sprite;
+}
+
+State Npc::getState(){
+    return mi_estado;
+}
+
+void Npc::setPosxState(float _x){
+    mi_estado.setPosx(_x);
+}
+
+void Npc::setPosyState(float _y){
+    mi_estado.setPosy(_y);
 }
 
 void Npc::setPosition(float _x, float _y){
@@ -248,8 +262,6 @@ void Npc3::movimiento(){
     int vl = Mapa::Instance()->getTile(lx,ly);
     int vu = Mapa::Instance()->getTile(ux,uy);
     int vd = Mapa::Instance()->getTile(dx,dy);
-    
-    cout << "vd: " << vd << "\n";
     
     if(dirx == 1){
         if(vd != 7 && vd != 3 && vd != 4){
