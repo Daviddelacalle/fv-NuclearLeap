@@ -53,7 +53,7 @@ Personaje::Personaje(){
     posx = sprite.getPosx();
     posy = sprite.getPosy();
     
-    
+    suelo =true;
     direccion = 1;  
     dir_aux = direccion;
     check_pared = false;
@@ -65,6 +65,7 @@ Personaje::Personaje(){
     nsprite = 0;
     max_sprites = 6;
     velocidad.x = kVel;
+    velocidad.y=0;
     contEspacios=0;
     var1 = 0;
     checkpoint== Mapa::Instance()->getAltura()*32 - 32*9.5;
@@ -95,8 +96,25 @@ Mi_Sprite Personaje::getSprite(){
    return sprite;   
 }
 
-void Personaje::gravity(float timeElapsed){
-     if(sprite.getPosy() + sprite.getScaley() < alturasuelo || velocidad.y < 0) {
+void Personaje::gravity(float timeElapsed, int valorabajo){
+    
+    if(valorabajo==0){
+        velocidad.y += gravedad*timeElapsed;
+    }
+    else{
+        if(!suelo){
+            suelo =true;
+        }
+        else{
+           velocidad.y = 0; 
+        }
+         
+         espacio=0;
+         gravedad = kGrav;
+        
+    }
+    
+     /*if(sprite.getPosy() + sprite.getScaley() < alturasuelo || velocidad.y < 0) {
         velocidad.y += gravedad*timeElapsed;
       }
       else {
@@ -107,7 +125,7 @@ void Personaje::gravity(float timeElapsed){
         espacio=0;
         gravedad = kGrav;
         
-      }
+      }*/
      
 }
 
@@ -116,10 +134,10 @@ void Personaje::moverSalto(){
       velocidad.y = -velocidadsalto;         
       espacio++;
       gravedad= kGrav;
-
+      suelo= false;
     }
     
-     int var1 = contEspacios;
+     // int var1 = contEspacios;
 }
 
 void Personaje::mover(float timeElapsed){
@@ -138,7 +156,8 @@ void Personaje::mover(float timeElapsed){
     int valorabajo = Mapa::Instance()->getTile(dx,dy);
     int valorizquierda = Mapa::Instance()->getTile(lx,ly);
     int valorarriba = Mapa::Instance()->getTile(ux,uy);
-
+    
+    
     
     int valorpersonaje = Mapa::Instance()->getTile(px,py);
     //cout << "(x,y) = " << rx << " , " << ry <<  " : "<< valorderecha << endl;
@@ -147,199 +166,49 @@ void Personaje::mover(float timeElapsed){
     //cout << "(x,y) = " << ux << " , " << uy <<  " : "<< valorarriba << endl;
     
     
-    switch(valorarriba){
-        case 0: break;
-        
-        
-        
-        case 7: 
-            velocidad.y =0.1;
-            //cout<<"HOLA \n";
-            break;
+    
+    switch(valorderecha){
+        case 2: //aqui esta tocando con la pared del lado
+            direccion = -1;
+            espacio = 0;
+            sprite.setScale(-1.0f,1.0f);
             
-        case 8:
-            velocidad.y =0.1;
+        break;
+        
+        case 7://aqui toca con los bloques normales
+            direccion = -1;
+            espacio = 0;
+            sprite.setScale(-1.0f,1.0f);
         break;
     }
     
-    
-    
-    switch(valorabajo){
-        case 0: 
-            estoyNormal();
-            break;  
+     switch(valorizquierda){
+        case 1: //aqui esta tocando con la pared del lado
+            direccion = 1;
+            espacio = 0;
+            sprite.setScale(1.0f,1.0f);
+            
+        break;
         
-        case 7: 
-           // cout << dy;
-            estoyAzul(dy * 32);
-            break;
-            
-        case 3:              
-            
-            alturasuelo = dy*32-15;
-            
-            break;
-            
-        case 4:            
-            alturasuelo = dy*32-15;
-            checkpoint=alturasuelo;
-            break;
-            
-        case 8:
-            estoyRoja(dy*32);
-            break;
-            
-        case 9:
-            velocidad.y = -velocidadsalto - 0.6;
-            break;
-            
+        case 7://aqui toca con los bloques normales
+            direccion = 1;
+            espacio = 0;
+            sprite.setScale(1.0f,1.0f);
+        break;
     }
- 
+     
+     if(valorarriba !=0 && valorarriba!=3 && valorarriba!=4){
+         velocidad.y+=1;
+     }
     
+     gravity(timeElapsed, valorabajo);
     
+     posx = posx+velocidad.x*direccion*timeElapsed;
+     posy = posy+ velocidad.y*timeElapsed;
+     sprite.setPosition(posx,posy);
+     
     
-    switch(valorderecha){
-        case 0: 
-             
-            break;
-            
-        
-        case 2: 
-            if(check_pared == false){
-                check_pared = true;
-                dir_aux = -1;
-                direccion = 0;
-                espacio = 0;
-                //direccion = -1;
-
-                sprite.setScale(-1.0f,1.0f); 
-            }
-            break;
-            
-        case 7:
-            if(check_pared == false){
-               check_pared = true;
-               dir_aux = -1;
-               direccion = 0;
-               espacio = 0;
-               //direccion = -1;
-
-                sprite.setScale(-1.0f,1.0f); 
-            }
-            
-            break;
-               
-    }
-    
-    
-    
-    switch(valorizquierda){
-        case 0:
-            
-            break;
-            
-            
-        case 1:
-            if(check_pared == false){
-                check_pared = true;
-                dir_aux = 1;
-                direccion = 0;
-                espacio = 0;
-                //direccion = 1;
-                sprite.setScale(1.0f,1.0f); 
-            }
-            break;
-            
-        case 7:
-            if(check_pared == false){
-                check_pared = true;
-                dir_aux = 1;
-                direccion = 0;
-                espacio = 0;
-                //direccion = 1;
-                 sprite.setScale(1.0f,1.0f); 
-            }
-            
-            break;
-            
-    }
-    
-    if(valorizquierda > 50){
-       
-        Mapa::Instance()->activarCapa(4);
-        int x = Mapa::Instance()->getCoordenadas(valorizquierda,0);
-        int y = Mapa::Instance()->getCoordenadas(valorizquierda,1);
-        sprite.setPosition(x*32,y*32);
-        Mapa::Instance()->activarCapa(0);
-           
-    }
-    if(valorderecha > 50){
-        
-        Mapa::Instance()->activarCapa(4);
-        int x = Mapa::Instance()->getCoordenadas(valorderecha,0);
-        int y = Mapa::Instance()->getCoordenadas(valorderecha,1);
-        sprite.setPosition(x*32,y*32);
-        Mapa::Instance()->activarCapa(0);
-          
-    }
-    
-    switch(valorpersonaje){
-        case 5:
-            morir();
-            break;
-    }
-    
-
-    
-    if(check_pared == true){
-        
-        if(velocidad.y < 0){//para que no resbale
-            gravedad = kGrav*1.5;
-        }
-        if(velocidad.y >= 0 ){
-            velocidad.y=0.2;
-            gravedad = kGravP;
-        }
-    }
-    
-    //cout << "Checkpoint: " << checkpoint << "\n";
-    
-    
-    if(sprite.getSprite().getPosition().y + sprite.getSprite().getScale().y >= alturasuelo  || espacio > 0 && check_pared == true){
-            gravedad = kGrav;
-            direccion = dir_aux;
-            check_pared = false;
-    }
-    if (valorderecha == 0 && valorizquierda == 0 && direccion==0){
-        velocidad.y=0.6;
-    }
-    
-    gravity(timeElapsed);
-    
-    
-    //std::cout<<"bajo"<<velocidad.x<<"\n"; 
-    if(pierdo == false){
-        sprite.move(velocidad.x*direccion*timeElapsed,velocidad.y*timeElapsed);
-    }
-    
-    if(sprite.getSprite().getPosition().y > alturasuelo){
-        sprite.setPosition(sprite.getSprite().getPosition().x, alturasuelo);
-    }
-
-    
-    //std::cout<<"arriba"<<velocidad.x<<"\n";      
-   /* boxAbajo.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
-    boxArriba.setPosition(sprite.getPosition().x, sprite.getPosition().y-20);
-    int posxs = boxAbajo.getPosition().x;
-    int posys = boxAbajo.getPosition().y;
-    posx = sprite.getPosition().x;
-    posy = sprite.getPosition().y;*/
-    
-   /* int posxs = boxAbajo.getPosition().x;
-    int posys = boxAbajo.getPosition().y;
-    posx = sprite.getPosition().x;
-    posy = sprite.getPosition().y;*/
-    
+  
     
     
 }

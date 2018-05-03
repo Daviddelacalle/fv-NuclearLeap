@@ -116,12 +116,12 @@ void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percent
         Npc5 *tmp = map->getvNpc5()[it];
         tmp->draw();
     }*/
-    /*
+    
     _window.draw(_pj.getBoxAbajo());
     _window.draw(_pj.getBoxArriba());
     _window.draw(_pj.getBoxDerecha());
     _window.draw(_pj.getBoxIzquierda());
-    */
+    
     
 }
 float minimo(float a, float b){

@@ -26,7 +26,7 @@ public:
     Mi_Sprite getSprite();     
     void moverSalto();
     void mover(float);
-    void gravity(float);
+    void gravity(float, int);
     int getEspacios();
     void actualizarSprite();    
     void cambiarPosicion(int num, int num2);    
@@ -54,6 +54,7 @@ public:
     
     
 private:
+    bool suelo;
     int posy_vida;
     int posx_vida;
     bool pierdo;
