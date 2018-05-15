@@ -25,25 +25,25 @@ Personaje::Personaje(){
    sprite.setParams(0,2,32,32,200,10780);
   
     
-    boxAbajo = sf::RectangleShape(sf::Vector2f(30,2));
-    boxAbajo.setOrigin(15,1);
+    boxAbajo = sf::RectangleShape(sf::Vector2f(24,8));
+    boxAbajo.setOrigin(12,4);
     boxAbajo.setPosition(320, 630);
     boxAbajo.setFillColor(sf::Color::Red);
         
     
-    boxArriba = sf::RectangleShape(sf::Vector2f(30,2));
-    boxArriba.setOrigin(15,1);
+    boxArriba = sf::RectangleShape(sf::Vector2f(28,8));
+    boxArriba.setOrigin(14,4);
     boxArriba.setPosition(320, 630);
     boxArriba.setFillColor(sf::Color::Blue);
     
-    boxDerecha = sf::RectangleShape(sf::Vector2f(20,2));
-    boxDerecha.setOrigin(10,1);
+    boxDerecha = sf::RectangleShape(sf::Vector2f(16,8));
+    boxDerecha.setOrigin(8,4);
     boxDerecha.rotate(90);
     boxDerecha.setPosition(320, 630);
     boxDerecha.setFillColor(sf::Color::Green);
     
-    boxIzquierda = sf::RectangleShape(sf::Vector2f(20,2));
-    boxIzquierda.setOrigin(10,1);
+    boxIzquierda = sf::RectangleShape(sf::Vector2f(16,8));
+    boxIzquierda.setOrigin(8,4);
     boxIzquierda.rotate(90);
     boxIzquierda.setPosition(320, 630);
     boxIzquierda.setFillColor(sf::Color::Yellow);
@@ -123,260 +123,65 @@ void Personaje::moverSalto(){
 }
 
 void Personaje::mover(float timeElapsed){
-    int rx = boxDerecha.getPosition().x / 32;
-    int ry = boxDerecha.getPosition().y / 32;
-    int lx = boxIzquierda.getPosition().x / 32;
-    int ly = boxIzquierda.getPosition().y / 32;
-    int dx = boxAbajo.getPosition().x /32;
-    int dy = boxAbajo.getPosition().y /32;
-    int ux = boxArriba.getPosition().x /32;
-    int uy = boxArriba.getPosition().y /32;
-    int px = sprite.getSprite().getPosition().x / 32;
-    int py = sprite.getSprite().getPosition().y / 32;
-    Mapa::Instance()->activarCapa(0);
-    int valorderecha = Mapa::Instance()->getTile(rx,ry);
-    int valorabajo = Mapa::Instance()->getTile(dx,dy);
-    int valorizquierda = Mapa::Instance()->getTile(lx,ly);
-    int valorarriba = Mapa::Instance()->getTile(ux,uy);
-    
-    vector<sf::RectangleShape> paredDerecha = Mapa::Instance()->getPared();
-    vector<sf::RectangleShape> paredIzquierda = Mapa::Instance()->getPared();
-    
-    for(int i = 0; i <paredDerecha.size(); i++){
-        sf::RectangleShape aux = paredDerecha[i];
-        if(boxDerecha.getGlobalBounds().intersects(aux.getGlobalBounds())){
-            if(check_pared == false){
-                check_pared = true;
-                dir_aux = -1;
-                direccion = 0;
-                espacio = 0;
-                //direccion = -1;
 
-                sprite.setScale(-1.0f,1.0f); 
-            }
+    Mapa* map = Mapa::Instance();
+    
+    bool estoy_tierra = false;
+    
+    vector<sf::RectangleShape> paredes = map->getPared();
+    vector<sf::RectangleShape> bloques = map->getBloques();
+    vector<sf::RectangleShape> suelo = map->getSuelo();
+
+    
+    for(int i = 0 ; i < paredes.size(); i++){
+        sf::RectangleShape aux_paredes = paredes[i];
+        if(boxDerecha.getGlobalBounds().intersects(aux_paredes.getGlobalBounds())){
+            direccion = -1;
+            sprite.setScale(-1.0f, 1.0f);
         }
-        
-    }
-    
-    for(int i = 0; i <paredIzquierda.size(); i++){
-        sf::RectangleShape aux = paredIzquierda[i];
-        if(boxIzquierda.getGlobalBounds().intersects(aux.getGlobalBounds())){
-            if(check_pared == false){
-                check_pared = true;
-                dir_aux = 1;
-                direccion = 0;
-                espacio = 0;
-                //direccion = 1;
-                sprite.setScale(1.0f,1.0f); 
-            }
-        }
-        
-    }
-    
-    
-
-    
-    int valorpersonaje = Mapa::Instance()->getTile(px,py);
-    //cout << "(x,y) = " << rx << " , " << ry <<  " : "<< valorderecha << endl;
-    //cout << "(x,y) = " << lx << " , " << ly <<  " : "<< valorizquierda << endl;
-    //cout << "(x,y) = " << dx << " , " << dy <<  " : "<< valorabajo << endl;
-    //cout << "(x,y) = " << ux << " , " << uy <<  " : "<< valorarriba << endl;
-    
-    
-    switch(valorarriba){
-        case 0: break;
-        
-        
-        
-        case 7: 
-            velocidad.y =0.1;
-            //cout<<"HOLA \n";
-            break;
-            
-        case 8:
-            velocidad.y =0.1;
-        break;
-    }
-    
-    
-    
-    switch(valorabajo){
-        case 0: 
-            estoyNormal();
-            break;  
-        
-        case 7: 
-           // cout << dy;
-            estoyAzul(dy * 32);
-            break;
-            
-        case 3:              
-            
-            alturasuelo = dy*32-15;
-            
-            break;
-            
-        case 4:            
-            alturasuelo = dy*32-15;
-            checkpoint=alturasuelo;
-            break;
-            
-        case 8:
-            estoyRoja(dy*32);
-            break;
-            
-        case 9:
-            velocidad.y = -velocidadsalto - 0.6;
-            break;
-            
-    }
- 
-    
-    
-    
-    /*switch(valorderecha){
-        case 0: 
-             
-            break;
-            
-        
-        case 2: 
-            if(check_pared == false){
-                check_pared = true;
-                dir_aux = -1;
-                direccion = 0;
-                espacio = 0;
-                //direccion = -1;
-
-                sprite.setScale(-1.0f,1.0f); 
-            }
-            break;
-            
-        case 7:
-            if(check_pared == false){
-               check_pared = true;
-               dir_aux = -1;
-               direccion = 0;
-               espacio = 0;
-               //direccion = -1;
-
-                sprite.setScale(-1.0f,1.0f); 
-            }
-            
-            break;
-               
-    }
-    
-    */
-    
-    /*switch(valorizquierda){
-        case 0:
-            
-            break;
-            
-            
-        case 1:
-            if(check_pared == false){
-                check_pared = true;
-                dir_aux = 1;
-                direccion = 0;
-                espacio = 0;
-                //direccion = 1;
-                sprite.setScale(1.0f,1.0f); 
-            }
-            break;
-            
-        case 7:
-            if(check_pared == false){
-                check_pared = true;
-                dir_aux = 1;
-                direccion = 0;
-                espacio = 0;
-                //direccion = 1;
-                 sprite.setScale(1.0f,1.0f); 
-            }
-            
-            break;
-            
-    }
-    
-    if(valorizquierda > 50){
-       
-        Mapa::Instance()->activarCapa(4);
-        int x = Mapa::Instance()->getCoordenadas(valorizquierda,0);
-        int y = Mapa::Instance()->getCoordenadas(valorizquierda,1);
-        sprite.setPosition(x*32,y*32);
-        Mapa::Instance()->activarCapa(0);
-           
-    }
-    if(valorderecha > 50){
-        
-        Mapa::Instance()->activarCapa(4);
-        int x = Mapa::Instance()->getCoordenadas(valorderecha,0);
-        int y = Mapa::Instance()->getCoordenadas(valorderecha,1);
-        sprite.setPosition(x*32,y*32);
-        Mapa::Instance()->activarCapa(0);
-          
-    }*/
-    
-    switch(valorpersonaje){
-        case 5:
-            morir();
-            break;
-    }
-    
-
-    
-    if(check_pared == true){
-        
-        if(velocidad.y < 0){//para que no resbale
-            gravedad = kGrav*1.5;
-        }
-        if(velocidad.y >= 0 ){
-            velocidad.y=0.2;
-            gravedad = kGravP;
+        if(boxIzquierda.getGlobalBounds().intersects(aux_paredes.getGlobalBounds())){
+            direccion = 1;
+            sprite.setScale(1.0f, 1.0f);
         }
     }
     
-    //cout << "Checkpoint: " << checkpoint << "\n";
     
-    
-    if(sprite.getSprite().getPosition().y + sprite.getSprite().getScale().y >= alturasuelo  || espacio > 0 && check_pared == true){
-            gravedad = kGrav;
-            direccion = dir_aux;
-            check_pared = false;
+    for(int i = 0; i < bloques.size() ; i++){
+        sf::RectangleShape aux_bloques = bloques[i];
+        if(boxDerecha.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
+            direccion = -1;
+            sprite.setScale(-1.0f, 1.0f);
+        }
+        
+        if(boxIzquierda.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
+            direccion = 1;
+            sprite.setScale(1.0f, 1.0f);
+        }
+        
+        if(boxAbajo.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
+            
+            estoy_tierra = true;
+            
+        }
+        if(boxArriba.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
+            velocidad.y = 0.1;
+        }
     }
-    if (valorderecha == 0 && valorizquierda == 0 && direccion==0){
-        velocidad.y=0.6;
-    }
+        
     
+    //cuando el box abajo ha decidido que tenia suelo debajo ha cambiado estoy_tierra a 
+    if(estoy_tierra){
+        alturasuelo = sprite.getPosy() + 1;
+    }
+    else{
+        alturasuelo = alturasuelo_nueva;
+    }
+        
     gravity(timeElapsed);
     
-    
-    //std::cout<<"bajo"<<velocidad.x<<"\n"; 
     if(pierdo == false){
-        sprite.move(velocidad.x*direccion*timeElapsed,velocidad.y*timeElapsed);
+        sprite.move(velocidad.x * direccion*timeElapsed, velocidad.y*timeElapsed);
     }
-    
-    if(sprite.getSprite().getPosition().y > alturasuelo){
-        sprite.setPosition(sprite.getSprite().getPosition().x, alturasuelo);
-    }
-
-    
-    //std::cout<<"arriba"<<velocidad.x<<"\n";      
-   /* boxAbajo.setPosition(sprite.getPosition().x, sprite.getPosition().y+20);
-    boxArriba.setPosition(sprite.getPosition().x, sprite.getPosition().y-20);
-    int posxs = boxAbajo.getPosition().x;
-    int posys = boxAbajo.getPosition().y;
-    posx = sprite.getPosition().x;
-    posy = sprite.getPosition().y;*/
-    
-   /* int posxs = boxAbajo.getPosition().x;
-    int posys = boxAbajo.getPosition().y;
-    posx = sprite.getPosition().x;
-    posy = sprite.getPosition().y;*/
-    
-    
     
 }
 
@@ -443,10 +248,10 @@ void Personaje::estoyRoja(int y){
     }
     
      void Personaje::actualizarBoxes(){
-        boxAbajo.setPosition(sprite.getPosx(), sprite.getPosy()+20);
-        boxArriba.setPosition(sprite.getPosx(),sprite.getPosy()-15);
-        boxDerecha.setPosition(sprite.getPosx()+15, sprite.getPosy());
-        boxIzquierda.setPosition(sprite.getPosx()-15, sprite.getPosy());
+        boxAbajo.setPosition(sprite.getPosx(), sprite.getPosy()+12);
+        boxArriba.setPosition(sprite.getPosx(),sprite.getPosy()-12);
+        boxDerecha.setPosition(sprite.getPosx()+12, sprite.getPosy());
+        boxIzquierda.setPosition(sprite.getPosx()-12, sprite.getPosy());
     }
      
    
