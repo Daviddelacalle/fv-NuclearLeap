@@ -265,20 +265,44 @@ void Personaje::mover(float timeElapsed){
             
     }
     
-    if(valorizquierda > 50){
+    if(valorizquierda > 50 && valorizquierda%2!=0){
        
         Mapa::Instance()->activarCapa(4);
         int x = Mapa::Instance()->getCoordenadas(valorizquierda,0);
         int y = Mapa::Instance()->getCoordenadas(valorizquierda,1);
+        if(valorizquierda==59){
+            x=x+1.5;
+            direccion=1;
+            sprite.setScale(1.0f,1.0f);
+        }
+        if(valorizquierda==57)
+            x=x-1.5;
+        if(valorizquierda==61){
+            x=x-1;
+            direccion=-1;
+            sprite.setScale(-1.0f,1.0f);
+        }
         sprite.setPosition(x*32,y*32);
         Mapa::Instance()->activarCapa(0);
            
     }
-    if(valorderecha > 50){
+    if(valorderecha > 50 && valorderecha%2!=0){
         
         Mapa::Instance()->activarCapa(4);
         int x = Mapa::Instance()->getCoordenadas(valorderecha,0);
         int y = Mapa::Instance()->getCoordenadas(valorderecha,1);
+        if(valorderecha==59){
+            x=x+1.5;
+            direccion=1;
+            sprite.setScale(1.0f,1.0f);
+        }
+        if(valorderecha==57)
+            x=x-1.5;
+        if(valorderecha==61){
+            x=x-1;
+            direccion=-1;
+            sprite.setScale(-1.0f,1.0f);
+        }
         sprite.setPosition(x*32,y*32);
         Mapa::Instance()->activarCapa(0);
           
