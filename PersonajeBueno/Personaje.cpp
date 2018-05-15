@@ -158,17 +158,16 @@ void Personaje::mover(float timeElapsed){
         
     }
     
-    for(int i = 0; i <paredDerecha.size(); i++){
-        sf::RectangleShape aux = paredDerecha[i];
-        if(boxDerecha.getGlobalBounds().intersects(aux.getGlobalBounds())){
+    for(int i = 0; i <paredIzquierda.size(); i++){
+        sf::RectangleShape aux = paredIzquierda[i];
+        if(boxIzquierda.getGlobalBounds().intersects(aux.getGlobalBounds())){
             if(check_pared == false){
                 check_pared = true;
-                dir_aux = -1;
+                dir_aux = 1;
                 direccion = 0;
                 espacio = 0;
-                //direccion = -1;
-
-                sprite.setScale(-1.0f,1.0f); 
+                //direccion = 1;
+                sprite.setScale(1.0f,1.0f); 
             }
         }
         
