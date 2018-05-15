@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2017.07.26" orientation="orthogonal" renderorder="right-down" width="14" height="27" tilewidth="32" tileheight="32" nextobjectid="56">
+<map version="1.0" tiledversion="2017.07.26" orientation="orthogonal" renderorder="right-down" width="14" height="27" tilewidth="32" tileheight="32" nextobjectid="85">
  <tileset firstgid="1" name="plataformas" tilewidth="32" tileheight="32" tilecount="196" columns="28">
   <image source="../plataformas.png" width="896" height="224"/>
   <tile id="71">
@@ -476,7 +476,29 @@
    <tile gid="2"/>
   </data>
  </layer>
- <layer name="Enemigos" width="14" height="27">
+ <objectgroup color="#ff0000" name="Bounding">
+  <object id="57" type="1" x="0" y="0" width="32" height="864"/>
+  <object id="58" type="1" x="416" y="0" width="32" height="864"/>
+  <object id="59" type="7" x="32" y="160" width="256" height="32"/>
+  <object id="67" type="7" x="160" y="480" width="256" height="32"/>
+  <object id="68" type="5" x="32" y="416" width="32" height="32"/>
+  <object id="69" type="5" x="64" y="384" width="32" height="32"/>
+  <object id="70" type="5" x="96" y="352" width="32" height="32"/>
+  <object id="71" type="5" x="128" y="320" width="32" height="32"/>
+  <object id="72" type="5" x="160" y="288" width="32" height="32"/>
+  <object id="73" type="5" x="192" y="256" width="32" height="32"/>
+  <object id="74" type="5" x="224" y="224" width="32" height="32"/>
+  <object id="75" type="5" x="256" y="192" width="32" height="32"/>
+  <object id="77" type="5" x="160" y="512" width="32" height="32"/>
+  <object id="78" type="5" x="192" y="544" width="32" height="32"/>
+  <object id="79" type="5" x="224" y="576" width="32" height="32"/>
+  <object id="80" type="5" x="256" y="608" width="32" height="32"/>
+  <object id="81" type="5" x="288" y="640" width="32" height="32"/>
+  <object id="82" type="5" x="320" y="672" width="32" height="32"/>
+  <object id="83" type="5" x="352" y="704" width="32" height="32"/>
+  <object id="84" type="5" x="384" y="736" width="32" height="32"/>
+ </objectgroup>
+ <layer name="Enemigos" width="14" height="27" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -858,7 +880,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Rads" width="14" height="27">
+ <layer name="Rads" width="14" height="27" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1240,7 +1262,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Plataformas" width="14" height="27">
+ <layer name="Plataformas" width="14" height="27" visible="0">
   <data>
    <tile gid="137"/>
    <tile gid="0"/>
@@ -1622,7 +1644,7 @@
    <tile gid="137"/>
   </data>
  </layer>
- <layer name="Tele" width="14" height="27">
+ <layer name="Tele" width="14" height="27" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
