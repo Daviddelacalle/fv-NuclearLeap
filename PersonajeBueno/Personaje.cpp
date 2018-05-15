@@ -15,6 +15,7 @@
 #include "mapa.h"
 #include "Mi_Texto.h"
 #include "Motor_2D.h"
+#include "Juego.h"
 
 
 Personaje::Personaje(){
@@ -286,6 +287,7 @@ void Personaje::mover(float timeElapsed){
     switch(valorpersonaje){
         case 5:
             morir();
+            
             break;
     }
     
@@ -471,14 +473,20 @@ void Personaje::estoyRoja(int y){
      }
 
      void Personaje::morir(){
+        Juego* juego = Juego::Instance();
+                
         alturasuelo=checkpoint;
         alturasuelo_nueva = checkpoint;
         sprite.setPosition(200, alturasuelo);
         vidas--;
         actualizarVidas();
         if(vidas==0){       
-            pierdo = true;
-            text_perder.setPosition(30, sprite.getPosy()-30);
+            juego->alive = false;
+            
+            juego->cambiarMenu(2);
+            juego->cambiarEstado(2);
+            
+           // map->ResetInstance();
         }
      }
      

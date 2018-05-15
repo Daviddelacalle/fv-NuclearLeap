@@ -35,6 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/a08718a8/Juego.o \
+	${OBJECTDIR}/_ext/a08718a8/LoadXML.o \
+	${OBJECTDIR}/_ext/a08718a8/Mundo.o \
+	${OBJECTDIR}/_ext/a08718a8/inGame.o \
 	${OBJECTDIR}/Mi_Sprite.o \
 	${OBJECTDIR}/Mi_Texto.o \
 	${OBJECTDIR}/Motor_2D.o \
@@ -78,6 +82,26 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: /usr/lib/x86_64-linux
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/a08718a8/Juego.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Juego.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.cpp
+
+${OBJECTDIR}/_ext/a08718a8/LoadXML.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/LoadXML.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.cpp
+
+${OBJECTDIR}/_ext/a08718a8/Mundo.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Mundo.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.cpp
+
+${OBJECTDIR}/_ext/a08718a8/inGame.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/inGame.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.cpp
 
 ${OBJECTDIR}/Mi_Sprite.o: Mi_Sprite.cpp 
 	${MKDIR} -p ${OBJECTDIR}

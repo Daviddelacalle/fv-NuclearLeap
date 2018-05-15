@@ -16,6 +16,7 @@
 #include "config.h"
 #include "Rads.h"
 #include "Npc.h"
+#include "LoadXML.h"
 
 
 class Mapa: public sf::Drawable {
@@ -30,6 +31,12 @@ public:
     void setFondo(int);
     int getAltZonas(int);
     int bloqRandom(std::vector<int>);
+    void CargarMapa(int, int, int , int***, sf::Sprite****,
+        sf::Sprite, sf::Texture, sf::Texture, int [],
+        std::string [], vector<Rads*> , vector<Npc1*> , vector<Npc3*> ,
+        vector<Npc5*>);
+            
+        
     
     void recogerRads(Mi_Sprite &_pj, int &_puntuacion);
     vector<Npc1*> getvNpc1();
@@ -40,6 +47,7 @@ protected:
     Mapa();
     Mapa(const Mapa & );
     Mapa &operator= (const Mapa & );
+   
 private:
     vector<Rads*> v_rads;
     vector<Npc1*> v_npc1;
@@ -51,9 +59,8 @@ private:
     int ***_tilemap;
     sf::Sprite ****_tilemapSprite;
     sf::Sprite fondo;
-    sf::Texture tex_fondo, tex_plat ;
+    sf::Texture tex_fondo, tex_plat;
     const static int zonas=2 , sec_zona=2,  bloq_seccion=3;
-    int alturas[zonas * sec_zona * bloq_seccion * 2];
     int alturasZonas[zonas];
     std::string fondos[zonas];
 };
