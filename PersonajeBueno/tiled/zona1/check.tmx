@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2017.07.26" orientation="orthogonal" renderorder="right-down" width="14" height="1" tilewidth="32" tileheight="32" nextobjectid="56">
+<map version="1.0" tiledversion="2017.07.26" orientation="orthogonal" renderorder="right-down" width="14" height="1" tilewidth="32" tileheight="32" nextobjectid="59">
  <tileset firstgid="1" name="plataformas" tilewidth="32" tileheight="32" tilecount="196" columns="28">
   <image source="../plataformas.png" width="896" height="224"/>
   <tile id="71">
@@ -94,6 +94,11 @@
    </animation>
   </tile>
  </tileset>
+ <objectgroup color="#ff0000" name="Bounding">
+  <object id="56" type="1" x="0" y="0" width="32" height="32"/>
+  <object id="57" type="1" x="416" y="0" width="32" height="32"/>
+  <object id="58" type="4" x="32" y="0" width="384" height="32"/>
+ </objectgroup>
  <layer name="Colision" width="14" height="1">
   <data>
    <tile gid="1"/>
@@ -148,7 +153,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Plataformas" width="14" height="1">
+ <layer name="Plataformas" width="14" height="1" visible="0">
   <data>
    <tile gid="165"/>
    <tile gid="172"/>
@@ -166,7 +171,7 @@
    <tile gid="165"/>
   </data>
  </layer>
- <layer name="Capa de patrones 5" width="14" height="1">
+ <layer name="Tele" width="14" height="1" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>

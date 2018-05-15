@@ -71,7 +71,7 @@ Mapa::Mapa() {
     XMLElement *map2 = doc2.FirstChildElement("map");
     map2->QueryIntAttribute("height", &altFinal);         
     _height += altFinal;
-    
+   
     
     //--------------LEER TODOS LOS XML----------------------
     
@@ -199,6 +199,54 @@ Mapa::Mapa() {
     
     for(int i=(num_bloques*2-1); i>-1; i--){
         
+    //------------CREAR BOUNDINGS--------------------------
+        
+            XMLElement *objectgroup = tmxs[i]->FirstChildElement("objectgroup");
+            
+            if(objectgroup!=NULL){
+               
+                XMLElement *object = objectgroup->FirstChildElement("object");
+                int bx, by, bw, bh, bt;
+                while(object){
+                    object->QueryIntAttribute("x", &bx);
+                    object->QueryIntAttribute("y", &by);
+                    object->QueryIntAttribute("width", &bw);
+                    object->QueryIntAttribute("height", &bh);
+                    object->QueryIntAttribute("type",&bt);
+
+                    sf::RectangleShape bounding;
+                    bounding.setSize(sf::Vector2f(bw, bh));
+                    bounding.setPosition(bx,(temp*32)+by);
+                    
+                    bounding.setFillColor(sf::Color::Red);                    
+                    
+                    if(bt==1){
+                        bounding.setFillColor(sf::Color::Blue);
+                        v_pared.push_back(bounding);
+                    }
+                    if(bt==7){
+                        bounding.setFillColor(sf::Color::Green);
+                        v_bloques.push_back(bounding);
+                    }
+                    if(bt==5){
+                        bounding.setFillColor(sf::Color::Red);
+                        v_muerte.push_back(bounding);
+                    }
+                    if(bt==3){
+                        bounding.setFillColor(sf::Color::Magenta);
+                        v_suelo.push_back(bounding);
+                    }
+                    if(bt==4){
+                        bounding.setFillColor(sf::Color::White);
+                        v_checkpoint.push_back(bounding);
+                    }
+                    
+
+                    object = object->NextSiblingElement("object");
+                }
+            }
+    //---------------------------------------------------------------
+        
         XMLElement *data[_numLayers];
         layer = tmxs[i]->FirstChildElement("layer");
 
@@ -241,6 +289,12 @@ Mapa::Mapa() {
         temp=temp+alturas[i];
     }
    
+    cout << "PARED: " << v_pared.size() << endl;
+    cout << "BLOQUES: " << v_bloques.size() << endl;
+    cout << "MUERTE: " << v_muerte.size() << endl;
+    cout << "CHECKPOINT: " << v_checkpoint.size() << endl;
+    cout << "SUELO: " << v_suelo.size() << endl;
+    
     //Cargando los GIDs de multiples capas del BLOQUE INICIAL
     
     layer = map->FirstChildElement("layer");
@@ -442,5 +496,21 @@ void Mapa::recogerRads(Mi_Sprite &_pj, int &_puntuacion){
         
         
     }
+}
+
+vector<sf::RectangleShape> Mapa::getPared(){
+    return v_pared;
+}
+vector<sf::RectangleShape> Mapa::getBloques(){
+    return v_bloques;
+}
+vector<sf::RectangleShape> Mapa::getSuelo(){
+    return v_suelo;
+}
+vector<sf::RectangleShape> Mapa::getCheckpoint(){
+    return v_checkpoint;
+}
+vector<sf::RectangleShape> Mapa::getMuerte(){
+    return v_muerte;
 }
 

@@ -27,6 +27,15 @@ void update( State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc
 void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5); 
 float minimo(float,float);
 
+void pintar_boundings(vector<sf::RectangleShape> vector){
+    auto it = vector.begin();
+    
+    for( it = vector.begin(); it != vector.end(); it++){
+            sf::RectangleShape tmp = *it;
+            Motor_2D::Instance()->getWindow()->draw(tmp);
+    }
+}
+
 void actualizarPuntuacion(int _nrads, sf::Text &_puntRads){ 
     std::stringstream ss; 
     ss<<_nrads; 
@@ -288,6 +297,13 @@ int main() {
         
         map->activarCapa(3);
         motor->getWindow()->draw(*map);
+        
+        pintar_boundings(map->Instance()->getPared());
+        pintar_boundings(map->Instance()->getBloques());
+        pintar_boundings(map->Instance()->getCheckpoint());
+        pintar_boundings(map->Instance()->getSuelo());
+        pintar_boundings(map->Instance()->getMuerte());
+        
         render_interpolation(*motor->getWindow(),pj_S,percentTick,pj,npc_S,npc5); 
         motor->getWindow()->display();
     }   

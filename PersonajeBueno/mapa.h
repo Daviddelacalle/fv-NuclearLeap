@@ -16,6 +16,7 @@
 #include "config.h"
 #include "Rads.h"
 #include "Npc.h"
+#include "tinyxml2.h"
 
 
 class Mapa: public sf::Drawable {
@@ -35,6 +36,11 @@ public:
     vector<Npc1*> getvNpc1();
     vector<Npc3*> getvNpc3();
     vector<Npc5*> getvNpc5();
+    vector<sf::RectangleShape> getPared();
+    vector<sf::RectangleShape> getBloques();
+    vector<sf::RectangleShape> getSuelo();
+    vector<sf::RectangleShape> getCheckpoint();
+    vector<sf::RectangleShape> getMuerte();
     
 protected:
     Mapa();
@@ -45,6 +51,11 @@ private:
     vector<Npc1*> v_npc1;
     vector<Npc3*> v_npc3;
     vector<Npc5*> v_npc5;
+    vector<sf::RectangleShape> v_pared;
+    vector<sf::RectangleShape> v_bloques;
+    vector<sf::RectangleShape> v_suelo;
+    vector<sf::RectangleShape> v_checkpoint;
+    vector<sf::RectangleShape> v_muerte;
     
     static Mapa* pinstance;
     int capa, _height, _width;

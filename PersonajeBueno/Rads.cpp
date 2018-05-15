@@ -11,8 +11,8 @@
 using namespace std;
 
 Rads::Rads(int _x, int _y , int _puntuacion){
-    cout<<"posx "<<_x<<"\n";
-    cout<<"posy"<<_y;
+    //cout<<"posx "<<_x<<"\n";
+    //cout<<"posy"<<_y;
     posx = _x;
     posy = _y;
     

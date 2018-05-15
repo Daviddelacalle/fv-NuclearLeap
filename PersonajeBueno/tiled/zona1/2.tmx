@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2017.07.26" orientation="orthogonal" renderorder="right-down" width="14" height="20" tilewidth="32" tileheight="32" nextobjectid="56">
+<map version="1.0" tiledversion="2017.07.26" orientation="orthogonal" renderorder="right-down" width="14" height="20" tilewidth="32" tileheight="32" nextobjectid="63">
  <tileset firstgid="1" name="plataformas" tilewidth="32" tileheight="32" tilecount="196" columns="28">
   <image source="../plataformas.png" width="896" height="224"/>
   <tile id="71">
@@ -94,6 +94,14 @@
    </animation>
   </tile>
  </tileset>
+ <objectgroup color="#ff0000" name="Bounding">
+  <object id="56" type="1" x="416" y="0" width="32" height="640"/>
+  <object id="57" type="1" x="0" y="0" width="32" height="640"/>
+  <object id="59" type="7" x="32" y="128" width="320" height="32"/>
+  <object id="60" type="7" x="96" y="160" width="256" height="320"/>
+  <object id="61" type="5" x="32" y="96" width="320" height="32"/>
+  <object id="62" type="5" x="96" y="480" width="256" height="32"/>
+ </objectgroup>
  <layer name="Colision" width="14" height="20">
   <data>
    <tile gid="1"/>
@@ -662,7 +670,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Rads" width="14" height="20">
+ <layer name="Rads" width="14" height="20" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -946,7 +954,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Plataformas" width="14" height="20">
+ <layer name="Plataformas" width="14" height="20" visible="0">
   <data>
    <tile gid="165"/>
    <tile gid="0"/>
@@ -1230,7 +1238,7 @@
    <tile gid="137"/>
   </data>
  </layer>
- <layer name="Tele" width="14" height="20">
+ <layer name="Tele" width="14" height="20" visible="0">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
