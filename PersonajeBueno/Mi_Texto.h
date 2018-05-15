@@ -23,6 +23,7 @@ public:
     void setParams(sf::String _string, int _tam, float _posx, float _posy);
     void setText(sf::String _string);
     void setPosition(float, float);
+    void setColor(sf::Color);
 private:
     sf::Font font;
     sf::Text text;

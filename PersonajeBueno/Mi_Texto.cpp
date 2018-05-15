@@ -49,3 +49,6 @@ void Mi_Texto::setPosition(float _posx, float _posy){
     text.setPosition(_posx,_posy);
 }
 
+void Mi_Texto::setColor(sf::Color color){
+    text.setColor(color);
+}

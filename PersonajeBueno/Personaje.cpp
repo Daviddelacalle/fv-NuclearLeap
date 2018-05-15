@@ -80,9 +80,11 @@ Personaje::Personaje(){
     
     text_vidas.setParams(ss.str(), 13, posx_vida,posy_vida);
     text_puntuacion.setParams('0',13, posx_vida +40, posy_vida);
+    text_puntuacion.setColor(sf::Color::Black);
     sprite_vidas.setParams(4,0,32,32, posx_vida+15,posy_vida+3);
     sprite_vidas.setScale(1.5,1.5);
-    
+    sprite_puntuacion.setParams(6,0,32,32,400,posy_vida);
+    sprite_puntuacion.setScale(1.5,1.5);
      
     text_perder.setParams("HAS PERDIDO", 30, 0, 0);
     
@@ -456,6 +458,7 @@ void Personaje::estoyRoja(int y){
     void Personaje::draw(){
         sprite.draw();
         sprite_vidas.draw();
+        sprite_puntuacion.draw();
         text_vidas.draw();
         text_puntuacion.draw();
         if(pierdo ==true){
@@ -479,7 +482,8 @@ void Personaje::estoyRoja(int y){
         Motor_2D* motor = Motor_2D::Instance();
         text_vidas.setPosition(posx_vida -7 ,motor->getVistaPrincipal()->getCenter().y -330);  
         sprite_vidas.setPosition(posx_vida,motor->getVistaPrincipal()->getCenter().y-327); 
-        text_puntuacion.setPosition(posx_vida - 50, motor->getVistaPrincipal()->getCenter().y -330);
+        sprite_puntuacion.setPosition(posx_vida + 330, motor->getVistaPrincipal()->getCenter().y -327);
+        text_puntuacion.setPosition(posx_vida + 315, motor->getVistaPrincipal()->getCenter().y -330);
      }  
      
      void Personaje::actualizarVidas(){

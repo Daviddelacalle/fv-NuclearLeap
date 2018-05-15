@@ -70,6 +70,7 @@ private:
     float velocidadsalto;
     Mi_Sprite sprite;
     Mi_Sprite sprite_vidas;
+    Mi_Sprite sprite_puntuacion;
     Mi_Texto text_vidas;
     Mi_Texto text_puntuacion;
     Mi_Texto text_perder;
