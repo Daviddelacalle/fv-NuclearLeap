@@ -138,6 +138,43 @@ void Personaje::mover(float timeElapsed){
     int valorabajo = Mapa::Instance()->getTile(dx,dy);
     int valorizquierda = Mapa::Instance()->getTile(lx,ly);
     int valorarriba = Mapa::Instance()->getTile(ux,uy);
+    
+    vector<sf::RectangleShape> paredDerecha = Mapa::Instance()->getPared();
+    vector<sf::RectangleShape> paredIzquierda = Mapa::Instance()->getPared();
+    
+    for(int i = 0; i <paredDerecha.size(); i++){
+        sf::RectangleShape aux = paredDerecha[i];
+        if(boxDerecha.getGlobalBounds().intersects(aux.getGlobalBounds())){
+            if(check_pared == false){
+                check_pared = true;
+                dir_aux = -1;
+                direccion = 0;
+                espacio = 0;
+                //direccion = -1;
+
+                sprite.setScale(-1.0f,1.0f); 
+            }
+        }
+        
+    }
+    
+    for(int i = 0; i <paredDerecha.size(); i++){
+        sf::RectangleShape aux = paredDerecha[i];
+        if(boxDerecha.getGlobalBounds().intersects(aux.getGlobalBounds())){
+            if(check_pared == false){
+                check_pared = true;
+                dir_aux = -1;
+                direccion = 0;
+                espacio = 0;
+                //direccion = -1;
+
+                sprite.setScale(-1.0f,1.0f); 
+            }
+        }
+        
+    }
+    
+    
 
     
     int valorpersonaje = Mapa::Instance()->getTile(px,py);
@@ -198,7 +235,7 @@ void Personaje::mover(float timeElapsed){
     
     
     
-    switch(valorderecha){
+    /*switch(valorderecha){
         case 0: 
              
             break;
@@ -231,9 +268,9 @@ void Personaje::mover(float timeElapsed){
                
     }
     
+    */
     
-    
-    switch(valorizquierda){
+    /*switch(valorizquierda){
         case 0:
             
             break;
@@ -281,7 +318,7 @@ void Personaje::mover(float timeElapsed){
         sprite.setPosition(x*32,y*32);
         Mapa::Instance()->activarCapa(0);
           
-    }
+    }*/
     
     switch(valorpersonaje){
         case 5:
