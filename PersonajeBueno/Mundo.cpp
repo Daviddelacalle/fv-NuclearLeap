@@ -53,7 +53,7 @@ void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_
     //AQUI ES DONDE TENEMOS QUE LLAMAR A LAS FUNCIONES DE MOVIMIENTO DE LOS OBJETOS PARA ACTUALIZAR SU RECORRIDO
     _pj.update(timeElapsed);
 
-    /*
+    
     for(int it = 0; it < map->getvNpc1().size() ; it++){
         Npc1 *tmp = map->getvNpc1()[it];
         tmp->update(_pj);
@@ -68,7 +68,7 @@ void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_
         Npc5 *tmp = map->getvNpc5()[it];
         tmp->update(_pj);
     }
-    */
+    
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
     /*
     _newState.setPosx(posx);
@@ -110,7 +110,7 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
     
     //DIBUJAMOS
     _pj.draw();
-    /*
+    
     for(int it = 0; it < map->getvNpc1().size() ; it++){
         Npc1 *tmp = map->getvNpc1()[it];
         tmp->draw();
@@ -124,7 +124,7 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
         tmp->draw();
-    }*/
+    }
     /*
     _window.draw(_pj.getBoxAbajo());
     _window.draw(_pj.getBoxArriba());

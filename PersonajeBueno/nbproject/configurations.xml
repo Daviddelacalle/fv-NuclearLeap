@@ -4,18 +4,18 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.h</itemPath>
-      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.h</itemPath>
+      <itemPath>Juego.h</itemPath>
+      <itemPath>LoadXML.h</itemPath>
       <itemPath>Mi_Sprite.h</itemPath>
       <itemPath>Mi_Texto.h</itemPath>
       <itemPath>Motor_2D.h</itemPath>
-      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.h</itemPath>
+      <itemPath>Mundo.h</itemPath>
       <itemPath>Npc.h</itemPath>
       <itemPath>Personaje.h</itemPath>
       <itemPath>Rads.h</itemPath>
       <itemPath>State.h</itemPath>
       <itemPath>config.h</itemPath>
-      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.h</itemPath>
+      <itemPath>inGame.h</itemPath>
       <itemPath>mapa.h</itemPath>
       <itemPath>tinyxml2.h</itemPath>
     </logicalFolder>
@@ -26,17 +26,17 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.cpp</itemPath>
-      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.cpp</itemPath>
+      <itemPath>Juego.cpp</itemPath>
+      <itemPath>LoadXML.cpp</itemPath>
       <itemPath>Mi_Sprite.cpp</itemPath>
       <itemPath>Mi_Texto.cpp</itemPath>
       <itemPath>Motor_2D.cpp</itemPath>
-      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.cpp</itemPath>
+      <itemPath>Mundo.cpp</itemPath>
       <itemPath>Npc.cpp</itemPath>
       <itemPath>Personaje.cpp</itemPath>
       <itemPath>Rads.cpp</itemPath>
       <itemPath>State.cpp</itemPath>
-      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.cpp</itemPath>
+      <itemPath>inGame.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>mapa.cpp</itemPath>
       <itemPath>tinyxml2.cpp</itemPath>
@@ -135,46 +135,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -385,6 +345,14 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="Juego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Juego.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LoadXML.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LoadXML.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Mi_Sprite.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Mi_Sprite.h" ex="false" tool="3" flavor2="0">
@@ -396,6 +364,10 @@
       <item path="Motor_2D.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Motor_2D.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mundo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mundo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Npc.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -414,6 +386,10 @@
       <item path="State.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inGame.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="inGame.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -446,46 +422,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -696,6 +632,14 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="Juego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Juego.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LoadXML.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LoadXML.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Mi_Sprite.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Mi_Sprite.h" ex="false" tool="3" flavor2="0">
@@ -707,6 +651,10 @@
       <item path="Motor_2D.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Motor_2D.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Mundo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mundo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Npc.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -725,6 +673,10 @@
       <item path="State.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inGame.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="inGame.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

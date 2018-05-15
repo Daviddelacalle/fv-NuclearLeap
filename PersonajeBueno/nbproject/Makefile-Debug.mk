@@ -35,17 +35,17 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/a08718a8/Juego.o \
-	${OBJECTDIR}/_ext/a08718a8/LoadXML.o \
-	${OBJECTDIR}/_ext/a08718a8/Mundo.o \
-	${OBJECTDIR}/_ext/a08718a8/inGame.o \
+	${OBJECTDIR}/Juego.o \
+	${OBJECTDIR}/LoadXML.o \
 	${OBJECTDIR}/Mi_Sprite.o \
 	${OBJECTDIR}/Mi_Texto.o \
 	${OBJECTDIR}/Motor_2D.o \
+	${OBJECTDIR}/Mundo.o \
 	${OBJECTDIR}/Npc.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/Rads.o \
 	${OBJECTDIR}/State.o \
+	${OBJECTDIR}/inGame.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/mapa.o \
 	${OBJECTDIR}/tinyxml2.o
@@ -83,25 +83,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/a08718a8/Juego.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+${OBJECTDIR}/Juego.o: Juego.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Juego.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.cpp
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Juego.o Juego.cpp
 
-${OBJECTDIR}/_ext/a08718a8/LoadXML.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+${OBJECTDIR}/LoadXML.o: LoadXML.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/LoadXML.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/LoadXML.cpp
-
-${OBJECTDIR}/_ext/a08718a8/Mundo.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Mundo.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Mundo.cpp
-
-${OBJECTDIR}/_ext/a08718a8/inGame.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/inGame.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/inGame.cpp
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LoadXML.o LoadXML.cpp
 
 ${OBJECTDIR}/Mi_Sprite.o: Mi_Sprite.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -117,6 +107,11 @@ ${OBJECTDIR}/Motor_2D.o: Motor_2D.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Motor_2D.o Motor_2D.cpp
+
+${OBJECTDIR}/Mundo.o: Mundo.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mundo.o Mundo.cpp
 
 ${OBJECTDIR}/Npc.o: Npc.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -137,6 +132,11 @@ ${OBJECTDIR}/State.o: State.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/State.o State.cpp
+
+${OBJECTDIR}/inGame.o: inGame.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/inGame.o inGame.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
