@@ -57,6 +57,7 @@ private:
     int posy_vida;
     int posx_vida;
     bool pierdo;
+    bool estoy_volando;
     int alturasuelo_nueva;
     float gravedad;
     int posx;

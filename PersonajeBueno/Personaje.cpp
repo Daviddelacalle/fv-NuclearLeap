@@ -21,8 +21,9 @@ Personaje::Personaje(){
 
         
    
-            
-   sprite.setParams(0,2,32,32,200,10780);
+    alturasuelo = Mapa::Instance()->getAltura()*32 - 32*9.5;
+    alturasuelo_nueva = Mapa::Instance()->getAltura()*32 - 32*9.5;
+    sprite.setParams(0,2,32,32,200,alturasuelo);
   
     
     boxAbajo = sf::RectangleShape(sf::Vector2f(24,8));
@@ -31,19 +32,19 @@ Personaje::Personaje(){
     boxAbajo.setFillColor(sf::Color::Red);
         
     
-    boxArriba = sf::RectangleShape(sf::Vector2f(28,8));
-    boxArriba.setOrigin(14,4);
+    boxArriba = sf::RectangleShape(sf::Vector2f(24,8));
+    boxArriba.setOrigin(12,4);
     boxArriba.setPosition(320, 630);
     boxArriba.setFillColor(sf::Color::Blue);
     
-    boxDerecha = sf::RectangleShape(sf::Vector2f(16,8));
-    boxDerecha.setOrigin(8,4);
+    boxDerecha = sf::RectangleShape(sf::Vector2f(10,8));
+    boxDerecha.setOrigin(5,4);
     boxDerecha.rotate(90);
     boxDerecha.setPosition(320, 630);
     boxDerecha.setFillColor(sf::Color::Green);
     
-    boxIzquierda = sf::RectangleShape(sf::Vector2f(16,8));
-    boxIzquierda.setOrigin(8,4);
+    boxIzquierda = sf::RectangleShape(sf::Vector2f(10,8));
+    boxIzquierda.setOrigin(5,4);
     boxIzquierda.rotate(90);
     boxIzquierda.setPosition(320, 630);
     boxIzquierda.setFillColor(sf::Color::Yellow);
@@ -57,9 +58,9 @@ Personaje::Personaje(){
     direccion = 1;  
     dir_aux = direccion;
     check_pared = false;
+    
     gravedad = kGrav;
-    alturasuelo = Mapa::Instance()->getAltura()*32 - 32*9.5;//APAÑO FEO (ARREGLAR)
-    alturasuelo_nueva = Mapa::Instance()->getAltura()*32 - 32*9.5;//APAÑO FEO (ARREGLAR);
+    
     espacio = 0;
     velocidadsalto = 0.8;
     nsprite = 0;
@@ -116,7 +117,6 @@ void Personaje::moverSalto(){
       velocidad.y = -velocidadsalto;         
       espacio++;
       gravedad= kGrav;
-
     }
     
      int var1 = contEspacios;
@@ -126,8 +126,6 @@ void Personaje::mover(float timeElapsed){
 
     Mapa* map = Mapa::Instance();
     
-    bool estoy_tierra = false;
-    
     vector<sf::RectangleShape> paredes = map->getPared();
     vector<sf::RectangleShape> bloques = map->getBloques();
     vector<sf::RectangleShape> suelo = map->getSuelo();
@@ -136,6 +134,7 @@ void Personaje::mover(float timeElapsed){
     for(int i = 0 ; i < paredes.size(); i++){
         sf::RectangleShape aux_paredes = paredes[i];
         if(boxDerecha.getGlobalBounds().intersects(aux_paredes.getGlobalBounds())){
+            
             direccion = -1;
             sprite.setScale(-1.0f, 1.0f);
         }
@@ -146,36 +145,44 @@ void Personaje::mover(float timeElapsed){
     }
     
     
+    bool cabezazo = false;
     for(int i = 0; i < bloques.size() ; i++){
         sf::RectangleShape aux_bloques = bloques[i];
-        if(boxDerecha.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
-            direccion = -1;
-            sprite.setScale(-1.0f, 1.0f);
-        }
         
-        if(boxIzquierda.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
-            direccion = 1;
-            sprite.setScale(1.0f, 1.0f);
+        if(boxArriba.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
+            velocidad.y = 0.2;
+            cabezazo = true;
         }
         
         if(boxAbajo.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
-            
-            estoy_tierra = true;
+            if(estoy_volando == true){
+                alturasuelo = boxAbajo.getPosition().y - 6;
+                estoy_volando = false;
+            }
             
         }
-        if(boxArriba.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
-            velocidad.y = 0.1;
+        else{
+            estoy_volando = true;
         }
+        
+        if (cabezazo == false){
+            if(boxDerecha.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
+                direccion = -1;
+                sprite.setScale(-1.0f, 1.0f);
+            }
+
+            if(boxIzquierda.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
+                direccion = 1;
+                sprite.setScale(1.0f, 1.0f);
+            }
+        }
+
+        
     }
         
     
     //cuando el box abajo ha decidido que tenia suelo debajo ha cambiado estoy_tierra a 
-    if(estoy_tierra){
-        alturasuelo = sprite.getPosy() + 1;
-    }
-    else{
-        alturasuelo = alturasuelo_nueva;
-    }
+
         
     gravity(timeElapsed);
     
@@ -248,7 +255,7 @@ void Personaje::estoyRoja(int y){
     }
     
      void Personaje::actualizarBoxes(){
-        boxAbajo.setPosition(sprite.getPosx(), sprite.getPosy()+12);
+        boxAbajo.setPosition(sprite.getPosx(), sprite.getPosy()+20);
         boxArriba.setPosition(sprite.getPosx(),sprite.getPosy()-12);
         boxDerecha.setPosition(sprite.getPosx()+12, sprite.getPosy());
         boxIzquierda.setPosition(sprite.getPosx()-12, sprite.getPosy());
