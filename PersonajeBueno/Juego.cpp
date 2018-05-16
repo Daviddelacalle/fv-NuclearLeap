@@ -73,6 +73,15 @@ void Juego::inicializar(){
                 fondo.setTex(6);
             }           
         }
+        else if(menu==3){//muerte
+             if(estado ==1){ //restart
+                fondo.setTex(7);
+            }
+             else  if(estado ==2){ //restart
+                fondo.setTex(8);
+            }
+                      
+        }
          
         cout<<"tecla"<<estado<<"\n";
        
@@ -109,13 +118,32 @@ void Juego::inicializar(){
                             estado=2;
                          break;
                         case sf::Keyboard::N:
-                            if(estado==2){
+                            if(estado==2 && (menu ==1|| menu==2)){
                                 ingame.iniciarPartida(); 
                             } 
                             else if(menu ==2 && estado==3){
                                 menu = 1;
                                 estado = 2;
                             }
+                            else if(menu ==1 && estado==4){
+                                menu = 3;
+                                estado = 1;
+                            }
+                            else if(menu ==1 && estado==3){
+                                menu = 3;
+                                estado = 2;
+                            }
+                            else if(menu ==3 && estado==1){
+                                menu = 1;
+                                estado = 2;
+                            }
+                            else if(menu ==3 && estado==2){
+                                menu = 1;
+                                estado = 2;
+                            }
+                            
+                            
+                            
                          break;
                         case sf::Keyboard::Q:
                             motor->getWindow()->close();

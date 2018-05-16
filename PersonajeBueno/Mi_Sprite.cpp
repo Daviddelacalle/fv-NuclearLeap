@@ -68,6 +68,20 @@ void Mi_Sprite::setTex(int num){
             exit(0);
         }
     }
+     else if(num==7){
+        if (!tex.loadFromFile("sprites/ayuda.png"))
+        {
+            std::cerr << "Error cargando la imagen sprites.png";
+            exit(0);
+        }
+    }
+    else if(num==8){
+        if (!tex.loadFromFile("sprites/mutators.png"))
+        {
+            std::cerr << "Error cargando la imagen sprites.png";
+            exit(0);
+        }
+    }
     
 }
 

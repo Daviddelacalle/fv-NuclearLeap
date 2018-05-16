@@ -473,9 +473,10 @@ void Personaje::estoyRoja(int y){
         actualizarSprite();
         map->recogerRads(sprite,puntuacion);
         actualizarPuntuacion();
+        cout << "POS Y: " << posy << endl;
+        cout << "ALTZONAS: " << map->getAltZonas(1) << endl;
         if(posy < map->getAltZonas(1))
             map->setFondo(1);
-        
      }
      
      void Personaje::setPosVidas(){
@@ -509,8 +510,7 @@ void Personaje::estoyRoja(int y){
         vidas--;
         actualizarVidas();
         if(vidas==0){       
-            juego->alive = false;
-            
+            juego->alive = false;            
             juego->cambiarMenu(2);
             juego->cambiarEstado(2);
             
