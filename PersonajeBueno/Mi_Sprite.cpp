@@ -25,64 +25,12 @@ Mi_Sprite::Mi_Sprite(){
    
     
 }
-void Mi_Sprite::setTex(int num){
-    if(num==1){//main menu normal
-        if (!tex.loadFromFile("sprites/mainMenu.jpeg"))
+void Mi_Sprite::setTex(string url){    
+        if (!tex.loadFromFile("sprites/"+url))
         {
             std::cerr << "Error cargando la imagen sprites.png";
             exit(0);
-        }
-    }
-    else if(num==2){
-        if (!tex.loadFromFile("sprites/play.jpeg"))
-        {
-            std::cerr << "Error cargando la imagen sprites.png";
-            exit(0);
-        }
-    }
-    else if(num==3){
-        if (!tex.loadFromFile("sprites/opciones.jpeg"))
-        {
-            std::cerr << "Error cargando la imagen sprites.png";
-            exit(0);
-        }
-    }
-    else if(num==4){
-        if (!tex.loadFromFile("sprites/info.jpeg"))
-        {
-            std::cerr << "Error cargando la imagen sprites.png";
-            exit(0);
-        }
-    }
-    else if(num==5){
-        if (!tex.loadFromFile("sprites/again.jpeg"))
-        {
-            std::cerr << "Error cargando la imagen sprites.png";
-            exit(0);
-        }
-    }
-    else if(num==6){
-        if (!tex.loadFromFile("sprites/atras.jpeg"))
-        {
-            std::cerr << "Error cargando la imagen sprites.png";
-            exit(0);
-        }
-    }
-     else if(num==7){
-        if (!tex.loadFromFile("sprites/ayuda.png"))
-        {
-            std::cerr << "Error cargando la imagen sprites.png";
-            exit(0);
-        }
-    }
-    else if(num==8){
-        if (!tex.loadFromFile("sprites/mutators.png"))
-        {
-            std::cerr << "Error cargando la imagen sprites.png";
-            exit(0);
-        }
-    }
-    
+        }    
 }
 
 void Mi_Sprite::setParams(int _x, int _y, int _w, int _h, int _posx, int _posy){

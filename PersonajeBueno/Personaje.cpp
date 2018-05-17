@@ -16,6 +16,7 @@
 #include "Mi_Texto.h"
 #include "Motor_2D.h"
 #include "Juego.h"
+#include "Estado.h"
 
 
 Personaje::Personaje(){
@@ -510,9 +511,8 @@ void Personaje::estoyRoja(int y){
         vidas--;
         actualizarVidas();
         if(vidas==0){       
-            juego->alive = false;            
-            juego->cambiarMenu(2);
-            juego->cambiarEstado(2);
+            juego->alive = false;  
+            juego->estadoJuego = GameOverState::Instance(); 
             
            // map->ResetInstance();
         }

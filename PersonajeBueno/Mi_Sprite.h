@@ -26,7 +26,7 @@ public:
     sf::Sprite getSprite();
     float get_clockElapsedTime();
     
-    void setTex(int);
+    void setTex(string);
     void setPosition(float, float);
     void setFrame(int,int);
     void move(float,float);

@@ -4,8 +4,11 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Estado.h</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.h</itemPath>
       <itemPath>Juego.h</itemPath>
       <itemPath>LoadXML.h</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenuState.h</itemPath>
       <itemPath>Mi_Sprite.h</itemPath>
       <itemPath>Mi_Texto.h</itemPath>
       <itemPath>Motor_2D.h</itemPath>
@@ -26,8 +29,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.cpp</itemPath>
       <itemPath>Juego.cpp</itemPath>
       <itemPath>LoadXML.cpp</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenuState.cpp</itemPath>
       <itemPath>Mi_Sprite.cpp</itemPath>
       <itemPath>Mi_Texto.cpp</itemPath>
       <itemPath>Motor_2D.cpp</itemPath>
@@ -135,6 +140,31 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Estado.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenuState.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenuState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -422,6 +452,31 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Estado.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenuState.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenuState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
