@@ -126,12 +126,11 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
         tmp->draw();
     }
     /*
-    _window.draw(_pj.getBoxAbajo());
-    _window.draw(_pj.getBoxArriba());
-    _window.draw(_pj.getBoxDerecha());
-    _window.draw(_pj.getBoxIzquierda());
+    _window.draw(_pj.getBoxAbajo().getBloque()); 
+    _window.draw(_pj.getBoxArriba().getBloque()); 
+    _window.draw(_pj.getBoxDerecha().getBloque()); 
+    _window.draw(_pj.getBoxIzquierda().getBloque()); 
     */
-    
 }
 float Mundo::minimo(float a, float b){
     float res;

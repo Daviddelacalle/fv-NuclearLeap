@@ -15,7 +15,6 @@
 #define CONFIG_H
 
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include <sstream>
 #include <string>
 

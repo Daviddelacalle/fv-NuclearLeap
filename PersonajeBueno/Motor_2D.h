@@ -16,6 +16,7 @@
 
 #include "config.h"
 #include "mapa.h"
+#include <SFML/Graphics.hpp> 
 
 class Motor_2D {
 public:

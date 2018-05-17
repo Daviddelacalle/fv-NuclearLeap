@@ -11,7 +11,7 @@
  * Created on 9 de marzo de 2018, 17:24
  */
 #include <iostream>
-#include <SFML/Graphics.hpp>
+
 #include <string>
 #include <sstream> 
 #include "Mi_Sprite.h"
@@ -25,7 +25,7 @@ private:
     int puntuacion;
     int posx;
     int posy;
-    sf::Texture tex;
+  
     Mi_Sprite sprite;
 public:
     Rads(int,int,int);

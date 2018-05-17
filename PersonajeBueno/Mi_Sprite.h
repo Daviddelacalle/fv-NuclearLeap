@@ -13,6 +13,7 @@
 
 #ifndef MI_SPRITE_H
 #define MI_SPRITE_H
+#include <SFML/Graphics.hpp> 
 
 #include "config.h"
 

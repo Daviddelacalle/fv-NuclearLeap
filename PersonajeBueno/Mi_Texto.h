@@ -14,6 +14,7 @@
 #ifndef MI_TEXTO_H
 #define MI_TEXTO_H
 #include "config.h"
+#include <SFML/Graphics.hpp> 
 
 class Mi_Texto {
 public:

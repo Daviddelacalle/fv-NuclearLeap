@@ -16,7 +16,8 @@
 #include "Mi_Texto.h"
 #include "Motor_2D.h"
 #include "Juego.h"
-#include "Estado.h"
+#include "Bloque.h"
+#include "Vector.h"
 
 
 Personaje::Personaje(){
@@ -27,28 +28,15 @@ Personaje::Personaje(){
    sprite.setParams(0,2,32,32,200,10780);
   
     
-    boxAbajo = sf::RectangleShape(sf::Vector2f(30,2));
-    boxAbajo.setOrigin(15,1);
-    boxAbajo.setPosition(320, 630);
-    boxAbajo.setFillColor(sf::Color::Red);
-        
+    boxAbajo.setParams(30,2,320,630);      
     
-    boxArriba = sf::RectangleShape(sf::Vector2f(30,2));
-    boxArriba.setOrigin(15,1);
-    boxArriba.setPosition(320, 630);
-    boxArriba.setFillColor(sf::Color::Blue);
-    
-    boxDerecha = sf::RectangleShape(sf::Vector2f(20,2));
-    boxDerecha.setOrigin(10,1);
+    boxArriba.setParams(30,2,320,630);
+
+    boxDerecha.setParams(20,2,320,630);
     boxDerecha.rotate(90);
-    boxDerecha.setPosition(320, 630);
-    boxDerecha.setFillColor(sf::Color::Green);
     
-    boxIzquierda = sf::RectangleShape(sf::Vector2f(20,2));
-    boxIzquierda.setOrigin(10,1);
+    boxIzquierda.setParams(20,2,320,630);
     boxIzquierda.rotate(90);
-    boxIzquierda.setPosition(320, 630);
-    boxIzquierda.setFillColor(sf::Color::Yellow);
     
     //Y creo el spritesheet a partir de la imagen anterior
     
@@ -66,7 +54,7 @@ Personaje::Personaje(){
     velocidadsalto = 0.8;
     nsprite = 0;
     max_sprites = 6;
-    velocidad.x = kVel;
+    velocidad.setPosx(kVel);
     contEspacios=0;
     var1 = 0;
     checkpoint== Mapa::Instance()->getAltura()*32 - 32*9.5;
@@ -100,14 +88,14 @@ Mi_Sprite Personaje::getSprite(){
 }
 
 void Personaje::gravity(float timeElapsed){
-     if(sprite.getPosy() + sprite.getScaley() < alturasuelo || velocidad.y < 0) {
-        velocidad.y += gravedad*timeElapsed;
+     if(sprite.getPosy() + sprite.getScaley() < alturasuelo || velocidad.getPosy() < 0) {
+        velocidad.setPosy(velocidad.getPosy()+gravedad*timeElapsed);
       }
       else {
         sprite.setPosition(sprite.getPosx(), alturasuelo - sprite.getScaley());
         posx = sprite.getPosx();
         posy = sprite.getPosy();
-        velocidad.y = 0;
+        velocidad.setPosy(0);
         espacio=0;
         gravedad = kGrav;
         
@@ -117,7 +105,7 @@ void Personaje::gravity(float timeElapsed){
 
 void Personaje::moverSalto(){    
     if(espacio <2){
-      velocidad.y = -velocidadsalto;         
+      velocidad.setPosy(-velocidadsalto);         
       espacio++;
       gravedad= kGrav;
 
@@ -127,14 +115,14 @@ void Personaje::moverSalto(){
 }
 
 void Personaje::mover(float timeElapsed){
-    int rx = boxDerecha.getPosition().x / 32;
-    int ry = boxDerecha.getPosition().y / 32;
-    int lx = boxIzquierda.getPosition().x / 32;
-    int ly = boxIzquierda.getPosition().y / 32;
-    int dx = boxAbajo.getPosition().x /32;
-    int dy = boxAbajo.getPosition().y /32;
-    int ux = boxArriba.getPosition().x /32;
-    int uy = boxArriba.getPosition().y /32;
+    int rx = boxDerecha.getBloque().getPosition().x / 32;
+    int ry = boxDerecha.getBloque().getPosition().y / 32;
+    int lx = boxIzquierda.getBloque().getPosition().x / 32;
+    int ly = boxIzquierda.getBloque().getPosition().y / 32;
+    int dx = boxAbajo.getBloque().getPosition().x /32;
+    int dy = boxAbajo.getBloque().getPosition().y /32;
+    int ux = boxArriba.getBloque().getPosition().x /32;
+    int uy = boxArriba.getBloque().getPosition().y /32;
     int px = sprite.getSprite().getPosition().x / 32;
     int py = sprite.getSprite().getPosition().y / 32;
     Mapa::Instance()->activarCapa(0);
@@ -145,10 +133,6 @@ void Personaje::mover(float timeElapsed){
 
     
     int valorpersonaje = Mapa::Instance()->getTile(px,py);
-    //cout << "(x,y) = " << rx << " , " << ry <<  " : "<< valorderecha << endl;
-    //cout << "(x,y) = " << lx << " , " << ly <<  " : "<< valorizquierda << endl;
-    //cout << "(x,y) = " << dx << " , " << dy <<  " : "<< valorabajo << endl;
-    //cout << "(x,y) = " << ux << " , " << uy <<  " : "<< valorarriba << endl;
     
     
     switch(valorarriba){
@@ -157,12 +141,12 @@ void Personaje::mover(float timeElapsed){
         
         
         case 7: 
-            velocidad.y =0.1;
+            velocidad.setPosy(0.1);
             //cout<<"HOLA \n";
             break;
             
         case 8:
-            velocidad.y =0.1;
+            velocidad.setPosy(0.1);
         break;
     }
     
@@ -194,7 +178,7 @@ void Personaje::mover(float timeElapsed){
             break;
             
         case 9:
-            velocidad.y = -velocidadsalto - 0.6;
+            velocidad.setPosy(-velocidadsalto - 0.6);
             break;
             
     }
@@ -322,11 +306,11 @@ void Personaje::mover(float timeElapsed){
     
     if(check_pared == true){
         
-        if(velocidad.y < 0){//para que no resbale
+        if(velocidad.getPosy() < 0){//para que no resbale
             gravedad = kGrav*1.5;
         }
-        if(velocidad.y >= 0 ){
-            velocidad.y=0.2;
+        if(velocidad.getPosy() >= 0 ){
+            velocidad.setPosy(0.2);
             gravedad = kGravP;
         }
     }
@@ -340,7 +324,7 @@ void Personaje::mover(float timeElapsed){
             check_pared = false;
     }
     if (valorderecha == 0 && valorizquierda == 0 && direccion==0){
-        velocidad.y=0.6;
+        velocidad.setPosy(0.6);
     }
     
     gravity(timeElapsed);
@@ -348,7 +332,7 @@ void Personaje::mover(float timeElapsed){
     
     //std::cout<<"bajo"<<velocidad.x<<"\n"; 
     if(pierdo == false){
-        sprite.move(velocidad.x*direccion*timeElapsed,velocidad.y*timeElapsed);
+        sprite.move(velocidad.getPosx()*direccion*timeElapsed,velocidad.getPosy()*timeElapsed);
     }
     
     if(sprite.getSprite().getPosition().y > alturasuelo){
@@ -404,11 +388,11 @@ void Personaje::cambiarPosicion(int num, int num2){
 
 void Personaje::estoyRoja(int y){
         alturasuelo =y-15;
-        velocidad.x = kVel*2;
+        velocidad.setPosx(kVel*2);
 }
     void Personaje::estoyAzul(int y){
        alturasuelo = y-15;
-         velocidad.x = kVel;
+         velocidad.setPosx(kVel);
     }
     void Personaje::estoyPortalIda(float x, float y){
         sprite.setPosition(x,y);
@@ -423,10 +407,10 @@ void Personaje::estoyRoja(int y){
     
     void Personaje::estoyNormal(){
        alturasuelo = alturasuelo_nueva;
-        velocidad.x = kVel;
+        velocidad.setPosx(kVel);
     }
     
-    sf::RectangleShape Personaje::getBoxAbajo(){
+    Bloque Personaje::getBoxAbajo(){
         return boxAbajo;
         
     }
@@ -435,24 +419,25 @@ void Personaje::estoyRoja(int y){
         sprite.setPosition(_x,_y);
     }
     
-     void Personaje::actualizarBoxes(){
-        boxAbajo.setPosition(sprite.getPosx(), sprite.getPosy()+20);
-        boxArriba.setPosition(sprite.getPosx(),sprite.getPosy()-15);
-        boxDerecha.setPosition(sprite.getPosx()+15, sprite.getPosy());
-        boxIzquierda.setPosition(sprite.getPosx()-15, sprite.getPosy());
+    void Personaje::actualizarBoxes(){
+        boxAbajo.setPos(sprite.getPosx(), sprite.getPosy()+20);
+
+        boxArriba.setPos(sprite.getPosx(),sprite.getPosy()-15);
+        boxDerecha.setPos(sprite.getPosx()+15, sprite.getPosy());
+        boxIzquierda.setPos(sprite.getPosx()-15, sprite.getPosy());
     }
      
    
     
-    sf::RectangleShape Personaje::getBoxArriba(){
+    Bloque Personaje::getBoxArriba(){
         return boxArriba;  
     }
     
-    sf::RectangleShape Personaje::getBoxDerecha(){
+    Bloque Personaje::getBoxDerecha(){
         return boxDerecha;  
     }
     
-    sf::RectangleShape Personaje::getBoxIzquierda(){
+    Bloque Personaje::getBoxIzquierda(){
         return boxIzquierda;  
     }
     
@@ -474,8 +459,6 @@ void Personaje::estoyRoja(int y){
         actualizarSprite();
         map->recogerRads(sprite,puntuacion);
         actualizarPuntuacion();
-        cout << "POS Y: " << posy << endl;
-        cout << "ALTZONAS: " << map->getAltZonas(1) << endl;
         if(posy < map->getAltZonas(1))
             map->setFondo(1);
      }

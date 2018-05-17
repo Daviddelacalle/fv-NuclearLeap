@@ -49,16 +49,16 @@ void Npc::actualizarSprite(){
 void Npc::draw(){
     sprite.draw();
 }
-sf::RectangleShape Npc::getBox_up(){
+Bloque Npc::getBox_up(){
     return box_up;
 }
-sf::RectangleShape Npc::getBox_right(){
+Bloque Npc::getBox_right(){
     return box_right;
 }
-sf::RectangleShape Npc::getBox_left(){
+Bloque Npc::getBox_left(){
     return box_left;
 }
-sf::RectangleShape Npc::getBox_down(){
+Bloque Npc::getBox_down(){
     return box_down;
 }
 
@@ -81,37 +81,25 @@ Npc1::Npc1(float _posx, float _posy):Npc(_posx,_posy){
     
     //COLISIONADORES
     
-    box_up = sf::RectangleShape(sf::Vector2f(28,1));
-    box_up.setOrigin(14,0);
-    box_up.setPosition(posx,posy-16);
-    box_up.setFillColor(sf::Color::Red);
+    box_up.setParams(28,1,posx,posy-16);
     
-    box_left = sf::RectangleShape(sf::Vector2f(1,16));
-    box_left.setOrigin(0,8);
-    box_left.setPosition(posx-16,posy+2);
-    box_left.setFillColor(sf::Color::Red);
+    box_left.setParams(1,16,posx-16,posy+2);
     
-    box_right = sf::RectangleShape(sf::Vector2f(1,16));
-    box_right.setOrigin(0,8);
-    box_right.setPosition(posx+16,posy+2);
-    box_right.setFillColor(sf::Color::Red);
+    box_right.setParams(1,16,posx+16,posy+2);
     
-    box_down = sf::RectangleShape(sf::Vector2f(1,4));
-    box_down.setOrigin(0,8);
-    box_down.setPosition(posx+16*dirx,posy+2);
-    box_down.setFillColor(sf::Color::Red);
+    box_down.setParams(1,4,posx+16*dirx,posy+2);
 }
 
 void Npc1::movimiento(){
     
-    int rx = box_right.getPosition().x / 32;
-    int ry = box_right.getPosition().y / 32;
-    int lx = box_left.getPosition().x / 32;
-    int ly = box_left.getPosition().y / 32;
-    int ux = box_up.getPosition().x / 32;
-    int uy = box_up.getPosition().y / 32;
-    int dx = box_down.getPosition().x / 32;
-    int dy = box_down.getPosition().y / 32;
+    int rx = box_right.getBloque().getPosition().x / 32;
+    int ry = box_right.getBloque().getPosition().y / 32;
+    int lx = box_left.getBloque().getPosition().x / 32;
+    int ly = box_left.getBloque().getPosition().y / 32;
+    int ux = box_up.getBloque().getPosition().x / 32;
+    int uy = box_up.getBloque().getPosition().y / 32;
+    int dx = box_down.getBloque().getPosition().x / 32;
+    int dy = box_down.getBloque().getPosition().y / 32;
     
     Mapa::Instance()->activarCapa(0);
     
@@ -183,17 +171,17 @@ void Npc1::update(Personaje& _pj){
 }
 
 void Npc1::actualizarBox(){
-    box_up.setPosition(posx,posy-(tam/6));
-    box_left.setPosition(posx-(tam/div_box),posy+10);
-    box_right.setPosition(posx+(tam/div_box),posy+10);
-    box_down.setPosition(posx+20*dirx,posy+20);
+    box_up.setPos(posx,posy-(tam/6));
+    box_left.setPos(posx-(tam/div_box),posy+10);
+    box_right.setPos(posx+(tam/div_box),posy+10);
+    box_down.setPos(posx+20*dirx,posy+20);
 }
 
 void Npc1::matarPj(Personaje& _pj){
-    if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_up.getGlobalBounds())){
+    if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_up.getBloque().getGlobalBounds())){
         setPosition(5000,5000);
     }
-    else if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_left.getGlobalBounds()) || _pj.getSprite().getSprite().getGlobalBounds().intersects(box_right.getGlobalBounds()) ){
+    else if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_left.getBloque().getGlobalBounds()) || _pj.getSprite().getSprite().getGlobalBounds().intersects(box_right.getBloque().getGlobalBounds()) ){
         setPosition(posix,posiy);
         _pj.morir();
     }
@@ -216,31 +204,22 @@ Npc3::Npc3(float _posx, float _posy):Npc(_posx,_posy){
     sprite.setParams(0,1,32,32,_posx,_posy);
     
     //COLISIONADORES
-    box_up = sf::RectangleShape(sf::Vector2f(60,1));
-    box_up.setOrigin(30,0);
-    box_up.setPosition(posx,posy-32);
-    box_up.setFillColor(sf::Color::Red);
+    box_up.setParams(60,1,posx,posy-32);
     
-    box_left = sf::RectangleShape(sf::Vector2f(1,46));
-    box_left.setOrigin(0,16);
-    box_left.setPosition(posx-32,posy+2);
-    box_left.setFillColor(sf::Color::Red);
+    box_left.setParams(1,46,posx-32,posy+2);
     
-    box_right = sf::RectangleShape(sf::Vector2f(1,46));
-    box_right.setOrigin(0,16);
-    box_right.setPosition(posx+32,posy+2);
-    box_right.setFillColor(sf::Color::Red);
+    box_right.setParams(1,46,posx+32,posy+2);
 }
 void Npc3::movimiento(){
     
-    int rx = box_right.getPosition().x / 32;
-    int ry = box_right.getPosition().y / 32;
-    int lx = box_left.getPosition().x / 32;
-    int ly = box_left.getPosition().y / 32;
-    int ux = box_up.getPosition().x / 32;
-    int uy = box_up.getPosition().y / 32;
-    int dx = box_down.getPosition().x / 32;
-    int dy = box_down.getPosition().y / 32;
+    int rx = box_right.getBloque().getPosition().x / 32;
+    int ry = box_right.getBloque().getPosition().y / 32;
+    int lx = box_left.getBloque().getPosition().x / 32;
+    int ly = box_left.getBloque().getPosition().y / 32;
+    int ux = box_up.getBloque().getPosition().x / 32;
+    int uy = box_up.getBloque().getPosition().y / 32;
+    int dx = box_down.getBloque().getPosition().x / 32;
+    int dy = box_down.getBloque().getPosition().y / 32;
     
     Mapa::Instance()->activarCapa(0);
     
@@ -249,7 +228,7 @@ void Npc3::movimiento(){
     int vu = Mapa::Instance()->getTile(ux,uy);
     int vd = Mapa::Instance()->getTile(dx,dy);
     
-    cout << "vd: " << vd << "\n";
+    //cout << "vd: " << vd << "\n";
     
     if(dirx == 1){
         if(vd != 7 && vd != 3 && vd != 4){
@@ -312,10 +291,10 @@ void Npc3::update(Personaje& _pj){
 }
 
 void Npc3::actualizarBox(){
-    box_up.setPosition(posx,posy-(tam/6));
-    box_left.setPosition(posx-(tam/div_box),posy+10);
-    box_right.setPosition(posx+(tam/div_box),posy+10);
-    box_down.setPosition(posx+20*dirx,posy+20);
+    box_up.setPos(posx,posy-(tam/6));
+    box_left.setPos(posx-(tam/div_box),posy+10);
+    box_right.setPos(posx+(tam/div_box),posy+10);
+    box_down.setPos(posx+20*dirx,posy+20);
 }
 
 void Npc3::matarPj(Personaje& _pj){
@@ -338,25 +317,13 @@ Npc5::Npc5(float _posx, float _posy):Npc(_posx, _posy){
 
     sprite.setParams(8,0,32,32,_posx,_posy);
     //COLISIONADORES
-    box_up = sf::RectangleShape(sf::Vector2f(60,1));
-    box_up.setOrigin(30,0);
-    box_up.setPosition(posx,posy-32);
-    box_up.setFillColor(sf::Color::Red);
+    box_up.setParams(60,1,posx,posy-32);
     
-    box_down = sf::RectangleShape(sf::Vector2f(60,1));
-    box_down.setOrigin(30,0);
-    box_down.setPosition(posx,posy+36);
-    box_down.setFillColor(sf::Color::Red);
+    box_down.setParams(60,1,posx,posy+36); 
     
-    box_left = sf::RectangleShape(sf::Vector2f(1,40));
-    box_left.setOrigin(0,16);
-    box_left.setPosition(posx-32,posy);
-    box_left.setFillColor(sf::Color::Red);
+    box_left.setParams(1,40,posx-32,posy);
     
-    box_right = sf::RectangleShape(sf::Vector2f(1,40));
-    box_right.setOrigin(0,16);
-    box_right.setPosition(posx+32,posy);
-    box_right.setFillColor(sf::Color::Red);
+    box_right.setParams(1,40,posx+32,posy);
 }
 
 void Npc5::movimiento(Personaje &_pj){
@@ -393,14 +360,14 @@ void Npc5::movimiento(Personaje &_pj){
 
     }
     
-    int rx = box_right.getPosition().x / 32;
-    int ry = box_right.getPosition().y / 32;
-    int lx = box_left.getPosition().x / 32;
-    int ly = box_left.getPosition().y / 32;
-    int ux = box_up.getPosition().x / 32;
-    int uy = box_up.getPosition().y / 32;
-    int dx = box_down.getPosition().x / 32;
-    int dy = box_down.getPosition().y / 32;
+    int rx = box_right.getBloque().getPosition().x / 32;
+    int ry = box_right.getBloque().getPosition().y / 32;
+    int lx = box_left.getBloque().getPosition().x / 32;
+    int ly = box_left.getBloque().getPosition().y / 32;
+    int ux = box_up.getBloque().getPosition().x / 32;
+    int uy = box_up.getBloque().getPosition().y / 32;
+    int dx = box_down.getBloque().getPosition().x / 32;
+    int dy = box_down.getBloque().getPosition().y / 32;
     
     Mapa::Instance()->activarCapa(0);
     
@@ -450,10 +417,10 @@ void Npc5::movimiento(Personaje &_pj){
 }
 
 void Npc5::actualizarBox(){
-    box_up.setPosition(posx,posy-(tam/2-6));
-    box_left.setPosition(posx-(tam/2),posy);
-    box_right.setPosition(posx+(tam/2),posy);
-    box_down.setPosition(posx,posy+(tam/2 - 2));
+    box_up.setPos(posx,posy-(tam/2-6));
+    box_left.setPos(posx-(tam/2),posy);
+    box_right.setPos(posx+(tam/2),posy);
+    box_down.setPos(posx,posy+(tam/2 - 2));
 }
 
 void Npc5::update(Personaje &_pj){
@@ -471,4 +438,3 @@ void Npc5::matarPj(Personaje& _pj){
         
     }
 }
-

@@ -26,10 +26,10 @@ public:
     void actualizarSprite();
     void draw();
 
-    sf::RectangleShape getBox_up();
-    sf::RectangleShape getBox_left();
-    sf::RectangleShape getBox_right();
-    sf::RectangleShape getBox_down();
+       Bloque getBox_up(); 
+    Bloque getBox_left(); 
+    Bloque getBox_right(); 
+    Bloque getBox_down(); 
     
 protected:
     float posx;
@@ -46,11 +46,11 @@ protected:
     
     sf::Texture tex;
     Mi_Sprite sprite;
-    sf::RectangleShape box_up;
-    sf::RectangleShape box_left;
-    sf::RectangleShape box_right;
-    sf::RectangleShape box_down;
-
+    
+    Bloque box_up; 
+    Bloque box_left; 
+    Bloque box_right; 
+    Bloque box_down; 
 };
 
 class Npc1: public Npc{

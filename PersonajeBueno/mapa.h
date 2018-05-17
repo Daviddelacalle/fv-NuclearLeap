@@ -17,7 +17,7 @@
 #include "Rads.h"
 #include "Npc.h"
 #include "LoadXML.h"
-
+#include <SFML/Graphics.hpp> 
 
 class Mapa: public sf::Drawable {
 public:

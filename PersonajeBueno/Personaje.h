@@ -19,7 +19,8 @@
 #include "Mi_Sprite.h"
 #include "Mi_Texto.h"
 #include "Rads.h"
-
+#include "Bloque.h"
+#include "Vector.h"
 class Personaje {
 public:
     Personaje();
@@ -38,11 +39,11 @@ public:
     void estoyNormal();
     void setPosition(float, float);
     void draw();
-
-    sf::RectangleShape getBoxAbajo();
-    sf::RectangleShape getBoxArriba();
-    sf::RectangleShape getBoxDerecha();
-    sf::RectangleShape getBoxIzquierda();
+    
+    Bloque getBoxAbajo();
+    Bloque getBoxArriba();
+    Bloque getBoxDerecha();
+    Bloque getBoxIzquierda();
     void actualizarBoxes();
     int contEspacios;
     int var1;
@@ -66,7 +67,7 @@ private:
     bool check_pared; // para saber si he tocado la pared
     int alturasuelo;
      int checkpoint; 
-    sf::Vector2f velocidad;
+    Vector velocidad;
     float velocidadsalto;
     Mi_Sprite sprite;
     Mi_Sprite sprite_vidas;
@@ -77,10 +78,10 @@ private:
     int espacio;
     int nsprite;
     int max_sprites;
-    sf::RectangleShape boxAbajo;
-    sf::RectangleShape boxArriba;
-    sf::RectangleShape boxDerecha;
-    sf::RectangleShape boxIzquierda;
+    Bloque boxAbajo;
+    Bloque boxArriba;
+    Bloque boxDerecha;
+    Bloque boxIzquierda;
     int vidas;
     int puntuacion;
    
@@ -91,4 +92,3 @@ private:
 };
 
 #endif /* PERSONAJE_H */
-
