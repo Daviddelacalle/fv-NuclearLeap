@@ -28,8 +28,10 @@ Personaje::Personaje(){
     sprite.setParams(0,2,32,32,posx,posy);
   
     direccion = 1;
+    dir_aux = 1;
     vel_y = 0;
     estoy_suelo = true;
+    estoy_pared = false;
     n_saltos = 0;
     
     boxAbajo = sf::RectangleShape(sf::Vector2f(24,8));
@@ -111,12 +113,45 @@ void Personaje::mover(float timeElapsed){
         sf::RectangleShape aux_paredes = paredes[i];
         
         if(boxDerecha.getGlobalBounds().intersects(aux_paredes.getGlobalBounds())){
-            direccion = -1;
-            sprite.setScale(-1.0f,1.0f); 
+            dir_aux = -1;
+            //TOCO CON LA PARED 
+            if(estoy_suelo == true){//SI ESTOY EN EL SUELO, CAMBIO LA DIRECCION Y SALGO DE LA PARED
+                direccion = -1;
+                sprite.setScale(-1.0f,1.0f);
+            }
+            else{//SINO ESTOY EN EL SUELO ENTONCES TOCA DESLIZAR
+                if(direccion != 0){//ESTO DICE QUE SI LLEGO Y ES LA PRIMERA VEZ QUE TOCO LA PARED
+                    //DIRECCION ES 0 PARA K NO SE MUEVA
+                    direccion = 0;
+                    sprite.setScale(-1.0f,1.0f); 
+                    n_saltos = 0;
+                    estoy_pared = true;
+                    if(vel_y < -0.1){ vel_y = -0.1;}
+                }
+                //SI ESTOY TOCANDO LA PARED PERO YA ESTABA DE ANTES
+                else{ if(n_saltos > 0){ direccion = -1; } }//SI PULSAN EL BOTON DE SALTAR SALTO   
+            }
+            
         }
         if(boxIzquierda.getGlobalBounds().intersects(aux_paredes.getGlobalBounds())){
-            direccion = 1;
-            sprite.setScale(1.0f,1.0f); 
+            dir_aux = 1;
+            //TOCO CON LA PARED 
+            if(estoy_suelo == true){//SI ESTOY EN EL SUELO, CAMBIO LA DIRECCION Y SALGO DE LA PARED
+                direccion = 1;
+                sprite.setScale(1.0f,1.0f);
+            }
+            else{//SINO ESTOY EN EL SUELO ENTONCES TOCA DESLIZAR
+                if(direccion != 0){//ESTO DICE QUE SI LLEGO Y ES LA PRIMERA VEZ QUE TOCO LA PARED
+                    //DIRECCION ES 0 PARA K NO SE MUEVA
+                    direccion = 0;
+                    sprite.setScale(1.0f,1.0f); 
+                    n_saltos = 0;
+                    if(vel_y < -0.1){ vel_y = -0.1;}
+                    estoy_pared = true;
+                }
+                //SI ESTOY TOCANDO LA PARED PERO YA ESTABA DE ANTES
+                else{ if(n_saltos > 0){ direccion = 1; } }//SI PULSAN EL BOTON DE SALTAR SALTO   
+            }
         }
     }
     
@@ -124,13 +159,47 @@ void Personaje::mover(float timeElapsed){
         sf::RectangleShape aux_bloques = bloques[i];
         
         if(boxDerecha.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
-            direccion = -1;
-            sprite.setScale(-1.0f,1.0f); 
+            dir_aux = -1;
+            //TOCO CON LA PARED 
+            if(estoy_suelo == true){//SI ESTOY EN EL SUELO, CAMBIO LA DIRECCION Y SALGO DE LA PARED
+                direccion = -1;
+                sprite.setScale(-1.0f,1.0f);
+            }
+            else{//SINO ESTOY EN EL SUELO ENTONCES TOCA DESLIZAR
+                if(direccion != 0){//ESTO DICE QUE SI LLEGO Y ES LA PRIMERA VEZ QUE TOCO LA PARED
+                    //DIRECCION ES 0 PARA K NO SE MUEVA
+                    direccion = 0;
+                    sprite.setScale(-1.0f,1.0f); 
+                    n_saltos = 0;
+                    if(vel_y < -0.1){ vel_y = -0.1;}
+                    estoy_pared = true;
+                }
+                //SI ESTOY TOCANDO LA PARED PERO YA ESTABA DE ANTES
+                else{ if(n_saltos > 0){ direccion = -1; } }//SI PULSAN EL BOTON DE SALTAR SALTO   
+            }
         }
+        
         if(boxIzquierda.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
-            direccion = 1;
-            sprite.setScale(1.0f,1.0f); 
+            dir_aux = 1;
+            //TOCO CON LA PARED 
+            if(estoy_suelo == true){//SI ESTOY EN EL SUELO, CAMBIO LA DIRECCION Y SALGO DE LA PARED
+                direccion = 1;
+                sprite.setScale(1.0f,1.0f);
+            }
+            else{//SINO ESTOY EN EL SUELO ENTONCES TOCA DESLIZAR
+                if(direccion != 0){//ESTO DICE QUE SI LLEGO Y ES LA PRIMERA VEZ QUE TOCO LA PARED
+                    //DIRECCION ES 0 PARA K NO SE MUEVA
+                    direccion = 0;
+                    sprite.setScale(1.0f,1.0f); 
+                    n_saltos = 0;
+                    if(vel_y < -0.1){ vel_y = -0.1;}
+                    estoy_pared = true;
+                }
+                //SI ESTOY TOCANDO LA PARED PERO YA ESTABA DE ANTES
+                else{ if(n_saltos > 0){ direccion = 1;} }//SI PULSAN EL BOTON DE SALTAR SALTO   
+            }
         }
+        //else{if(direccion == 0){direccion = 1;}}
         
         if(boxAbajo.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
             if(vel_y >= 0){ 
@@ -145,7 +214,6 @@ void Personaje::mover(float timeElapsed){
             estoy_suelo = false;
             
         }
-        cout << "1estoy suelo :" << estoy_suelo << "\n";
         
         if(boxArriba.getGlobalBounds().intersects(aux_bloques.getGlobalBounds())){
             
@@ -172,7 +240,6 @@ void Personaje::mover(float timeElapsed){
         sf::RectangleShape aux_checkpoints =  checkpoints[i];
         if(boxAbajo.getGlobalBounds().intersects(aux_checkpoints.getGlobalBounds())){
             if(vel_y >= 0){ 
-                cout << "HELOWDA \n";
                 estoy_suelo = true;
                 n_saltos = 0;
                 posy = aux_checkpoints.getPosition().y -16;
@@ -181,6 +248,14 @@ void Personaje::mover(float timeElapsed){
         }
     }
     cout << "estoy_suelo: " <<estoy_suelo << "\n";
+    
+    if(estoy_suelo == true){
+        direccion = dir_aux;
+    }
+    
+    if(estoy_pared == true){
+        if(n_saltos > 0){ direccion = dir_aux;}
+    }
     
     gravity(timeElapsed);
     

@@ -72,12 +72,15 @@ private:
     float pos_inicial;
     
     int direccion;
+    int dir_aux;
     float posx;
     float posy;
     
     float vel_y;
+    float gravedad;
     
     bool estoy_suelo;
+    bool estoy_pared;
     int n_saltos;
 
     
