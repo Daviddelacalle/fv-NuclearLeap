@@ -28,9 +28,14 @@ Personaje::Personaje(){
     sprite.setParams(0,2,32,32,200,alturasuelo);
   
     
-    boxAbajo.setParams(30,2,320,630);      
+    boxAbajo.setParams(7,2,320,630);
+    boxAbajo2.setParams(7,2,320,630); 
+    boxAbajo3.setParams(7,2,320,630);
+    boxAbajo4.setParams(7,2,320,630);
     
-    boxArriba.setParams(30,2,320,630);
+    boxArriba.setParams(9,2,320,630);
+    boxArriba2.setParams(9,2,320,630);
+    boxArriba3.setParams(9,2,320,630);
 
     boxDerecha.setParams(20,2,320,630);
     boxDerecha.rotate(90);
@@ -121,15 +126,30 @@ void Personaje::mover(float timeElapsed){
     int ly = boxIzquierda.getBloque().getPosition().y / 32;
     int dx = boxAbajo.getBloque().getPosition().x /32;
     int dy = boxAbajo.getBloque().getPosition().y /32;
+    int dx2 = boxAbajo2.getBloque().getPosition().x /32;
+    int dy2 = boxAbajo2.getBloque().getPosition().y /32;
+    int dx3 = boxAbajo3.getBloque().getPosition().x /32;
+    int dy3 = boxAbajo3.getBloque().getPosition().y /32;
+    int dx4 = boxAbajo4.getBloque().getPosition().x /32;
+    int dy4 = boxAbajo4.getBloque().getPosition().y /32;
     int ux = boxArriba.getBloque().getPosition().x /32;
     int uy = boxArriba.getBloque().getPosition().y /32;
+    int ux2 = boxArriba2.getBloque().getPosition().x /32;
+    int uy2= boxArriba2.getBloque().getPosition().y /32;
+    int ux3 = boxArriba3.getBloque().getPosition().x /32;
+    int uy3 = boxArriba3.getBloque().getPosition().y /32;
     int px = sprite.getSprite().getPosition().x / 32;
     int py = sprite.getSprite().getPosition().y / 32;
     Mapa::Instance()->activarCapa(0);
     int valorderecha = Mapa::Instance()->getTile(rx,ry);
     int valorabajo = Mapa::Instance()->getTile(dx,dy);
+    int valorabajo2 = Mapa::Instance()->getTile(dx2,dy2);
+    int valorabajo3 = Mapa::Instance()->getTile(dx3,dy3);
+    int valorabajo4 = Mapa::Instance()->getTile(dx4,dy4);
     int valorizquierda = Mapa::Instance()->getTile(lx,ly);
     int valorarriba = Mapa::Instance()->getTile(ux,uy);
+    int valorarriba2 = Mapa::Instance()->getTile(ux2,uy2);
+    int valorarriba3 = Mapa::Instance()->getTile(ux3,uy3);
 
     
     int valorpersonaje = Mapa::Instance()->getTile(px,py);
@@ -150,9 +170,130 @@ void Personaje::mover(float timeElapsed){
         break;
     }
     
+    switch(valorarriba2){
+        case 0: break;
+        
+        
+        
+        case 7: 
+            velocidad.setPosy(0.1);
+            //cout<<"HOLA \n";
+            break;
+            
+        case 8:
+            velocidad.setPosy(0.1);
+        break;
+    }
+    switch(valorarriba3){
+        case 0: break;
+        
+        
+        
+        case 7: 
+            velocidad.setPosy(0.1);
+            //cout<<"HOLA \n";
+            break;
+            
+        case 8:
+            velocidad.setPosy(0.1);
+        break;
+    }
     
     
     switch(valorabajo){
+        case 0: 
+            estoyNormal();
+            break;  
+        
+        case 7: 
+           // cout << dy;
+            estoyAzul(dy * 32);
+            break;
+            
+        case 3:              
+            
+            alturasuelo = dy*32-15;
+            
+            break;
+            
+        case 4:            
+            alturasuelo = dy*32-15;
+            checkpoint=alturasuelo;
+            break;
+            
+        case 8:
+            estoyRoja(dy*32);
+            break;
+            
+        case 9:
+            velocidad.setPosy(-velocidadsalto - 0.6);
+            break;
+            
+    }
+    
+    switch(valorabajo2){
+        case 0: 
+            estoyNormal();
+            break;  
+        
+        case 7: 
+           // cout << dy;
+            estoyAzul(dy * 32);
+            break;
+            
+        case 3:              
+            
+            alturasuelo = dy*32-15;
+            
+            break;
+            
+        case 4:            
+            alturasuelo = dy*32-15;
+            checkpoint=alturasuelo;
+            break;
+            
+        case 8:
+            estoyRoja(dy*32);
+            break;
+            
+        case 9:
+            velocidad.setPosy(-velocidadsalto - 0.6);
+            break;
+            
+    }
+    
+    switch(valorabajo3){
+        case 0: 
+            estoyNormal();
+            break;  
+        
+        case 7: 
+           // cout << dy;
+            estoyAzul(dy * 32);
+            break;
+            
+        case 3:              
+            
+            alturasuelo = dy*32-15;
+            
+            break;
+            
+        case 4:            
+            alturasuelo = dy*32-15;
+            checkpoint=alturasuelo;
+            break;
+            
+        case 8:
+            estoyRoja(dy*32);
+            break;
+            
+        case 9:
+            velocidad.setPosy(-velocidadsalto - 0.6);
+            break;
+            
+    }
+    
+    switch(valorabajo4){
         case 0: 
             estoyNormal();
             break;  
@@ -410,27 +551,46 @@ void Personaje::estoyRoja(int y){
         velocidad.setPosx(kVel);
     }
     
-    Bloque Personaje::getBoxAbajo(){
-        return boxAbajo;
-        
-    }
+    
 
     void Personaje::setPosition(float _x, float _y){
         sprite.setPosition(_x,_y);
     }
     
     void Personaje::actualizarBoxes(){
-        boxAbajo.setPos(sprite.getPosx(), sprite.getPosy()+20);
-
-        boxArriba.setPos(sprite.getPosx(),sprite.getPosy()-15);
-        boxDerecha.setPos(sprite.getPosx()+15, sprite.getPosy());
-        boxIzquierda.setPos(sprite.getPosx()-15, sprite.getPosy());
+        boxAbajo.setPos(sprite.getPosx()+4.5, sprite.getPosy()+20);
+        boxAbajo2.setPos(sprite.getPosx()+13, sprite.getPosy()+20);
+        boxAbajo3.setPos(sprite.getPosx()-4.5, sprite.getPosy()+20);
+        boxAbajo4.setPos(sprite.getPosx()-13, sprite.getPosy()+20);
+        boxArriba.setPos(sprite.getPosx()+12,sprite.getPosy()-15);
+        boxArriba2.setPos(sprite.getPosx(),sprite.getPosy()-15);
+        boxArriba3.setPos(sprite.getPosx()-12,sprite.getPosy()-15);
+        boxDerecha.setPos(sprite.getPosx()+16, sprite.getPosy());
+        boxIzquierda.setPos(sprite.getPosx()-16, sprite.getPosy());
     }
      
    
     
     Bloque Personaje::getBoxArriba(){
         return boxArriba;  
+    }
+    Bloque Personaje::getBoxArriba2(){
+        return boxArriba2;  
+    }
+    Bloque Personaje::getBoxArriba3(){
+        return boxArriba3;  
+    }
+    Bloque Personaje::getBoxAbajo(){
+        return boxAbajo;  
+    }
+    Bloque Personaje::getBoxAbajo2(){
+        return boxAbajo2;  
+    }
+    Bloque Personaje::getBoxAbajo3(){
+        return boxAbajo3;  
+    }
+    Bloque Personaje::getBoxAbajo4(){
+        return boxAbajo4;  
     }
     
     Bloque Personaje::getBoxDerecha(){

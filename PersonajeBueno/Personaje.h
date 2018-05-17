@@ -39,9 +39,13 @@ public:
     void estoyNormal();
     void setPosition(float, float);
     void draw();
-    
     Bloque getBoxAbajo();
+    Bloque getBoxAbajo2();
+    Bloque getBoxAbajo3();
+    Bloque getBoxAbajo4();
     Bloque getBoxArriba();
+    Bloque getBoxArriba2();
+    Bloque getBoxArriba3();
     Bloque getBoxDerecha();
     Bloque getBoxIzquierda();
     void actualizarBoxes();
@@ -79,7 +83,12 @@ private:
     int nsprite;
     int max_sprites;
     Bloque boxAbajo;
+    Bloque boxAbajo2;
+    Bloque boxAbajo3;
+    Bloque boxAbajo4;
     Bloque boxArriba;
+    Bloque boxArriba2;
+    Bloque boxArriba3;
     Bloque boxDerecha;
     Bloque boxIzquierda;
     int vidas;

@@ -119,12 +119,15 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
         Npc5 *tmp = map->getvNpc5()[it];
         tmp->draw();
     }
-    /*
-    _window.draw(_pj.getBoxAbajo().getBloque()); 
-    _window.draw(_pj.getBoxArriba().getBloque()); 
-    _window.draw(_pj.getBoxDerecha().getBloque()); 
-    _window.draw(_pj.getBoxIzquierda().getBloque()); 
-    */
+    _window.draw(_pj.getBoxAbajo().getBloque());
+    _window.draw(_pj.getBoxAbajo2().getBloque());
+    _window.draw(_pj.getBoxAbajo3().getBloque());
+    _window.draw(_pj.getBoxAbajo4().getBloque());
+    _window.draw(_pj.getBoxArriba().getBloque());
+    _window.draw(_pj.getBoxArriba2().getBloque());
+    _window.draw(_pj.getBoxArriba3().getBloque());
+    _window.draw(_pj.getBoxDerecha().getBloque());
+    _window.draw(_pj.getBoxIzquierda().getBloque());
 }
 float Mundo::minimo(float a, float b){
     float res;
