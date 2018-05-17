@@ -56,7 +56,7 @@ public:
     void setPosVidas();
     void morir();
     void actualizarPuntuacion();
-    
+    bool getMuerte();
     
 private:
     int posy_vida;
@@ -82,6 +82,7 @@ private:
     int espacio;
     int nsprite;
     int max_sprites;
+    bool muerte;
     Bloque boxAbajo;
     Bloque boxAbajo2;
     Bloque boxAbajo3;

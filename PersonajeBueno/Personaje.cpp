@@ -53,7 +53,7 @@ Personaje::Personaje(){
     dir_aux = direccion;
     check_pared = false;
     gravedad = kGrav;
-    
+    muerte=false;
     alturasuelo_nueva = Mapa::Instance()->getAltura()*32 - 32*9.5;
     espacio = 0;
     velocidadsalto = 0.8;
@@ -91,7 +91,9 @@ Personaje::Personaje(){
 Mi_Sprite Personaje::getSprite(){
    return sprite;   
 }
-
+bool Personaje::getMuerte(){
+   return muerte;   
+}
 void Personaje::gravity(float timeElapsed){
      if(sprite.getPosy() + sprite.getScaley() < alturasuelo || velocidad.getPosy() < 0) {
         velocidad.setPosy(velocidad.getPosy()+gravedad*timeElapsed);
@@ -653,10 +655,11 @@ void Personaje::estoyRoja(int y){
         sprite.setPosition(200, alturasuelo);
         vidas--;
         actualizarVidas();
+        velocidad.setPosx(kVel);
         if(vidas==0){       
-            juego->alive = false;  
-            juego->estadoJuego = GameOverState::Instance(); 
-            
+            velocidad.setPosx(0);
+            velocidad.setPosy(0);
+            muerte=true;
            // map->ResetInstance();
         }
      }
