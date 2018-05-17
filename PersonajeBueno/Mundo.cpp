@@ -60,7 +60,10 @@ void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        tmp->update(_pj);
+        //if(tmp->getSprite().getPosy() <  _pj.getSprite().getPosy() + 400){
+            tmp->update(_pj);
+        //}
+        
     }
     
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
@@ -117,7 +120,9 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        tmp->draw();
+        //if(tmp->getSprite().getPosy() <  _pj.getSprite().getPosy() + 400){
+            tmp->draw();
+        //}
     }
     _window.draw(_pj.getBoxAbajo().getBloque());
     _window.draw(_pj.getBoxAbajo2().getBloque());
@@ -235,6 +240,7 @@ void Mundo::inicializar() {
             
             
         }
+        
         //AJUSTAR VISTA A LA POSICION DEL PERSONAJE
         
         //view.setCenter(224,pj.getSprite().getPosy()-64);
