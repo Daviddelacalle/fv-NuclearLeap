@@ -20,10 +20,11 @@
 #include <string>
 
 #define kVel 0.150
+#define kVel_y 0.3
 #define npcVel 0.5
-#define kGrav 0.002
+#define kGrav 0.0004 
 #define kGravP 0.0002
-#define UPDATE_TICK_TIME 1000/120
+#define UPDATE_TICK_TIME 1000/60
 #define posxinicial 224 
 #define posyinicial 10900 
 

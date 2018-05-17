@@ -30,12 +30,8 @@ public:
     int getEspacios();
     void actualizarSprite();    
     void cambiarPosicion(int num, int num2);    
-    void estoyRoja(int);
-    void estoyAzul(int);
     void estoyPortalIda(float, float);
     void estoyPortalVuelta(float, float);
-    void estoySaltador();
-    void estoyNormal();
     void setPosition(float, float);
     void draw();
 
@@ -44,8 +40,7 @@ public:
     sf::RectangleShape getBoxDerecha();
     sf::RectangleShape getBoxIzquierda();
     void actualizarBoxes();
-    int contEspacios;
-    int var1;
+
     void update(float);
     void actualizarVidas();
     void setPosVidas();
@@ -57,24 +52,13 @@ private:
     int posy_vida;
     int posx_vida;
     bool pierdo;
-    bool estoy_volando;
-    int alturasuelo_nueva;
-    float gravedad;
-    int posx;
-    int posy;
-    int direccion;   
-    int dir_aux; //variable para guardar la direccion para cuando salga de la pared
-    bool check_pared; // para saber si he tocado la pared
-    int alturasuelo;
-     int checkpoint; 
-    sf::Vector2f velocidad;
-    float velocidadsalto;
+    int checkpoint; 
+
     Mi_Sprite sprite;
     Mi_Sprite sprite_vidas;
     Mi_Texto text_vidas;
     Mi_Texto text_puntuacion;
     Mi_Texto text_perder;
-    int espacio;
     int nsprite;
     int max_sprites;
     sf::RectangleShape boxAbajo;
@@ -84,8 +68,17 @@ private:
     int vidas;
     int puntuacion;
    
+    //variables de movimiento
+    float pos_inicial;
     
-  
+    int direccion;
+    float posx;
+    float posy;
+    
+    float vel_y;
+    
+    bool estoy_suelo;
+    int n_saltos;
 
     
 };
