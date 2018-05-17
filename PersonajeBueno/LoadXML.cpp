@@ -214,7 +214,7 @@ LoadXML::LoadXML() {
                     v_npc1.push_back(npc1);
                 }
                 if(l==1 && _tilemap[l][y][x]==2){
-                    Npc3 *npc3 = new Npc3(x*32,y*32 +20); 
+                    Npc3 *npc3 = new Npc3(x*32,y*32 +14); 
                     v_npc3.push_back(npc3);
                 }
                 if(l==1 && _tilemap[l][y][x]==3){
