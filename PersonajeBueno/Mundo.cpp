@@ -240,6 +240,7 @@ void Mundo::inicializar() {
             
             
         }
+        
         //AJUSTAR VISTA A LA POSICION DEL PERSONAJE
         
         //view.setCenter(224,pj.getSprite().getPosy()-64);
