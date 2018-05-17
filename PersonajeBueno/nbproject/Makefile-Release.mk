@@ -35,12 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/a08718a8/Bloque.o \
-	${OBJECTDIR}/_ext/a08718a8/GameOverState.o \
-	${OBJECTDIR}/_ext/a08718a8/MainMenuState.o \
-	${OBJECTDIR}/_ext/a08718a8/Vector.o \
+	${OBJECTDIR}/Bloque.o \
+	${OBJECTDIR}/GameOverState.o \
 	${OBJECTDIR}/Juego.o \
 	${OBJECTDIR}/LoadXML.o \
+	${OBJECTDIR}/MainMenuState.o \
 	${OBJECTDIR}/Mi_Sprite.o \
 	${OBJECTDIR}/Mi_Texto.o \
 	${OBJECTDIR}/Motor_2D.o \
@@ -49,6 +48,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/Rads.o \
 	${OBJECTDIR}/State.o \
+	${OBJECTDIR}/Vector.o \
 	${OBJECTDIR}/inGame.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/mapa.o \
@@ -79,25 +79,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/a08718a8/Bloque.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Bloque.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+${OBJECTDIR}/Bloque.o: Bloque.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Bloque.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Bloque.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bloque.o Bloque.cpp
 
-${OBJECTDIR}/_ext/a08718a8/GameOverState.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+${OBJECTDIR}/GameOverState.o: GameOverState.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/GameOverState.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.cpp
-
-${OBJECTDIR}/_ext/a08718a8/MainMenuState.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenuState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/MainMenuState.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenuState.cpp
-
-${OBJECTDIR}/_ext/a08718a8/Vector.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Vector.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/Vector.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Vector.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GameOverState.o GameOverState.cpp
 
 ${OBJECTDIR}/Juego.o: Juego.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -108,6 +98,11 @@ ${OBJECTDIR}/LoadXML.o: LoadXML.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LoadXML.o LoadXML.cpp
+
+${OBJECTDIR}/MainMenuState.o: MainMenuState.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MainMenuState.o MainMenuState.cpp
 
 ${OBJECTDIR}/Mi_Sprite.o: Mi_Sprite.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -148,6 +143,11 @@ ${OBJECTDIR}/State.o: State.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/State.o State.cpp
+
+${OBJECTDIR}/Vector.o: Vector.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Vector.o Vector.cpp
 
 ${OBJECTDIR}/inGame.o: inGame.cpp 
 	${MKDIR} -p ${OBJECTDIR}
