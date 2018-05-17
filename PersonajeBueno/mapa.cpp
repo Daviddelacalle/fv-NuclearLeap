@@ -34,7 +34,7 @@ Mapa* Mapa::Instance(){
 Mapa::Mapa() {
 }
 void Mapa::draw(sf::RenderTarget& target, sf::RenderStates states) const{
-    
+    Mapa::Instance()->animacionesMapa();
     for(int y=0; y<_height; y++){
         for(int x=0; x<_width; x++){
             if(_tilemapSprite[capa][y][x]!=NULL)
@@ -145,7 +145,7 @@ void Mapa::recogerRads(Mi_Sprite &_pj, int &_puntuacion){
 void Mapa::CargarMapa(int capita, int height, int width, int ***tilemap, sf::Sprite ****tilemapSpri,
         sf::Sprite fond, sf::Texture tex_fond, sf::Texture tex_pla, int alturasZona[zonas],
         std::string fonditos[zonas], vector<Rads*> rad, vector<Npc1*> npc1, vector<Npc3*> npc3,
-        vector<Npc5*> npc5){
+        vector<Npc5*> npc5, vector< vector<sf::Sprite> > aRueda, vector<sf::Sprite> aFuego){
     
     capa=capita;
     _height=height;
@@ -163,6 +163,44 @@ void Mapa::CargarMapa(int capita, int height, int width, int ***tilemap, sf::Spr
     v_npc1 = npc1;
     v_npc3 = npc3;
     v_npc5 = npc5;
+    animRueda = aRueda;
+    animFuego = aFuego;
+    numSpriteRueda = 1;
+    numSpriteFuego = 1;
+    relojAnim.restart();
   
  }
+
+void Mapa::animacionesMapa(){
+    //cout << relojAnim.getElapsedTime().asSeconds() << endl;
+    if(relojAnim.getElapsedTime().asSeconds()>0.08){
+        
+        activarCapa(3);
+        for(int y=0; y<_height; y++){
+            for(int x=0; x<_width; x++){
+                if(_tilemap[capa][y][x]==72 || _tilemap[capa][y][x]==16){
+                    _tilemapSprite[capa][y][x]->setTextureRect(animRueda[0][numSpriteRueda].getTextureRect());
+                    numSpriteRueda = (numSpriteRueda+1)%2;
+                }
+                if(_tilemap[capa][y][x]==73 || _tilemap[capa][y][x]==17){
+                    _tilemapSprite[capa][y][x]->setTextureRect(animRueda[1][numSpriteRueda].getTextureRect());
+                    numSpriteRueda = (numSpriteRueda+1)%2;
+                }
+                if(_tilemap[capa][y][x]==100 || _tilemap[capa][y][x]==44){
+                    _tilemapSprite[capa][y][x]->setTextureRect(animRueda[2][numSpriteRueda].getTextureRect());
+                    numSpriteRueda = (numSpriteRueda+1)%2;
+                }
+                if(_tilemap[capa][y][x]==101 || _tilemap[capa][y][x]==45){
+                    _tilemapSprite[capa][y][x]->setTextureRect(animRueda[3][numSpriteRueda].getTextureRect());
+                    numSpriteRueda = (numSpriteRueda+1)%2;
+                }
+                if(_tilemap[capa][y][x]==103 || _tilemap[capa][y][x]==104 || _tilemap[capa][y][x]==105){
+                    _tilemapSprite[capa][y][x]->setTextureRect(animFuego[numSpriteFuego].getTextureRect());
+                    numSpriteFuego = (numSpriteFuego+1)%3;
+                }
+            }
+        }
+        relojAnim.restart();
+    }
+}
 

@@ -78,7 +78,7 @@ LoadXML::LoadXML() {
         std::string s = std::to_string(i+1);
         std::string cad = "tiled/zona" + s + "/";
         usados.clear();
-        alturasZonas[i]=0;
+        alturasZonas[i]=altFinal*32;
         
         for(int l=1 ; l< (sec_zona * bloq_seccion * 2); l=l+2){
             int pB, pS;
@@ -270,6 +270,9 @@ LoadXML::LoadXML() {
     
     //std::cout << "Numero de columnas de tiles: " << _numColTiles << std::endl;
     //std::cout << "Numero de tiles: " << _numTiles << std::endl;
+    vector<sf::Sprite> vectortemp;
+    sf::Sprite animacion;
+    animacion.setTexture(tex_plat);
     
     for(int i=0; i < _numTiles; i++){
         f = (int) i/_numColTiles;
@@ -279,7 +282,57 @@ LoadXML::LoadXML() {
         std::cout << "columna : " << c << std::endl;
         _tilesetSprite[i].setTexture(tex_plat);
         _tilesetSprite[i].setTextureRect(sf::IntRect(c*32,f*32,_tsw,_tsh));
+    
+        if(i==71 || i==72 || i== 99 || i==100){
+            if(i==71){
+                
+                f = (int) 15/_numColTiles;
+                c = (15%_numColTiles);  
+                animacion.setTextureRect(sf::IntRect(c*32,f*32,_tsw,_tsh));
+            }
+            if(i==72){
+               
+                f = (int) 16/_numColTiles;
+                c = (16%_numColTiles);
+                animacion.setTextureRect(sf::IntRect(c*32,f*32,_tsw,_tsh));
+            }
+            if(i==99){
+               
+                f = (int) 43/_numColTiles;
+                c = (43%_numColTiles);
+                animacion.setTextureRect(sf::IntRect(c*32,f*32,_tsw,_tsh));
+            }
+            if(i==100){
+                
+                f = (int) 44/_numColTiles;
+                c = (44%_numColTiles);
+                animacion.setTextureRect(sf::IntRect(c*32,f*32,_tsw,_tsh));
+            }
+            
+            vectortemp.clear();
+            vectortemp.push_back(animacion);
+            vectortemp.push_back(_tilesetSprite[i]);
+            
+            animRueda.push_back(vectortemp);
+            
+        }
+        if(i==102){
+            f = (int) 103/_numColTiles;
+            c = (103%_numColTiles);
+            animacion.setTextureRect(sf::IntRect(c*32,f*32,_tsw,_tsh));
+            animFuego.push_back(animacion);
+            
+            f = (int) 104/_numColTiles;
+            c = (104%_numColTiles);
+            animacion.setTextureRect(sf::IntRect(c*32,f*32,_tsw,_tsh));
+            animFuego.push_back(animacion);
+            animFuego.push_back(_tilesetSprite[i]);
+        }
+        
+        
     }
+    cout << "ANIMACION RUEDA despues: " << animRueda.size() << endl;
+    cout << "ANIMACION FUEGO despues: " << animFuego.size() << endl;
 
     
     //CREACION DEL ARRAY DE SPRITES
@@ -325,7 +378,7 @@ LoadXML::LoadXML() {
  */
     Mapa* mapeado = Mapa::Instance();
     mapeado->CargarMapa(capa, _height, _width,_tilemap,_tilemapSprite,fondo,
-            tex_fondo, tex_plat,alturasZonas,fondos,v_rads,v_npc1,v_npc3,v_npc5);
+            tex_fondo, tex_plat,alturasZonas,fondos,v_rads,v_npc1,v_npc3,v_npc5,animRueda, animFuego);
 }
 
 int LoadXML::bloqRandom(std::vector<int> v){

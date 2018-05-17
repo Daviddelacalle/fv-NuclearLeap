@@ -36,12 +36,6 @@ Mundo* Mundo::Instance() {
 Mundo::Mundo(){
     
 }
-void Mundo::actualizarPuntuacion(int _nrads, sf::Text &_puntRads){ 
-    std::stringstream ss; 
-    ss<<_nrads; 
-    _puntRads.setString(ss.str()); 
-} 
- 
 
 void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &_npc5){
     Mapa* map = Mapa::Instance();
@@ -170,19 +164,6 @@ void Mundo::inicializar() {
       sonido.play();
     sonido.setLoop(true);
     
-     sf::Font font; 
-    font.loadFromFile("arial.ttf"); 
-    sf::Text puntRads("Rads: ",font); 
-    puntRads.setCharacterSize(40); 
-    puntRads.setStyle(sf::Text::Bold); 
-    puntRads.setColor(sf::Color::Green); 
-    puntRads.setPosition(5,10); 
-     
-     std::stringstream ss; 
-    int nrads = 0; 
-    ss<<nrads; 
-    puntRads.setString(ss.str()); 
-    
     //Relojes de control de tiempo entre cada update y el tiempo global
     sf::Clock updateClock;
     sf::Clock globalClock;
@@ -270,7 +251,7 @@ void Mundo::inicializar() {
 
             update(pj_S,timeElapsed.asMilliseconds(),pj,npc_S,npc5);            
            // pj.recogerRads(sprite,nrads); 
-            actualizarPuntuacion(nrads,puntRads); 
+           
 
            // update(pj_S,timeElapsed.asSeconds(),pj,npc_S,npc5);
 

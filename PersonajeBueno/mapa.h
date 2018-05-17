@@ -31,10 +31,11 @@ public:
     void setFondo(int);
     int getAltZonas(int);
     int bloqRandom(std::vector<int>);
+    void animacionesMapa();
     void CargarMapa(int, int, int , int***, sf::Sprite****,
         sf::Sprite, sf::Texture, sf::Texture, int [],
         std::string [], vector<Rads*> , vector<Npc1*> , vector<Npc3*> ,
-        vector<Npc5*>);
+        vector<Npc5*>, vector< vector<sf::Sprite> >, vector<sf::Sprite>);
             
         
     
@@ -63,6 +64,11 @@ private:
     const static int zonas=2 , sec_zona=2,  bloq_seccion=3;
     int alturasZonas[zonas];
     std::string fondos[zonas];
+    sf::Clock relojAnim; 
+    
+    vector< vector<sf::Sprite> > animRueda;
+    vector<sf::Sprite> animFuego;
+    int numSpriteRueda, numSpriteFuego;
 };
 
 #endif /* MAPA_H */

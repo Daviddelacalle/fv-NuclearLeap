@@ -32,6 +32,9 @@ private:
     int alturasZonas[zonas];
     std::string fondos[zonas];
     
+    vector< vector<sf::Sprite> > animRueda;
+    vector<sf::Sprite> animFuego;
+    
     vector<Rads*> v_rads;
     vector<Npc1*> v_npc1;
     vector<Npc3*> v_npc3;
