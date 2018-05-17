@@ -24,8 +24,8 @@ Personaje::Personaje(){
 
         
    
-            
-   sprite.setParams(0,2,32,32,200,10780);
+    alturasuelo = Mapa::Instance()->getAltura()*32 - 32*9.5;
+    sprite.setParams(0,2,32,32,200,alturasuelo);
   
     
     boxAbajo.setParams(30,2,320,630);      
@@ -48,8 +48,8 @@ Personaje::Personaje(){
     dir_aux = direccion;
     check_pared = false;
     gravedad = kGrav;
-    alturasuelo = Mapa::Instance()->getAltura()*32 - 32*9.5;//APAÑO FEO (ARREGLAR)
-    alturasuelo_nueva = Mapa::Instance()->getAltura()*32 - 32*9.5;//APAÑO FEO (ARREGLAR);
+    
+    alturasuelo_nueva = Mapa::Instance()->getAltura()*32 - 32*9.5;
     espacio = 0;
     velocidadsalto = 0.8;
     nsprite = 0;

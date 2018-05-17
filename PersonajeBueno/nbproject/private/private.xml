@@ -7,13 +7,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Juego.cpp</file>
-            <file>file:/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.h</file>
-            <file>file:/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/GameOverState.cpp</file>
-            <file>file:/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Personaje.cpp</file>
-            <file>file:/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MainMenuState.h</file>
-            <file>file:/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/mapa.cpp</file>
-            <file>file:/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/Estado.h</file>
+            <file>file:/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Npc.h</file>
+            <file>file:/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/main.cpp</file>
         </group>
     </open-files>
 </project-private>
