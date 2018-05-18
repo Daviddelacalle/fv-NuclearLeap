@@ -5,41 +5,51 @@
  */
 
 /* 
- * File:   GameOverState.cpp
+ * File:   WinState.cpp
  * Author: natalia
  * 
- * Created on 16 de mayo de 2018, 21:06
+ * Created on 18 de mayo de 2018, 13:24
  */
 
-#include "GameOverState.h"
-#include "config.h"
+#include "WinState.h"
+#include "Estado.h"
 #include "Motor_2D.h"
 #include "Juego.h"
+#include "Mi_Texto.h"
+#include "config.h"
 
-GameOverState* GameOverState::pinstance = 0;
 
-GameOverState* GameOverState::Instance() {
+WinState* WinState::pinstance = 0;
+
+WinState* WinState::Instance() {
     if (pinstance == 0) { 
-        pinstance = new GameOverState;
+        pinstance = new WinState;
     } 
     
     return pinstance;
 }
 
-void GameOverState::Init(){
+void WinState::Init(){
     
 }
-GameOverState::GameOverState() {
-    background.setTex("again.jpeg");
+WinState::WinState() {
+    background.setTex("fin.jpg");
     background.setParams(0,0,448,700,0,0);
     activo = false;
     estado=0;
 }
 
-void GameOverState::HandleInput(){
+void WinState::HandleInput(){    
     sf::Event event;    
     Motor_2D* motor = Motor_2D::Instance();
     Juego* juego = Juego::Instance();
+    std::stringstream ss;
+    ss<<juego->pj.getVidas();   
+    
+     reloj.setParams(juego->pj.reloj, 25, -20, 205);
+     reloj.setColor(sf::Color::White);    
+     vidas.setParams(ss.str(), 25, -20, 290);
+    // vidas.setText()
     activo = true;
      while (motor->getWindow()->pollEvent(event)&& activo)
         {            
@@ -78,7 +88,7 @@ void GameOverState::HandleInput(){
 
 }
 
-void GameOverState::Update(int num){
+void WinState::Update(int num){
     if(num == 0){
         background.setTex("again.jpeg");        
         estado = 1;
@@ -91,7 +101,7 @@ void GameOverState::Update(int num){
         
 }
 
-void GameOverState::Update(string menu){
+void WinState::Update(string menu){
     Juego* juego = Juego::Instance();
     if(menu=="home"){
         cout<<"entro home"<<"\n";
@@ -102,14 +112,15 @@ void GameOverState::Update(string menu){
         //juego->cambiarMenu(1);
     }
     else if(menu=="jugar"){
-        juego->cambiarMenu(1);
         ingame.iniciarPartida(); 
         activo=false;
-        
+        juego->cambiarMenu(1);
     }
 }
 
-void GameOverState::Draw(){
+void WinState::Draw(){
     background.draw();
+    reloj.draw();
+    vidas.draw();
 }
 

@@ -21,6 +21,7 @@
 #include "Rads.h"
 #include "Bloque.h"
 #include "Vector.h"
+#include <SFML/Graphics.hpp>
 class Personaje {
 public:
     Personaje();
@@ -41,14 +42,22 @@ public:
     void draw();
     void iniciarPersonaje();
     int getPuntos();
+    void win();
+    
     
     Bloque getBoxAbajo();
+    Bloque getBoxAbajo2();
+    Bloque getBoxAbajo3();
+    Bloque getBoxAbajo4();
     Bloque getBoxArriba();
+    Bloque getBoxArriba2();
+    Bloque getBoxArriba3();
     Bloque getBoxDerecha();
     Bloque getBoxIzquierda();
     void actualizarBoxes();
     int contEspacios;
     int var1;
+    int getVidas();
     void update(float);
     void actualizarVidas();
     void setPosVidas();
@@ -61,6 +70,7 @@ public:
     bool pordos;
     int inmune;
     sf::Clock clock;
+    string reloj;
 private:
     int lastCheck;
     int cosa;
@@ -88,7 +98,12 @@ private:
     int nsprite;
     int max_sprites;
     Bloque boxAbajo;
+    Bloque boxAbajo2;
+    Bloque boxAbajo3;
+    Bloque boxAbajo4;
     Bloque boxArriba;
+    Bloque boxArriba2;
+    Bloque boxArriba3;
     Bloque boxDerecha;
     Bloque boxIzquierda;
     int vidas;
@@ -96,8 +111,10 @@ private:
     bool jumpy;
     
     
+    
     sf::Clock clock2;
     sf::Clock clockJump;
+    sf::Clock tiempoFinal;
   
 
     

@@ -17,6 +17,7 @@
 #include "Estado.h"
 #include "MainMenuState.h"
 #include "GameOverState.h"
+#include "WinState.h"
 #include "Personaje.h"
 
 class Juego {

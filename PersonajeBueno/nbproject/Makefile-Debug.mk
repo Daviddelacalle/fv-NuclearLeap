@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/a08718a8/WinState.o \
 	${OBJECTDIR}/Bloque.o \
 	${OBJECTDIR}/GameOverState.o \
 	${OBJECTDIR}/Juego.o \
@@ -87,6 +88,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: /usr/lib/x86_64-linux
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/a08718a8/WinState.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/WinState.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/WinState.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/WinState.cpp
 
 ${OBJECTDIR}/Bloque.o: Bloque.cpp 
 	${MKDIR} -p ${OBJECTDIR}

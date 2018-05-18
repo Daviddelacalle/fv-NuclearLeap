@@ -127,7 +127,7 @@ void MainMenuState::Update(string menu){
         juego->cambiarMenu(1);
     }
     else if(menu=="info"){
-        background.setTex("ayuda.png");
+        background.setTex("ayuda.jpg");
         estado = 1;
         op=0;
     }

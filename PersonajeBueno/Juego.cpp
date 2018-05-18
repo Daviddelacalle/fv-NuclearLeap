@@ -17,6 +17,7 @@
 #include "MainMenuState.h"
 #include "GameOverState.h"
 #include "MutationsState.h"
+#include "WinState.h"
 
 
 

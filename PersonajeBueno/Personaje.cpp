@@ -19,6 +19,7 @@
 #include "Bloque.h"
 #include "Vector.h"
 #include "MutationsState.h"
+#include "WinState.h"
 
 
 Personaje::Personaje(){
@@ -84,6 +85,7 @@ void Personaje::iniciarPersonaje(){
     inmune = 0;
      cosa= 0;
      pordos=false;
+     tiempoFinal.restart();
 }
 
 
@@ -155,6 +157,11 @@ void Personaje::mover(float timeElapsed){
             
         case 8:
             velocidad.setPosy(0.1);
+             break;
+        case 10:
+            
+            win();
+           
         break;
     }
     
@@ -316,7 +323,7 @@ void Personaje::mover(float timeElapsed){
             cout<<inmune<<"\n";
             cout<<clock.getElapsedTime().asSeconds()<<"\n";
             if(inmune < 1 && clock.getElapsedTime().asSeconds()>3){
-                morir();  
+               // morir();  
                 if(clock.getElapsedTime().asSeconds()<3)
                     clock.restart();
             }else{
@@ -564,8 +571,19 @@ void Personaje::estoyRoja(int y){
      
      void Personaje::jump(){
          jumpy = true;
+         clockJump.restart();
      }
      
+     void Personaje::win(){
+         std::stringstream ss2;          
+         ss2<<tiempoFinal.getElapsedTime().asSeconds();
+         reloj = ss2.str();
+         Juego* juego = Juego::Instance();
+         juego->pausa=true;   
+         juego->estadoJuego = WinState::Instance();
+     }
      
+     int Personaje::getVidas(){
+         return vidas;
+     }
      
-    
