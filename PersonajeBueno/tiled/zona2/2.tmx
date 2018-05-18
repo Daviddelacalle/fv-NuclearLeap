@@ -420,7 +420,7 @@
    <tile gid="2"/>
   </data>
  </layer>
- <layer name="Enemigos" width="14" height="23" visible="0">
+ <layer name="Enemigos" width="14" height="23">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -457,6 +457,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="3"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -736,7 +737,6 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1189,28 +1189,28 @@
    <tile gid="165"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="103"/>
-   <tile gid="103"/>
+   <tile gid="72"/>
+   <tile gid="73"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="103"/>
-   <tile gid="103"/>
+   <tile gid="72"/>
+   <tile gid="73"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="165"/>
    <tile gid="137"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="131"/>
-   <tile gid="131"/>
+   <tile gid="15"/>
+   <tile gid="15"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="131"/>
-   <tile gid="131"/>
+   <tile gid="15"/>
+   <tile gid="15"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="137"/>
