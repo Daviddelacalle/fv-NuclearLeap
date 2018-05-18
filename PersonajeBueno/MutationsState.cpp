@@ -124,6 +124,9 @@ void MutationsState::Update(string menu){
 }
 
 void MutationsState::Draw(){
+    if(Juego::Instance()->pj.getBoxArriba().getBloque().getPosition().y < Mapa::Instance()->getAltZonas(1))
+        Mapa::Instance()->setFondo(1);
+    
     background.draw();
     texto.draw();
 }

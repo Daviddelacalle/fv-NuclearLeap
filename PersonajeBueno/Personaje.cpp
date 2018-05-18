@@ -510,8 +510,7 @@ void Personaje::estoyRoja(int y){
         actualizarSprite();
         map->recogerRads(sprite,puntuacion);
         actualizarPuntuacion();
-        if(posy < map->getAltZonas(1))
-            map->setFondo(1);
+      
      }
      
      void Personaje::setPosVidas(){
@@ -558,7 +557,7 @@ void Personaje::estoyRoja(int y){
      void Personaje::abrirMutaciones(){
          Juego* juego = Juego::Instance();
         // if(sprite.getPosy() < (Mapa::Instance()->getAltura()*32 - 32*9.5 )-50){
-         if(sprite.getPosy() < lastCheck -50){ 
+         if(sprite.getPosy() < lastCheck -50 && sprite.getPosy() > 1000){ 
              lastCheck = sprite.getPosy();
              juego->pausa=true;             
             // cout<<lastCheck<<"\n";             
