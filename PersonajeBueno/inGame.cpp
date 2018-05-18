@@ -14,13 +14,17 @@
 #include "inGame.h"
 #include "Mundo.h"
 #include "config.h"
+#include "Juego.h"
 
 inGame::inGame() {
     
 }
 
 void inGame::iniciarPartida(){     
-    Mundo* mundo = Mundo::Instance();    
+    Mundo* mundo = Mundo::Instance(); 
+    Juego* juego = Juego::Instance();
+   // juego->reiniciarPj();
+    LoadXML load = LoadXML();     
     mundo->inicializar();
 }
 

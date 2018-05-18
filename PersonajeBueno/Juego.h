@@ -17,21 +17,27 @@
 #include "Estado.h"
 #include "MainMenuState.h"
 #include "GameOverState.h"
+#include "Personaje.h"
 
 class Juego {
 public:
+   
+    Personaje pj;
     static Juego* Instance();  
     void inicializar();    
     void cambiarMenu(int);
     bool alive;
+    bool pausa;
     Estado* estadoJuego;
+    bool getMuerto();
+    void setMuerto(bool var);
      
 protected:
      Juego();
     Juego(const Juego & );
     Juego &operator= (const Juego & );
 private:
-    
+     bool muerto;
     static Juego* pinstance;  
     inGame ingame;
     int estado;

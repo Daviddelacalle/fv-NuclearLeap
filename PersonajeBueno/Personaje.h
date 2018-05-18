@@ -39,13 +39,10 @@ public:
     void estoyNormal();
     void setPosition(float, float);
     void draw();
+    void iniciarPersonaje();
+    
     Bloque getBoxAbajo();
-    Bloque getBoxAbajo2();
-    Bloque getBoxAbajo3();
-    Bloque getBoxAbajo4();
     Bloque getBoxArriba();
-    Bloque getBoxArriba2();
-    Bloque getBoxArriba3();
     Bloque getBoxDerecha();
     Bloque getBoxIzquierda();
     void actualizarBoxes();
@@ -56,9 +53,12 @@ public:
     void setPosVidas();
     void morir();
     void actualizarPuntuacion();
-    bool getMuerte();
+    void abrirMutaciones();
+    
     
 private:
+    int lastCheck;
+    int cosa;
     int posy_vida;
     int posx_vida;
     bool pierdo;
@@ -82,14 +82,8 @@ private:
     int espacio;
     int nsprite;
     int max_sprites;
-    bool muerte;
     Bloque boxAbajo;
-    Bloque boxAbajo2;
-    Bloque boxAbajo3;
-    Bloque boxAbajo4;
     Bloque boxArriba;
-    Bloque boxArriba2;
-    Bloque boxArriba3;
     Bloque boxDerecha;
     Bloque boxIzquierda;
     int vidas;

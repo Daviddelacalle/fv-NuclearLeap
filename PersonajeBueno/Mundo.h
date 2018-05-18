@@ -23,6 +23,7 @@
 #include "Rads.h" 
 class Mundo {
 public:
+    
     static Mundo* Instance();     
     void inicializar();
     void actualizarPuntuacion(int,sf::Text &_puntRads); 
@@ -30,11 +31,13 @@ public:
     void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5); 
     float minimo(float,float);
     
+    
 protected:
     Mundo();
     Mundo(const Mundo & );
     Mundo &operator= (const Mundo & );
 private:
+    int iniciado=0;
      static Mundo* pinstance;     
      //State npc_S;
 };

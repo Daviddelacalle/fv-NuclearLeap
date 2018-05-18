@@ -27,7 +27,7 @@
 
 
 int main() {     
-    
+    LoadXML load = LoadXML();    
     Juego* juego = Juego::Instance();
     juego->inicializar();
     

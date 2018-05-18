@@ -32,6 +32,7 @@ Mapa* Mapa::Instance(){
 }
 
 Mapa::Mapa() {
+      
 }
 void Mapa::draw(sf::RenderTarget& target, sf::RenderStates states) const{
     Mapa::Instance()->animacionesMapa();

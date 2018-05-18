@@ -34,7 +34,7 @@ Mundo* Mundo::Instance() {
 }
 
 Mundo::Mundo(){
-    
+    iniciado = false;
 }
 
 void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &_npc5){
@@ -60,10 +60,7 @@ void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        //if(tmp->getSprite().getPosy() <  _pj.getSprite().getPosy() + 400){
-            tmp->update(_pj);
-        //}
-        
+        tmp->update(_pj);
     }
     
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
@@ -120,19 +117,15 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        //if(tmp->getSprite().getPosy() <  _pj.getSprite().getPosy() + 400){
-            tmp->draw();
-        //}
+        tmp->draw();
     }
-    _window.draw(_pj.getBoxAbajo().getBloque());
-    _window.draw(_pj.getBoxAbajo2().getBloque());
-    _window.draw(_pj.getBoxAbajo3().getBloque());
-    _window.draw(_pj.getBoxAbajo4().getBloque());
-    _window.draw(_pj.getBoxArriba().getBloque());
-    _window.draw(_pj.getBoxArriba2().getBloque());
-    _window.draw(_pj.getBoxArriba3().getBloque());
-    _window.draw(_pj.getBoxDerecha().getBloque());
-    _window.draw(_pj.getBoxIzquierda().getBloque());
+          
+    /*
+    _window.draw(_pj.getBoxAbajo().getBloque()); 
+    _window.draw(_pj.getBoxArriba().getBloque()); 
+    _window.draw(_pj.getBoxDerecha().getBloque()); 
+    _window.draw(_pj.getBoxIzquierda().getBloque()); 
+    */
 }
 float Mundo::minimo(float a, float b){
     float res;
@@ -145,14 +138,20 @@ float Mundo::minimo(float a, float b){
     return res;
 }
 
-void Mundo::inicializar() {   
+
+
+void Mundo::inicializar() { 
     
-    //MAPA Y CAMARA
-    LoadXML load = LoadXML();
+    Juego* juego = Juego::Instance();
+    //MAPA Y CAMARA  
+    cout<<iniciado<<"\n";
+    
+   
+   
     Mapa* map = Mapa::Instance();
     
-    Motor_2D* motor = Motor_2D::Instance();
-    Juego* juego = Juego::Instance();
+    Motor_2D* motor = Motor_2D::Instance();    
+    
     juego->alive =true;
     
      sf::Music sonido;
@@ -178,7 +177,7 @@ void Mundo::inicializar() {
     
     //INICIALIZAR OBJETOS
     
-    Personaje pj;
+    
     Npc3 npc5(200,10350);
     //INICIALIZAR VARIABLES
      sf::RectangleShape sprite = sf::RectangleShape(sf::Vector2f(32,32)); 
@@ -195,7 +194,7 @@ void Mundo::inicializar() {
     
     
     //ESTADOS    
-    State pj_S(pj.getSprite().getPosx(),pj.getSprite().getPosy());
+    State pj_S(juego->pj.getSprite().getPosx(),juego->pj.getSprite().getPosy());
     
     State npc_S(npc5.getSprite().getPosx(),npc5.getSprite().getPosy());
 
@@ -209,7 +208,7 @@ void Mundo::inicializar() {
         sf::Event event;
         while (motor->getWindow()->pollEvent(event))
         {
-            
+          if(juego->pausa == false){  
             switch(event.type){
                 
                 //Si se recibe el evento de cerrar la ventana la cierro
@@ -224,7 +223,7 @@ void Mundo::inicializar() {
                     switch(event.key.code) {
                         case sf::Keyboard::Space:
                            //if(p.getEspacios() <2){
-                           pj.moverSalto(); 
+                           juego->pj.moverSalto(); 
                            sonidoSalto.play();
                            
                           
@@ -237,16 +236,16 @@ void Mundo::inicializar() {
                     }
 
             }
+          }
             
             
         }
-        
         //AJUSTAR VISTA A LA POSICION DEL PERSONAJE
         
         //view.setCenter(224,pj.getSprite().getPosy()-64);
-        motor->getVistaPrincipal()->setCenter(224,pj.getSprite().getPosy()-64);
+        motor->getVistaPrincipal()->setCenter(224,juego->pj.getSprite().getPosy()-64);
         //INTERPOLACION
-        
+        if(juego->pausa == false){
         //El update es una funcion que se ejecuta solo 15veces por segundo
         if(updateClock.getElapsedTime().asMilliseconds() > UPDATE_TICK_TIME){
 
@@ -258,7 +257,7 @@ void Mundo::inicializar() {
             
             timeElapsed = updateClock.restart();
 
-            update(pj_S,timeElapsed.asMilliseconds(),pj,npc_S,npc5);            
+            update(pj_S,timeElapsed.asMilliseconds(),juego->pj,npc_S,npc5);            
            // pj.recogerRads(sprite,nrads); 
            
 
@@ -283,13 +282,28 @@ void Mundo::inicializar() {
         sf::Sprite img_fondo = map->getFondo();
         //img_fondo.setPosition(0,view.getCenter().y-400);
         img_fondo.setPosition(0,motor->getVistaPrincipal()->getCenter().y-400);
-        pj.setPosVidas();
+        juego->pj.setPosVidas();
         motor->getWindow()->draw(img_fondo);
         
         map->activarCapa(3);
+        
+       
+       //cout<<juego->pausa<<"\n";
+        if(juego->pausa == false){
         motor->getWindow()->draw(*map);
-        render_interpolation(*motor->getWindow(),pj_S,percentTick,pj,npc_S,npc5); 
+        
+        render_interpolation(*motor->getWindow(),pj_S,percentTick,juego->pj,npc_S,npc5);       
+       
         motor->getWindow()->display();
+        }
+        }
+        else{
+             Juego* juego = Juego::Instance();
+             juego->inicializar();
+        }
+        
+            
+        
     }   
    
 }

@@ -15,6 +15,7 @@
 #include "Mi_Texto.h"
 #include "Motor_2D.h"
 #include "Juego.h"
+#include "Mundo.h"
 
 MutationsState* MutationsState::pinstance = 0;
 
@@ -47,6 +48,7 @@ void MutationsState::HandleInput(){
     sf::Event event;    
     Motor_2D* motor = Motor_2D::Instance();
     Juego* juego = Juego::Instance();
+     Mundo* mundo = Mundo::Instance();
     activo = true;
      while (motor->getWindow()->pollEvent(event)&& activo)
      {     if(op==3){
@@ -67,8 +69,10 @@ void MutationsState::HandleInput(){
                         case sf::Keyboard::Right:
                             Update(op+1);
                             break;
-                        case sf::Keyboard::Return:                                                       
-                           
+                        case sf::Keyboard::Return:
+                            juego->pausa=false; 
+                            mundo->inicializar();
+                                                        
                             break;
                         case sf::Keyboard::Q:
                             motor->getWindow()->close();

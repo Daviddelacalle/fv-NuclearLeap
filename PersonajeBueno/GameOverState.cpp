@@ -80,7 +80,7 @@ void GameOverState::HandleInput(){
 
 void GameOverState::Update(int num){
     if(num == 0){
-        background.setTex("again.jpeg");
+        background.setTex("again.jpeg");        
         estado = 1;
     }
     else if(num==1){
@@ -94,6 +94,7 @@ void GameOverState::Update(int num){
 void GameOverState::Update(string menu){
     Juego* juego = Juego::Instance();
     if(menu=="home"){
+        cout<<"entro home"<<"\n";
         juego->estadoJuego = MainMenuState::Instance(); 
     }
     else if(menu == "muerte"){
@@ -101,7 +102,7 @@ void GameOverState::Update(string menu){
         //juego->cambiarMenu(1);
     }
     else if(menu=="jugar"){
-        ingame.iniciarPartida();
+        ingame.iniciarPartida(); 
         activo=false;
         juego->cambiarMenu(1);
     }

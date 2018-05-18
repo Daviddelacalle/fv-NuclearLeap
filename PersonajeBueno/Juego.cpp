@@ -33,29 +33,36 @@ Juego* Juego::Instance() {
 Juego::Juego(){    
     alive = true;
     menu =0;
+    pausa=false;
+    pj.iniciarPersonaje();
+    estadoJuego = MainMenuState::Instance();
+    muerto=false;    
+   
  }
 
 void Juego::cambiarMenu(int num){
     menu = num;
 }
 
+
+bool Juego::getMuerto(){
+    return muerto;
+}
+void Juego::setMuerto(bool var){
+    muerto = var;
+}
 void Juego::inicializar(){
     Motor_2D* motor = Motor_2D::Instance(); 
-    
-   
-    estadoJuego = MainMenuState::Instance(); 
-   
-  
         
-    
     while(motor->getWindow()->isOpen()){  
-        estadoJuego->HandleInput();         
+       
+        estadoJuego->HandleInput();       
         motor->getVistaPrincipal()->setCenter(0,0);
         motor->setVistaPrincipal();
         motor->getWindow()->clear(); 
-        estadoJuego->Draw(); 
-        
+         estadoJuego->Draw();
         motor->getWindow()->display();
+       
      }
     }
    // if(state ==1){

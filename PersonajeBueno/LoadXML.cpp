@@ -113,7 +113,7 @@ LoadXML::LoadXML() {
             
             std::string cadena = cad + std::to_string(nb) + ".tmx";
             char const *u = cadena.c_str();
-            std::cout << u << std::endl; 
+        //    std::cout << u << std::endl; 
             document[pB].LoadFile(u);
             
             tmxs[pB] = document[pB].FirstChildElement("map");
@@ -133,7 +133,7 @@ LoadXML::LoadXML() {
             fondo_cadena = img_fondo->Attribute("source");
             std::string fc = fondo_cadena;
             std::string buf = cad + fc;
-            std::cout << buf << std::endl;
+           // std::cout << buf << std::endl;
             fondos[i]=buf;
     }
     
@@ -214,7 +214,7 @@ LoadXML::LoadXML() {
                     v_npc1.push_back(npc1);
                 }
                 if(l==1 && _tilemap[l][y][x]==2){
-                    Npc3 *npc3 = new Npc3(x*32,y*32 +14); 
+                    Npc3 *npc3 = new Npc3(x*32,y*32 +20); 
                     v_npc3.push_back(npc3);
                 }
                 if(l==1 && _tilemap[l][y][x]==3){

@@ -202,7 +202,6 @@ Npc3::Npc3(float _posx, float _posy):Npc(_posx,_posy){
     }
     
     sprite.setParams(0,1,32,32,_posx,_posy);
-    sprite.setScale(1.6,1.6);
     
     //COLISIONADORES
     box_up.setParams(60,1,posx,posy-32);
@@ -234,28 +233,28 @@ void Npc3::movimiento(){
     if(dirx == 1){
         if(vd != 7 && vd != 3 && vd != 4){
             dirx = -1;
-            sprite.setScale(-1.6,1.6);
+            sprite.setScale(-1,1);
         }
     }
     
     else if(dirx == -1){
         if(vd != 7 && vd != 3 && vd != 4){
             dirx = +1;
-            sprite.setScale(1.6,1.6);
+            sprite.setScale(1,1);
         }
     }
     
     if(dirx == 1){
         if(vr != 0){
             dirx = -1;
-            sprite.setScale(-1.6,1.6);
+            sprite.setScale(-1,1);
         }
     }
     
     if(dirx == -1){
         if(vl != 0){
             dirx = +1;
-            sprite.setScale(1.6,1.6);
+            sprite.setScale(1,1);
         }
     }
     

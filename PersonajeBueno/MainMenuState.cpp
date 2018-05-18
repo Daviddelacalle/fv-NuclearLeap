@@ -60,7 +60,7 @@ void MainMenuState::HandleInput(){
                             Update(2);
                             break;
                         case sf::Keyboard::Return: 
-                            cout<<estado<<"\n";
+                        //    cout<<estado<<"\n";
                             if(estado==0){
                                 if(op == 0){
                                     Update("jugar");

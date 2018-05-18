@@ -14,7 +14,7 @@
       <itemPath>Mi_Texto.h</itemPath>
       <itemPath>Motor_2D.h</itemPath>
       <itemPath>Mundo.h</itemPath>
-      <itemPath>/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/MutationsState.h</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MutationsState.h</itemPath>
       <itemPath>Npc.h</itemPath>
       <itemPath>Personaje.h</itemPath>
       <itemPath>Rads.h</itemPath>
@@ -41,7 +41,7 @@
       <itemPath>Mi_Texto.cpp</itemPath>
       <itemPath>Motor_2D.cpp</itemPath>
       <itemPath>Mundo.cpp</itemPath>
-      <itemPath>/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/MutationsState.cpp</itemPath>
+      <itemPath>/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MutationsState.cpp</itemPath>
       <itemPath>Npc.cpp</itemPath>
       <itemPath>Personaje.cpp</itemPath>
       <itemPath>Rads.cpp</itemPath>
@@ -146,12 +146,12 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/MutationsState.cpp"
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MutationsState.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/MutationsState.h"
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MutationsState.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -461,12 +461,12 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/MutationsState.cpp"
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MutationsState.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="/home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/MutationsState.h"
+      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MutationsState.h"
             ex="false"
             tool="3"
             flavor2="0">
