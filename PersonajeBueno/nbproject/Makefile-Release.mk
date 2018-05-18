@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/ac568468/Reloj.o \
 	${OBJECTDIR}/Bloque.o \
 	${OBJECTDIR}/GameOverState.o \
 	${OBJECTDIR}/Juego.o \
@@ -80,6 +81,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/ac568468/Reloj.o: /home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Reloj.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/ac568468
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/ac568468/Reloj.o /home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Reloj.cpp
 
 ${OBJECTDIR}/Bloque.o: Bloque.cpp 
 	${MKDIR} -p ${OBJECTDIR}

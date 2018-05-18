@@ -311,10 +311,10 @@ void Personaje::mover(float timeElapsed){
         Mapa::Instance()->activarCapa(0);
           
     }    
-    if(clock2.getElapsedTime().asSeconds()>12){
+    if(clock2.getReloj().getElapsedTime().asSeconds()>12){
         pordos=false;
     }
-     if(clockJump.getElapsedTime().asSeconds()>10){
+     if(clockJump.getReloj().getElapsedTime().asSeconds()>10){
         jumpy=false;
     }
     
@@ -322,10 +322,10 @@ void Personaje::mover(float timeElapsed){
     switch(valorpersonaje){
         case 5:     
             cout<<inmune<<"\n";
-            cout<<clock.getElapsedTime().asSeconds()<<"\n";
-            if(inmune < 1 && clock.getElapsedTime().asSeconds()>3){
+            cout<<clock.getReloj().getElapsedTime().asSeconds()<<"\n";
+            if(inmune < 1 && clock.getReloj().getElapsedTime().asSeconds()>3){
                 morir();  
-                if(clock.getElapsedTime().asSeconds()<3)
+                if(clock.getReloj().getElapsedTime().asSeconds()<3)
                     clock.restart();
             }else{
                 cout<<"holaaaaaaaaa";
@@ -590,7 +590,7 @@ void Personaje::estoyRoja(int y){
      
      void Personaje::win(){
          std::stringstream ss2;          
-         ss2<<tiempoFinal.getElapsedTime().asSeconds();
+         ss2<<tiempoFinal.getReloj().getElapsedTime().asSeconds();
          reloj = ss2.str();
          Juego* juego = Juego::Instance();
          juego->pausa=true;   
