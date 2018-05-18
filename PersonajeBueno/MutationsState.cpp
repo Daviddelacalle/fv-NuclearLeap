@@ -73,8 +73,8 @@ void MutationsState::HandleInput(){
                             if(op == 0){
                                 juego->pj.inmunidad();                                
                             }else if(op==1){
-                                cout<<"entro en slowwwwwwwwwwwwwwww"<<"\n";
-                                juego->pj.slow();
+                                cout<<"entro en JUMPYYYYY"<<"\n";
+                                juego->pj.jump();
                                 
                             }
                             else if(op==2){

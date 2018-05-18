@@ -178,12 +178,24 @@ void Npc1::actualizarBox(){
 }
 
 void Npc1::matarPj(Personaje& _pj){
+    
     if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_up.getBloque().getGlobalBounds())){
         setPosition(5000,5000);
     }
     else if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_left.getBloque().getGlobalBounds()) || _pj.getSprite().getSprite().getGlobalBounds().intersects(box_right.getBloque().getGlobalBounds()) ){
-        setPosition(posix,posiy);
-        _pj.morir();
+        if(_pj.inmune < 1 && _pj.clock.getElapsedTime().asSeconds()>3){
+            setPosition(posix,posiy);
+            _pj.morir();
+             if(_pj.clock.getElapsedTime().asSeconds()<3)
+                    _pj.clock.restart();
+        }else{
+                
+                if(_pj.inmune > 0){
+                    _pj.clock.restart();
+                    _pj.inmune-=1;
+                    _pj.getSprite().setFrame(0,2);
+                }
+        }
     }
 }
 
@@ -299,8 +311,19 @@ void Npc3::actualizarBox(){
 
 void Npc3::matarPj(Personaje& _pj){
     if(_pj.getSprite().getSprite().getGlobalBounds().intersects(sprite.getSprite().getGlobalBounds())){
-        setPosition(posix,posiy);
-        _pj.morir();
+        if(_pj.inmune < 1 && _pj.clock.getElapsedTime().asSeconds()>3){
+            setPosition(posix,posiy);
+            _pj.morir();
+             if(_pj.clock.getElapsedTime().asSeconds()<3)
+                    _pj.clock.restart();
+        }else{
+                
+                if(_pj.inmune > 0){
+                    _pj.clock.restart();
+                    _pj.inmune-=1;
+                    _pj.getSprite().setFrame(0,2);
+                }
+        }
         
     }
 }
@@ -433,8 +456,19 @@ void Npc5::update(Personaje &_pj){
 
 void Npc5::matarPj(Personaje& _pj){
     if(_pj.getSprite().getSprite().getGlobalBounds().intersects(sprite.getSprite().getGlobalBounds())){
-        setPosition(posix,posiy);
-        _pj.morir();
+        if(_pj.inmune < 1 && _pj.clock.getElapsedTime().asSeconds()>3){
+            setPosition(posix,posiy);
+            _pj.morir();
+             if(_pj.clock.getElapsedTime().asSeconds()<3)
+                    _pj.clock.restart();
+        }else{
+                
+                if(_pj.inmune > 0){
+                    _pj.clock.restart();
+                    _pj.inmune-=1;
+                    _pj.getSprite().setFrame(0,2);
+                }
+        }
         
     }
 }

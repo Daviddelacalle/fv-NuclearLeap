@@ -108,11 +108,16 @@ void Personaje::gravity(float timeElapsed){
 }
 
 void Personaje::moverSalto(){    
-    if(espacio <2){
+    if(espacio <3 && jumpy){
       velocidad.setPosy(-velocidadsalto);         
       espacio++;
       gravedad= kGrav;
 
+    }
+    else if(espacio<2){
+        velocidad.setPosy(-velocidadsalto);         
+      espacio++;
+      gravedad= kGrav;
     }
     
      int var1 = contEspacios;
@@ -301,6 +306,9 @@ void Personaje::mover(float timeElapsed){
     if(clock2.getElapsedTime().asSeconds()>12){
         pordos=false;
     }
+     if(clockJump.getElapsedTime().asSeconds()>10){
+        jumpy=false;
+    }
     
     //cout<<inmune<<"\n";
     switch(valorpersonaje){
@@ -316,6 +324,7 @@ void Personaje::mover(float timeElapsed){
                 if(inmune > 0){
                     clock.restart();
                     inmune-=1;
+                    sprite.setFrame(0,2);
                 }
                 
             }         
@@ -391,6 +400,9 @@ void Personaje::actualizarSprite(){
             if(nsprite == max_sprites){
                 nsprite = 0;
             }
+            if(inmune>0)
+                sprite.setFrame(nsprite,4); // dos porque es la fila 2
+            else
             sprite.setFrame(nsprite,2); // dos porque es la fila 2
             nsprite++;    
         sprite.restartClock();
@@ -540,7 +552,7 @@ void Personaje::estoyRoja(int y){
          if(puntuacion>=5){  
             inmune +=1;            
             puntuacion -=5;
-          
+            sprite.setFrame(0,4);
          }
          
      }
@@ -550,8 +562,8 @@ void Personaje::estoyRoja(int y){
          clock2.restart();
      }
      
-     void Personaje::slow(){
-         
+     void Personaje::jump(){
+         jumpy = true;
      }
      
      

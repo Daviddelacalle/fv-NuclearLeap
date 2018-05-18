@@ -56,10 +56,11 @@ public:
     void actualizarPuntuacion();
     void abrirMutaciones();
     void inmunidad();
-    void slow();
+    void jump();
     void porDos();
     bool pordos;
-    
+    int inmune;
+    sf::Clock clock;
 private:
     int lastCheck;
     int cosa;
@@ -91,13 +92,12 @@ private:
     Bloque boxDerecha;
     Bloque boxIzquierda;
     int vidas;
-    int puntuacion;
-    int inmune;
-    bool sloww;
+    int puntuacion;    
+    bool jumpy;
     
-    sf::Clock clock;
+    
     sf::Clock clock2;
-    sf::Clock clockSlow;
+    sf::Clock clockJump;
   
 
     
