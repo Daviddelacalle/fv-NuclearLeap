@@ -35,9 +35,7 @@ public:
     void CargarMapa(int, int, int , int***, sf::Sprite****,
         sf::Sprite, sf::Texture, sf::Texture, int [],
         std::string [], vector<Rads*> , vector<Npc1*> , vector<Npc3*> ,
-        vector<Npc5*>, vector< vector<sf::Sprite> >, vector<sf::Sprite>);
-            
-        
+        vector<Npc5*>, vector< vector<sf::Sprite> >, vector<sf::Sprite>);  
     
     void recogerRads(Mi_Sprite &_pj, int &_puntuacion);
     vector<Npc1*> getvNpc1();
@@ -60,7 +58,8 @@ private:
     int ***_tilemap;
     sf::Sprite ****_tilemapSprite;
     sf::Sprite fondo;
-    sf::Texture tex_fondo, tex_plat;
+    sf::Sprite portal;
+    sf::Texture tex_fondo, tex_plat, tex_portal;
     const static int zonas=2 , sec_zona=2,  bloq_seccion=3;
     int alturasZonas[zonas];
     std::string fondos[zonas];
@@ -68,7 +67,7 @@ private:
     
     vector< vector<sf::Sprite> > animRueda;
     vector<sf::Sprite> animFuego;
-    int numSpriteRueda, numSpriteFuego;
+    int numSpriteRueda, numSpriteFuego, numSpritePortal;
 };
 
 #endif /* MAPA_H */

@@ -20,6 +20,7 @@
 #include "Personaje.h"
 #include "LoadXML.h"
 #include "Juego.h"
+#include "Motor_2D.h"
 using namespace tinyxml2;
 
 
@@ -37,6 +38,8 @@ Mapa::Mapa() {
 }
 void Mapa::draw(sf::RenderTarget& target, sf::RenderStates states) const{
     Mapa::Instance()->animacionesMapa();
+    
+    
     for(int y=0; y<_height; y++){
         for(int x=0; x<_width; x++){
             if(_tilemapSprite[capa][y][x]!=NULL)
@@ -50,7 +53,7 @@ void Mapa::draw(sf::RenderTarget& target, sf::RenderStates states) const{
         tmp->draw();            
     } 
     
-    
+    Motor_2D::Instance()->getWindow()->draw(portal);
 }
 void Mapa::activarCapa(int num_capa){
     capa = num_capa;
@@ -174,6 +177,13 @@ void Mapa::CargarMapa(int capita, int height, int width, int ***tilemap, sf::Spr
     animFuego = aFuego;
     numSpriteRueda = 1;
     numSpriteFuego = 1;
+    if(!tex_portal.loadFromFile("tiled/portal.png")){
+        std::cerr << "Error cargando la imagen sprites.png";
+    }
+    portal.setTexture(tex_portal);
+    portal.setTextureRect(sf::IntRect(0,0,128,128));
+    portal.setOrigin(0,0);
+    portal.setPosition(160,448);
     relojAnim.restart();
   
  }
@@ -181,6 +191,9 @@ void Mapa::CargarMapa(int capita, int height, int width, int ***tilemap, sf::Spr
 void Mapa::animacionesMapa(){
     //cout << relojAnim.getElapsedTime().asSeconds() << endl;
     if(relojAnim.getElapsedTime().asSeconds()>0.08){
+        
+        portal.setTextureRect(sf::IntRect(128*numSpritePortal,0,128,128));
+        numSpritePortal = (numSpritePortal+1)%4;
         
         activarCapa(3);
         for(int y=0; y<_height; y++){
