@@ -144,7 +144,7 @@ void Mundo::inicializar() {
     
     Juego* juego = Juego::Instance();
     //MAPA Y CAMARA  
-    cout<<iniciado<<"\n";
+   // cout<<iniciado<<"\n";
     
    
    

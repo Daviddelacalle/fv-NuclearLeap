@@ -19,6 +19,7 @@
 #include "Rads.h"
 #include "Personaje.h"
 #include "LoadXML.h"
+#include "Juego.h"
 using namespace tinyxml2;
 
 
@@ -124,17 +125,22 @@ int Mapa::bloqRandom(std::vector<int> v){
 }
 
 void Mapa::recogerRads(Mi_Sprite &_pj, int &_puntuacion){
-       
+       Juego* juego = Juego::Instance();
     auto it = v_rads.begin();
     
     for(it; it != v_rads.end(); it++){
         
         Rads *tmp = *it;
          
-        if(_pj.getSprite().getGlobalBounds().intersects(tmp->getSprite().getSprite().getGlobalBounds())){  
-            
+        if(_pj.getSprite().getGlobalBounds().intersects(tmp->getSprite().getSprite().getGlobalBounds())){ 
             v_rads.erase(it);
-            _puntuacion++;
+            if(juego->pj.pordos==true){
+                _puntuacion+=2;
+            }
+            else{
+                _puntuacion++;
+            }
+            
             delete tmp; 
             break;
         }

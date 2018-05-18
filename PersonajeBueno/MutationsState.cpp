@@ -70,8 +70,20 @@ void MutationsState::HandleInput(){
                             Update(op+1);
                             break;
                         case sf::Keyboard::Return:
+                            if(op == 0){
+                                juego->pj.inmunidad();                                
+                            }else if(op==1){
+                                cout<<"entro en slowwwwwwwwwwwwwwww"<<"\n";
+                                juego->pj.slow();
+                                
+                            }
+                            else if(op==2){
+                                cout<<"entro en radsx2"<<"\n";
+                                juego->pj.porDos();
+                            }
                             juego->pausa=false; 
                             mundo->inicializar();
+                            
                                                         
                             break;
                         case sf::Keyboard::Q:
@@ -115,4 +127,6 @@ void MutationsState::Draw(){
     background.draw();
     texto.draw();
 }
+
+
 

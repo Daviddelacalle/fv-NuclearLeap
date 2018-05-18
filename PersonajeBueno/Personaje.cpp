@@ -81,8 +81,9 @@ void Personaje::iniciarPersonaje(){
     sprite_puntuacion.setScale(1.5,1.5);
      
     text_perder.setParams("HAS PERDIDO", 30, 0, 0);
-    
+    inmune = 0;
      cosa= 0;
+     pordos=false;
 }
 
 
@@ -137,7 +138,8 @@ void Personaje::mover(float timeElapsed){
    
     int valorpersonaje = Mapa::Instance()->getTile(px,py);
     Juego* juego = Juego::Instance(); 
-    
+    MutationsState* muta = MutationsState::Instance(); 
+    muta->puntos = puntuacion;
     switch(valorarriba){
         case 0: break;
         
@@ -295,11 +297,28 @@ void Personaje::mover(float timeElapsed){
         sprite.setPosition(x*32,y*32);
         Mapa::Instance()->activarCapa(0);
           
+    }    
+    if(clock2.getElapsedTime().asSeconds()>12){
+        pordos=false;
     }
     
+    //cout<<inmune<<"\n";
     switch(valorpersonaje){
-        case 5:
-            morir();            
+        case 5:     
+            cout<<inmune<<"\n";
+            cout<<clock.getElapsedTime().asSeconds()<<"\n";
+            if(inmune < 1 && clock.getElapsedTime().asSeconds()>3){
+                morir();  
+                if(clock.getElapsedTime().asSeconds()<3)
+                    clock.restart();
+            }else{
+                cout<<"holaaaaaaaaa";
+                if(inmune > 0){
+                    clock.restart();
+                    inmune-=1;
+                }
+                
+            }         
             break;        
     }
     
@@ -517,3 +536,24 @@ void Personaje::estoyRoja(int y){
             
      }
      
+     void Personaje::inmunidad(){         
+         if(puntuacion>=5){  
+            inmune +=1;            
+            puntuacion -=5;
+          
+         }
+         
+     }
+     
+     void Personaje::porDos(){
+         pordos=true;
+         clock2.restart();
+     }
+     
+     void Personaje::slow(){
+         
+     }
+     
+     
+     
+    

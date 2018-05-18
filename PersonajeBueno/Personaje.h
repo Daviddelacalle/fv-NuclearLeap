@@ -40,6 +40,7 @@ public:
     void setPosition(float, float);
     void draw();
     void iniciarPersonaje();
+    int getPuntos();
     
     Bloque getBoxAbajo();
     Bloque getBoxArriba();
@@ -54,7 +55,10 @@ public:
     void morir();
     void actualizarPuntuacion();
     void abrirMutaciones();
-    
+    void inmunidad();
+    void slow();
+    void porDos();
+    bool pordos;
     
 private:
     int lastCheck;
@@ -88,8 +92,12 @@ private:
     Bloque boxIzquierda;
     int vidas;
     int puntuacion;
-   
+    int inmune;
+    bool sloww;
     
+    sf::Clock clock;
+    sf::Clock clock2;
+    sf::Clock clockSlow;
   
 
     
