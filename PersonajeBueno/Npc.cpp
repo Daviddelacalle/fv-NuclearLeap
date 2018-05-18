@@ -185,7 +185,7 @@ void Npc1::matarPj(Personaje& _pj){
     else if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_left.getBloque().getGlobalBounds()) || _pj.getSprite().getSprite().getGlobalBounds().intersects(box_right.getBloque().getGlobalBounds()) ){
         if(_pj.inmune < 1 && _pj.clock.getElapsedTime().asSeconds()>3){
             setPosition(posix,posiy);
-            //_pj.morir();
+            _pj.morir();
              if(_pj.clock.getElapsedTime().asSeconds()<3)
                     _pj.clock.restart();
         }else{
@@ -313,7 +313,7 @@ void Npc3::matarPj(Personaje& _pj){
     if(_pj.getSprite().getSprite().getGlobalBounds().intersects(sprite.getSprite().getGlobalBounds())){
         if(_pj.inmune < 1 && _pj.clock.getElapsedTime().asSeconds()>3){
             setPosition(posix,posiy);
-          //  _pj.morir();
+           _pj.morir();
              if(_pj.clock.getElapsedTime().asSeconds()<3)
                     _pj.clock.restart();
         }else{
@@ -458,7 +458,7 @@ void Npc5::matarPj(Personaje& _pj){
     if(_pj.getSprite().getSprite().getGlobalBounds().intersects(sprite.getSprite().getGlobalBounds())){
         if(_pj.inmune < 1 && _pj.clock.getElapsedTime().asSeconds()>3){
             setPosition(posix,posiy);
-         //   _pj.morir();
+            _pj.morir();
              if(_pj.clock.getElapsedTime().asSeconds()<3)
                     _pj.clock.restart();
         }else{

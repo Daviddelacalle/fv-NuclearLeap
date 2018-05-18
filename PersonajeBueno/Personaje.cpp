@@ -323,7 +323,7 @@ void Personaje::mover(float timeElapsed){
             cout<<inmune<<"\n";
             cout<<clock.getElapsedTime().asSeconds()<<"\n";
             if(inmune < 1 && clock.getElapsedTime().asSeconds()>3){
-               // morir();  
+                morir();  
                 if(clock.getElapsedTime().asSeconds()<3)
                     clock.restart();
             }else{
