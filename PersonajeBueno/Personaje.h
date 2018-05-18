@@ -59,6 +59,7 @@ public:
     int var1;
     int getVidas();
     void update(float);
+    float getVelocidad();
     void actualizarVidas();
     void setPosVidas();
     void morir();
@@ -77,6 +78,7 @@ private:
     int posy_vida;
     int posx_vida;
     bool pierdo;
+    float vel_camara;
     int alturasuelo_nueva;
     float gravedad;
     int posx;

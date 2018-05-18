@@ -25,8 +25,9 @@ public:
     Mi_Sprite getSprite();
     void actualizarSprite();
     void draw();
+    void restart();
 
-       Bloque getBox_up(); 
+    Bloque getBox_up(); 
     Bloque getBox_left(); 
     Bloque getBox_right(); 
     Bloque getBox_down(); 

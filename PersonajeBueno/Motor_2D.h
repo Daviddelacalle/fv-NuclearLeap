@@ -25,11 +25,12 @@ public:
     sf::View* getVistaPrincipal();
     float get_clockElapsedTime();
     
+    void actualizarVista(Personaje &_pj);
     void draw(sf::Sprite &_sprite);
     void draw(sf::Text &_text);
     void setVistaPrincipal();
     void restartClock();
-    
+    void setCenterVista(float);
     
 protected:
     Motor_2D();

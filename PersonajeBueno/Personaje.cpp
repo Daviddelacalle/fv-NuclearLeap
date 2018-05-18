@@ -63,6 +63,7 @@ void Personaje::iniciarPersonaje(){
     velocidad.setPosx(kVel);
     contEspacios=0;
     var1 = 0;
+    vel_camara = 0;
     checkpoint== Mapa::Instance()->getAltura()*32 - 32*9.5;
     pierdo = false;
     puntuacion = 0;
@@ -365,6 +366,13 @@ void Personaje::mover(float timeElapsed){
     
     gravity(timeElapsed);
     
+    if(velocidad.getPosy() != 0){ 
+        vel_camara = velocidad.getPosy()*timeElapsed; 
+        if(vel_camara < 1){ 
+            vel_camara = vel_camara *-1; 
+        } 
+    }
+    
     
     //std::cout<<"bajo"<<velocidad.x<<"\n"; 
     if(pierdo == false){
@@ -442,6 +450,10 @@ void Personaje::estoyRoja(int y){
     }
     void Personaje::estoySaltador(){
         moverSalto();
+    }
+    
+    float Personaje::getVelocidad(){ 
+        return vel_camara; 
     }
     
     void Personaje::estoyNormal(){
@@ -532,6 +544,8 @@ void Personaje::estoyRoja(int y){
         sprite.setPosition(200, alturasuelo);
         vidas--;
         actualizarVidas();
+        Motor_2D* motor = Motor_2D::Instance();     
+        motor->setCenterVista(juego->pj.getSprite().getPosy());
         if(vidas==0){  
             iniciarPersonaje();          
             juego->alive = false;              

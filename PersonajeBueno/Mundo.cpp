@@ -50,17 +50,32 @@ void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_
     
     for(int it = 0; it < map->getvNpc1().size() ; it++){
         Npc1 *tmp = map->getvNpc1()[it];
-        tmp->update(_pj);
+        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450 || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){ 
+            tmp->restart(); 
+        } 
+        else{ 
+            tmp->update(_pj); 
+        }
     }
     
     for(int it = 0; it < map->getvNpc3().size() ; it++){
         Npc3 *tmp = map->getvNpc3()[it];
-        tmp->update(_pj);
+        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450 || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){ 
+            tmp->restart(); 
+        } 
+        else{ 
+            tmp->update(_pj); 
+        }
     }
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        tmp->update(_pj);
+        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450 || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){ 
+            tmp->restart(); 
+        } 
+        else{ 
+            tmp->update(_pj); 
+        }
     }
     
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
@@ -107,17 +122,26 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
     
     for(int it = 0; it < map->getvNpc1().size() ; it++){
         Npc1 *tmp = map->getvNpc1()[it];
-        tmp->draw();
+        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450  || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){} 
+        else{ 
+            tmp->draw(); 
+        }
     }
     
     for(int it = 0; it < map->getvNpc3().size() ; it++){
         Npc3 *tmp = map->getvNpc3()[it];
-        tmp->draw();
+        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450  || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){} 
+        else{ 
+            tmp->draw(); 
+        }
     }
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        tmp->draw();
+        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450  || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){} 
+        else{ 
+            tmp->draw(); 
+        }
     }
           
     /*_window.draw(_pj.getBoxAbajo().getBloque());
@@ -153,7 +177,8 @@ void Mundo::inicializar() {
    
     Mapa* map = Mapa::Instance();
     
-    Motor_2D* motor = Motor_2D::Instance();    
+    Motor_2D* motor = Motor_2D::Instance();
+    motor->setCenterVista(juego->pj.getSprite().getPosy());    
     
     juego->alive =true;
     
@@ -246,7 +271,7 @@ void Mundo::inicializar() {
         //AJUSTAR VISTA A LA POSICION DEL PERSONAJE
         
         //view.setCenter(224,pj.getSprite().getPosy()-64);
-        motor->getVistaPrincipal()->setCenter(224,juego->pj.getSprite().getPosy()-64);
+        motor->actualizarVista(juego->pj);
         //INTERPOLACION
         if(juego->pausa == false){
         //El update es una funcion que se ejecuta solo 15veces por segundo

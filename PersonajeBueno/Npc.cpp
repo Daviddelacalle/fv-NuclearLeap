@@ -62,6 +62,9 @@ Bloque Npc::getBox_down(){
     return box_down;
 }
 
+void Npc::restart(){ 
+    setPosition(posix,posiy); 
+}
 //NPC1
 
 Npc1::Npc1(float _posx, float _posy):Npc(_posx,_posy){
@@ -180,7 +183,7 @@ void Npc1::actualizarBox(){
 void Npc1::matarPj(Personaje& _pj){
     
     if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_up.getBloque().getGlobalBounds())){
-        setPosition(5000,5000);
+        setPosition(5000,sprite.getPosy());
     }
     else if(_pj.getSprite().getSprite().getGlobalBounds().intersects(box_left.getBloque().getGlobalBounds()) || _pj.getSprite().getSprite().getGlobalBounds().intersects(box_right.getBloque().getGlobalBounds()) ){
         if(_pj.inmune < 1 && _pj.clock.getElapsedTime().asSeconds()>3){
@@ -214,6 +217,7 @@ Npc3::Npc3(float _posx, float _posy):Npc(_posx,_posy){
     }
     
     sprite.setParams(0,1,32,32,_posx,_posy);
+    sprite.setScale(1.5,1.5);
     
     //COLISIONADORES
     box_up.setParams(60,1,posx,posy-32);
@@ -245,28 +249,28 @@ void Npc3::movimiento(){
     if(dirx == 1){
         if(vd != 7 && vd != 3 && vd != 4){
             dirx = -1;
-            sprite.setScale(-1,1);
+            sprite.setScale(-1.5,1.5);
         }
     }
     
     else if(dirx == -1){
         if(vd != 7 && vd != 3 && vd != 4){
             dirx = +1;
-            sprite.setScale(1,1);
+            sprite.setScale(1.5,1.5);
         }
     }
     
     if(dirx == 1){
         if(vr != 0){
             dirx = -1;
-            sprite.setScale(-1,1);
+            sprite.setScale(-1.5,1.5);
         }
     }
     
     if(dirx == -1){
         if(vl != 0){
             dirx = +1;
-            sprite.setScale(1,1);
+            sprite.setScale(1.5,1.5);
         }
     }
     
@@ -339,6 +343,7 @@ Npc5::Npc5(float _posx, float _posy):Npc(_posx, _posy){
     }
 
     sprite.setParams(8,0,32,32,_posx,_posy);
+    sprite.setScale(1.5,1.5);
     //COLISIONADORES
     box_up.setParams(60,1,posx,posy-32);
     
@@ -457,7 +462,7 @@ void Npc5::update(Personaje &_pj){
 void Npc5::matarPj(Personaje& _pj){
     if(_pj.getSprite().getSprite().getGlobalBounds().intersects(sprite.getSprite().getGlobalBounds())){
         if(_pj.inmune < 1 && _pj.clock.getElapsedTime().asSeconds()>3){
-            setPosition(posix,posiy);
+            restart();
             _pj.morir();
              if(_pj.clock.getElapsedTime().asSeconds()<3)
                     _pj.clock.restart();
