@@ -337,8 +337,8 @@
    <tile gid="1"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="9"/>
-   <tile gid="9"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="58"/>
    <tile gid="7"/>
@@ -1072,7 +1072,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="Plataformas" width="14" height="23">
+ <layer name="Plataformas" width="14" height="23" visible="0">
   <data>
    <tile gid="137"/>
    <tile gid="0"/>
