@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/a08718a8/MutationsState.o \
 	${OBJECTDIR}/Bloque.o \
 	${OBJECTDIR}/GameOverState.o \
 	${OBJECTDIR}/Juego.o \
@@ -45,6 +44,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Mi_Texto.o \
 	${OBJECTDIR}/Motor_2D.o \
 	${OBJECTDIR}/Mundo.o \
+	${OBJECTDIR}/MutationsState.o \
 	${OBJECTDIR}/Npc.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/Rads.o \
@@ -79,11 +79,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/_ext/a08718a8/MutationsState.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MutationsState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/MutationsState.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/MutationsState.cpp
 
 ${OBJECTDIR}/Bloque.o: Bloque.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -129,6 +124,11 @@ ${OBJECTDIR}/Mundo.o: Mundo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Mundo.o Mundo.cpp
+
+${OBJECTDIR}/MutationsState.o: MutationsState.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MutationsState.o MutationsState.cpp
 
 ${OBJECTDIR}/Npc.o: Npc.cpp 
 	${MKDIR} -p ${OBJECTDIR}
