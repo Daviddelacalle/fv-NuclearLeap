@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/a08718a8/WinState.o \
 	${OBJECTDIR}/Bloque.o \
 	${OBJECTDIR}/GameOverState.o \
 	${OBJECTDIR}/Juego.o \
@@ -51,6 +50,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Rads.o \
 	${OBJECTDIR}/State.o \
 	${OBJECTDIR}/Vector.o \
+	${OBJECTDIR}/WinState.o \
 	${OBJECTDIR}/inGame.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/mapa.o \
@@ -80,11 +80,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/_ext/a08718a8/WinState.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/WinState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/WinState.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/WinState.cpp
 
 ${OBJECTDIR}/Bloque.o: Bloque.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -160,6 +155,11 @@ ${OBJECTDIR}/Vector.o: Vector.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Vector.o Vector.cpp
+
+${OBJECTDIR}/WinState.o: WinState.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/WinState.o WinState.cpp
 
 ${OBJECTDIR}/inGame.o: inGame.cpp 
 	${MKDIR} -p ${OBJECTDIR}

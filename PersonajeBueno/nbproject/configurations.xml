@@ -47,6 +47,8 @@
       <itemPath>Rads.cpp</itemPath>
       <itemPath>State.cpp</itemPath>
       <itemPath>Vector.cpp</itemPath>
+      <itemPath>WinState.cpp</itemPath>
+      <itemPath>WinState.h</itemPath>
       <itemPath>inGame.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
       <itemPath>mapa.cpp</itemPath>
@@ -146,16 +148,6 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/WinState.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/WinState.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -427,6 +419,10 @@
       <item path="Vector.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Vector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="WinState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="WinState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="config.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -465,16 +461,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/WinState.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="/home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/WinState.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="/home/pato-lt/Escritorio/fv-NuclearLeap/PersonajeBueno/tiled/fondos/LeapDay_theme_Castle.png"
             ex="false"
             tool="3"
@@ -746,6 +732,10 @@
       <item path="Vector.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Vector.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="WinState.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="WinState.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="config.h" ex="false" tool="3" flavor2="0">
       </item>
