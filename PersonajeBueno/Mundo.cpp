@@ -50,32 +50,32 @@ void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_
     
     for(int it = 0; it < map->getvNpc1().size() ; it++){
         Npc1 *tmp = map->getvNpc1()[it];
-        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450 || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){ 
-            tmp->restart(); 
-        } 
-        else{ 
+        //if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450 || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){ 
+            //tmp->restart(); 
+        //} 
+        //else{ 
             tmp->update(_pj); 
-        }
+        //}
     }
     
     for(int it = 0; it < map->getvNpc3().size() ; it++){
         Npc3 *tmp = map->getvNpc3()[it];
-        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450 || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){ 
-            tmp->restart(); 
-        } 
-        else{ 
+        //if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450 || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){ 
+            //tmp->restart(); 
+        //} 
+        //else{ 
             tmp->update(_pj); 
-        }
+        //}
     }
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450 || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){ 
-            tmp->restart(); 
-        } 
-        else{ 
+        //if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450 || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){ 
+            //tmp->restart(); 
+        //} 
+        //else{ 
             tmp->update(_pj); 
-        }
+        //}
     }
     
     //ACTUALIZAR EL NEWSTATE DE CADA OBJETO
@@ -122,26 +122,26 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
     
     for(int it = 0; it < map->getvNpc1().size() ; it++){
         Npc1 *tmp = map->getvNpc1()[it];
-        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450  || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){} 
-        else{ 
+        //if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450  || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){} 
+        //else{ 
             tmp->draw(); 
-        }
+        //}
     }
     
     for(int it = 0; it < map->getvNpc3().size() ; it++){
         Npc3 *tmp = map->getvNpc3()[it];
-        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450  || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){} 
-        else{ 
+        //if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450  || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){} 
+        //else{ 
             tmp->draw(); 
-        }
+        //}
     }
     
     for(int it = 0; it < map->getvNpc5().size() ; it++){
         Npc5 *tmp = map->getvNpc5()[it];
-        if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450  || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){} 
-        else{ 
+        //if(tmp->getSprite().getPosy() < _pj.getSprite().getPosy() - 450  || tmp->getSprite().getPosy() > _pj.getSprite().getPosy() +450){} 
+        //else{ 
             tmp->draw(); 
-        }
+        //}
     }
           
     /*_window.draw(_pj.getBoxAbajo().getBloque());

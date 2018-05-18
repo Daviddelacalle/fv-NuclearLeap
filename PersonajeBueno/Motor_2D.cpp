@@ -62,7 +62,7 @@ void Motor_2D::restartClock(){
 
 void Motor_2D::setCenterVista(float _pjy){ 
     Mapa* map = Mapa::Instance(); 
-    vista_principal->setCenter(224,_pjy); 
+    vista_principal->setCenter(224,_pjy-60); 
 } 
  
 void Motor_2D::actualizarVista(Personaje& _pj){ 

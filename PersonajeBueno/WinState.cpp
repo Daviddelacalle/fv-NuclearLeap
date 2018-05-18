@@ -112,9 +112,9 @@ void WinState::Update(string menu){
         //juego->cambiarMenu(1);
     }
     else if(menu=="jugar"){
+        juego->cambiarMenu(1);
         ingame.iniciarPartida(); 
         activo=false;
-        juego->cambiarMenu(1);
     }
 }
 

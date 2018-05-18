@@ -355,6 +355,8 @@ Npc5::Npc5(float _posx, float _posy):Npc(_posx, _posy){
 }
 
 void Npc5::movimiento(Personaje &_pj){
+    
+    float npc5Vel = npcVel*2;
     if(_pj.getSprite().getPosx() < posx){
     //El pj esta a la izquierda
         dirx = -1;
@@ -406,19 +408,19 @@ void Npc5::movimiento(Personaje &_pj){
     
     if(vr != 0){
         //dirx = -1;
-        setPosition(posx - npcVel, posy);
+        setPosition(posx - npc5Vel, posy);
     }
     if(vl != 0){
         //dirx = 1;
-        setPosition(posx + npcVel, posy);
+        setPosition(posx + npc5Vel, posy);
     }
     if(vu !=0){
         //diry = +1;
-        setPosition(posx, posy + npcVel);
+        setPosition(posx, posy + npc5Vel);
     }
     if(vd != 0){
         //diry = -1;
-        setPosition(posx, posy - npcVel);
+        setPosition(posx, posy - npc5Vel);
     }
     /*Llamar a la funcion de javi que me dice el numero del tiled
      
@@ -438,8 +440,8 @@ void Npc5::movimiento(Personaje &_pj){
     
     /**/
     
-    posx = posx + dirx*npcVel;
-    posy = posy + diry*npcVel;
+    posx = posx + dirx*npc5Vel;
+    posy = posy + diry*npc5Vel;
     
     setPosition(posx,posy);
 }

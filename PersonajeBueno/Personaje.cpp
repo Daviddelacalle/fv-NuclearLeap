@@ -63,7 +63,7 @@ void Personaje::iniciarPersonaje(){
     velocidad.setPosx(kVel);
     contEspacios=0;
     var1 = 0;
-    vel_camara = 0;
+    vel_camara =10;
     checkpoint== Mapa::Instance()->getAltura()*32 - 32*9.5;
     pierdo = false;
     puntuacion = 0;
@@ -537,7 +537,7 @@ void Personaje::estoyRoja(int y){
 
      void Personaje::morir(){
         Juego* juego = Juego::Instance();
-                
+        Mapa* map = Mapa::Instance();
         alturasuelo=checkpoint;
         alturasuelo_nueva = checkpoint;
         sprite.setPosition(200, alturasuelo);
@@ -552,7 +552,25 @@ void Personaje::estoyRoja(int y){
             
            // map->ResetInstance();
         }
-     }
+        
+        
+        
+    //PARTE REINICIAR NPCS
+    for(int it = 0; it < map->getvNpc1().size() ; it++){
+        Npc1 *tmp = map->getvNpc1()[it];
+        tmp->restart();
+    }
+    
+    for(int it = 0; it < map->getvNpc3().size() ; it++){
+        Npc3 *tmp = map->getvNpc3()[it];
+            tmp->restart(); 
+    }
+    
+    for(int it = 0; it < map->getvNpc5().size() ; it++){
+        Npc5 *tmp = map->getvNpc5()[it];
+        tmp->restart();
+    }
+}
      
      void Personaje::abrirMutaciones(){
          Juego* juego = Juego::Instance();
@@ -569,22 +587,28 @@ void Personaje::estoyRoja(int y){
      }
      
      void Personaje::inmunidad(){         
-         if(puntuacion>=5){  
+         if(puntuacion>=15){  
             inmune +=1;            
-            puntuacion -=5;
+            puntuacion -=15;
             sprite.setFrame(0,4);
          }
          
      }
      
      void Personaje::porDos(){
-         pordos=true;
-         clock2.restart();
+         if(puntuacion>=15){
+            pordos=true;
+            puntuacion -=15;
+            clock2.restart();
+         }
      }
      
      void Personaje::jump(){
-         jumpy = true;
-         clockJump.restart();
+         if(puntuacion>=15){
+            jumpy = true;
+            puntuacion -=15;
+            clockJump.restart();
+         }
      }
      
      void Personaje::win(){
