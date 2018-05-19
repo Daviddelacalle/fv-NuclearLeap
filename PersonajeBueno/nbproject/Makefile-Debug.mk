@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/ac568468/Reloj.o \
 	${OBJECTDIR}/Bloque.o \
 	${OBJECTDIR}/GameOverState.o \
 	${OBJECTDIR}/Juego.o \
@@ -49,6 +48,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Npc.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/Rads.o \
+	${OBJECTDIR}/Reloj.o \
 	${OBJECTDIR}/State.o \
 	${OBJECTDIR}/Vector.o \
 	${OBJECTDIR}/WinState.o \
@@ -89,11 +89,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: /usr/lib/x86_64-linux
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/_ext/ac568468/Reloj.o: /home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Reloj.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/ac568468
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/ac568468/Reloj.o /home/david/Escritorio/fv-NuclearLeap/PersonajeBueno/Reloj.cpp
 
 ${OBJECTDIR}/Bloque.o: Bloque.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -159,6 +154,11 @@ ${OBJECTDIR}/Rads.o: Rads.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Rads.o Rads.cpp
+
+${OBJECTDIR}/Reloj.o: Reloj.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Reloj.o Reloj.cpp
 
 ${OBJECTDIR}/State.o: State.cpp 
 	${MKDIR} -p ${OBJECTDIR}
