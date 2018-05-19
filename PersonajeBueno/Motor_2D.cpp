@@ -69,10 +69,10 @@ void Motor_2D::actualizarVista(Personaje& _pj){
     int dirv_y; 
     float posx_vista = 224; 
     float posy_vista = getVistaPrincipal()->getCenter().y; 
-    cout << "posy_vista: " << posy_vista << "\n"; 
+    //cout << "posy_vista: " << posy_vista << "\n"; 
      
     int pos_pj = _pj.getSprite().getPosy() - 64; 
-    cout << "pos pj: " << pos_pj << "\n"; 
+    //cout << "pos pj: " << pos_pj << "\n"; 
      
     if(pos_pj < posy_vista -20){ 
     //El pj esta encima 
@@ -83,16 +83,15 @@ void Motor_2D::actualizarVista(Personaje& _pj){
     //El pj esta debajo 
         dirv_y = 1; 
  
-    } 
-     
+    }    
     else { 
     //El pj esta a la misma altura y 
         dirv_y = 0; 
  
     } 
-    cout << "dir v: " << dirv_y << "\n"; 
+    //cout << "dir v: " << dirv_y << "\n"; 
     posy_vista = posy_vista + dirv_y*_pj.getVelocidad()/1.2; 
-    cout << "posy_vista despues: " << posy_vista << "\n"; 
-    cout << "--------------------------- \n" ; 
+    //cout << "posy_vista despues: " << posy_vista << "\n"; 
+    //cout << "--------------------------- \n" ; 
     vista_principal->setCenter(posx_vista,posy_vista); 
 }

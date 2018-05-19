@@ -37,7 +37,7 @@ MutationsState::MutationsState() {
     op=0;       
     puntos=0;
     ss<<puntos;  
-    texto.setParams(ss.str(),30,140,-120);
+    texto.setParams(ss.str(),30,120,-120);
     texto.setColor(sf::Color::Black);
 }
 

@@ -7,9 +7,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/javi/Escritorio/fv-NuclearLeap/PersonajeBueno/WinState.cpp</file>
-            <file>file:/home/javi/Escritorio/fv-NuclearLeap/PersonajeBueno/MainMenuState.cpp</file>
-            <file>file:/home/javi/Escritorio/fv-NuclearLeap/PersonajeBueno/GameOverState.cpp</file>
+            <file>file:/home/pato-pc/Escritorio/fv-NuclearLeap/PersonajeBueno/inGame.cpp</file>
+            <file>file:/home/pato-pc/Escritorio/fv-NuclearLeap/PersonajeBueno/main.cpp</file>
+            <file>file:/home/pato-pc/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.h</file>
+            <file>file:/home/pato-pc/Escritorio/fv-NuclearLeap/PersonajeBueno/Personaje.cpp</file>
+            <file>file:/home/pato-pc/Escritorio/fv-NuclearLeap/PersonajeBueno/Mundo.cpp</file>
+            <file>file:/home/pato-pc/Escritorio/fv-NuclearLeap/PersonajeBueno/Motor_2D.cpp</file>
+            <file>file:/home/pato-pc/Escritorio/fv-NuclearLeap/PersonajeBueno/Mi_Texto.cpp</file>
         </group>
     </open-files>
 </project-private>

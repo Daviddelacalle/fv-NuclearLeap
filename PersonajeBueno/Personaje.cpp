@@ -32,7 +32,8 @@ void Personaje::iniciarPersonaje(){
    
     alturasuelo = Mapa::Instance()->getAltura()*32 - 32*9.5;
     sprite.setParams(0,2,32,32,200,alturasuelo);
-  lastCheck = alturasuelo;
+    lastCheck = alturasuelo;
+    sprite.setScale(1.0,1.0);
     
     boxAbajo.setParams(30,2,320,630);      
     
@@ -61,6 +62,7 @@ void Personaje::iniciarPersonaje(){
     nsprite = 0;
     max_sprites = 6;
     velocidad.setPosx(kVel);
+    velocidad.setPosy(0);
     contEspacios=0;
     var1 = 0;
     vel_camara =10;
@@ -542,6 +544,7 @@ void Personaje::estoyRoja(int y){
         alturasuelo_nueva = checkpoint;
         sprite.setPosition(200, alturasuelo);
         vidas--;
+        velocidad.setPosy(0);
         actualizarVidas();
         Motor_2D* motor = Motor_2D::Instance();     
         motor->setCenterVista(juego->pj.getSprite().getPosy());
