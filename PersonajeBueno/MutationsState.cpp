@@ -81,8 +81,7 @@ void MutationsState::HandleInput(){
                                 cout<<"entro en radsx2"<<"\n";
                                 juego->pj.porDos();
                             }
-                            juego->pausa=false; 
-                            mundo->inicializar();
+                            
                             
                                                         
                             break;

@@ -30,10 +30,11 @@ void GameOverState::Init(){
     
 }
 GameOverState::GameOverState() {
-    background.setTex("again.jpeg");
+    background.setTex("again.jpg");
     background.setParams(0,0,448,700,0,0);
     activo = false;
-    estado=0;
+    estado=1;
+    
 }
 
 void GameOverState::HandleInput(){
@@ -80,11 +81,11 @@ void GameOverState::HandleInput(){
 
 void GameOverState::Update(int num){
     if(num == 0){
-        background.setTex("again.jpeg");        
+        background.setTex("again.jpg");        
         estado = 1;
     }
     else if(num==1){
-        background.setTex("atras.jpeg");
+        background.setTex("atras.jpg");
         estado =0;
     }
    

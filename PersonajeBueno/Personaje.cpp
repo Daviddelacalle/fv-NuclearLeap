@@ -20,7 +20,8 @@
 #include "Vector.h"
 #include "MutationsState.h"
 #include "WinState.h"
-
+#include "NoRadsState.h"
+#include   "Mundo.h"
 
 Personaje::Personaje(){
    
@@ -150,6 +151,8 @@ void Personaje::mover(float timeElapsed){
     Juego* juego = Juego::Instance(); 
     MutationsState* muta = MutationsState::Instance(); 
     muta->puntos = puntuacion;
+    NoRadsState* norads = NoRadsState::Instance(); 
+    norads->puntos = puntuacion;
     switch(valorarriba){
         case 0: break;
         
@@ -589,28 +592,48 @@ void Personaje::estoyRoja(int y){
             
      }
      
-     void Personaje::inmunidad(){         
-         if(puntuacion>=15){  
+     void Personaje::inmunidad(){ 
+         Juego* juego = Juego::Instance();
+          Mundo* mundo = Mundo::Instance();
+         if(puntuacion>=15){ 
+            
             inmune +=1;            
             puntuacion -=15;
             sprite.setFrame(0,4);
+            juego->pausa=false; 
+            mundo->inicializar();
+         }          
+         else{
+              juego->estadoJuego = NoRadsState::Instance();            
+              juego->pausa=true;    
+              
          }
+         
          
      }
      
      void Personaje::porDos(){
+         Juego* juego = Juego::Instance();
          if(puntuacion>=15){
             pordos=true;
             puntuacion -=15;
             clock2.restart();
+         }else{
+             cout<<"ENTROOOOOOOOOOOOOOOOOOO";
+              juego->pausa=true;    
+               juego->estadoJuego = NoRadsState::Instance();
          }
      }
      
      void Personaje::jump(){
+         Juego* juego = Juego::Instance();
          if(puntuacion>=15){
             jumpy = true;
             puntuacion -=15;
             clockJump.restart();
+         }else{
+              juego->pausa=true;    
+               juego->estadoJuego = NoRadsState::Instance();
          }
      }
      
