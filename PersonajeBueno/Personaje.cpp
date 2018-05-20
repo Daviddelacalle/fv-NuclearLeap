@@ -489,7 +489,7 @@ void Personaje::mover(float timeElapsed){
     
     if(velocidad.getPosy() != 0){ 
         vel_camara = velocidad.getPosy()*timeElapsed; 
-        if(vel_camara < 1){ 
+        if(vel_camara < 0){ 
             vel_camara = vel_camara *-1; 
         } 
     }

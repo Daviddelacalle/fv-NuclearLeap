@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/a08718a8/NoRadsState.o \
 	${OBJECTDIR}/Bloque.o \
 	${OBJECTDIR}/GameOverState.o \
 	${OBJECTDIR}/Juego.o \
@@ -46,6 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Motor_2D.o \
 	${OBJECTDIR}/Mundo.o \
 	${OBJECTDIR}/MutationsState.o \
+	${OBJECTDIR}/NoRadsState.o \
 	${OBJECTDIR}/Npc.o \
 	${OBJECTDIR}/Personaje.o \
 	${OBJECTDIR}/Rads.o \
@@ -89,11 +89,6 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: /usr/lib/x86_64-linux
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/personajebueno ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/_ext/a08718a8/NoRadsState.o: /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/NoRadsState.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/a08718a8
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/a08718a8/NoRadsState.o /home/natalia/Documentos/FV-Nuclear/fv-NuclearLeap/PersonajeBueno/NoRadsState.cpp
 
 ${OBJECTDIR}/Bloque.o: Bloque.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -144,6 +139,11 @@ ${OBJECTDIR}/MutationsState.o: MutationsState.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MutationsState.o MutationsState.cpp
+
+${OBJECTDIR}/NoRadsState.o: NoRadsState.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/SFML -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/NoRadsState.o NoRadsState.cpp
 
 ${OBJECTDIR}/Npc.o: Npc.cpp 
 	${MKDIR} -p ${OBJECTDIR}
