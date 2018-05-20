@@ -17,6 +17,7 @@
 #include "config.h"
 #include "Personaje.h"
 #include "Mi_Sprite.h"
+#include "State.h"
 
 class Npc {
 public:
@@ -27,6 +28,10 @@ public:
     void draw();
     void restart();
 
+    State getState();
+    void setPosxState(float);
+    void setPosyState(float);
+    
     Bloque getBox_up(); 
     Bloque getBox_left(); 
     Bloque getBox_right(); 
@@ -52,6 +57,8 @@ protected:
     Bloque box_left; 
     Bloque box_right; 
     Bloque box_down; 
+    
+    State mi_estado;
 };
 
 class Npc1: public Npc{

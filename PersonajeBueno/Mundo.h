@@ -27,8 +27,8 @@ public:
     static Mundo* Instance();     
     void inicializar();
     void actualizarPuntuacion(int,sf::Text &_puntRads); 
-    void update( State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &npc5);
-    void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5); 
+    void update( State &_pj_S ,float timeElapsed, Personaje &_pj);
+    void render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj); 
     float minimo(float,float);
     
     

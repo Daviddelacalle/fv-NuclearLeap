@@ -37,7 +37,7 @@ Mundo::Mundo(){
     iniciado = false;
 }
 
-void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_S, Npc3 &_npc5){
+void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj){
     Mapa* map = Mapa::Instance();
     /*
     int posx = _lastState.getPosx() + (kVel*timeElapsed + 0.5f);
@@ -87,11 +87,16 @@ void Mundo::update(State &_pj_S ,float timeElapsed, Personaje &_pj, State &_npc_
     _pj_S.setPosx(_pj.getSprite().getPosx());
     _pj_S.setPosy(_pj.getSprite().getPosy());
     
-    _npc_S.setPosx(_npc5.getSprite().getPosx());
-    _npc_S.setPosy(_npc5.getSprite().getPosy());
+    for(int it = 0; it < map->getvNpc1().size() ; it++){ 
+        Npc1 *tmp = map->getvNpc1()[it]; 
+        tmp->setPosxState(tmp->getSprite().getPosx()); 
+        tmp->setPosyState(tmp->getSprite().getPosy()); 
+    } 
+    
+    
 }
 
-void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj, State _npc_S, Npc3 &_npc5){ 
+void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _percentTick, Personaje &_pj){ 
     Mapa* map = Mapa::Instance();
     //CALCULAMOS LA POSICION INTERPOLADA PARA CUANDO NO SE EJECUTA EL UDPATE
   
@@ -102,8 +107,15 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
     //float posxf = _pj_S.getLastx()*(1-_percentTick) + _pj_S.getPosx() * _percentTick;
     //float posyf = _pj_S.getLasty()*(1-_percentTick) + _pj_S.getPosy() * _percentTick;
     
-    float posxnpc =_npc_S.getLastx()*(1-_percentTick) + _npc_S.getPosx() * _percentTick;
-    float posynpc =_npc_S.getLasty()*(1-_percentTick) + _npc_S.getPosy() * _percentTick;
+    for(int it = 0; it < map->getvNpc1().size() ; it++){ 
+        Npc1 *tmp = map->getvNpc1()[it]; 
+         
+        float posxnpc = tmp->getState().getLastx()*(1-_percentTick) + tmp->getState().getPosx() * _percentTick; 
+        float posynpc = tmp->getState().getLasty()*(1-_percentTick) + tmp->getState().getPosy() * _percentTick; 
+         
+        tmp->setPosition(posxnpc,posynpc); 
+    }
+    
     /*
     int posx = _lastState.getPosx()*(1-_percentTick) + _newState.getPosx() * _percentTick;
     int posy = _lastState.getPosy()*(1-_percentTick) + _newState.getPosy() * _percentTick;
@@ -111,7 +123,6 @@ void Mundo::render_interpolation(sf::RenderWindow &_window, State _pj_S, float _
     _pj.setPosition(posx,posy);
      */
     _pj.setPosition(posxf,posyf);
-    _npc5.setPosition(posxnpc , posynpc );
     _pj.actualizarBoxes();
     
     //cout << "pj posx: " << _pj.getSprite().getPosition().x << " posy: " << _pj.getSprite().getPosition().y << "\n";
@@ -222,9 +233,9 @@ void Mundo::inicializar() {
     
     
     //ESTADOS    
-    State pj_S(juego->pj.getSprite().getPosx(),juego->pj.getSprite().getPosy());
-    
-    State npc_S(npc5.getSprite().getPosx(),npc5.getSprite().getPosy());
+    State pj_S; 
+    pj_S.setParams(juego->pj.getSprite().getPosx(),juego->pj.getSprite().getPosy()); 
+
 
     /*
      
@@ -280,16 +291,21 @@ void Mundo::inicializar() {
             pj_S.setPosx(pj_S.getPosx());
             pj_S.setPosy(pj_S.getPosy());
             
-            npc_S.setPosx(npc_S.getPosx());
-            npc_S.setPosy(npc_S.getPosy());
+            for(int it = 0; it < map->getvNpc1().size() ; it++){ 
+                Npc1 *tmp = map->getvNpc1()[it]; 
+                tmp->setPosxState(tmp->getState().getPosx()); 
+                tmp->setPosyState(tmp->getState().getPosy()); 
+            } 
+            
+            
             
             timeElapsed = updateClock.restart();
 
-            update(pj_S,timeElapsed.asMilliseconds(),juego->pj,npc_S,npc5);            
+            update(pj_S,timeElapsed.asMilliseconds(),juego->pj);            
            // pj.recogerRads(sprite,nrads); 
            
 
-           // update(pj_S,timeElapsed.asSeconds(),pj,npc_S,npc5);
+           // update(pj_S,timeElapsed.asSeconds(),pj);
 
             
         }
@@ -320,7 +336,7 @@ void Mundo::inicializar() {
         if(juego->pausa == false){
         motor->getWindow()->draw(*map);
         
-        render_interpolation(*motor->getWindow(),pj_S,percentTick,juego->pj,npc_S,npc5);       
+        render_interpolation(*motor->getWindow(),pj_S,percentTick,juego->pj);       
        
         motor->getWindow()->display();
         }

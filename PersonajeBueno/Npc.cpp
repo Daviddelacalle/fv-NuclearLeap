@@ -23,7 +23,21 @@ Npc::Npc(float _posx, float _posy) {
     dirx = 1;
     diry = 0;
     nsprite = 0;
+    
+    mi_estado.setParams(_posx,_posy);
 }
+
+State Npc::getState(){
+    return mi_estado;
+}
+
+void Npc::setPosxState(float _x){ 
+    mi_estado.setPosx(_x); 
+} 
+ 
+void Npc::setPosyState(float _y){ 
+    mi_estado.setPosy(_y); 
+} 
 
 Mi_Sprite Npc::getSprite(){
     return sprite;
