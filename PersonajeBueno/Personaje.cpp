@@ -614,13 +614,13 @@ void Personaje::estoyRoja(int y){
     
     void Personaje::actualizarBoxes(){
         boxAbajo.setPos(sprite.getPosx(), sprite.getPosy()+20);
-        boxAbajo2.setPos(sprite.getPosx()+13, sprite.getPosy()+20);
-        boxAbajo3.setPos(sprite.getPosx()-13, sprite.getPosy()+20);
+        boxAbajo2.setPos(sprite.getPosx()+12.5, sprite.getPosy()+20);
+        boxAbajo3.setPos(sprite.getPosx()-12.5, sprite.getPosy()+20);
         boxArriba.setPos(sprite.getPosx(),sprite.getPosy()-15);
-        boxArriba2.setPos(sprite.getPosx()+10,sprite.getPosy()-15);
-        boxArriba3.setPos(sprite.getPosx()-10,sprite.getPosy()-15);
-        boxDerecha.setPos(sprite.getPosx()+15, sprite.getPosy());
-        boxIzquierda.setPos(sprite.getPosx()-15, sprite.getPosy());
+        boxArriba2.setPos(sprite.getPosx()+9.5,sprite.getPosy()-15);
+        boxArriba3.setPos(sprite.getPosx()-9.5,sprite.getPosy()-15);
+        boxDerecha.setPos(sprite.getPosx()+16, sprite.getPosy());
+        boxIzquierda.setPos(sprite.getPosx()-16, sprite.getPosy());
     }
      
     Bloque Personaje::getBoxAbajo(){
