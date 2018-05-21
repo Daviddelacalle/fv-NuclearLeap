@@ -27,10 +27,18 @@
 
 
 int main() {     
+     
     LoadXML load = LoadXML();    
     Juego* juego = Juego::Instance();
-    juego->inicializar();
-    
+    sf::Music sonido;
+     if(!sonido.openFromFile("resources/conga.ogg")){
+        std::cerr << "Error cargando el audio";
+        exit(0);
+    }
+     sonido.setVolume(30.0);
+      sonido.play();
+    sonido.setLoop(true);
+    juego->inicializar();   
     
     return 0;
 }

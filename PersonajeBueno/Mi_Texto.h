@@ -25,6 +25,7 @@ public:
     void setText(sf::String _string);
     void setPosition(float, float);
     void setColor(sf::Color);
+    void setStyle();
 private:
     sf::Font font;
     sf::Text text;

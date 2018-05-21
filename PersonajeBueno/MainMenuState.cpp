@@ -122,6 +122,7 @@ void MainMenuState::Update(string menu){
         //juego->cambiarMenu(1);
     }
     else if(menu=="jugar"){
+       // ingame.pararMusica();
         ingame.iniciarPartida();
         activo=false;
         juego->cambiarMenu(1);
@@ -132,7 +133,7 @@ void MainMenuState::Update(string menu){
         op=0;
     }
     else if(menu=="opciones"){
-        background.setTex("mutators.png");
+        background.setTex("exit.jpg");
         estado = 2;
         op=0;
     }

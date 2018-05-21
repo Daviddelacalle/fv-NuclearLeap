@@ -10,7 +10,7 @@
  * 
  * Created on 19 de abril de 2018, 13:54
  */
-#include "SFML/Audio.hpp"
+
 #include "Personaje.h"
 #include "mapa.h"
 #include "Mi_Texto.h"
@@ -22,7 +22,10 @@
 #include "WinState.h"
 #include "NoRadsState.h"
 #include   "Mundo.h"
-
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <SFML/System/Clock.hpp>
 Personaje::Personaje(){
    
    // sprite.setPosition(224, alturasuelo);
@@ -94,6 +97,16 @@ void Personaje::iniciarPersonaje(){
      cosa= 0;
      pordos=false;
      tiempoFinal.restart();
+     //soyInmune.setParams()
+     soyPor2.setParams("0",13, posx_vida+50, posy_vida);
+     soyPor3.setParams("0", 13, posx_vida+100, posy_vida);
+     soyPor2.setColor(sf::Color::Black);
+     soyPor2.setStyle();
+     soyPor3.setStyle();
+     soyPor3.setColor(sf::Color::Black);
+     jumpy=false;
+     
+     
 }
 
 
@@ -432,10 +445,24 @@ void Personaje::mover(float timeElapsed){
         Mapa::Instance()->activarCapa(0);
           
     }    
-    if(clock2.getElapsedTime().asSeconds()>12){
+     Motor_2D* motor = Motor_2D::Instance();
+     std::stringstream ss4;
+    int var = (int)clock2.getElapsedTime().asSeconds();
+    ss4<<var;
+     int var2 = (int)clockJump.getElapsedTime().asSeconds();  
+    soyPor2.setText("Rads x2: "+ss4.str());
+     std::stringstream ss5;
+    ss5<<var2;
+    
+    soyPor3.setText("Jump x3: "+ss5.str());
+    soyPor3.setPosition(posx_vida + 160, motor->getVistaPrincipal()->getCenter().y -330);
+    soyPor2.setPosition(posx_vida + 30, motor->getVistaPrincipal()->getCenter().y -330);
+     
+    if(clock2.getElapsedTime().asSeconds()>20){
         pordos=false;
     }
-     if(clockJump.getElapsedTime().asSeconds()>10){
+    
+     if(clockJump.getElapsedTime().asSeconds()>15){
         jumpy=false;
     }
     
@@ -446,9 +473,9 @@ void Personaje::mover(float timeElapsed){
             cout<<clock.getElapsedTime().asSeconds()<<"\n";
             if(inmune < 1 && clock.getElapsedTime().asSeconds()>3){
                 morir();  
-                if(clock.getElapsedTime().asSeconds()<3)
+                if(clock.getElapsedTime().asSeconds()<2)
                     clock.restart();
-            }else{
+            }else {
                 cout<<"holaaaaaaaaa";
                 if(inmune > 0){
                     clock.restart();
@@ -588,8 +615,8 @@ void Personaje::estoyRoja(int y){
     
     void Personaje::actualizarBoxes(){
         boxAbajo.setPos(sprite.getPosx(), sprite.getPosy()+20);
-        boxAbajo2.setPos(sprite.getPosx()+11, sprite.getPosy()+20);
-        boxAbajo3.setPos(sprite.getPosx()-11, sprite.getPosy()+20);
+        boxAbajo2.setPos(sprite.getPosx()+13, sprite.getPosy()+20);
+        boxAbajo3.setPos(sprite.getPosx()-13, sprite.getPosy()+20);
         boxArriba.setPos(sprite.getPosx(),sprite.getPosy()-15);
         boxArriba2.setPos(sprite.getPosx()+10,sprite.getPosy()-15);
         boxArriba3.setPos(sprite.getPosx()-10,sprite.getPosy()-15);
@@ -641,6 +668,16 @@ void Personaje::estoyRoja(int y){
         if(pierdo ==true){
             text_perder.draw();
         }
+        if(inmune>0){
+            soyInmune.draw();
+        }
+        if(pordos == true){
+           soyPor2.draw();
+        }
+        if(jumpy==true){
+            soyPor3.draw();
+        }
+        
         
     }
     
@@ -716,12 +753,20 @@ void Personaje::estoyRoja(int y){
      void Personaje::abrirMutaciones(){
          Juego* juego = Juego::Instance();
         // if(sprite.getPosy() < (Mapa::Instance()->getAltura()*32 - 32*9.5 )-50){
-         if(sprite.getPosy() < lastCheck -50 && sprite.getPosy() > 1000){ 
-             lastCheck = sprite.getPosy();
-             juego->pausa=true;             
-            // cout<<lastCheck<<"\n";             
-            // juego->alive = false;  
-            juego->estadoJuego = MutationsState::Instance();
+         
+            if(sprite.getPosy() < lastCheck -50 && sprite.getPosy() > 1000){ 
+                if(puntuacion>=15){
+                lastCheck = sprite.getPosy();
+                juego->pausa=true;             
+               // cout<<lastCheck<<"\n";             
+               // juego->alive = false;  
+               juego->estadoJuego = MutationsState::Instance();
+            }
+                else{
+                    lastCheck = sprite.getPosy();
+              juego->estadoJuego = NoRadsState::Instance();            
+              juego->pausa=true;    
+         }
          }
         // }
             
@@ -729,47 +774,34 @@ void Personaje::estoyRoja(int y){
      
      void Personaje::inmunidad(){ 
          Juego* juego = Juego::Instance();
-          Mundo* mundo = Mundo::Instance();
-         if(puntuacion>=15){ 
-            
+          Mundo* mundo = Mundo::Instance(); 
             inmune +=1;            
             puntuacion -=15;
             sprite.setFrame(0,4);
             juego->pausa=false; 
             mundo->inicializar();
-         }          
-         else{
-              juego->estadoJuego = NoRadsState::Instance();            
-              juego->pausa=true;    
-              
-         }
-         
          
      }
      
-     void Personaje::porDos(){
+     void Personaje::porDos(){  
          Juego* juego = Juego::Instance();
-         if(puntuacion>=15){
+          Mundo* mundo = Mundo::Instance(); 
             pordos=true;
             puntuacion -=15;
             clock2.restart();
-         }else{
-             cout<<"ENTROOOOOOOOOOOOOOOOOOO";
-              juego->pausa=true;    
-               juego->estadoJuego = NoRadsState::Instance();
-         }
+            juego->pausa=false; 
+            mundo->inicializar();
+        
      }
      
-     void Personaje::jump(){
+     void Personaje::jump(){     
          Juego* juego = Juego::Instance();
-         if(puntuacion>=15){
+          Mundo* mundo = Mundo::Instance(); 
             jumpy = true;
             puntuacion -=15;
-            clockJump.restart();
-         }else{
-              juego->pausa=true;    
-               juego->estadoJuego = NoRadsState::Instance();
-         }
+            clockJump.restart();  
+            juego->pausa=false; 
+            mundo->inicializar();
      }
      
      void Personaje::win(){

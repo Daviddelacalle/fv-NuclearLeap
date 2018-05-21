@@ -104,6 +104,7 @@ void GameOverState::Update(string menu){
     }
     else if(menu=="jugar"){
         juego->cambiarMenu(1);
+      //  ingame.pararMusica();
         ingame.iniciarPartida(); 
         activo=false;
         

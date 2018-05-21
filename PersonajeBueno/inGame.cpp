@@ -15,18 +15,30 @@
 #include "Mundo.h"
 #include "config.h"
 #include "Juego.h"
-
+#include <SFML/Audio.hpp>
 inGame::inGame() {
     
 }
 
 void inGame::iniciarPartida(){     
     Mundo* mundo = Mundo::Instance(); 
-    Juego* juego = Juego::Instance();
+    Juego* juego = Juego::Instance();    
+    
+      
+   
+    
    // juego->reiniciarPj();
     LoadXML load = LoadXML();     
     mundo->inicializar();
 }
+
+void inGame::pararMusica(){
+    //sonido.stop();
+   // sonido.Stopped;
+    
+}
+
+
 
 
 

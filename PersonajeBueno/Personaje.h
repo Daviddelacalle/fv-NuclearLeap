@@ -42,9 +42,7 @@ public:
     void draw();
     void iniciarPersonaje();
     int getPuntos();
-    void win();
-    
-    
+    void win();  
     Bloque getBoxAbajo();
     Bloque getBoxAbajo2();
     Bloque getBoxAbajo3();
@@ -112,7 +110,9 @@ private:
     int puntuacion;    
     bool jumpy;
     
-    
+    Mi_Sprite soyInmune;
+    Mi_Texto soyPor2;
+    Mi_Texto soyPor3;
     
     sf::Clock clock2;
     sf::Clock clockJump;

@@ -56,8 +56,7 @@ void Juego::setMuerto(bool var){
 void Juego::inicializar(){
     Motor_2D* motor = Motor_2D::Instance(); 
         
-    while(motor->getWindow()->isOpen()){  
-       
+    while(motor->getWindow()->isOpen()){        
         estadoJuego->HandleInput();       
         motor->getVistaPrincipal()->setCenter(0,0);
         motor->setVistaPrincipal();

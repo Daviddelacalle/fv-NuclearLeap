@@ -13,13 +13,15 @@
 
 #ifndef INGAME_H
 #define INGAME_H
-
+#include <SFML/Audio.hpp>
 
 class inGame {
 public:
     inGame();
     void iniciarPartida();
+    void pararMusica();
 private:
+    
 
 };
 

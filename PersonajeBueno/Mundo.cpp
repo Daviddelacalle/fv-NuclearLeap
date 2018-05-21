@@ -193,12 +193,7 @@ void Mundo::inicializar() {
     
     juego->alive =true;
     
-     sf::Music sonido;
-    if(!sonido.openFromFile("resources/conga.ogg")){
-        std::cerr << "Error cargando el audio";
-        exit(0);
-    }
-     
+    
        sf::Music sonidoSalto;
     if(!sonidoSalto.openFromFile("resources/salto.ogg")){
         std::cerr << "Error cargando el audio";
@@ -206,9 +201,7 @@ void Mundo::inicializar() {
     }
        
       
-     sonido.setVolume(30.0);
-      sonido.play();
-    sonido.setLoop(true);
+   
     
     //Relojes de control de tiempo entre cada update y el tiempo global
     sf::Clock updateClock;
