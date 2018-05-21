@@ -62,8 +62,7 @@ void WinState::HandleInput(){
                 case sf::Event::KeyPressed:  
                     switch(event.key.code) { 
                         case sf::Keyboard::Return: 
-                            juego->cambiarMenu(1);
-                            ingame.iniciarPartida();                 
+                            juego->estadoJuego = MainMenuState::Instance();                
                             break;
                         case sf::Keyboard::Q:
                             motor->getWindow()->close();

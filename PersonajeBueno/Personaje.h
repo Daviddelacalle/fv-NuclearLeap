@@ -21,7 +21,7 @@
 #include "Rads.h"
 #include "Bloque.h"
 #include "Vector.h"
-#include <SFML/Graphics.hpp>
+#include "Reloj.h"
 class Personaje {
 public:
     Personaje();
@@ -68,7 +68,7 @@ public:
     void porDos();
     bool pordos;
     int inmune;
-    sf::Clock clock;
+    Reloj clock;
     string reloj;
 private:
     int lastCheck;
@@ -114,9 +114,9 @@ private:
     Mi_Texto soyPor2;
     Mi_Texto soyPor3;
     
-    sf::Clock clock2;
-    sf::Clock clockJump;
-    sf::Clock tiempoFinal;
+    Reloj clock2;
+    Reloj clockJump;
+    Reloj tiempoFinal;
   
 
     

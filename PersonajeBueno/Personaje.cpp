@@ -25,7 +25,6 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <SFML/System/Clock.hpp>
 Personaje::Personaje(){
    
    // sprite.setPosition(224, alturasuelo);
@@ -153,7 +152,7 @@ void Personaje::mover(float timeElapsed){
     int ly = boxIzquierda.getBloque().getPosition().y / 32;
     int dx = boxAbajo.getBloque().getPosition().x /32;
     int dy = boxAbajo.getBloque().getPosition().y /32;
-    int dx2 = boxAbajo2.getBloque().getPosition().x /32;
+    int dx2 = boxAbajo2.getBloque().getPosition().x /   32;
     int dy2 = boxAbajo2.getBloque().getPosition().y /32;
     int dx3 = boxAbajo3.getBloque().getPosition().x /32;
     int dy3 = boxAbajo3.getBloque().getPosition().y /32;
@@ -447,9 +446,9 @@ void Personaje::mover(float timeElapsed){
     }    
      Motor_2D* motor = Motor_2D::Instance();
      std::stringstream ss4;
-    int var = (int)clock2.getElapsedTime().asSeconds();
+    int var = (int)clock2.getReloj().getElapsedTime().asSeconds();
     ss4<<var;
-     int var2 = (int)clockJump.getElapsedTime().asSeconds();  
+     int var2 = (int)clockJump.getReloj().getElapsedTime().asSeconds();  
     soyPor2.setText("Rads x2: "+ss4.str());
      std::stringstream ss5;
     ss5<<var2;
@@ -458,11 +457,11 @@ void Personaje::mover(float timeElapsed){
     soyPor3.setPosition(posx_vida + 160, motor->getVistaPrincipal()->getCenter().y -330);
     soyPor2.setPosition(posx_vida + 30, motor->getVistaPrincipal()->getCenter().y -330);
      
-    if(clock2.getElapsedTime().asSeconds()>20){
+    if(clock2.getReloj().getElapsedTime().asSeconds()>20){
         pordos=false;
     }
     
-     if(clockJump.getElapsedTime().asSeconds()>15){
+     if(clockJump.getReloj().getElapsedTime().asSeconds()>15){
         jumpy=false;
     }
     
@@ -470,10 +469,10 @@ void Personaje::mover(float timeElapsed){
     switch(valorpersonaje){
         case 5:     
             cout<<inmune<<"\n";
-            cout<<clock.getElapsedTime().asSeconds()<<"\n";
-            if(inmune < 1 && clock.getElapsedTime().asSeconds()>3){
+            cout<<clock.getReloj().getElapsedTime().asSeconds()<<"\n";
+            if(inmune < 1 && clock.getReloj().getElapsedTime().asSeconds()>3){
                 morir();  
-                if(clock.getElapsedTime().asSeconds()<2)
+                if(clock.getReloj().getElapsedTime().asSeconds()<2)
                     clock.restart();
             }else {
                 cout<<"holaaaaaaaaa";
@@ -806,7 +805,7 @@ void Personaje::estoyRoja(int y){
      
      void Personaje::win(){
          std::stringstream ss2;          
-         ss2<<tiempoFinal.getElapsedTime().asSeconds();
+         ss2<<tiempoFinal.getReloj().getElapsedTime().asSeconds();
          reloj = ss2.str();
          Juego* juego = Juego::Instance();
          juego->pausa=true;   
